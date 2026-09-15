@@ -13,10 +13,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F0F0F">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://anubiscardsandcraft.com/?lang=en">
+<link rel="alternate" hreflang="th" href="https://anubiscardsandcraft.com/?lang=th">
+<link rel="alternate" hreflang="ja" href="https://anubiscardsandcraft.com/ja/">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Otomanopee+One&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Store","name":"Anubis Cards and Craft","url":"https://anubiscardsandcraft.com","image":"https://anubiscardsandcraft.com/img/og.jpg","email":"contact@anubiscardsandcraft.com","address":{"@type":"PostalAddress","streetAddress":"27 Metha Wattana Building, 2nd Floor Room 5, Soi Sukhumvit 19","addressLocality":"Khlong Toei Nuea, Watthana, Bangkok","postalCode":"10110","addressCountry":"TH"},"geo":{"@type":"GeoCoordinates","latitude":13.7394812,"longitude":100.5599004},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"14:00","closes":"22:00"}],"sameAs":["https://www.facebook.com/AnubisCardsandCraft","https://instagram.com/anubiscardsandcraft","https://tiktok.com/@anubiscardsandcraft","https://youtube.com/anubiscardsandcraft"]}
 </script>
@@ -63,11 +66,14 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* bilingual */
-  html[data-lang="en"] .l-th { display: none !important; }
-  html[data-lang="th"] .l-en { display: none !important; }
+  html:not([data-lang="en"]) .l-en, html:not([data-lang="th"]) .l-th, html:not([data-lang="ja"]) .l-ja { display: none !important; }
+  :lang(ja) { font-family: "IBM Plex Sans JP", "Noto Sans JP", var(--body); line-break: strict; }
+  h1 :lang(ja), h2 :lang(ja), h3 :lang(ja), .ticker :lang(ja) { font-family: "Otomanopee One", "Noto Sans JP", sans-serif; font-weight: 400; letter-spacing: 0; line-height: 1.2; }
+  html[data-lang="ja"] .hero h1 { font-size: clamp(40px, 6vw, 88px); }
+  html[data-lang="ja"] .sec-num, html[data-lang="ja"] .eyebrow, html[data-lang="ja"] .dlg-body dt { letter-spacing: .02em; }
   :lang(th) { line-height: 1.7; }
   h1 .l-th, h2 .l-th, h3 .l-th { font-size: 1.1em; line-height: 1.25; }
-  html[data-lang="th"] .dlg-body dt, html[data-lang="th"] .sec-num, html[data-lang="th"] .eyebrow, html[data-lang="th"] .hero-facts { letter-spacing: 0; }
+  html[data-lang="th"] .dlg-body dt, html[data-lang="th"] .collab .k, html[data-lang="th"] .sec-num, html[data-lang="th"] .eyebrow, html[data-lang="th"] .hero-facts { letter-spacing: 0; }
 
   /* ---------- header ---------- */
   .bar {
@@ -98,7 +104,7 @@
     display: inline-flex; border: 1px solid var(--n700); border-radius: 999px; padding: 3px; background: var(--n900);
   }
   .lang button {
-    border: 0; background: none; cursor: pointer; padding: 6px 10px; border-radius: 999px;
+    border: 0; background: none; cursor: pointer; padding: 6px 9px; border-radius: 999px;
     font: 500 12px/1 var(--body); color: var(--n400);
   }
   .lang button[aria-pressed="true"] { background: var(--gold); color: var(--black); }
@@ -116,6 +122,12 @@
     .menu-btn { display: block; }
     .bar-tools { margin-left: auto; }
     .status .s-long { display: none; }
+  }
+  @media (max-width: 480px) {
+    .status { padding: 8px; }
+    .status #status-text { display: none; }
+    .lang button { padding: 6px 7px; }
+    .brand svg { height: 28px; }
   }
 
   /* ---------- hero ---------- */
@@ -381,6 +393,8 @@
   .light .btn-ghost:hover { background: var(--black); color: var(--cream); }
   .light .btn-gold { background: var(--black); color: var(--gold); }
   .light .btn-gold:hover { background: var(--charcoal); }
+  .light .mail-card .btn-gold { background: var(--gold); color: var(--black); }
+  .light .mail-card .btn-gold:hover { background: var(--gold-hi); }
   @media (max-width: 860px) { .newbie { grid-template-columns: 1fr; gap: 24px; } .newbie-art { max-width: 300px; } }
 
   /* ---------- shop life ---------- */
@@ -450,10 +464,15 @@
   .contact { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
   .mail-card { position: relative; overflow: hidden; background: var(--black); color: var(--cream); border-radius: var(--r-l); padding: clamp(24px, 4vw, 48px); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
   .mail-card h3 { font: 800 clamp(30px, 4vw, 52px)/1 var(--display); margin: 0; max-width: 12ch; }
-  .mail-link { font: 700 clamp(18px, 2.6vw, 32px)/1.2 var(--mono); color: var(--gold); text-decoration: none; word-break: break-all; position: relative; z-index: 1; }
-  .mail-link:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .mail-link { font: 700 clamp(16px, 1.7vw, 22px)/1.3 var(--mono); color: var(--black); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--gold); text-decoration-thickness: 2px; word-break: break-all; }
+  .side-contact { display: grid; gap: 12px; align-content: start; }
+  .collab { background: var(--cream-50); border: 1px solid var(--n200); border-radius: var(--r-l); padding: 24px; display: grid; gap: 10px; }
+  .collab .k { font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: #9A6310; }
+  .collab p { margin: 0; color: #3D3D3D; font-size: 15px; }
+  .mail-link:hover { color: #9A6310; }
   .mail-card .nubi-peek { position: absolute; right: -2%; bottom: -4%; width: 42%; max-width: 240px; background: var(--gold); border-radius: 50% 50% 0 0; padding-top: 12px; }
-  .mail-card p { color: var(--n400); margin: 0; max-width: 26em; position: relative; z-index: 1; }
+  .mail-card p { color: var(--n200); margin: 0; max-width: 26em; position: relative; z-index: 1; }
+  .mail-card h3 { position: relative; z-index: 1; max-width: 14ch; }
   .socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .socials a { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 20px; border-radius: var(--r-l); background: var(--cream-50); border: 1px solid var(--n200); color: var(--black); font: 700 16px/1.2 var(--body); transition: background .2s, color .2s; }
   .socials a:hover { background: var(--black); color: var(--cream); }
@@ -581,17 +600,18 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 389 354 384 6 -2 745 -582 1640 -1287z"/>
 </g></g></g><g id="wordmark" fill="url(#anubisGold)"><g transform="translate(623.61,377.20) scale(0.38226,-0.38226)"><path d="M20.0 0 267.0 644H492.0L740.0 0H516.0L466.0 128H293.0L244.0 0ZM319.0 278H440.0L379.0 434ZM792.0 0V644H973.0L1185.0 347V644H1400.0V0H1217.0L1007.0 296V0ZM1780.0 -10Q1690.0 -10 1619.0 20.0Q1548.0 50 1507.5 108.0Q1467.0 166 1467.0 251V644H1682.0V276Q1682.0 172 1780.0 172Q1878.0 172 1878.0 276V644H2093.0V251Q2093.0 166 2052.5 108.0Q2012.0 50 1941.5 20.0Q1871.0 -10 1780.0 -10ZM2160.0 0V644H2528.0Q2626.0 644 2679.0 597.0Q2732.0 550 2732.0 464Q2732.0 415 2714.5 381.0Q2697.0 347 2668.0 327Q2708.0 310 2731.0 280.5Q2754.0 251 2754.0 193Q2754.0 102 2696.0 51.0Q2638.0 0 2534.0 0ZM2364.0 392H2470.0Q2528.0 392 2528.0 444Q2528.0 469 2513.5 482.5Q2499.0 496 2467.0 496H2364.0ZM2364.0 147H2474.0Q2535.0 147 2535.0 203Q2535.0 255 2472.0 255H2364.0ZM2806.0 0V644H3021.0V0ZM3310.0 -10Q3243.0 -10 3182.5 1.0Q3122.0 12 3080.0 32V200Q3127.0 178 3183.5 164.0Q3240.0 150 3287.0 150Q3327.0 150 3348.5 158.0Q3370.0 166 3370.0 188Q3370.0 213 3337.0 224.5Q3304.0 236 3242.0 257Q3178.0 279 3141.5 304.5Q3105.0 330 3089.0 366.5Q3073.0 403 3073.0 456Q3073.0 654 3348.0 654Q3382.0 654 3420.5 649.5Q3459.0 645 3494.5 638.5Q3530.0 632 3555.0 624V455Q3504.0 475 3461.5 483.5Q3419.0 492 3384.0 492Q3349.0 492 3320.5 486.5Q3292.0 481 3292.0 458Q3292.0 439 3317.0 429.5Q3342.0 420 3401.0 404Q3480.0 382 3520.5 352.0Q3561.0 322 3575.5 281.5Q3590.0 241 3590.0 189Q3590.0 99 3520.0 44.5Q3450.0 -10 3310.0 -10Z"/></g></g><g id="descriptor" fill="currentColor"><g transform="translate(623.08,531.64) scale(0.14865,-0.14865)"><path d="M348.0 -12Q257.0 -12 191.0 28.5Q125.0 69 90.0 148.0Q55.0 227 55.0 345Q55.0 462 90.0 543.5Q125.0 625 191.0 667.5Q257.0 710 348.0 710Q438.0 710 499.5 670.0Q561.0 630 597.0 552L502.0 500Q484.0 550 446.5 579.5Q409.0 609 348.0 609Q267.0 609 221.0 553.0Q175.0 497 175.0 400V293Q175.0 197 221.0 143.0Q267.0 89 348.0 89Q410.0 89 450.0 121.5Q490.0 154 509.0 205L600.0 150Q565.0 75 501.5 31.5Q438.0 -12 348.0 -12ZM1160.0 0H1099.0Q1069.0 0 1047.5 13.5Q1026.0 27 1015.0 52.0Q1004.0 77 1004.0 111V120L1035.0 87H1000.0Q985.0 39 945.0 13.5Q905.0 -12 848.0 -12Q768.0 -12 724.0 30.0Q680.0 72 680.0 143Q680.0 195 705.5 229.5Q731.0 264 780.0 281.5Q829.0 299 902.0 299H996.0V343Q996.0 390 970.0 416.5Q944.0 443 889.0 443Q844.0 443 814.5 422.5Q785.0 402 765.0 372L700.0 431Q726.0 475 773.5 503.5Q821.0 532 896.0 532Q996.0 532 1050.5 484.5Q1105.0 437 1105.0 350V89H1160.0ZM996.0 229H904.0Q847.0 229 819.0 211.0Q791.0 193 791.0 159V141Q791.0 107 815.0 89.0Q839.0 71 879.0 71Q913.0 71 939.0 81.0Q965.0 91 980.5 110.0Q996.0 129 996.0 154ZM1382.0 0H1273.0V520H1382.0V417H1387.0Q1395.0 443 1412.5 466.5Q1430.0 490 1459.0 505.0Q1488.0 520 1530.0 520H1559.0V415H1516.0Q1473.0 415 1443.0 405.0Q1413.0 395 1397.5 377.0Q1382.0 359 1382.0 332ZM1989.0 0V86H1984.0Q1966.0 40 1928.0 14.0Q1890.0 -12 1838.0 -12Q1773.0 -12 1726.5 20.5Q1680.0 53 1655.5 114.0Q1631.0 175 1631.0 260Q1631.0 346 1655.5 406.5Q1680.0 467 1726.5 499.5Q1773.0 532 1838.0 532Q1890.0 532 1929.0 506.5Q1968.0 481 1984.0 434H1989.0V740H2098.0V0ZM1871.0 80Q1904.0 80 1930.5 91.5Q1957.0 103 1973.0 123.5Q1989.0 144 1989.0 174V350Q1989.0 377 1973.0 397.0Q1957.0 417 1930.5 428.0Q1904.0 439 1871.0 439Q1815.0 439 1780.5 402.0Q1746.0 365 1746.0 305V215Q1746.0 155 1780.5 117.5Q1815.0 80 1871.0 80ZM2425.0 -12Q2352.0 -12 2301.5 14.0Q2251.0 40 2214.0 86L2284.0 150Q2313.0 116 2348.5 96.0Q2384.0 76 2431.0 76Q2479.0 76 2502.5 94.5Q2526.0 113 2526.0 146Q2526.0 171 2509.5 188.0Q2493.0 205 2452.0 211L2404.0 217Q2352.0 225 2313.0 243.0Q2274.0 261 2253.5 292.5Q2233.0 324 2233.0 372Q2233.0 448 2286.5 490.0Q2340.0 532 2426.0 532Q2473.0 532 2508.0 522.0Q2543.0 512 2570.0 493.5Q2597.0 475 2620.0 449L2553.0 385Q2533.0 409 2500.5 426.5Q2468.0 444 2426.0 444Q2382.0 444 2360.0 426.5Q2338.0 409 2338.0 379Q2338.0 349 2357.5 334.0Q2377.0 319 2418.0 312L2466.0 306Q2552.0 293 2591.5 255.5Q2631.0 218 2631.0 155Q2631.0 105 2605.5 67.5Q2580.0 30 2534.0 9.0Q2488.0 -12 2425.0 -12ZM3444.0 0H3383.0Q3353.0 0 3331.5 13.5Q3310.0 27 3299.0 52.0Q3288.0 77 3288.0 111V120L3319.0 87H3284.0Q3269.0 39 3229.0 13.5Q3189.0 -12 3132.0 -12Q3052.0 -12 3008.0 30.0Q2964.0 72 2964.0 143Q2964.0 195 2989.5 229.5Q3015.0 264 3064.0 281.5Q3113.0 299 3186.0 299H3280.0V343Q3280.0 390 3254.0 416.5Q3228.0 443 3173.0 443Q3128.0 443 3098.5 422.5Q3069.0 402 3049.0 372L2984.0 431Q3010.0 475 3057.5 503.5Q3105.0 532 3180.0 532Q3280.0 532 3334.5 484.5Q3389.0 437 3389.0 350V89H3444.0ZM3280.0 229H3188.0Q3131.0 229 3103.0 211.0Q3075.0 193 3075.0 159V141Q3075.0 107 3099.0 89.0Q3123.0 71 3163.0 71Q3197.0 71 3223.0 81.0Q3249.0 91 3264.5 110.0Q3280.0 129 3280.0 154ZM3666.0 0H3557.0V520H3666.0V434H3671.0Q3688.0 476 3722.5 504.0Q3757.0 532 3817.0 532Q3897.0 532 3941.5 479.0Q3986.0 426 3986.0 330V0H3877.0V317Q3877.0 378 3853.5 408.5Q3830.0 439 3779.0 439Q3750.0 439 3724.5 429.5Q3699.0 420 3682.5 400.0Q3666.0 380 3666.0 350ZM4470.0 0V86H4465.0Q4447.0 40 4409.0 14.0Q4371.0 -12 4319.0 -12Q4254.0 -12 4207.5 20.5Q4161.0 53 4136.5 114.0Q4112.0 175 4112.0 260Q4112.0 346 4136.5 406.5Q4161.0 467 4207.5 499.5Q4254.0 532 4319.0 532Q4371.0 532 4410.0 506.5Q4449.0 481 4465.0 434H4470.0V740H4579.0V0ZM4352.0 80Q4385.0 80 4411.5 91.5Q4438.0 103 4454.0 123.5Q4470.0 144 4470.0 174V350Q4470.0 377 4454.0 397.0Q4438.0 417 4411.5 428.0Q4385.0 439 4352.0 439Q4296.0 439 4261.5 402.0Q4227.0 365 4227.0 305V215Q4227.0 155 4261.5 117.5Q4296.0 80 4352.0 80ZM5253.0 -12Q5162.0 -12 5096.0 28.5Q5030.0 69 4995.0 148.0Q4960.0 227 4960.0 345Q4960.0 462 4995.0 543.5Q5030.0 625 5096.0 667.5Q5162.0 710 5253.0 710Q5343.0 710 5404.5 670.0Q5466.0 630 5502.0 552L5407.0 500Q5389.0 550 5351.5 579.5Q5314.0 609 5253.0 609Q5172.0 609 5126.0 553.0Q5080.0 497 5080.0 400V293Q5080.0 197 5126.0 143.0Q5172.0 89 5253.0 89Q5315.0 89 5355.0 121.5Q5395.0 154 5414.0 205L5505.0 150Q5470.0 75 5406.5 31.5Q5343.0 -12 5253.0 -12ZM5732.0 0H5623.0V520H5732.0V417H5737.0Q5745.0 443 5762.5 466.5Q5780.0 490 5809.0 505.0Q5838.0 520 5880.0 520H5909.0V415H5866.0Q5823.0 415 5793.0 405.0Q5763.0 395 5747.5 377.0Q5732.0 359 5732.0 332ZM6454.0 0H6393.0Q6363.0 0 6341.5 13.5Q6320.0 27 6309.0 52.0Q6298.0 77 6298.0 111V120L6329.0 87H6294.0Q6279.0 39 6239.0 13.5Q6199.0 -12 6142.0 -12Q6062.0 -12 6018.0 30.0Q5974.0 72 5974.0 143Q5974.0 195 5999.5 229.5Q6025.0 264 6074.0 281.5Q6123.0 299 6196.0 299H6290.0V343Q6290.0 390 6264.0 416.5Q6238.0 443 6183.0 443Q6138.0 443 6108.5 422.5Q6079.0 402 6059.0 372L5994.0 431Q6020.0 475 6067.5 503.5Q6115.0 532 6190.0 532Q6290.0 532 6344.5 484.5Q6399.0 437 6399.0 350V89H6454.0ZM6290.0 229H6198.0Q6141.0 229 6113.0 211.0Q6085.0 193 6085.0 159V141Q6085.0 107 6109.0 89.0Q6133.0 71 6173.0 71Q6207.0 71 6233.0 81.0Q6259.0 91 6274.5 110.0Q6290.0 129 6290.0 154ZM6594.0 0V431H6515.0V520H6594.0V606Q6594.0 669 6627.5 704.5Q6661.0 740 6726.0 740H6812.0V651H6703.0V520H6812.0V431H6703.0V0ZM7152.0 0H7057.0Q7001.0 0 6971.5 30.5Q6942.0 61 6942.0 114V431H6861.0V520H6905.0Q6932.0 520 6942.5 532.0Q6953.0 544 6953.0 571V662H7051.0V520H7160.0V431H7051.0V89H7152.0Z"/></g></g></svg></a>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#events"><span class="l-en">Events</span><span class="l-th" lang="th">อีเวนต์</span></a>
-      <a href="#games"><span class="l-en">Games</span><span class="l-th" lang="th">เกม</span></a>
-      <a href="#new"><span class="l-en">New here?</span><span class="l-th" lang="th">มือใหม่</span></a>
-      <a href="#visit"><span class="l-en">Visit</span><span class="l-th" lang="th">การเดินทาง</span></a>
-      <a href="#contact"><span class="l-en">Contact</span><span class="l-th" lang="th">ติดต่อ</span></a>
+      <a href="#events"><span class="l-en">Events</span><span class="l-th" lang="th">อีเวนต์</span><span class="l-ja" lang="ja">イベント</span></a>
+      <a href="#games"><span class="l-en">Games</span><span class="l-th" lang="th">เกม</span><span class="l-ja" lang="ja">ゲーム</span></a>
+      <a href="#new"><span class="l-en">New here?</span><span class="l-th" lang="th">มือใหม่</span><span class="l-ja" lang="ja">初めての方</span></a>
+      <a href="#visit"><span class="l-en">Visit</span><span class="l-th" lang="th">การเดินทาง</span><span class="l-ja" lang="ja">アクセス</span></a>
+      <a href="#contact"><span class="l-en">Contact</span><span class="l-th" lang="th">ติดต่อ</span><span class="l-ja" lang="ja">お問い合わせ</span></a>
     </nav>
     <div class="bar-tools">
       <span class="status" id="status"><i></i><span id="status-text">14:00 to 22:00</span></span>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-set-lang="th" aria-pressed="false">ไทย</button>
+        <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja">日本語</button>
       </div>
       <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
     </div>
@@ -606,24 +626,25 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     <div>
       <p class="eyebrow">
         <span class="l-en">Bangkok ✦ 5 min from BTS Asok</span>
-        <span class="l-th" lang="th">กรุงเทพฯ ✦ เดินจาก BTS อโศก 5 นาที</span>
+        <span class="l-th" lang="th">กรุงเทพฯ ✦ เดินจาก BTS อโศก 5 นาที</span><span class="l-ja" lang="ja">バンコク ✦ BTSアソーク駅から徒歩5分</span>
       </p>
       <h1>
         <span class="l-en">Your favorite <em>TCG</em> space.</span>
-        <span class="l-th" lang="th">พื้นที่การ์ดเกม<br>ที่<em>ใช่</em>ของคุณ</span>
+        <span class="l-th" lang="th">บ้านของ<br>สาย<em>การ์ดเกม</em></span><span class="l-ja" lang="ja">あなたの<br><em>TCG</em>の居場所。</span>
       </h1>
       <p class="lede">
         <span class="l-en">Magic, Lorcana, Pokémon, One Piece and Riftbound. Events every week, a table always waiting, and people who will teach you from zero.</span>
-        <span class="l-th" lang="th">Magic, Lorcana, Pokémon, One Piece และ Riftbound. มีอีเวนต์ทุกสัปดาห์ มีโต๊ะรอเสมอ มือใหม่ยินดีต้อนรับ เราสอนตั้งแต่เริ่มครับ</span>
+        <span class="l-th" lang="th">มีทั้ง Magic, Lorcana, Pokémon, One Piece และ Riftbound มีอีเวนต์ทุกสัปดาห์ มีโต๊ะว่างรออยู่เสมอ มือใหม่ก็มาได้ เราสอนตั้งแต่เริ่มเลยครับ</span><span class="l-ja" lang="ja">マジック、ロルカナ、ポケモン、ワンピース、リフトバウンド。毎週イベント開催、いつでも遊べるテーブルあり。初心者大歓迎、ゼロから教えます。日本語OKです。</span>
       </p>
       <div class="cta">
-        <a class="btn btn-gold" href="#events"><span class="l-en">What's on this week</span><span class="l-th" lang="th">สัปดาห์นี้มีอะไร</span><svg><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="#visit"><svg><use href="#i-pin"/></svg><span class="l-en">Get directions</span><span class="l-th" lang="th">วิธีเดินทาง</span></a>
+        <a class="btn btn-gold" href="#events"><span class="l-en">What's on this week</span><span class="l-th" lang="th">สัปดาห์นี้มีอะไรบ้าง</span><span class="l-ja" lang="ja">今週のイベント</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#visit"><svg><use href="#i-pin"/></svg><span class="l-en">Get directions</span><span class="l-th" lang="th">วิธีเดินทาง</span><span class="l-ja" lang="ja">行き方</span></a>
       </div>
       <div class="hero-facts">
-        <span><b>14:00 to 22:00</b> <span class="l-en">every day</span><span class="l-th" lang="th">ทุกวัน</span></span>
-        <span><b>P</b> <span class="l-en">parking in the building</span><span class="l-th" lang="th">มีที่จอดรถในตึก</span></span>
-        <span><b>3.1K</b> <span class="l-en">players following</span><span class="l-th" lang="th">ผู้ติดตาม</span></span>
+        <span><b>14:00 to 22:00</b> <span class="l-en">every day</span><span class="l-th" lang="th">ทุกวัน</span><span class="l-ja" lang="ja">毎日営業</span></span>
+        <span><b>P</b> <span class="l-en">parking in the building</span><span class="l-th" lang="th">มีที่จอดรถในตึก</span><span class="l-ja" lang="ja">ビル内に駐車場あり</span></span>
+        <span class="l-ja" lang="ja"><b>JP</b> 日本語対応</span>
+        <span><b>3.1K</b> <span class="l-en">players following</span><span class="l-th" lang="th">ผู้ติดตาม</span><span class="l-ja" lang="ja">フォロワー</span></span>
       </div>
     </div>
 
@@ -648,7 +669,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span>
+    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span><span lang="ja">日本語対応</span><span class="star">✦</span>
   </div>
 </div>
 
@@ -657,12 +678,12 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">01 / <span class="l-en">Don't miss</span><span class="l-th" lang="th">ห้ามพลาด</span></span>
-        <h2><span class="l-en">Big nights coming up</span><span class="l-th" lang="th">อีเวนต์ใหญ่ที่กำลังจะมา</span></h2>
+        <span class="sec-num">01 / <span class="l-en">Don't miss</span><span class="l-th" lang="th">ห้ามพลาด</span><span class="l-ja" lang="ja">見逃せない</span></span>
+        <h2><span class="l-en">Big nights coming up</span><span class="l-th" lang="th">อีเวนต์ใหญ่ที่กำลังจะมาถึง</span><span class="l-ja" lang="ja">注目の大型イベント</span></h2>
       </div>
       <p>
         <span class="l-en">Championships, pre-releases and leagues. Register early, seats go fast.</span>
-        <span class="l-th" lang="th">Championship, Pre-Release และ League ลงทะเบียนเร็ว ที่นั่งหมดไวครับ</span>
+        <span class="l-th" lang="th">ทั้ง Championship, Pre-Release และ League ลงทะเบียนไวๆ นะครับ ที่นั่งเต็มเร็วมาก</span><span class="l-ja" lang="ja">チャンピオンシップ、プレリリース、リーグ。席はすぐ埋まるので、お早めに登録を。</span>
       </p>
     </div>
     <div class="majors reveal" id="majors"></div>
@@ -674,22 +695,22 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">02 / <span class="l-en">Calendar</span><span class="l-th" lang="th">ปฏิทิน</span></span>
-        <h2><span class="l-en">What's on at Anubis</span><span class="l-th" lang="th">วันไหนมีอะไรที่ Anubis</span></h2>
+        <span class="sec-num">02 / <span class="l-en">Calendar</span><span class="l-th" lang="th">ปฏิทิน</span><span class="l-ja" lang="ja">カレンダー</span></span>
+        <h2><span class="l-en">What's on at Anubis</span><span class="l-th" lang="th">วันไหนมีอะไรที่ Anubis บ้าง</span><span class="l-ja" lang="ja">Anubisのイベント予定</span></h2>
       </div>
       <p>
         <span class="l-en">Straight from our Facebook weekly posts. Tap any event for format, fee and how to register.</span>
-        <span class="l-th" lang="th">อัปเดตจากโพสต์ประจำสัปดาห์บน Facebook กดที่อีเวนต์เพื่อดูฟอร์แมต ค่าสมัคร และวิธีลงทะเบียน</span>
+        <span class="l-th" lang="th">อัปเดตตามโพสต์ประจำสัปดาห์บน Facebook กดที่อีเวนต์เพื่อดูรูปแบบการเล่น ค่าสมัคร และวิธีลงทะเบียนได้เลยครับ</span><span class="l-ja" lang="ja">Facebookの週間投稿をもとに更新しています。イベントをタップすると、フォーマット・参加費・登録方法が確認できます。</span>
       </p>
     </div>
 
     <div class="cal-tools reveal">
       <div class="seg" role="group" aria-label="View">
-        <button type="button" data-view="week" aria-pressed="true"><span class="l-en">Week</span><span class="l-th" lang="th">สัปดาห์</span></button>
-        <button type="button" data-view="month" aria-pressed="false"><span class="l-en">Month</span><span class="l-th" lang="th">เดือน</span></button>
+        <button type="button" data-view="week" aria-pressed="true"><span class="l-en">Week</span><span class="l-th" lang="th">สัปดาห์</span><span class="l-ja" lang="ja">週</span></button>
+        <button type="button" data-view="month" aria-pressed="false"><span class="l-en">Month</span><span class="l-th" lang="th">เดือน</span><span class="l-ja" lang="ja">月</span></button>
       </div>
       <div class="cal-nav">
-        <button class="today-btn" type="button" id="cal-today"><span class="l-en">Today</span><span class="l-th" lang="th">วันนี้</span></button>
+        <button class="today-btn" type="button" id="cal-today"><span class="l-en">Today</span><span class="l-th" lang="th">วันนี้</span><span class="l-ja" lang="ja">今日</span></button>
         <button class="icon-btn" type="button" id="cal-prev" aria-label="Previous"><svg><use href="#i-left"/></svg></button>
         <span class="range" id="cal-range"></span>
         <button class="icon-btn" type="button" id="cal-next" aria-label="Next"><svg><use href="#i-right"/></svg></button>
@@ -699,11 +720,11 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     <div id="cal" class="reveal"></div>
     <div class="cal-foot">
       <div class="legend">
-        <span><i></i><span class="l-en">Confirmed</span><span class="l-th" lang="th">ยืนยันแล้ว</span></span>
-        <span><i class="dash"></i><span class="l-en">Usual weekly slot, watch Facebook</span><span class="l-th" lang="th">รอบประจำสัปดาห์ รอดูโพสต์ยืนยัน</span></span>
-        <span><span class="star-badge">★</span> <span class="l-en">Major event</span><span class="l-th" lang="th">อีเวนต์ใหญ่</span></span>
+        <span><i></i><span class="l-en">Confirmed</span><span class="l-th" lang="th">ยืนยันแล้ว</span><span class="l-ja" lang="ja">確定</span></span>
+        <span><i class="dash"></i><span class="l-en">Usual weekly slot, watch Facebook</span><span class="l-th" lang="th">รอบประจำสัปดาห์ รอโพสต์ยืนยันบน Facebook</span><span class="l-ja" lang="ja">毎週の定例枠、Facebookで確定</span></span>
+        <span><span class="star-badge">★</span> <span class="l-en">Major event</span><span class="l-th" lang="th">อีเวนต์ใหญ่</span><span class="l-ja" lang="ja">大型イベント</span></span>
       </div>
-      <span><span class="l-en">Updated</span><span class="l-th" lang="th">อัปเดต</span> <span id="cal-updated"></span> ✦ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Facebook</a></span>
+      <span><span class="l-en">Updated</span><span class="l-th" lang="th">อัปเดต</span><span class="l-ja" lang="ja">更新</span> <span id="cal-updated"></span> ✦ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Facebook</a></span>
     </div>
   </div>
 </section>
@@ -719,44 +740,44 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">03 / <span class="l-en">Games</span><span class="l-th" lang="th">เกม</span></span>
-        <h2><span class="l-en">Five games. One table.</span><span class="l-th" lang="th">ห้าเกม หนึ่งโต๊ะ</span></h2>
+        <span class="sec-num">03 / <span class="l-en">Games</span><span class="l-th" lang="th">เกม</span><span class="l-ja" lang="ja">ゲーム</span></span>
+        <h2><span class="l-en">Five games. One table.</span><span class="l-th" lang="th">5 เกม บนโต๊ะเดียวกัน</span><span class="l-ja" lang="ja">5つのゲーム、ひとつのテーブル。</span></h2>
       </div>
       <p>
         <span class="l-en">Sealed product, singles, sleeves and a crowd for every game. Pick your lane, or try them all.</span>
-        <span class="l-th" lang="th">มีทั้งสินค้าซีล การ์ดใบเดี่ยว สลีฟ และเพื่อนเล่นในทุกเกม เลือกเกมที่ชอบ หรือจะลองทุกเกมก็ได้ครับ</span>
+        <span class="l-th" lang="th">มีทั้งสินค้ากล่องซีล การ์ดใบเดี่ยว สลีฟ และเพื่อนเล่นครบทุกเกม จะเล่นเกมเดียวหรือลองให้ครบทุกเกมก็ได้ครับ</span><span class="l-ja" lang="ja">未開封商品、シングルカード、スリーブ。どのゲームにも対戦仲間がいます。ひとつに絞っても、全部試してもOK。</span>
       </p>
     </div>
     <div class="games reveal">
       <article class="game" style="--c:var(--lorcana)">
         <div class="gi"><svg><use href="#i-casual"/></svg></div>
         <h3>Disney Lorcana</h3>
-        <p><span class="l-en">Our home game. Casual nights twice a week, Set Championships, Pack Rush and Drafts.</span><span class="l-th" lang="th">เกมหลักของร้าน Casual สัปดาห์ละ 2 วัน มีทั้ง Set Championship, Pack Rush และ Draft</span></p>
+        <p><span class="l-en">Our home game. Casual nights twice a week, Set Championships, Pack Rush and Drafts.</span><span class="l-th" lang="th">เกมหลักของร้านเรา มี Casual สัปดาห์ละ 2 วัน พร้อม Set Championship, Pack Rush และ Draft</span><span class="l-ja" lang="ja">当店のメインゲーム。週2回のカジュアル会に加え、セットチャンピオンシップ、パックラッシュ、ドラフトも。</span></p>
         <div class="when">Tue + Thu ✦ 19:30<br><a class="line" href="https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" target="_blank" rel="noopener">LINE OpenChat →</a></div>
       </article>
       <article class="game" style="--c:var(--mtg)">
         <div class="gi"><svg><use href="#i-draft"/></svg></div>
         <h3>Magic: The Gathering</h3>
-        <p><span class="l-en">Commander Wednesdays, Friday Night Modern, drafts and every pre-release.</span><span class="l-th" lang="th">Commander วันพุธ, Friday Night Modern, Draft และ Pre-Release ทุกเซต</span></p>
+        <p><span class="l-en">Commander Wednesdays, Friday Night Modern, drafts and every pre-release.</span><span class="l-th" lang="th">Commander ทุกวันพุธ Friday Night Modern รวมถึง Draft และ Pre-Release ทุกเซตใหม่</span><span class="l-ja" lang="ja">水曜は統率者戦、金曜はモダン。ドラフトや新セットのプレリリースも毎回開催。</span></p>
         <div class="when">Wed + Fri ✦ 19:00<br><a class="line" href="https://line.me/ti/g/RfqEewSVSC" target="_blank" rel="noopener">LINE group →</a></div>
       </article>
       <article class="game" style="--c:var(--riftbound)">
         <div class="gi"><svg><use href="#i-tournament"/></svg></div>
         <h3>Riftbound</h3>
-        <p><span class="l-en">League of Legends TCG. Nexus Nights with promos, plus casual practice rounds.</span><span class="l-th" lang="th">การ์ดเกม League of Legends มี Nexus Night พร้อมโปรโม และรอบซ้อมแบบ Casual</span></p>
+        <p><span class="l-en">League of Legends TCG. Nexus Nights with promos, plus casual practice rounds.</span><span class="l-th" lang="th">การ์ดเกมจากจักรวาล League of Legends มี Nexus Night แจกการ์ดโปรโม และรอบ Casual ไว้ซ้อมมือ</span><span class="l-ja" lang="ja">League of LegendsのTCG。プロモ配布のNexus Nightと、練習向けのカジュアル戦。</span></p>
         <div class="when">Wed + Fri 20:00 ✦ Sun 14:00<br><a class="line" href="https://line.me/ti/g/c3nBGT9dUe" target="_blank" rel="noopener">LINE group →</a></div>
       </article>
       <article class="game" style="--c:var(--pokemon)">
         <div class="gi"><svg><use href="#i-pack"/></svg></div>
         <h3>Pokémon TCG</h3>
-        <p><span class="l-en">Monday Gym Battles with packs and promos for everyone who shows up.</span><span class="l-th" lang="th">Gym Battle ทุกวันจันทร์ ได้ซองและโปรโมกลับบ้านทุกคน</span></p>
+        <p><span class="l-en">Monday Gym Battles with packs and promos for everyone who shows up.</span><span class="l-th" lang="th">Gym Battle ทุกวันจันทร์ ได้ทั้งซองและการ์ดโปรโมกลับบ้านทุกคนครับ</span><span class="l-ja" lang="ja">毎週月曜はジムバトル。参加者全員にパックとプロモカード。</span></p>
         <div class="when">Mon ✦ 19:00<br><a class="line" href="https://line.me/ti/g/XtyPKcvh2J" target="_blank" rel="noopener">LINE group →</a></div>
       </article>
       <article class="game" style="--c:var(--onepiece)">
         <div class="gi"><svg><use href="#i-players"/></svg></div>
         <h3>One Piece</h3>
-        <p><span class="l-en">Product on the shelf and tables open daily. Ask us about play nights.</span><span class="l-th" lang="th">มีสินค้าและโต๊ะว่างให้เล่นทุกวัน สนใจเล่นทักมาถามได้เลยครับ</span></p>
-        <div class="when"><span class="l-en">Open play ✦ daily</span><span class="l-th" lang="th">เล่นได้ทุกวัน</span></div>
+        <p><span class="l-en">Product on the shelf and tables open daily. Ask us about play nights.</span><span class="l-th" lang="th">มีสินค้าวางขาย และมีโต๊ะว่างให้เล่นทุกวัน อยากนัดเล่นทักมาถามได้เลยครับ</span><span class="l-ja" lang="ja">商品を取り揃え、テーブルは毎日開放中。対戦会はお気軽にお問い合わせください。</span></p>
+        <div class="when"><span class="l-en">Open play ✦ daily</span><span class="l-th" lang="th">เปิดโต๊ะให้เล่นทุกวัน</span><span class="l-ja" lang="ja">毎日フリー対戦OK</span></div>
       </article>
     </div>
   </div>
@@ -770,20 +791,20 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <img src="img/nubi/nubi-thumbs-up.png" alt="Nubi, the Anubis mascot, giving a double thumbs up" width="585" height="640" loading="lazy">
     </div>
     <div class="reveal">
-      <span class="sec-num">04 / <span class="l-en">New here?</span><span class="l-th" lang="th">มือใหม่</span></span>
-      <h2><span class="l-en">Never played? Perfect.</span><span class="l-th" lang="th">ไม่เคยเล่น? มาเลยครับ</span></h2>
+      <span class="sec-num">04 / <span class="l-en">New here?</span><span class="l-th" lang="th">มือใหม่</span><span class="l-ja" lang="ja">初めての方</span></span>
+      <h2><span class="l-en">Never played? Perfect.</span><span class="l-th" lang="th">ไม่เคยเล่นมาก่อน? ยิ่งดีเลยครับ</span><span class="l-ja" lang="ja">未経験？大歓迎です。</span></h2>
       <p>
         <span class="l-en">Nubi says: you don't need a deck, a collection, or any skill. Just come hang out. Everybody at the table started somewhere.</span>
-        <span class="l-th" lang="th">ไม่ต้องเก่ง ไม่ต้องมีไพ่ครบ มาแฮงค์กันก็พอ ทุกคนบนโต๊ะก็เคยเริ่มจากศูนย์ครับ</span>
+        <span class="l-th" lang="th">Nubi บอกว่า ไม่ต้องเก่ง ไม่ต้องมีเด็ค ไม่ต้องมีการ์ดครบ แค่มาแฮงก์กันก็พอ ทุกคนบนโต๊ะก็เคยเริ่มจากศูนย์เหมือนกันครับ</span><span class="l-ja" lang="ja">Nubiより：デッキもコレクションも腕前もいりません。気軽に遊びに来てください。テーブルのみんなも、最初は初心者でした。</span>
       </p>
       <ol class="steps">
-        <li><div><b><span class="l-en">Message us first</span><span class="l-th" lang="th">ทักมาก่อน</span></b><span class="d"><span class="l-en">Ping us on Facebook or the LINE group so someone is free to teach you properly.</span><span class="l-th" lang="th">ทักทาง Facebook หรือกลุ่มไลน์ เราจะได้เตรียมคนมาสอนให้เต็มที่</span></span></div></li>
-        <li><div><b><span class="l-en">Come at 19:00 on Tue or Thu</span><span class="l-th" lang="th">มาวันอังคารหรือพฤหัส 19:00</span></b><span class="d"><span class="l-en">Lorcana Learn to Play runs 30 minutes before casual night starts.</span><span class="l-th" lang="th">มีสอนเล่น Lorcana ก่อนเริ่ม Casual 30 นาที ไม่ต้องลงทะเบียน</span></span></div></li>
-        <li><div><b><span class="l-en">Pull up a chair</span><span class="l-th" lang="th">นั่งลงแล้วเล่นเลย</span></b><span class="d"><span class="l-en">Play a few games, meet the regulars, and join the group chat for your game.</span><span class="l-th" lang="th">ลองเล่นสักสองสามเกม รู้จักขาประจำ แล้วเข้ากลุ่มของเกมที่ชอบ</span></span></div></li>
+        <li><div><b><span class="l-en">Message us first</span><span class="l-th" lang="th">ทักแชทมาบอกก่อน</span><span class="l-ja" lang="ja">まずはFacebookでメッセージを</span></b><span class="d"><span class="l-en">Ping us on Facebook or the LINE group so someone is free to teach you properly.</span><span class="l-th" lang="th">ทักแชทเพจ Facebook มาก่อน เราจะได้เตรียมคนว่างมาสอนให้เต็มที่ครับ</span><span class="l-ja" lang="ja">Facebookページのチャットで一声かけてください。教えられるスタッフを用意しておきます。</span></span></div></li>
+        <li><div><b><span class="l-en">Come at 19:00 on Tue or Thu</span><span class="l-th" lang="th">มาวันอังคารหรือวันพฤหัสฯ ตอน 19:00</span><span class="l-ja" lang="ja">火曜か木曜の19:00に来店</span></b><span class="d"><span class="l-en">Lorcana Learn to Play runs 30 minutes before casual night starts.</span><span class="l-th" lang="th">มีสอนเล่น Lorcana ก่อนเริ่มรอบ Casual 30 นาที ไม่ต้องลงทะเบียนครับ</span><span class="l-ja" lang="ja">カジュアル会の30分前に、ロルカナの遊び方講座があります。</span></span></div></li>
+        <li><div><b><span class="l-en">Pull up a chair</span><span class="l-th" lang="th">นั่งลงแล้วเริ่มเล่นได้เลย</span><span class="l-ja" lang="ja">席について、さっそく対戦</span></b><span class="d"><span class="l-en">Play a few games, meet the regulars, and join the group chat for your game.</span><span class="l-th" lang="th">ลองเล่นสักสองสามตา ทำความรู้จักขาประจำ แล้วเข้ากลุ่มไลน์ของเกมที่ชอบ</span><span class="l-ja" lang="ja">何戦か遊んで常連さんと知り合い、好きなゲームのLINEグループへ。</span></span></div></li>
       </ol>
       <div class="cta">
-        <a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Message us</span><span class="l-th" lang="th">ทักแชท</span></a>
-        <a class="btn btn-ghost" href="#community"><span class="l-en">Join a LINE group</span><span class="l-th" lang="th">เข้ากลุ่มไลน์</span></a>
+        <a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Message us</span><span class="l-th" lang="th">ทักแชท Facebook</span><span class="l-ja" lang="ja">Facebookでメッセージ</span></a>
+        <a class="btn btn-ghost" href="#community"><span class="l-en">Join a LINE group</span><span class="l-th" lang="th">เข้ากลุ่มไลน์</span><span class="l-ja" lang="ja">LINEグループに参加</span></a>
       </div>
     </div>
   </div>
@@ -794,22 +815,22 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">05 / <span class="l-en">Shop life</span><span class="l-th" lang="th">บรรยากาศร้าน</span></span>
-        <h2><span class="l-en">Sleeves up. Cards down.</span><span class="l-th" lang="th">สลีฟพร้อม ลงการ์ดได้</span></h2>
+        <span class="sec-num">05 / <span class="l-en">Shop life</span><span class="l-th" lang="th">บรรยากาศร้าน</span><span class="l-ja" lang="ja">お店の様子</span></span>
+        <h2><span class="l-en">Sleeves up. Cards down.</span><span class="l-th" lang="th">ใส่สลีฟให้พร้อม แล้วลงการ์ดกันเลย</span><span class="l-ja" lang="ja">スリーブを付けて、いざ対戦。</span></h2>
       </div>
       <p>
         <span class="l-en">Friday nights, pre-release rushes, binders full of singles. This is what a week at Anubis looks like.</span>
-        <span class="l-th" lang="th">คืนวันศุกร์ วัน Pre-Release แฟ้มการ์ดใบเดี่ยว นี่คือหนึ่งสัปดาห์ที่ Anubis</span>
+        <span class="l-th" lang="th">คืนวันศุกร์ วัน Pre-Release และแฟ้มการ์ดใบเดี่ยวเต็มชั้น นี่แหละหนึ่งสัปดาห์ที่ Anubis</span><span class="l-ja" lang="ja">金曜の夜、プレリリースの熱気、シングルでいっぱいのバインダー。これがAnubisの1週間。</span>
       </p>
     </div>
     <div class="gallery reveal">
-      <figure class="g-tall"><img src="img/photos/storefront.jpg" alt="The Anubis storefront with Nubi stickers on the glass doors" loading="lazy" style="object-position:50% 40%"><figcaption><span class="l-en">Room 5, 2nd floor</span><span class="l-th" lang="th">ห้อง 5 ชั้น 2</span></figcaption></figure>
+      <figure class="g-tall"><img src="img/photos/storefront.jpg" alt="The Anubis storefront with Nubi stickers on the glass doors" loading="lazy" style="object-position:50% 40%"><figcaption><span class="l-en">Room 5, 2nd floor</span><span class="l-th" lang="th">ห้อง 5 ชั้น 2</span><span class="l-ja" lang="ja">2階 5号室</span></figcaption></figure>
       <figure class="g-wide"><img src="img/photos/tables.jpg" alt="Players at Lorcana tables on event night" loading="lazy" style="object-position:50% 72%"><figcaption>Event night</figcaption></figure>
       <figure><img src="img/photos/hands.jpg" alt="A Lorcana hand over an Anubis playmat" loading="lazy" style="object-position:50% 88%"><figcaption>Lorcana</figcaption></figure>
       <figure class="g-tall"><img src="img/photos/counter.jpg" alt="Players lining up at the counter on pre-release day" loading="lazy" style="object-position:50% 60%"><figcaption>Pre-release</figcaption></figure>
       <figure><img src="img/photos/singles-binder.jpg" alt="A binder of Riftbound singles with price tags" loading="lazy"><figcaption>Singles</figcaption></figure>
       <figure class="g-wide g-nubi">
-        <p><span class="l-en">Bring a friend. Nubi did.</span><span class="l-th" lang="th">ชวนเพื่อนมาด้วย Nubi ก็ชวนมา</span></p>
+        <p><span class="l-en">Bring a friend. Nubi did.</span><span class="l-th" lang="th">ชวนเพื่อนมาด้วยสิ Nubi ยังชวนมาเลย</span><span class="l-ja" lang="ja">友だちも連れておいで。Nubiもそうしてる。</span></p>
         <img src="img/nubi/nubi-with-chick.png" alt="Nubi sitting with the little bird sidekick" loading="lazy">
       </figure>
     </div>
@@ -822,13 +843,13 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         </button>
       </div>
       <div>
-        <span class="sec-num"><span class="l-en">On camera</span><span class="l-th" lang="th">รายการ</span> ✦ GM Club</span>
-        <h3><span class="l-en">Disney fans, where do you start with Lorcana?</span><span class="l-th" lang="th">แฟนๆ Disney เริ่มสะสม Lorcana อย่างไรดี?</span></h3>
+        <span class="sec-num"><span class="l-en">On camera</span><span class="l-th" lang="th">รายการ</span><span class="l-ja" lang="ja">出演</span> ✦ GM Club</span>
+        <h3><span class="l-en">Disney fans, where do you start with Lorcana?</span><span class="l-th" lang="th">แฟนๆ Disney จะเริ่มสะสม Lorcana ยังไงดี?</span><span class="l-ja" lang="ja">ディズニーファンは、ロルカナをどう始める？</span></h3>
         <p>
           <span class="l-en">We sat down with GM Club to talk Lorcana: how to start collecting, how to start playing, and why it's the friendliest TCG to walk into.</span>
-          <span class="l-th" lang="th">คุยเรื่อง Lorcana กับ GM Club ตั้งแต่เริ่มสะสม เริ่มเล่น จนถึงทำไมเกมนี้ถึงเป็นเกมที่เข้าง่ายที่สุด</span>
+          <span class="l-th" lang="th">คุยเรื่อง Lorcana กับ GM Club ตั้งแต่เริ่มสะสม เริ่มเล่น ไปจนถึงว่าทำไมเกมนี้ถึงเข้าง่ายที่สุด</span><span class="l-ja" lang="ja">GM Clubでロルカナについて話しました。集め方、始め方、そして一番入りやすいTCGである理由まで。（動画はタイ語です）</span>
         </p>
-        <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=UlYD9NvFiX8" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg><span class="l-en">Watch on YouTube</span><span class="l-th" lang="th">ดูบน YouTube</span></a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=UlYD9NvFiX8" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg><span class="l-en">Watch on YouTube</span><span class="l-th" lang="th">ดูบน YouTube</span><span class="l-ja" lang="ja">YouTubeで見る</span></a>
       </div>
     </div>
   </div>
@@ -839,12 +860,12 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">06 / <span class="l-en">Visit</span><span class="l-th" lang="th">การเดินทาง</span></span>
-        <h2><span class="l-en">Five minutes from Asok</span><span class="l-th" lang="th">เดินจากอโศกแค่ 5 นาที</span></h2>
+        <span class="sec-num">06 / <span class="l-en">Visit</span><span class="l-th" lang="th">การเดินทาง</span><span class="l-ja" lang="ja">アクセス</span></span>
+        <h2><span class="l-en">Five minutes from Asok</span><span class="l-th" lang="th">เดินจากอโศกแค่ 5 นาที</span><span class="l-ja" lang="ja">アソークから徒歩5分</span></h2>
       </div>
       <p>
         <span class="l-en">Off Sukhumvit 19, right behind Terminal 21. Come by train, or drive in and park in the building.</span>
-        <span class="l-th" lang="th">อยู่ในซอยสุขุมวิท 19 หลัง Terminal 21 มาได้ทั้ง BTS, MRT หรือขับรถมาจอดในตึกได้เลยครับ</span>
+        <span class="l-th" lang="th">อยู่ในซอยสุขุมวิท 19 ด้านหลัง Terminal 21 มาได้ทั้ง BTS และ MRT หรือจะขับรถมาจอดในตึกก็ได้ครับ</span><span class="l-ja" lang="ja">スクンビット・ソイ19、ターミナル21の裏手。BTS・MRTでも、車でもOK。ビル内に駐車場があります。</span>
       </p>
     </div>
     <div class="visit reveal">
@@ -915,18 +936,18 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
             Watthana, Bangkok 10110
           </address>
         </div>
-        <div class="row"><svg><use href="#i-clock"/></svg><div><b class="mono">14:00 to 22:00</b><span><span class="l-en">Open every day. Weekend events can start earlier.</span><span class="l-th" lang="th">เปิดทุกวัน อีเวนต์เสาร์อาทิตย์อาจเริ่มเร็วกว่านั้น</span></span></div></div>
+        <div class="row"><svg><use href="#i-clock"/></svg><div><b class="mono">14:00 to 22:00</b><span><span class="l-en">Open every day. Weekend events can start earlier.</span><span class="l-th" lang="th">เปิดทุกวัน อีเวนต์วันเสาร์อาทิตย์อาจเริ่มเร็วกว่านี้</span><span class="l-ja" lang="ja">毎日営業。週末のイベントは早い時間に始まることもあります。</span></span></div></div>
         <div class="row"><svg><use href="#i-train"/></svg><div>
           <ul class="walk">
-            <li><span class="l-en">BTS Asok or MRT Sukhumvit, head to the Terminal 21 side.</span><span class="l-th" lang="th">ลง BTS อโศก หรือ MRT สุขุมวิท ไปฝั่ง Terminal 21</span></li>
-            <li><span class="l-en">Walk into Soi Sukhumvit 19, about 300 m.</span><span class="l-th" lang="th">เดินเข้าซอยสุขุมวิท 19 ประมาณ 300 เมตร</span></li>
-            <li><span class="l-en">Metha Wattana Building is on your left. 2nd floor, Room 5. Look for Nubi on the doors.</span><span class="l-th" lang="th">ตึกเมธาวัฒนาอยู่ซ้ายมือ ขึ้นชั้น 2 ห้อง 5 มองหา Nubi ที่ประตูกระจก</span></li>
+            <li><span class="l-en">BTS Asok or MRT Sukhumvit, head to the Terminal 21 side.</span><span class="l-th" lang="th">ลง BTS อโศก หรือ MRT สุขุมวิท แล้วไปทางฝั่ง Terminal 21</span><span class="l-ja" lang="ja">BTSアソーク駅またはMRTスクンビット駅から、ターミナル21側へ。</span></li>
+            <li><span class="l-en">Walk into Soi Sukhumvit 19, about 300 m.</span><span class="l-th" lang="th">เดินเข้าซอยสุขุมวิท 19 ประมาณ 300 เมตร</span><span class="l-ja" lang="ja">ソイ・スクンビット19に入り、約300m直進。</span></li>
+            <li><span class="l-en">Metha Wattana Building is on your left. 2nd floor, Room 5. Look for Nubi on the doors.</span><span class="l-th" lang="th">ตึกเมธาวัฒนาจะอยู่ซ้ายมือ ขึ้นไปชั้น 2 ห้อง 5 สังเกต Nubi ที่ประตูกระจกได้เลย</span><span class="l-ja" lang="ja">左手のメタワッタナービル2階、5号室。ガラス扉のNubiが目印です。</span></li>
           </ul>
         </div></div>
-        <div class="row"><svg><use href="#i-car"/></svg><div><b><span class="l-en">Parking in the building</span><span class="l-th" lang="th">มีที่จอดรถในตึก</span></b></div></div>
+        <div class="row"><svg><use href="#i-car"/></svg><div><b><span class="l-en">Parking in the building</span><span class="l-th" lang="th">มีที่จอดรถในตึก</span><span class="l-ja" lang="ja">ビル内に駐車場あり</span></b></div></div>
         <div class="btns">
           <a class="btn btn-gold" href="https://maps.app.goo.gl/BcNJfpLAtXXZ8qmY8" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Google Maps</a>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=13.7394812,100.5599004&travelmode=walking" target="_blank" rel="noopener"><span class="l-en">Walking directions</span><span class="l-th" lang="th">นำทางเดินเท้า</span></a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=13.7394812,100.5599004&travelmode=walking" target="_blank" rel="noopener"><span class="l-en">Walking directions</span><span class="l-th" lang="th">นำทางแบบเดิน</span><span class="l-ja" lang="ja">徒歩ルート</span></a>
         </div>
       </div>
     </div>
@@ -938,38 +959,45 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="sec-num">07 / <span class="l-en">Community</span><span class="l-th" lang="th">คอมมูนิตี้</span></span>
-        <h2><span class="l-en">Find your people</span><span class="l-th" lang="th">หาเพื่อนเล่นได้ที่นี่</span></h2>
+        <span class="sec-num">07 / <span class="l-en">Community</span><span class="l-th" lang="th">คอมมูนิตี้</span><span class="l-ja" lang="ja">コミュニティ</span></span>
+        <h2><span class="l-en">Find your people</span><span class="l-th" lang="th">มาหาเพื่อนเล่นกัน</span><span class="l-ja" lang="ja">仲間を見つけよう</span></h2>
       </div>
       <p>
         <span class="l-en">Every game has its own LINE group. Registration notes, pairings, trades and "anyone up for a game tonight?" all live there.</span>
-        <span class="l-th" lang="th">ทุกเกมมีกลุ่มไลน์ของตัวเอง ทั้งประกาศลงทะเบียน จับคู่ แลกการ์ด และหาเพื่อนเล่นคืนนี้</span>
+        <span class="l-th" lang="th">ทุกเกมมีกลุ่มไลน์เป็นของตัวเอง ทั้งประกาศข่าว จับคู่ แลกเปลี่ยนการ์ด ไปจนถึงหาเพื่อนเล่นคืนนี้</span><span class="l-ja" lang="ja">ゲームごとにLINEグループがあります。お知らせ、対戦表、トレード、「今夜誰か遊べる？」まで、全部ここで。</span>
       </p>
     </div>
     <div class="comm reveal">
-      <a href="https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" target="_blank" rel="noopener" style="--c:var(--lorcana)"><span class="k"><span>LINE OpenChat</span><span>01</span></span><b>Lorcana</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><svg><use href="#i-arrow"/></svg></span></a>
-      <a href="https://line.me/ti/g/RfqEewSVSC" target="_blank" rel="noopener" style="--c:var(--mtg)"><span class="k"><span>LINE group</span><span>02</span></span><b>Magic</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><svg><use href="#i-arrow"/></svg></span></a>
-      <a href="https://line.me/ti/g/c3nBGT9dUe" target="_blank" rel="noopener" style="--c:var(--riftbound)"><span class="k"><span>LINE group</span><span>03</span></span><b>Riftbound</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><svg><use href="#i-arrow"/></svg></span></a>
-      <a href="https://line.me/ti/g/XtyPKcvh2J" target="_blank" rel="noopener" style="--c:var(--pokemon)"><span class="k"><span>LINE group</span><span>04</span></span><b>Pokémon</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><svg><use href="#i-arrow"/></svg></span></a>
+      <a href="https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" target="_blank" rel="noopener" style="--c:var(--lorcana)"><span class="k"><span>LINE OpenChat</span><span>01</span></span><b>Lorcana</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><span class="l-ja" lang="ja">参加する</span><svg><use href="#i-arrow"/></svg></span></a>
+      <a href="https://line.me/ti/g/RfqEewSVSC" target="_blank" rel="noopener" style="--c:var(--mtg)"><span class="k"><span>LINE group</span><span>02</span></span><b>Magic</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><span class="l-ja" lang="ja">参加する</span><svg><use href="#i-arrow"/></svg></span></a>
+      <a href="https://line.me/ti/g/c3nBGT9dUe" target="_blank" rel="noopener" style="--c:var(--riftbound)"><span class="k"><span>LINE group</span><span>03</span></span><b>Riftbound</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><span class="l-ja" lang="ja">参加する</span><svg><use href="#i-arrow"/></svg></span></a>
+      <a href="https://line.me/ti/g/XtyPKcvh2J" target="_blank" rel="noopener" style="--c:var(--pokemon)"><span class="k"><span>LINE group</span><span>04</span></span><b>Pokémon</b><span class="go"><span class="l-en">Join</span><span class="l-th" lang="th">เข้ากลุ่ม</span><span class="l-ja" lang="ja">参加する</span><svg><use href="#i-arrow"/></svg></span></a>
     </div>
 
     <div class="contact reveal" id="contact">
       <div class="mail-card">
         <div>
-          <span class="sec-num">08 / <span class="l-en">Contact</span><span class="l-th" lang="th">ติดต่อ</span></span>
-          <h3><span class="l-en">Questions, orders, collabs?</span><span class="l-th" lang="th">สอบถาม สั่งของ หรือคอลแลบ?</span></h3>
+          <span class="sec-num">08 / <span class="l-en">Contact</span><span class="l-th" lang="th">ติดต่อ</span><span class="l-ja" lang="ja">お問い合わせ</span></span>
+          <h3><span class="l-en">Orders and sign-ups? Chat with us on Facebook.</span><span class="l-th" lang="th">สั่งของ ลงทะเบียน ทักแชท Facebook ได้เลย</span><span class="l-ja" lang="ja">注文・参加登録はFacebookチャットへ</span></h3>
         </div>
-        <p><span class="l-en">Pre-orders, singles, private events, partnerships. Drop us a line, we reply fast.</span><span class="l-th" lang="th">พรีออเดอร์ การ์ดใบเดี่ยว จัดอีเวนต์ส่วนตัว หรือร่วมงานกัน ส่งอีเมลมาได้เลยครับ</span></p>
-        <a class="mail-link" id="mail" href="#contact">contact [at] anubiscardsandcraft.com</a>
+        <p><span class="l-en">Pre-orders, singles, stock questions and event registration all go through our Facebook page chat. It's the fastest way to reach the shop.</span><span class="l-th" lang="th">พรีออเดอร์ การ์ดใบเดี่ยว เช็กสต็อก และลงทะเบียนอีเวนต์ ทักแชทเพจ Facebook ได้เลยครับ ตอบไวที่สุด</span><span class="l-ja" lang="ja">予約注文、シングルカード、在庫確認、イベント参加登録は、すべてFacebookページのチャットで受け付けています。いちばん早く返信できる窓口です。</span></p>
+        <div class="cta" style="position:relative;z-index:1">
+          <a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Chat on Messenger</span><span class="l-th" lang="th">ทักแชทเลย</span><span class="l-ja" lang="ja">チャットする</span></a>
+        </div>
         <img class="nubi-peek" src="img/nubi/nubi-peek-wave.png" alt="" loading="lazy">
       </div>
-      <div class="socials">
-        <a href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span>Messenger<small>m.me/AnubisCardsandCraft</small></span></a>
-        <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg><span>Facebook<small>AnubisCardsandCraft</small></span></a>
-        <a href="https://instagram.com/anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>Instagram<small>@anubiscardsandcraft</small></span></a>
-        <a href="https://tiktok.com/@anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-tt"/></svg><span>TikTok<small>@anubiscardsandcraft</small></span></a>
-        <a href="https://youtube.com/anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg><span>YouTube<small>anubiscardsandcraft</small></span></a>
-        <a href="https://linktr.ee/anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-arrow"/></svg><span>Linktree<small>all links</small></span></a>
+      <div class="side-contact">
+        <div class="collab">
+          <span class="k"><span class="l-en">Collabs and business</span><span class="l-th" lang="th">คอลแลบและธุรกิจ</span><span class="l-ja" lang="ja">コラボ・ビジネス</span></span>
+          <p><span class="l-en">Partnerships, sponsorships, brand collabs, media and larger business talks.</span><span class="l-th" lang="th">ร่วมงาน สปอนเซอร์ คอลแลบกับแบรนด์ สื่อ และการคุยธุรกิจที่จริงจัง ส่งอีเมลมาได้เลยครับ</span><span class="l-ja" lang="ja">提携、スポンサー、ブランドコラボ、メディア取材など、ビジネスのご相談はメールで。</span></p>
+          <a class="mail-link" id="mail" href="#contact">contact [at] anubiscardsandcraft.com</a>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg><span>Facebook<small>AnubisCardsandCraft</small></span></a>
+          <a href="https://instagram.com/anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>Instagram<small>@anubiscardsandcraft</small></span></a>
+          <a href="https://tiktok.com/@anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-tt"/></svg><span>TikTok<small>@anubiscardsandcraft</small></span></a>
+          <a href="https://youtube.com/anubiscardsandcraft" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg><span>YouTube<small>anubiscardsandcraft</small></span></a>
+        </div>
       </div>
     </div>
   </div>
@@ -1039,13 +1067,16 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     document.documentElement.lang = l;
     $$('[data-set-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setLang === l)));
     try { localStorage.setItem('anubis-lang', l); } catch (e) {}
+    try { const u = new URL(location.href); if (u.searchParams.get('lang') && u.searchParams.get('lang') !== l) { u.searchParams.set('lang', l); history.replaceState(null, '', u); } } catch (e) {}
     render();
   };
   let saved = null;
   try { saved = localStorage.getItem('anubis-lang'); } catch (e) {}
-  const initialLang = saved || ((navigator.language || '').toLowerCase().startsWith('th') ? 'th' : 'en');
+  const qLang = new URLSearchParams(location.search).get('lang');
+  const nav0 = (navigator.language || '').toLowerCase();
+  const initialLang = ['en', 'th', 'ja'].includes(qLang) ? qLang : saved || (nav0.startsWith('th') ? 'th' : nav0.startsWith('ja') ? 'ja' : 'en');
   $$('[data-set-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.setLang)));
-  const T = (en, th) => document.documentElement.dataset.lang === 'th' ? th : en;
+  const T = (en, th, ja) => ({ th, ja }[document.documentElement.dataset.lang] ?? en);
 
   /* ---------- menu ---------- */
   const nav = $('#nav'), mb = $('#menu-btn');
@@ -1063,14 +1094,14 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   const addDays = (ymd, n) => { const d = toUTC(ymd); d.setUTCDate(d.getUTCDate() + n); return ymdOf(d); };
   const dow = (ymd) => toUTC(ymd).getUTCDay();
   const mondayOf = (ymd) => addDays(ymd, -((dow(ymd) + 6) % 7));
-  const fmt = (ymd, opts) => new Intl.DateTimeFormat(T('en-GB', 'th-TH'), { timeZone: 'UTC', ...opts }).format(toUTC(ymd));
+  const fmt = (ymd, opts) => new Intl.DateTimeFormat(T('en-GB', 'th-TH', 'ja-JP'), { timeZone: 'UTC', ...opts }).format(toUTC(ymd));
 
   const status = () => {
     const { h, m } = bkkParts(); const mins = h * 60 + m; const open = mins >= 840 && mins < 1320;
     $('#status').classList.toggle('open', open);
     $('#status-text').innerHTML = open
-      ? `${T('Open now', 'เปิดอยู่')}<span class="s-long"> ✦ ${T('until', 'ถึง')} 22:00</span>`
-      : `${T('Closed', 'ปิดแล้ว')}<span class="s-long"> ✦ ${T('opens', 'เปิด')} 14:00</span>`;
+      ? `${T('Open now', 'เปิดอยู่', '営業中')}<span class="s-long"> ✦ ${T('until 22:00', 'ถึง 22:00 น.', '22:00まで')}</span>`
+      : `${T('Closed', 'ปิดแล้ว', '営業時間外')}<span class="s-long"> ✦ ${T('opens 14:00', 'เปิด 14:00 น.', '14:00開店')}</span>`;
   };
 
   /* ---------- events ---------- */
@@ -1091,7 +1122,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     return `<button class="ev${e.weekly ? ' weekly' : ''}${e.major ? ' major' : ''}" style="--c:${g.color}" data-ev='${esc(JSON.stringify(e))}'>
       <span class="g">${esc(g.label)}${e.major ? ' <span class="star-badge">★</span>' : ''}</span>
       <span class="t">${esc(e.title)}</span>
-      <span class="m">${e.time ? esc(e.time) : T('Time TBA', 'รอประกาศเวลา')}${e.fee ? ' ✦ ' + esc(e.fee) : ''}${e.weekly ? ' ✦ ' + T('weekly', 'ประจำสัปดาห์') : ''}</span>
+      <span class="m">${e.time ? esc(e.time) : T('Time TBA', 'รอประกาศเวลา', '時間未定')}${e.fee ? ' ✦ ' + esc(e.fee) : ''}${e.weekly ? ' ✦ ' + T('weekly', 'ประจำสัปดาห์', '毎週') : ''}</span>
     </button>`;
   };
 
@@ -1101,13 +1132,13 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
   const renderWeek = () => {
     const mon = mondayOf(anchor);
-    $('#cal-range').textContent = `${fmt(mon, { day: 'numeric', month: 'short' })} ${T('to', 'ถึง')} ${fmt(addDays(mon, 6), { day: 'numeric', month: 'short' })}`;
+    $('#cal-range').textContent = `${fmt(mon, { day: 'numeric', month: 'short' })} ${T('to', 'ถึง', '〜')} ${fmt(addDays(mon, 6), { day: 'numeric', month: 'short' })}`;
     let html = '<div class="week">';
     for (let i = 0; i < 7; i++) {
       const d = addDays(mon, i); const evs = eventsOn(d);
       const cls = d === todayYMD ? ' today' : d < todayYMD ? ' past' : '';
-      html += `<div class="day${cls}"><div class="day-h"><b>${fmt(d, { weekday: 'short' })}</b><span>${fmt(d, { day: 'numeric', month: 'short' })}${d === todayYMD ? ' ✦ ' + T('today', 'วันนี้') : ''}</span></div>
-        <div class="day-ev">${evs.length ? evs.map(evBtn).join('') : `<div class="empty">${T('Open play, tables free', 'โต๊ะว่าง มาเล่นได้')}</div>`}</div></div>`;
+      html += `<div class="day${cls}"><div class="day-h"><b>${fmt(d, { weekday: 'short' })}</b><span>${fmt(d, { day: 'numeric', month: 'short' })}${d === todayYMD ? ' ✦ ' + T('today', 'วันนี้', '今日') : ''}</span></div>
+        <div class="day-ev">${evs.length ? evs.map(evBtn).join('') : `<div class="empty">${T('Open play, tables free', 'โต๊ะว่าง มาเล่นได้เลย', 'フリー対戦OK')}</div>`}</div></div>`;
     }
     $('#cal').innerHTML = html + '</div>';
   };
@@ -1135,7 +1166,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     }
     html += '</div>';
     const sel = eventsOn(selDay);
-    html += `<div class="agenda"><h4>${fmt(selDay, { weekday: 'long', day: 'numeric', month: 'long' })}</h4>${sel.length ? sel.map(evBtn).join('') : `<div class="empty">${T('No scheduled events. Tables open for play.', 'ยังไม่มีอีเวนต์ โต๊ะว่างให้เล่น')}</div>`}</div>`;
+    html += `<div class="agenda"><h4>${fmt(selDay, { weekday: 'long', day: 'numeric', month: 'long' })}</h4>${sel.length ? sel.map(evBtn).join('') : `<div class="empty">${T('No scheduled events. Tables open for play.', 'ยังไม่มีอีเวนต์ แต่มีโต๊ะว่างให้เล่นครับ', 'イベントなし。テーブルは開放中です。')}</div>`}</div>`;
     $('#cal').innerHTML = html;
   };
 
@@ -1172,7 +1203,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     const el = $('#countdown'); if (!el) return;
     let s = Math.max(0, (new Date(el.dataset.at) - new Date()) / 1000);
     const dd = Math.floor(s / 86400); s -= dd * 86400; const hh = Math.floor(s / 3600); s -= hh * 3600; const mm = Math.floor(s / 60);
-    el.innerHTML = [[dd, T('days', 'วัน')], [hh, T('hrs', 'ชม.')], [mm, T('min', 'นาที')]]
+    el.innerHTML = [[dd, T('days', 'วัน', '日')], [hh, T('hrs', 'ชม.', '時間')], [mm, T('min', 'นาที', '分')]]
       .map(([v, l]) => `<div><b>${String(v).padStart(2, '0')}</b><small>${l}</small></div>`).join('');
   };
 
@@ -1180,17 +1211,17 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     const g = games[e.game];
     $('#dlg-img').innerHTML = e.img ? `<img src="${esc(e.img)}" alt="${esc(e.title)} event graphic">` : '';
     $('#dlg-body').style.setProperty('--c', g.color);
-    $('#dlg-body').innerHTML = `<div class="m-top"><span class="tag" style="--c:${g.color}">${esc(g.label)}</span>${e.major ? '<span class="tag">★ Major</span>' : ''}${e.weekly ? `<span class="tag" style="--c:#787878">${T('Usual weekly slot', 'รอบประจำสัปดาห์')}</span>` : ''}</div>
+    $('#dlg-body').innerHTML = `<div class="m-top"><span class="tag" style="--c:${g.color}">${esc(g.label)}</span>${e.major ? '<span class="tag">★ Major</span>' : ''}${e.weekly ? `<span class="tag" style="--c:#787878">${T('Usual weekly slot', 'รอบประจำสัปดาห์', '毎週の定例枠')}</span>` : ''}</div>
       <h3 id="dlg-title">${esc(e.title)}</h3>
       <dl>
-        <dt>${T('Date', 'วันที่')}</dt><dd class="mono">${fmt(e.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</dd>
-        <dt>${T('Time', 'เวลา')}</dt><dd class="mono">${e.time ? esc(e.time) : T('To be announced', 'รอประกาศ')}</dd>
-        ${e.fee ? `<dt>${T('Entry', 'ค่าสมัคร')}</dt><dd class="mono">${esc(e.fee)}</dd>` : ''}
-        ${e.detail ? `<dt>${T('Details', 'รายละเอียด')}</dt><dd>${esc(e.detail)}</dd>` : ''}
-        ${e.note ? `<dt>${T('Note', 'หมายเหตุ')}</dt><dd>${esc(e.note)}</dd>` : ''}
+        <dt>${T('Date', 'วันที่', '日付')}</dt><dd class="mono">${fmt(e.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</dd>
+        <dt>${T('Time', 'เวลา', '時間')}</dt><dd class="mono">${e.time ? esc(e.time) : T('To be announced', 'รอประกาศ', '未定')}</dd>
+        ${e.fee ? `<dt>${T('Entry', 'ค่าสมัคร', '参加費')}</dt><dd class="mono">${esc(e.fee)}</dd>` : ''}
+        ${e.detail ? `<dt>${T('Details', 'รายละเอียด', '詳細')}</dt><dd>${esc(e.detail)}</dd>` : ''}
+        ${e.note ? `<dt>${T('Note', 'หมายเหตุ', 'メモ')}</dt><dd>${esc(e.note)}</dd>` : ''}
       </dl>
-      <p style="margin:0;color:var(--n400);font-size:14px">${e.weekly ? T('This is our usual weekly slot. Fee and format are confirmed in the weekly Facebook post.', 'นี่คือรอบประจำสัปดาห์ ค่าสมัครและฟอร์แมตจะยืนยันในโพสต์ Facebook ประจำสัปดาห์') : T('Questions? Ask in the LINE group for this game or message us.', 'มีคำถาม ถามในกลุ่มไลน์ของเกมนี้ หรือทักแชทมาได้เลยครับ')}</p>
-      <div class="cta"><a class="btn btn-gold" href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>${T('See on Facebook', 'ดูบน Facebook')}</a></div>`;
+      <p style="margin:0;color:var(--n400);font-size:14px">${e.weekly ? T('This is our usual weekly slot. Fee and format are confirmed in the weekly Facebook post.', 'นี่คือรอบประจำสัปดาห์ ค่าสมัครและรูปแบบการเล่นจะยืนยันอีกทีในโพสต์ประจำสัปดาห์บน Facebook ครับ', '毎週の定例枠です。参加費とフォーマットはFacebookの週間投稿で確定します。') : T('Registration and questions go through our Facebook page chat, unless the details above say otherwise.', 'ลงทะเบียนหรือสอบถาม ทักแชทเพจ Facebook ได้เลยครับ ยกเว้นอีเวนต์ที่ระบุช่องทางอื่นไว้ด้านบน', '参加登録・ご質問はFacebookページのチャットへ。上記に別の方法が書かれている場合はそちらに従ってください。')}</p>
+      <div class="cta"><a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg>${T('Chat to register', 'ทักแชทลงทะเบียน', 'チャットで登録')}</a><a class="btn btn-ghost" href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>${T('See on Facebook', 'ดูบน Facebook', 'Facebookで見る')}</a></div>`;
     $('#dlg').showModal();
   };
 
