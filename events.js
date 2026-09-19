@@ -57,7 +57,7 @@ window.ANUBIS = {
     // September majors (FB monthly calendar, 2026-09-10)
     { date: "2026-09-25", game: "mtg", title: "Reality Fractured Pre-Release", time: "18:30", fee: "1,100 THB", major: true,
       detail: "First look at the new reality. Sealed from the Reality Fractured Prerelease Kit, which we open at the event and build a deck from. Prizes: 1 Reality Fractured Play Booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 15 players max. Register in the Anubis MTG LINE group.",
-      img: "img/events/september-majors.jpg" },
+      img: "img/events/mtg-reality-fractured-prerelease.jpg" },
     { date: "2026-09-28", game: "pokemon", title: "Great Ball League", time: "", major: true,
       detail: "Bring your favorite deck and battle your way to victory. Details on Facebook.",
       img: "img/events/september-majors.jpg" }
