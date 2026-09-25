@@ -17,6 +17,14 @@
 <link rel="alternate" hreflang="th" href="https://anubiscardsandcraft.com/?lang=th">
 <link rel="alternate" hreflang="ja" href="https://anubiscardsandcraft.com/ja/">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>
+  /* Motion layer: on unless the visitor asked for reduced motion. If motion.js never loads, drop the flag so nothing stays hidden. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion');
+    setTimeout(function () { if (!window.__anubisMotion) document.documentElement.classList.remove('motion'); }, 3000);
+  }
+</script>
+<link rel="stylesheet" href="motion.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Otomanopee+One&display=swap" rel="stylesheet">
@@ -256,8 +264,11 @@
   .major h3 { font: 800 clamp(24px, 2.6vw, 34px)/1.05 var(--display); margin: 0; }
   .major p { margin: 0; color: var(--n400); font-size: 15px; }
   .countdown { display: flex; gap: 8px; margin-top: 8px; }
-  .countdown div { background: var(--black); border: 1px solid var(--n700); border-radius: var(--r-m); padding: 12px 8px; min-width: 64px; text-align: center; }
+  .countdown div { background: var(--black); border: 1px solid var(--n700); border-radius: var(--r-m); padding: 12px 8px; min-width: 60px; text-align: center; }
   .countdown b { display: block; font: 700 28px/1 var(--mono); color: var(--gold); }
+  .live-pill { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; background: color-mix(in oklab, var(--c, var(--gold)) 22%, var(--black)); border: 1px solid var(--c, var(--gold)); font: 700 14px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--cream); }
+  .live-pill i { width: 10px; height: 10px; border-radius: 50%; background: #FF4D4D; box-shadow: 0 0 0 0 rgb(255 77 77 / .6); animation: livePulse 1.6s infinite; }
+  @keyframes livePulse { 70% { box-shadow: 0 0 0 10px rgb(255 77 77 / 0); } 100% { box-shadow: 0 0 0 0 rgb(255 77 77 / 0); } }
   .countdown small { font: 400 11px/1 var(--mono); color: var(--n400); text-transform: uppercase; letter-spacing: .1em; }
   .major-side { grid-template-columns: 140px 1fr; }
   .major-side .m-img { background: var(--black) center / cover no-repeat; }
@@ -483,6 +494,7 @@
   .socials a svg { width: 24px; height: 24px; flex: none; }
   .socials a small { display: block; font: 400 12px/1.3 var(--mono); opacity: .7; }
   @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .mail-card { padding-bottom: 132px; } .mail-card .nubi-peek { width: 36%; } }
   @media (max-width: 420px) { .socials { grid-template-columns: 1fr; } }
 
   /* ---------- footer ---------- */
@@ -566,6 +578,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </svg>
 
 <header class="bar">
+  <div class="progress" aria-hidden="true"><i></i></div>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Anubis Cards and Craft home"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2035 660" ><defs><linearGradient id="anubisGold" gradientUnits="userSpaceOnUse" x1="0" y1="127.2" x2="0" y2="381.0"><stop offset="0" stop-color="#F9A429"/><stop offset="0.55" stop-color="#FBC067"/><stop offset="1" stop-color="#FDE0AE"/></linearGradient></defs><g id="mark" fill="currentColor"><g transform="translate(20,20) scale(0.31000)"><g transform="translate(0.000000,2000.000000) scale(0.100000,-0.100000)"
 fill="currentColor" stroke="none">
@@ -626,14 +639,15 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
 <!-- HERO -->
 <section class="hero" style="padding-block:0">
+  <canvas class="dust" id="dust" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <p class="eyebrow">
         <span class="l-en">Bangkok ✦ 5 min from BTS Asok</span>
         <span class="l-th" lang="th">กรุงเทพฯ ✦ เดินจาก BTS อโศก 5 นาที</span><span class="l-ja" lang="ja">バンコク ✦ BTSアソーク駅から徒歩5分</span>
       </p>
       <h1>
-        <span class="l-en">Your favorite <em>TCG</em> space.</span>
+        <span class="l-en">Your favorite <em class="rot" id="rot"><span class="sr">TCG</span><span class="rot-word" aria-hidden="true">TCG</span></em> space.</span>
         <span class="l-th" lang="th">บ้านของ<br>สาย<em>การ์ดเกม</em></span><span class="l-ja" lang="ja">あなたの<br><em>TCG</em>の居場所。</span>
       </h1>
       <p class="lede">
@@ -919,12 +933,14 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
             <text x="670" y="449" text-anchor="middle" fill="#F5EFE0">MRT Sukhumvit</text>
           </g>
           <!-- pin -->
+          <g class="pin">
           <circle class="pin-pulse" cx="364" cy="150" r="26" fill="#F5A623" fill-opacity=".35"/>
           <circle cx="364" cy="150" r="26" fill="#F5A623"/>
           <svg x="348" y="132" width="32" height="32" viewBox="0 0 2000 2000" color="#0F0F0F"><use href="#mark"/></svg>
           <rect x="124" y="116" width="196" height="68" rx="12" fill="#0F0F0F" stroke="#F5A623"/>
           <text x="138" y="143" font-family="Kanit, sans-serif" font-weight="800" font-size="19" fill="#F5EFE0">ANUBIS</text>
           <text x="138" y="167" font-family="IBM Plex Mono, monospace" font-size="12" fill="#F5A623">Metha Wattana, 2F</text>
+          </g>
           <text x="110" y="380" font-family="IBM Plex Mono, monospace" font-size="13" fill="#5C5C5C">~300 m ✦ 5 min walk</text>
         </svg>
         <span class="map-note">Schematic, not to scale</span>
@@ -1205,10 +1221,27 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
   const tick = () => {
     const el = $('#countdown'); if (!el) return;
-    let s = Math.max(0, (new Date(el.dataset.at) - new Date()) / 1000);
-    const dd = Math.floor(s / 86400); s -= dd * 86400; const hh = Math.floor(s / 3600); s -= hh * 3600; const mm = Math.floor(s / 60);
-    el.innerHTML = [[dd, T('days', 'วัน', '日')], [hh, T('hrs', 'ชม.', '時間')], [mm, T('min', 'นาที', '分')]]
-      .map(([v, l]) => `<div><b>${String(v).padStart(2, '0')}</b><small>${l}</small></div>`).join('');
+    let s = Math.max(0, Math.floor((new Date(el.dataset.at) - new Date()) / 1000));
+    const lang0 = document.documentElement.dataset.lang;
+    if (s === 0) {
+      if (el.dataset.state !== 'live' + lang0) {
+        el.dataset.state = 'live' + lang0;
+        el.innerHTML = `<span class="live-pill"><i></i>${T('Happening now', 'กำลังจัดอยู่ตอนนี้', '開催中')}</span>`;
+      }
+      return;
+    }
+    const dd = Math.floor(s / 86400); s -= dd * 86400; const hh = Math.floor(s / 3600); s -= hh * 3600; const mm = Math.floor(s / 60); s -= mm * 60;
+    const vals = [[dd, T('days', 'วัน', '日')], [hh, T('hrs', 'ชม.', '時間')], [mm, T('min', 'นาที', '分')], [s, T('sec', 'วินาที', '秒')]];
+    const lang = document.documentElement.dataset.lang;
+    if (el.children.length !== 4 || el.dataset.lang !== lang) {
+      el.dataset.lang = lang;
+      el.innerHTML = vals.map(([v, l]) => `<div><b>${String(v).padStart(2, '0')}</b><small>${l}</small></div>`).join('');
+      return;
+    }
+    el.querySelectorAll('b').forEach((b, i) => {
+      const v = String(vals[i][0]).padStart(2, '0');
+      if (b.textContent !== v) { b.textContent = v; b.classList.remove('flip'); void b.offsetWidth; b.classList.add('flip'); }
+    });
   };
 
   const openEv = (e) => {
@@ -1267,25 +1300,16 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   /* ---------- ticker duplicate ---------- */
   const tk = $('#ticker'); tk.innerHTML += tk.innerHTML;
 
-  /* ---------- hero tilt ---------- */
-  const stage = $('#stage'), inner = $('#stage-inner');
-  if (matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('pointermove', (e) => {
-      const r = stage.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
-      const y = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
-      inner.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`;
-    }, { passive: true });
-  }
-
   /* ---------- reveal ---------- */
   const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
   $$('.reveal').forEach(el => io.observe(el));
 
   $('#yr').textContent = todayYMD.slice(0, 4);
-  setInterval(() => { status(); tick(); }, 30000);
+  setInterval(status, 30000);
+  setInterval(tick, 1000);
   setLang(initialLang);
 })();
 </script>
+<script src="motion.js"></script>
 </body>
 </html>
