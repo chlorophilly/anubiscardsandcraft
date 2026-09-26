@@ -364,7 +364,87 @@
   }
 
   /* ======================================================================
-     10. Language switch: a quick fade so the swap reads as intentional
+     10. Animated Nubi. Each clip is an H.264 MP4 with colour on the left half and the alpha
+         matte on the right half (Safari cannot show transparent WebM, and Chrome cannot show
+         transparent HEVC, so one packed MP4 + WebGL works everywhere). Poster PNG until ready.
+     ====================================================================== */
+  const VS = 'attribute vec2 p; varying vec2 uv; void main() { uv = vec2((p.x + 1.0) * 0.5, (1.0 - p.y) * 0.5); gl_Position = vec4(p, 0.0, 1.0); }';
+  const FS = `precision mediump float; varying vec2 uv; uniform sampler2D t; uniform vec2 k;
+    void main() {
+      vec3 c = texture2D(t, vec2(k.x + uv.x * k.y, uv.y)).rgb;            // colour half (premultiplied on black)
+      float a = texture2D(t, vec2(0.5 + k.x + uv.x * k.y, uv.y)).r;       // alpha half
+      a = clamp((a - 0.03) / 0.94, 0.0, 1.0);                              // trim codec noise
+      gl_FragColor = vec4(min(c, vec3(a)), a);
+    }`;
+  const nubiPlayer = (el) => {
+    const w = +el.dataset.w, h = +el.dataset.h;
+    const cv = document.createElement('canvas');
+    cv.width = w * 2 <= 1400 ? w * 2 : w; cv.height = cv.width === w ? h : h * 2;  // draw at 2x for crisp edges
+    const gl = cv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+    if (!gl) return;
+    const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(p => gl.texParameteri(gl.TEXTURE_2D, p, gl.CLAMP_TO_EDGE));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    const texW = w * 2; // keep samples half a texel away from the seam between the two halves
+    gl.uniform2f(gl.getUniformLocation(prog, 'k'), 0.5 / texW, 0.5 - 1 / texW);
+    gl.viewport(0, 0, cv.width, cv.height);
+
+    const v = document.createElement('video');
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+    v.src = el.dataset.src;
+    el.append(v, cv);
+
+    let raf = 0, on = false;
+    const draw = () => {
+      if (v.readyState >= 2) {
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, v);
+        gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        if (!el.classList.contains('live')) el.classList.add('live');
+      }
+    };
+    const loop = () => { draw(); if (on) raf = v.requestVideoFrameCallback ? v.requestVideoFrameCallback(loop) : requestAnimationFrame(loop); };
+    const start = () => { if (on || document.hidden) return; on = true; v.play().then(loop).catch(() => { on = false; }); };
+    const stop = () => { on = false; v.pause(); if (!v.requestVideoFrameCallback) cancelAnimationFrame(raf); };
+    new IntersectionObserver(([e]) => e.isIntersecting ? start() : stop(), { rootMargin: '120px' }).observe(el);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : (el.getBoundingClientRect().top < innerHeight && start()));
+  };
+  // build players lazily, a little before each one scrolls into view (the hero one right away)
+  const lazy = new IntersectionObserver((es) => es.forEach(e => {
+    if (!e.isIntersecting) return; lazy.unobserve(e.target); nubiPlayer(e.target);
+  }), { rootMargin: '400px' });
+  $$('.nubi-anim[data-src]').forEach(el => lazy.observe(el));
+
+  /* ======================================================================
+     11. Footer: the Anubis logo sting plays once when you reach the bottom (tap to replay)
+     ====================================================================== */
+  const sting = $('#sting');
+  if (sting) {
+    const box = sting.parentElement;
+    const so = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; so.disconnect();
+      sting.preload = 'auto';
+      sting.play().then(() => box.classList.add('sting-on')).catch(() => box.classList.add('sting-fail'));
+    }, { threshold: .6 });
+    so.observe(box);
+    sting.addEventListener('error', () => box.classList.add('sting-fail'));
+    sting.addEventListener('click', () => { sting.currentTime = 0; sting.play().catch(() => {}); });
+  }
+
+  /* ======================================================================
+     12. Language switch: a quick fade so the swap reads as intentional
      ====================================================================== */
   $$('[data-set-lang]').forEach(b => b.addEventListener('click', () => {
     $('main').animate([{ opacity: .2, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],

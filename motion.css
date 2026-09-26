@@ -37,7 +37,7 @@ html.motion .hero .halo { animation: haloIn 1.2s cubic-bezier(.2, .9, .3, 1.15) 
 
 html.motion .hero .nubi-hero {
   transform-origin: 50% 100%;
-  animation: nubiDrop 1s cubic-bezier(.3, 1.4, .5, 1) .95s both paused, bob 5s ease-in-out 2s infinite paused;
+  animation: nubiDrop 1s cubic-bezier(.3, 1.4, .5, 1) .95s both paused; /* the video supplies the idle motion */
 }
 @keyframes nubiDrop {
   from { opacity: 0; transform: translateY(-40%) scale(.9); }
@@ -148,8 +148,8 @@ html.motion .gallery > figure {
 }
 html.motion .gallery.in > figure { clip-path: inset(0 0 0 0 round 18px); }
 html.motion .gallery > figure:not(.g-nubi) img { height: 116%; translate: 0 var(--py, -8%); }
-html.motion .gallery .g-nubi img { transform: translateX(45%) rotate(10deg); transition: transform 1.1s cubic-bezier(.3, 1.3, .5, 1) .9s; }
-html.motion .gallery.in .g-nubi img { transform: none; }
+html.motion .gallery .g-nubi .nubi-anim { transform: translateX(45%) rotate(10deg); transition: transform 1.1s cubic-bezier(.3, 1.3, .5, 1) .9s; }
+html.motion .gallery.in .g-nubi .nubi-anim { transform: none; }
 
 html.motion .comm > a {
   transition: opacity .6s ease calc(var(--i, 0) * 90ms), translate .9s cubic-bezier(.2, .8, .2, 1.1) calc(var(--i, 0) * 90ms),
@@ -215,17 +215,14 @@ html.motion .hero .cta .btn-gold::after { animation: shine 6s ease-in-out 2.4s i
 /* ---------- Nubi cameos ---------- */
 html.motion .newbie-art.reveal { opacity: 1; translate: none; }
 html.motion .newbie-art .disc { transform: scale(.2); opacity: 0; transition: transform 1s cubic-bezier(.3, 1.5, .5, 1), opacity .5s; }
-html.motion .newbie-art img { opacity: 0; transform: translateY(35%) scale(.85); transform-origin: 50% 100%; transition: opacity .4s .35s, transform 1s cubic-bezier(.3, 1.5, .5, 1) .35s; }
+html.motion .newbie-art .nubi-anim { opacity: 0; transform: translateY(35%) scale(.85); transform-origin: 50% 100%; transition: opacity .4s .35s, transform 1s cubic-bezier(.3, 1.5, .5, 1) .35s; }
 html.motion .newbie-art.in .disc { transform: none; opacity: 1; }
-html.motion .newbie-art.in img { opacity: 1; transform: none; animation: cheer 3.2s ease-in-out 1.6s infinite; }
-@keyframes cheer { 0%, 100% { rotate: 0deg; translate: -50% 0; } 25% { rotate: -3deg; translate: -50% -8px; } 50% { rotate: 0deg; translate: -50% 0; } 75% { rotate: 3deg; translate: -50% -8px; } }
+html.motion .newbie-art.in .nubi-anim { opacity: 1; transform: none; }
 
 html.motion .contact .nubi-peek { transform: translateY(75%); transform-origin: 60% 100%; transition: transform 1s cubic-bezier(.3, 1.4, .5, 1) .5s; }
-html.motion .contact.in .nubi-peek { transform: none; animation: wave 4s ease-in-out 1.8s infinite; }
-@keyframes wave { 0%, 60%, 100% { rotate: 0deg; } 66% { rotate: -5deg; } 72% { rotate: 4deg; } 78% { rotate: -3deg; } 84% { rotate: 2deg; } }
+html.motion .contact.in .nubi-peek { transform: none; }
 
-html.motion .info .nubi-stroll { animation: strollBob .9s ease-in-out infinite; }
-@keyframes strollBob { 50% { translate: 0 -4px; rotate: -3deg; } }
+
 
 /* ---------- map: route draws itself, pin drops, Nubi walks you there ---------- */
 html.motion .map:not(.drawn) .route { stroke-dasharray: 0 100000; animation: none; }
@@ -233,3 +230,7 @@ html.motion .map .pin { transform-box: fill-box; transform-origin: 50% 100%; }
 html.motion .map:not(.drawn) .pin { opacity: 0; transform: translateY(-80px); }
 html.motion .map.drawn .pin { transition: opacity .3s 1.3s, transform .8s cubic-bezier(.3, 1.7, .5, 1) 1.3s; }
 .map .walker { pointer-events: none; }
+
+/* ---------- footer: the logo sting fades in once you reach the bottom ---------- */
+html.motion .foot-logo .sting { opacity: 0; transition: opacity .4s; }
+html.motion .foot-logo.sting-on .sting { opacity: 1; }
