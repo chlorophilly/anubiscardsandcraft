@@ -1299,7 +1299,9 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         ${e.note ? `<dt>${T('Note', 'หมายเหตุ', 'メモ')}</dt><dd>${esc(e.note)}</dd>` : ''}
       </dl>
       <p style="margin:0;color:var(--n400);font-size:14px">${e.weekly ? T('This is our usual weekly slot. Fee and format are confirmed in the weekly Facebook post.', 'นี่คือรอบประจำสัปดาห์ ค่าสมัครและรูปแบบการเล่นจะยืนยันอีกทีในโพสต์ประจำสัปดาห์บน Facebook ครับ', '毎週の定例枠です。参加費とフォーマットはFacebookの週間投稿で確定します。') : T('Registration and questions go through our Facebook page chat, unless the details above say otherwise.', 'ลงทะเบียนหรือสอบถาม ทักแชทเพจ Facebook ได้เลยครับ ยกเว้นอีเวนต์ที่ระบุช่องทางอื่นไว้ด้านบน', '参加登録・ご質問はFacebookページのチャットへ。上記に別の方法が書かれている場合はそちらに従ってください。')}</p>
-      <div class="cta"><a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg>${T('Chat to register', 'ทักแชทลงทะเบียน', 'チャットで登録')}</a><a class="btn btn-ghost" href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>${T('See on Facebook', 'ดูบน Facebook', 'Facebookで見る')}</a></div>`;
+      <div class="cta">${e.link && /^https:\/\//.test(e.link)
+        ? `<a class="btn btn-gold" href="${esc(e.link)}" target="_blank" rel="noopener"><svg><use href="#i-arrow"/></svg>${/line\.me\//.test(e.link) ? T('Sign up in the LINE group', 'ลงทะเบียนในกลุ่มไลน์', 'LINEグループで登録') : T('Sign up', 'ลงทะเบียน', '参加登録')}</a>`
+        : `<a class="btn btn-gold" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg>${T('Chat to register', 'ทักแชทลงทะเบียน', 'チャットで登録')}</a>`}<a class="btn btn-ghost" href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>${T('See on Facebook', 'ดูบน Facebook', 'Facebookで見る')}</a></div>`;
     $('#dlg').showModal();
   };
 
