@@ -123,10 +123,10 @@
     .nav {
       position: fixed; inset: 64px 0 auto 0; flex-direction: column; gap: 0;
       background: var(--black); border-bottom: 1px solid var(--n700); padding: 8px var(--gutter) 16px;
-      transform: translateY(-120%); transition: transform .3s; z-index: -1;
+      transform: translateY(-120%); visibility: hidden; transition: transform .3s, visibility 0s .3s; z-index: -1;
     }
     .nav a { padding: 16px 0; border-radius: 0; font-size: 18px; border-bottom: 1px solid var(--n900); }
-    .nav.open { transform: none; }
+    .nav.open { transform: none; visibility: visible; transition: transform .3s; }
     .menu-btn { display: block; }
     .bar-tools { margin-left: auto; }
     .status .s-long { display: none; }
@@ -137,6 +137,58 @@
     .lang button { padding: 6px 7px; }
     .brand svg { height: 28px; }
   }
+
+  /* ---------- chat strip, header chat button, floating chat ---------- */
+  .chat-strip { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px var(--gutter); background: var(--gold); color: var(--black); text-decoration: none; font: 600 14px/1.35 var(--body); text-align: center; }
+  .chat-strip:hover { background: var(--gold-hi); }
+  .chat-strip svg { width: 18px; height: 18px; flex: none; }
+  .chat-strip b { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  .chat-btn { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; text-decoration: none; font: 700 13px/1 var(--body); padding: 10px 14px; border-radius: 999px; background: var(--gold); color: var(--black); transition: background .2s; }
+  .chat-btn:hover { background: var(--gold-hi); }
+  .chat-btn svg { width: 16px; height: 16px; }
+  .chat-fab { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 70; display: none; align-items: center; gap: 8px; text-decoration: none; font: 700 14px/1 var(--body); padding: 14px 18px; border-radius: 999px; background: var(--gold); color: var(--black); box-shadow: 0 10px 30px rgb(0 0 0 / .45), 0 0 0 1px rgb(15 15 15 / .2); }
+  .chat-fab svg { width: 20px; height: 20px; }
+  @media (max-width: 1180px) { .bar .status .s-long { display: none; } }
+  @media (max-width: 980px) { .chat-btn { display: none; } .chat-fab { display: inline-flex; } }
+  @media (max-width: 480px) { .chat-strip { font-size: 13px; padding: 9px 12px; } }
+
+  /* ---------- RRR spotlight (Radiance Rift Rumble brand: navy + holo) ---------- */
+  .rrr { --navy: #1A1F4D; --rrr-holo: linear-gradient(120deg, #7FD8FF 0%, #9A8CFF 35%, #E27BD9 68%, #FFB3A0 100%); position: relative; padding-block: clamp(48px, 7vw, 96px); background: radial-gradient(60% 80% at 12% 0%, rgb(127 216 255 / .22), transparent 70%), radial-gradient(55% 80% at 100% 100%, rgb(226 123 217 / .22), transparent 70%), #12163A; overflow: hidden; overflow: clip; }
+  .rrr::before, .rrr::after { content: ""; position: absolute; left: 0; right: 0; height: 3px; background: var(--rrr-holo); }
+  .rrr::before { top: 0; } .rrr::after { bottom: 0; }
+  .rrr-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+  .rrr-kicker { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #12163A; background: var(--rrr-holo); padding: 8px 12px; border-radius: 999px; margin: 0 0 24px; }
+  html[data-lang="th"] .rrr-kicker { letter-spacing: 0; }
+  .rrr-logo { display: block; width: min(100%, 460px); height: auto; margin: 0 0 20px -3%; }
+  .rrr h2 { font: 800 clamp(30px, 4.2vw, 56px)/1.02 var(--display); margin: 0 0 16px; color: #fff; }
+  .rrr h2 em { font-style: normal; background: var(--rrr-holo); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .rrr-lede { color: #D9DCF5; font-size: clamp(16px, 1.3vw, 18px); max-width: 56ch; margin: 0 0 24px; }
+  .rrr-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: rgb(255 255 255 / .16); border: 1px solid rgb(255 255 255 / .16); border-radius: 16px; overflow: hidden; margin: 0 0 20px; }
+  .rrr-facts div { background: #171B45; padding: 14px 16px; }
+  .rrr-facts dt { font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #9AA3E0; margin: 0 0 8px; }
+  html[data-lang="th"] .rrr-facts dt { letter-spacing: 0; }
+  .rrr-facts dd { margin: 0; font: 700 17px/1.2 var(--body); color: #fff; }
+  .rrr-facts dd small { display: block; font: 400 12px/1.3 var(--body); color: #B9BFEA; margin-top: 4px; }
+  .rrr-get { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; color: #E6E8FA; font-size: 15px; }
+  .rrr-get li { display: flex; gap: 10px; }
+  .rrr-get li::before { content: "✦"; color: #E27BD9; flex: none; }
+  .rrr .countdown b { color: #fff; }
+  .rrr .countdown { margin: 0 0 24px; }
+  .rrr .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-holo { background: var(--rrr-holo); color: #12163A; }
+  .btn-holo:hover { filter: brightness(1.08); }
+  .rrr .btn-ghost { color: #fff; border-color: rgb(255 255 255 / .4); }
+  .rrr-note { font-size: 13px; color: #B9BFEA; margin: 16px 0 0; }
+  .rrr-gal { display: grid; gap: 12px; }
+  .rrr-main { border-radius: 20px; overflow: hidden; padding: 3px; background: var(--rrr-holo); box-shadow: 0 30px 80px rgb(0 0 0 / .45); }
+  .rrr-main img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 17px; }
+  .rrr-thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .rrr-thumbs button { padding: 0; border: 2px solid transparent; border-radius: 12px; overflow: hidden; background: none; cursor: pointer; opacity: .6; transition: opacity .2s, border-color .2s; }
+  .rrr-thumbs button[aria-pressed="true"] { opacity: 1; border-color: #E27BD9; }
+  .rrr-thumbs button:hover { opacity: 1; }
+  .rrr-thumbs img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+  @media (max-width: 960px) { .rrr-grid { grid-template-columns: 1fr; } .rrr-gal { max-width: 560px; } }
+  @media (max-width: 560px) { .rrr-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rrr .btns .btn { width: 100%; justify-content: center; } }
 
   /* ---------- hero ---------- */
   .hero { position: relative; overflow: hidden; overflow: clip; contain: paint; }
@@ -601,6 +653,13 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   </defs>
 </svg>
 
+<a class="chat-strip" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener">
+  <svg aria-hidden="true"><use href="#i-msg"/></svg>
+  <span class="l-en">Orders, questions, event sign-ups? <b>Chat with us on Facebook</b></span>
+  <span class="l-th" lang="th">สั่งของ สอบถาม หรือลงทะเบียนอีเวนต์ <b>ทักแชท Facebook ได้เลยครับ</b></span>
+  <span class="l-ja" lang="ja">ご注文・ご質問・イベント登録は <b>Facebookチャットへ</b></span>
+</a>
+
 <header class="bar">
   <div class="progress" aria-hidden="true"><i></i></div>
   <div class="wrap">
@@ -648,6 +707,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <a href="#contact"><span class="l-en">Contact</span><span class="l-th" lang="th">ติดต่อ</span><span class="l-ja" lang="ja">お問い合わせ</span></a>
     </nav>
     <div class="bar-tools">
+      <a class="chat-btn" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg><span class="l-en">Chat with us</span><span class="l-th" lang="th">ทักแชท</span><span class="l-ja" lang="ja">チャット</span></a>
       <span class="status" id="status"><i></i><span id="status-text">14:00 to 22:00</span></span>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
@@ -658,6 +718,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     </div>
   </div>
 </header>
+
+<a class="chat-fab" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg><span class="l-en">Chat with us</span><span class="l-th" lang="th">ทักแชท</span><span class="l-ja" lang="ja">チャット</span></a>
 
 <main id="top">
 
@@ -711,9 +773,59 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span><span lang="ja">日本語対応</span><span class="star">✦</span>
+    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Radiance Rift Rumble ✦ 31 Oct</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span><span lang="ja">日本語対応</span><span class="star">✦</span>
   </div>
 </div>
+
+<!-- RRR SPOTLIGHT -->
+<section id="rrr" class="rrr" aria-labelledby="rrr-h">
+  <div class="wrap rrr-grid">
+    <div class="rrr-copy reveal">
+      <p class="rrr-kicker">★ <span class="l-en">Our biggest event yet</span><span class="l-th" lang="th">งานใหญ่ที่สุดของเรา</span><span class="l-ja" lang="ja">過去最大のイベント</span></p>
+      <img class="rrr-logo" src="img/rrr/rrr-logo.svg" alt="Radiance Rift Rumble" width="1173" height="368">
+      <h2 id="rrr-h">
+        <span class="l-en">100 seats. One stage. <em>One champion.</em></span>
+        <span class="l-th" lang="th">100 ที่นั่ง เวทีเดียว <em>แชมป์มีได้แค่คนเดียว</em></span>
+        <span class="l-ja" lang="ja">100席。ひとつの舞台。<em>王者はひとり。</em></span>
+      </h2>
+      <p class="rrr-lede">
+        <span class="l-en">Anubis is hosting a big Riftbound tournament at BetterTrade 2026 by efin, at Samyan Mitrtown Hall. Radiance launches October 23. Eight days later, we play.</span>
+        <span class="l-th" lang="th">Anubis ชวนทุกคนมาลงสนาม Riftbound ครั้งยิ่งใหญ่ภายในงาน BetterTrade 2026 โดย efin ที่สามย่านมิตรทาวน์ฮอลล์ ชุด Radiance วางขาย 23 ตุลาคม แล้วอีกแค่ 8 วันต่อมา เราลงสนามกันเลยครับ</span>
+        <span class="l-ja" lang="ja">Anubisが、efin主催「BetterTrade 2026」(サムヤーン・ミットタウン・ホール)でRiftboundの大型トーナメントを開催します。新セット「Radiance」は10月23日発売。その8日後に決戦です。</span>
+      </p>
+      <dl class="rrr-facts">
+        <div><dt><span class="l-en">Date</span><span class="l-th" lang="th">วันที่</span><span class="l-ja" lang="ja">日程</span></dt><dd><span class="l-en">Sat 31 Oct</span><span class="l-th" lang="th">เสาร์ 31 ต.ค.</span><span class="l-ja" lang="ja">10月31日(土)</span><small>2026</small></dd></div>
+        <div><dt><span class="l-en">Check in</span><span class="l-th" lang="th">ลงทะเบียนหน้างาน</span><span class="l-ja" lang="ja">受付</span></dt><dd>10:00<small><span class="l-en">Round 1 at 10:30</span><span class="l-th" lang="th">เริ่มรอบแรก 10:30 น.</span><span class="l-ja" lang="ja">10:30 第1ラウンド</span></small></dd></div>
+        <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>490 THB<small><span class="l-en">100 seats only</span><span class="l-th" lang="th">จำกัด 100 ที่นั่ง</span><span class="l-ja" lang="ja">100席限定</span></small></dd></div>
+        <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Standard<small><span class="l-en">7 rounds Bo1, Top 8 Bo3</span><span class="l-th" lang="th">Bo1 7 รอบ ตัด Top 8 แบบ Bo3</span><span class="l-ja" lang="ja">Bo1を7回戦、Top 8はBo3</span></small></dd></div>
+      </dl>
+      <ul class="rrr-get">
+        <li><span class="l-en">Every player gets 1 Radiance pack, 1 random pack and 1 Radiance Nexus Night Promo Pack</span><span class="l-th" lang="th">ทุกคนได้รับซอง Radiance 1 ซอง ซองสุ่มอีก 1 ซอง และ Radiance Nexus Night Promo Pack 1 ซอง</span><span class="l-ja" lang="ja">参加者全員にRadianceパック1つ、ランダムパック1つ、Radiance Nexus Nightプロモパック1つ</span></li>
+        <li><span class="l-en">Plus 2 free Explorer Tickets from efin, worth 200 THB each</span><span class="l-th" lang="th">พร้อมบัตร Explorer Ticket จาก efin ฟรี 2 ใบ มูลค่าใบละ 200 บาท</span><span class="l-ja" lang="ja">さらにefinのExplorerチケット2枚(各200バーツ相当)を無料進呈</span></li>
+        <li><span class="l-en">Top 8 pick prizes in order: Origins Booster Box, Gift of the Rift, Vaults and more. Live Lucky Draws too</span><span class="l-th" lang="th">Top 8 เลือกของรางวัลตามลำดับ ทั้ง Origins Booster Box, Gift of the Rift และ Vault อีกหลายชุด พร้อม Lucky Draw ลุ้นกันสดๆ ในงาน</span><span class="l-ja" lang="ja">Top 8は順位順に賞品を選択。Origins Booster Box、Gift of the Rift、各種Vaultなど。会場でのラッキードローもあります</span></li>
+      </ul>
+      <div class="countdown" id="rrr-cd" data-at="2026-10-31T10:00:00+07:00"></div>
+      <div class="btns">
+        <a class="btn btn-holo" href="https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day" target="_blank" rel="noopener"><span class="l-en">Sign up at efin</span><span class="l-th" lang="th">สมัครที่ efin</span><span class="l-ja" lang="ja">efinで参加登録</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Ask us on Facebook chat</span><span class="l-th" lang="th">สอบถามทางแชท Facebook</span><span class="l-ja" lang="ja">Facebookチャットで質問</span></a>
+      </div>
+      <p class="rrr-note">
+        <span class="l-en">This one is not at the shop. Venue: Samyan Mitrtown Hall, 5th floor (MRT Sam Yan). Times may shift on the day.</span>
+        <span class="l-th" lang="th">งานนี้ไม่ได้จัดที่ร้านนะครับ สถานที่คือสามย่านมิตรทาวน์ฮอลล์ ชั้น 5 (MRT สามย่าน) เวลาอาจปรับเปลี่ยนตามความเหมาะสมหน้างาน</span>
+        <span class="l-ja" lang="ja">会場は店舗ではなく、サムヤーン・ミットタウン・ホール5階(MRTサムヤーン駅)です。当日の進行により時間が変わる場合があります。</span>
+      </p>
+    </div>
+    <div class="rrr-gal reveal">
+      <div class="rrr-main"><img id="rrr-main" src="img/rrr/rrr-01.jpg" alt="Radiance Rift Rumble event graphic" width="1200" height="1200"></div>
+      <div class="rrr-thumbs" id="rrr-thumbs">
+        <button type="button" aria-pressed="true" data-src="img/rrr/rrr-01.jpg" aria-label="Graphic 1"><img src="img/rrr/rrr-01.jpg" alt="" loading="lazy" width="300" height="300"></button>
+        <button type="button" aria-pressed="false" data-src="img/rrr/rrr-02.jpg" aria-label="Graphic 2"><img src="img/rrr/rrr-02.jpg" alt="" loading="lazy" width="300" height="300"></button>
+        <button type="button" aria-pressed="false" data-src="img/rrr/rrr-03.jpg" aria-label="Graphic 3"><img src="img/rrr/rrr-03.jpg" alt="" loading="lazy" width="300" height="300"></button>
+        <button type="button" aria-pressed="false" data-src="img/rrr/rrr-04.jpg" aria-label="Graphic 4"><img src="img/rrr/rrr-04.jpg" alt="" loading="lazy" width="300" height="300"></button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- HIGHLIGHTS -->
 <section id="events">
@@ -1284,6 +1396,27 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       if (b.textContent !== v) { b.textContent = v; b.classList.remove('flip'); void b.offsetWidth; b.classList.add('flip'); }
     });
   };
+
+  /* ---------- RRR spotlight ---------- */
+  (() => {
+    const sec = $('#rrr'); if (!sec) return;
+    if (todayYMD > '2026-10-31') { sec.hidden = true; return; }
+    $$('#rrr-thumbs button').forEach(b => b.addEventListener('click', () => {
+      $('#rrr-main').src = b.dataset.src;
+      $$('#rrr-thumbs button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    }));
+    const el = $('#rrr-cd');
+    const cd = () => {
+      let s = Math.max(0, Math.floor((new Date(el.dataset.at) - new Date()) / 1000));
+      const lang = document.documentElement.dataset.lang;
+      if (s === 0) { if (el.dataset.lang !== 'live' + lang) { el.dataset.lang = 'live' + lang; el.innerHTML = `<span class="live-pill"><i></i>${T('Happening now', 'กำลังจัดอยู่ตอนนี้', '開催中')}</span>`; } return; }
+      const dd = Math.floor(s / 86400); s -= dd * 86400; const hh = Math.floor(s / 3600); s -= hh * 3600; const mm = Math.floor(s / 60); s -= mm * 60;
+      const vals = [[dd, T('days', 'วัน', '日')], [hh, T('hrs', 'ชม.', '時間')], [mm, T('min', 'นาที', '分')], [s, T('sec', 'วินาที', '秒')]];
+      if (el.children.length !== 4 || el.dataset.lang !== lang) { el.dataset.lang = lang; el.innerHTML = vals.map(([v, l]) => `<div><b>${String(v).padStart(2, '0')}</b><small>${l}</small></div>`).join(''); return; }
+      el.querySelectorAll('b').forEach((b, i) => { const v = String(vals[i][0]).padStart(2, '0'); if (b.textContent !== v) b.textContent = v; });
+    };
+    cd(); setInterval(cd, 1000);
+  })();
 
   const openEv = (e) => {
     const g = games[e.game];

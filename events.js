@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-09-28",
+  updated: "2026-10-04",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -61,6 +61,11 @@ window.ANUBIS = {
       link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" },
     { date: "2026-10-04", game: "riftbound", title: "Summoner Skirmish #2", time: "14:00", fee: "400 THB", major: true,
       detail: "Check-in 13:30. 5 rounds, cut to Top 8. 32 players. Register in the Riftbound LINE group note (opens Tue Sep 29, 18:00).",
-      link: "https://line.me/ti/g/c3nBGT9dUe" }
+      link: "https://line.me/ti/g/c3nBGT9dUe" },
+
+    // Radiance Rift Rumble at BetterTrade 2026 (FB post "THE FULL DETAILS ARE HERE!", 2026-10-02). Also has its own spotlight section in index.html.
+    { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "10:00", fee: "490 THB", major: true,
+      detail: "Our biggest Riftbound tournament, at BetterTrade 2026 by efin. Not at the shop: Samyan Mitrtown Hall. Check in 10:00 to 10:30. Standard Constructed, 7 rounds of Best of 1 (10:30 to 16:40), then Top 8 Best of 3 single elimination (16:40 to 19:40). 100 seats. Every player gets 1 Radiance pack, 1 random pack (Origins, Spiritforged or Unleashed), 1 Radiance Nexus Night Promo Pack and 2 free Explorer Tickets from efin. Top 8 pick prizes in order: Origins Booster Box, Gift of the Rift, Radiance, Vendetta and Unleashed Vaults and more. Live Lucky Draws. Sign up at efin.finance.",
+      link: "https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day", img: "img/events/radiance-rift-rumble.jpg" }
   ]
 };
