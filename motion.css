@@ -234,3 +234,9 @@ html.motion .map.drawn .pin { transition: opacity .3s 1.3s, transform .8s cubic-
 /* ---------- footer: the logo sting fades in once you reach the bottom ---------- */
 html.motion .foot-logo .sting { opacity: 0; transition: opacity .4s; }
 html.motion .foot-logo.sting-on .sting { opacity: 1; }
+
+/* ---------- bottom bar jumps: the card deal curtain ---------- */
+.deal { position: fixed; inset: 0; z-index: 65; display: grid; grid-template-columns: repeat(5, 1fr); pointer-events: none; overflow: hidden; }
+.deal i { display: block; margin-inline: -1px; background: linear-gradient(180deg, #1F1F1F, #0F0F0F); border-top: 5px solid var(--c); box-shadow: inset 1px 0 0 rgb(245 239 224 / .06), 0 -18px 40px rgb(0 0 0 / .5); transform: translateY(105%); will-change: transform; }
+.deal b { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; color: var(--gold); font: 800 34px/1 var(--display); letter-spacing: .01em; opacity: 0; }
+.deal b svg { width: 84px; height: 84px; fill: currentColor; }

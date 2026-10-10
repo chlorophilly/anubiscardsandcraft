@@ -451,4 +451,55 @@
       { duration: 420, easing: 'cubic-bezier(.2, .8, .2, 1)' });
     if (rot) requestAnimationFrame(() => dispatchEvent(new Event('resize')));
   }));
+  /* ======================================================================
+     13. Bottom bar jumps: five cards are dealt up over the screen, the page
+         moves behind them, then they fly off and the section rises in
+     ====================================================================== */
+  const mnav = $('#mnav');
+  if (mnav) {
+    const COLORS = ['#C8102E', '#3D7DCA', '#D946A4', '#F47C20', '#08B4B5'];
+    const EASE = 'cubic-bezier(.2, .8, .2, 1)';
+    let busy = false;
+    mnav.addEventListener('click', (ev) => {
+      const a = ev.target.closest('a[href^="#"]'); if (!a) return;
+      const target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target || target.hidden) return;
+      ev.preventDefault();
+      if (busy) return;
+      busy = true;
+
+      const deck = document.createElement('div');
+      deck.className = 'deal'; deck.setAttribute('aria-hidden', 'true');
+      deck.innerHTML = COLORS.map(c => `<i style="--c:${c}"></i>`).join('') +
+        `<b><svg viewBox="0 0 2000 2000"><use href="#mark"/></svg><span>${(a.innerText || a.textContent).trim()}</span></b>`;
+      document.body.appendChild(deck);
+      const strips = $$('i', deck), label = $('b', deck);
+      const order = [2, 1, 3, 0, 4]; // centre card first, like the hero deal
+
+      const up = strips.map((el, i) => el.animate(
+        [{ transform: 'translateY(105%) rotate(' + (i - 2) * 3 + 'deg)' }, { transform: 'none' }],
+        { duration: 300, delay: order.indexOf(i) * 38, easing: EASE, fill: 'both' }));
+      label.animate([{ opacity: 0, transform: 'scale(.8)' }, { opacity: 1, transform: 'none' }],
+        { duration: 240, delay: 170, easing: EASE, fill: 'both' });
+
+      Promise.all(up.map(x => x.finished)).then(() => {
+        const top = target.getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(html).scrollPaddingTop) || 72);
+        html.style.scrollBehavior = 'auto';
+        scrollTo(0, Math.max(0, top));
+        html.style.scrollBehavior = '';
+        try { history.replaceState(null, '', a.getAttribute('href')); } catch (e) {}
+        $$('.reveal', target).forEach(el => el.classList.add('in'));
+
+        label.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-40px)' }],
+          { duration: 200, delay: 90, easing: 'ease-in', fill: 'both' });
+        const off = strips.map((el, i) => el.animate(
+          [{ transform: 'none' }, { transform: 'translateY(-108%) rotate(' + (2 - i) * 4 + 'deg)' }],
+          { duration: 360, delay: 110 + order.indexOf(i) * 38, easing: 'cubic-bezier(.6, 0, .8, .4)', fill: 'both' }));
+        const head = $('.sec-head, .rrr-copy, .wrap', target);
+        if (head) head.animate([{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }],
+          { duration: 620, delay: 260, easing: EASE, fill: 'backwards' });
+        return Promise.all(off.map(x => x.finished));
+      }).catch(() => {}).then(() => { deck.remove(); busy = false; });
+    });
+  }
 })();
