@@ -32,7 +32,25 @@ window.ANUBIS = {
 
   // link: optional sign-up URL (https only). LINE links get a "Sign up in the LINE group" button, others "Sign up".
   dated: [
-    // Week of Oct 5 to 11 (FB weekly post, 2026-10-05). Earlier days of the week dropped on 2026-10-10.
+    // Week of Oct 5 to 11 (FB weekly post "PACKED SCHEDULE THIS WEEK!", 2026-10-05; Riftbound links from Philly)
+    { date: "2026-10-05", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
+      detail: "Entry includes 1 pack of 30th Celebration (TH). Swiss 3 rounds. 32 players. Free promo cards for everyone who shows up. Walk in." },
+    { date: "2026-10-06", game: "lorcana", title: "Casual On-Demand", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 13), Coconut, or Pack Rush (450 THB). New players at 19:00 for Learn to Play. No sign-up needed." },
+    { date: "2026-10-07", game: "mtg", title: "Casual Commander", time: "19:00", fee: "Open 1 pack",
+      detail: "Commander Bracket 3, come and have fun. Walk in.",
+      img: "img/events/casual-commander.jpg" },
+    { date: "2026-10-07", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed. Max 5 rounds. 32 players. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/en-US/events/117364848626607688" },
+    { date: "2026-10-08", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 13) or Coconut. Learn to Play at 19:00. Walk-ins welcome." },
+    { date: "2026-10-09", game: "mtg", title: "Reality Fractured Store Championship", time: "19:00", fee: "300 THB", major: true,
+      detail: "Standard Constructed, Swiss. Doorgift: 1 Reality Fractured Play Booster and a Thought Scour promo. Top 8 get a Mastermind's Acquisition promo. 1st: 2 Play Boosters, the Jace Reawakened promo and 1 foil promo pack. 2nd to 3rd: 1 Play Booster and 1 non-foil promo pack. 4th: 1 non-foil promo pack. Minimum 8 players. Registration opens Mon Oct 5, 14:00 in the MTG LINE group.",
+      link: "https://line.me/ti/g/RfqEewSVSC", img: "img/events/mtg-store-championship.jpg" },
+    { date: "2026-10-09", game: "riftbound", title: "Casual Best-of-1", time: "20:00", fee: "250 THB",
+      detail: "Casual Night for newbies and for testing new decks. 4 rounds. 24 players. No Nexus Night promo pack. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/en-US/events/117364866640292072" },
     { date: "2026-10-10", game: "lorcana", title: "Last Core before Set 14", time: "14:00", fee: "300 THB", major: true,
       detail: "One last serious run at the Set 13 meta. Core Constructed (Set 9 to 13), Best of 1, 5 rounds. 32 players. Doorgift: 1 booster pack. Prizes: 1st 5 packs, 2nd 3 packs, 3rd to 4th 2 packs, 5th to 8th 1 pack (may be adjusted under 32 players). Registration opens Tue Oct 6, 12:00 in the Lorcana OpenChat note.",
       link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g", img: "img/events/last-core-before-set-14.jpg" },

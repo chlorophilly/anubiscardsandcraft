@@ -146,10 +146,19 @@
   .chat-btn { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; text-decoration: none; font: 700 13px/1 var(--body); padding: 10px 14px; border-radius: 999px; background: var(--gold); color: var(--black); transition: background .2s; }
   .chat-btn:hover { background: var(--gold-hi); }
   .chat-btn svg { width: 16px; height: 16px; }
-  .chat-fab { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 70; display: none; align-items: center; gap: 8px; text-decoration: none; font: 700 14px/1 var(--body); padding: 14px 18px; border-radius: 999px; background: var(--gold); color: var(--black); box-shadow: 0 10px 30px rgb(0 0 0 / .45), 0 0 0 1px rgb(15 15 15 / .2); }
-  .chat-fab svg { width: 20px; height: 20px; }
+  /* mobile bottom bar: quick jump + chat (the header tucks away on scroll, this stays) */
+  .mnav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; display: none; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); background: color-mix(in oklab, var(--black) 90%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--n700); }
+  .mnav a { display: grid; justify-items: center; gap: 4px; padding: 7px 2px 5px; border-radius: 12px; text-decoration: none; color: var(--n400); font: 500 11px/1 var(--body); white-space: nowrap; }
+  .mnav svg { width: 22px; height: 22px; }
+  .mnav a.on { color: var(--gold); background: rgb(245 166 35 / .1); }
+  .mnav a.mnav-chat { background: var(--gold); color: var(--black); font-weight: 700; }
+  /* long blocks fold on phones */
+  .fold-btn { display: none; align-items: center; gap: 8px; cursor: pointer; background: none; border: 1px solid rgb(255 255 255 / .35); color: #fff; border-radius: 999px; padding: 10px 16px; font: 700 14px/1 var(--body); margin: 0 0 20px; }
+  .fold-btn::after { content: "+"; font: 700 16px/1 var(--mono); }
+  .fold-btn[aria-expanded="true"]::after { content: "−"; }
+  @media (max-width: 720px) { .fold-btn { display: inline-flex; } .fold:not(.open) { display: none; } }
   @media (max-width: 1180px) { .bar .status .s-long { display: none; } }
-  @media (max-width: 980px) { .chat-btn { display: none; } .chat-fab { display: inline-flex; } }
+  @media (max-width: 980px) { .chat-btn { display: none; } .mnav { display: grid; } body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); } }
   @media (max-width: 480px) { .chat-strip { font-size: 13px; padding: 9px 12px; } }
 
   /* ---------- RRR spotlight (Radiance Rift Rumble brand: navy + holo) ---------- */
@@ -735,7 +744,13 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   </div>
 </header>
 
-<a class="chat-fab" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg><span class="l-en">Chat with us</span><span class="l-th" lang="th">ทักแชท</span><span class="l-ja" lang="ja">チャット</span></a>
+<nav class="mnav" id="mnav" aria-label="Quick jump">
+  <a href="#rrr" data-nav="rrr"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.4 9.3l6-.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>RRR</span></a>
+  <a href="#calendar" data-nav="calendar"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M9 3v4M15 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="l-en">Calendar</span><span class="l-th" lang="th">ปฏิทิน</span><span class="l-ja" lang="ja">カレンダー</span></a>
+  <a href="#games" data-nav="games"><svg aria-hidden="true"><use href="#i-pack"/></svg><span class="l-en">Games</span><span class="l-th" lang="th">เกม</span><span class="l-ja" lang="ja">ゲーム</span></a>
+  <a href="#visit" data-nav="visit"><svg aria-hidden="true"><use href="#i-pin"/></svg><span class="l-en">Visit</span><span class="l-th" lang="th">เดินทาง</span><span class="l-ja" lang="ja">アクセス</span></a>
+  <a class="mnav-chat" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg><span class="l-en">Chat</span><span class="l-th" lang="th">ทักแชท</span><span class="l-ja" lang="ja">チャット</span></a>
+</nav>
 
 <main id="top">
 
@@ -815,7 +830,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>490 THB<small><span class="l-en">100 seats only</span><span class="l-th" lang="th">จำกัด 100 ที่นั่ง</span><span class="l-ja" lang="ja">100席限定</span></small></dd></div>
         <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Standard<small><span class="l-en">7 rounds Bo1, Top 8 Bo3</span><span class="l-th" lang="th">Bo1 7 รอบ ตัด Top 8 แบบ Bo3</span><span class="l-ja" lang="ja">Bo1を7回戦、Top 8はBo3</span></small></dd></div>
       </dl>
-      <ul class="rrr-get">
+      <ul class="rrr-get fold" data-fold="prizes">
         <li><span class="l-en">Every player gets 1 Radiance pack, 1 random pack and 1 Radiance Nexus Night Promo Pack</span><span class="l-th" lang="th">ทุกคนได้รับซอง Radiance 1 ซอง ซองสุ่มอีก 1 ซอง และ Radiance Nexus Night Promo Pack 1 ซอง</span><span class="l-ja" lang="ja">参加者全員にRadianceパック1つ、ランダムパック1つ、Radiance Nexus Nightプロモパック1つ</span></li>
         <li><span class="l-en">Plus 2 free Explorer Tickets from efin, worth 200 THB each</span><span class="l-th" lang="th">พร้อมบัตร Explorer Ticket จาก efin ฟรี 2 ใบ มูลค่าใบละ 200 บาท</span><span class="l-ja" lang="ja">さらにefinのExplorerチケット2枚(各200バーツ相当)を無料進呈</span></li>
         <li><span class="l-en">Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift, Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also takes a Radiance Vault, playmat and sleeves</span><span class="l-th" lang="th">Top 8 เลือกรางวัลใหญ่คนละ 1 ชิ้น อันดับ 1 เลือกก่อน มีทั้ง Origins Booster Box, Gift of the Rift, Radiance Vault, Unleashed Vault 2 ชุด และ Vendetta Vault 3 ชุด อันดับ 1 รับ Radiance Vault, Playmat และ Sleeves เพิ่มด้วย</span><span class="l-ja" lang="ja">Top 8は1位から順に賞品をドラフト。Origins Booster Box、Gift of the Rift、Radiance Vault、Unleashed Vault×2、Vendetta Vault×3。1位にはさらにRadiance Vault、プレイマット、スリーブ</span></li>
@@ -866,7 +881,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div class="ccc-vendor" id="ccc-vendor">
           <h4><span class="l-en">Calling all shops: book a booth</span><span class="l-th" lang="th">เปิดรับร้านค้าออกบูธ</span><span class="l-ja" lang="ja">出店者募集中</span></h4>
           <p class="big">5,000 THB<small><span class="l-en">for both days. Payment closes Thu 15 Oct.</span><span class="l-th" lang="th">สำหรับ 2 วัน ปิดรับชำระวันพฤหัสบดีที่ 15 ต.ค.</span><span class="l-ja" lang="ja">2日間の料金。お支払い締切は10月15日(木)。</span></small></p>
-          <ul class="rrr-get">
+          <ul class="rrr-get fold" data-fold="booth">
             <li><span class="l-en">Table 1.20 x 0.60 m with cloth, 1 chair (up to 2 seats), shared power strip</span><span class="l-th" lang="th">โต๊ะ 1.20 x 0.60 ม. พร้อมผ้าคลุม เก้าอี้ 1 ตัว (นั่งประจำบูธได้สูงสุด 2 ที่) ปลั๊กไฟแบบรางใช้ร่วมกัน</span><span class="l-ja" lang="ja">テーブル(1.20 x 0.60 m、クロス付き)、椅子1脚(最大2席)、共用電源タップ</span></li>
             <li><span class="l-en">1 Exhibitor badge and 10 two-day Explorer passes for your regulars</span><span class="l-th" lang="th">บัตรผู้ออกบูธ 1 ใบ และบัตร Explorer เข้างานได้ 2 วัน 10 ใบ ไว้ชวนลูกค้าประจำ</span><span class="l-ja" lang="ja">出店者バッジ1枚と、常連のお客様用の2日間Explorerパス10枚</span></li>
             <li><span class="l-en">Pay in full upfront, first paid picks first. Open both days. No random sales (Oripa, gacha, mystery boxes). Factory sealed product is fine</span><span class="l-th" lang="th">ชำระเต็มจำนวนล่วงหน้า ร้านที่ชำระก่อนได้เลือกตำแหน่งก่อน เปิดบูธครบทั้งสองวัน งดการขายแบบสุ่มทุกรูปแบบ เช่น Oripa กาชา กล่องสุ่ม (ซองและกล่องซีลจากผู้ผลิตขายได้ตามปกติ)</span><span class="l-ja" lang="ja">全額前払い、支払い順にブース位置を選択。2日間とも出店必須。オリパ・ガチャ・福袋などのランダム販売は不可(メーカー未開封品は可)</span></li>
@@ -1457,7 +1472,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   /* ---------- RRR spotlight ---------- */
   (() => {
     const sec = $('#rrr'); if (!sec) return;
-    if (todayYMD > '2026-11-01') { sec.hidden = true; return; }
+    if (todayYMD > '2026-11-01') { sec.hidden = true; const n = $('[data-nav="rrr"]'); if (n) n.remove(); return; }
     if (todayYMD > '2026-10-15') { const v = $('#ccc-vendor'); if (v) v.hidden = true; }
     $$('#rrr-thumbs button').forEach(b => b.addEventListener('click', () => {
       $('#rrr-main').src = b.dataset.src;
@@ -1475,6 +1490,30 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     };
     cd(); setInterval(cd, 1000);
   })();
+
+  /* ---------- mobile: fold long lists, highlight the bottom bar ---------- */
+  const foldLabel = (b) => {
+    const open = b.getAttribute('aria-expanded') === 'true', k = b.dataset.k;
+    b.textContent = k === 'booth'
+      ? (open ? T('Hide booth details', 'ซ่อนรายละเอียดบูธ', 'ブース詳細を閉じる') : T('What is in a booth', 'ในบูธมีอะไรบ้าง', 'ブースの内容を見る'))
+      : (open ? T('Hide prizes', 'ซ่อนของรางวัล', '賞品を閉じる') : T('Door gifts and prizes', 'ของแจกและของรางวัล', '参加特典と賞品を見る'));
+  };
+  $$('.fold').forEach(el => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'fold-btn'; b.dataset.k = el.dataset.fold; b.setAttribute('aria-expanded', 'false');
+    b.addEventListener('click', () => { const o = el.classList.toggle('open'); b.setAttribute('aria-expanded', String(o)); foldLabel(b); });
+    el.before(b); foldLabel(b);
+  });
+  $$('[data-set-lang]').forEach(x => x.addEventListener('click', () => $$('.fold-btn').forEach(foldLabel)));
+  if ('IntersectionObserver' in window) {
+    const links = $$('#mnav [data-nav]');
+    const spy = new IntersectionObserver((es) => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.nav === e.target.dataset.spy));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    [['rrr', 'rrr'], ['events', 'calendar'], ['calendar', 'calendar'], ['games', 'games'], ['new', 'games'], ['life', ''], ['visit', 'visit'], ['community', ''], ['contact', '']].forEach(([id, nav]) => {
+      const el = document.getElementById(id); if (el) { el.dataset.spy = nav; spy.observe(el); }
+    });
+  }
 
   const openEv = (e) => {
     const g = games[e.game];
