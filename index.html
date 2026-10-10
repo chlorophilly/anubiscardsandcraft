@@ -190,6 +190,22 @@
   @media (max-width: 960px) { .rrr-grid { grid-template-columns: 1fr; } .rrr-gal { max-width: 560px; } }
   @media (max-width: 560px) { .rrr-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rrr .btns .btn { width: 100%; justify-content: center; } }
 
+  /* ---------- CCC (Card & Collectibles Carnival), inside the RRR band ---------- */
+  .ccc { margin-top: clamp(40px, 6vw, 80px); padding-top: clamp(32px, 5vw, 64px); border-top: 1px solid rgb(255 255 255 / .16); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+  .ccc-logo { display: block; width: min(100%, 340px); height: auto; margin: 0 0 20px; }
+  .ccc h3 { font: 800 clamp(26px, 3.4vw, 44px)/1.05 var(--display); margin: 0 0 14px; color: #fff; }
+  .ccc h3 em { font-style: normal; background: var(--rrr-holo); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .ccc-vendor { margin-top: 24px; padding: 20px; border-radius: 16px; background: #171B45; border: 1px solid rgb(255 255 255 / .16); }
+  .ccc-vendor h4 { font: 700 18px/1.2 var(--body); margin: 0 0 4px; color: #fff; }
+  .ccc-vendor .big { font: 700 26px/1.1 var(--mono); color: #fff; margin: 8px 0 12px; }
+  .ccc-vendor .big small { font: 400 13px/1.3 var(--body); color: #B9BFEA; display: block; margin-top: 4px; }
+  .ccc-vendor .rrr-get { margin-bottom: 16px; font-size: 14px; }
+  .ccc-pics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ccc-pics a { display: block; border-radius: 14px; overflow: hidden; padding: 2px; background: var(--rrr-holo); }
+  .ccc-pics img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; }
+  @media (max-width: 960px) { .ccc { grid-template-columns: 1fr; } .ccc-pics { max-width: 560px; } }
+  @media (max-width: 560px) { .ccc .btns .btn { width: 100%; justify-content: center; } }
+
   /* ---------- hero ---------- */
   .hero { position: relative; overflow: hidden; overflow: clip; contain: paint; }
   .hero::before {
@@ -773,7 +789,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Radiance Rift Rumble ✦ 31 Oct</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span><span lang="ja">日本語対応</span><span class="star">✦</span>
+    <span>Magic: The Gathering</span><span class="star">✦</span><span>Disney Lorcana</span><span class="star">✦</span><span>Pokémon TCG</span><span class="star">✦</span><span>One Piece</span><span class="star">✦</span><span>Riftbound</span><span class="star">✦</span><span>Radiance Rift Rumble ✦ 31 Oct</span><span class="star">✦</span><span>Card &amp; Collectibles Carnival ✦ 31 Oct, 1 Nov</span><span class="star">✦</span><span>Events every week</span><span class="star">✦</span><span>มือใหม่ยินดีต้อนรับ</span><span class="star">✦</span><span lang="ja">日本語対応</span><span class="star">✦</span>
   </div>
 </div>
 
@@ -802,7 +818,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <ul class="rrr-get">
         <li><span class="l-en">Every player gets 1 Radiance pack, 1 random pack and 1 Radiance Nexus Night Promo Pack</span><span class="l-th" lang="th">ทุกคนได้รับซอง Radiance 1 ซอง ซองสุ่มอีก 1 ซอง และ Radiance Nexus Night Promo Pack 1 ซอง</span><span class="l-ja" lang="ja">参加者全員にRadianceパック1つ、ランダムパック1つ、Radiance Nexus Nightプロモパック1つ</span></li>
         <li><span class="l-en">Plus 2 free Explorer Tickets from efin, worth 200 THB each</span><span class="l-th" lang="th">พร้อมบัตร Explorer Ticket จาก efin ฟรี 2 ใบ มูลค่าใบละ 200 บาท</span><span class="l-ja" lang="ja">さらにefinのExplorerチケット2枚(各200バーツ相当)を無料進呈</span></li>
-        <li><span class="l-en">Top 8 pick prizes in order: Origins Booster Box, Gift of the Rift, Vaults and more. Live Lucky Draws too</span><span class="l-th" lang="th">Top 8 เลือกของรางวัลตามลำดับ ทั้ง Origins Booster Box, Gift of the Rift และ Vault อีกหลายชุด พร้อม Lucky Draw ลุ้นกันสดๆ ในงาน</span><span class="l-ja" lang="ja">Top 8は順位順に賞品を選択。Origins Booster Box、Gift of the Rift、各種Vaultなど。会場でのラッキードローもあります</span></li>
+        <li><span class="l-en">Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift, Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also takes a Radiance Vault, playmat and sleeves</span><span class="l-th" lang="th">Top 8 เลือกรางวัลใหญ่คนละ 1 ชิ้น อันดับ 1 เลือกก่อน มีทั้ง Origins Booster Box, Gift of the Rift, Radiance Vault, Unleashed Vault 2 ชุด และ Vendetta Vault 3 ชุด อันดับ 1 รับ Radiance Vault, Playmat และ Sleeves เพิ่มด้วย</span><span class="l-ja" lang="ja">Top 8は1位から順に賞品をドラフト。Origins Booster Box、Gift of the Rift、Radiance Vault、Unleashed Vault×2、Vendetta Vault×3。1位にはさらにRadiance Vault、プレイマット、スリーブ</span></li>
+        <li><span class="l-en">9th to 16th get 2 Radiance packs, 17th to 32nd get 1 Spiritforged pack (may be adjusted by player count). Lucky Draws all day for every player</span><span class="l-th" lang="th">อันดับ 9 ถึง 16 รับ Radiance 2 ซอง อันดับ 17 ถึง 32 รับ Spiritforged 1 ซอง (อาจปรับตามจำนวนผู้เล่น) และมี Lucky Draw ให้ลุ้นตลอดวันสำหรับผู้เล่นทุกคน</span><span class="l-ja" lang="ja">9位から16位はRadiance 2パック、17位から32位はSpiritforged 1パック(参加人数により変更の場合あり)。全プレイヤー対象のラッキードローも終日開催</span></li>
       </ul>
       <div class="countdown" id="rrr-cd" data-at="2026-10-31T10:00:00+07:00"></div>
       <div class="btns">
@@ -810,9 +827,9 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <a class="btn btn-ghost" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Ask us on Facebook chat</span><span class="l-th" lang="th">สอบถามทางแชท Facebook</span><span class="l-ja" lang="ja">Facebookチャットで質問</span></a>
       </div>
       <p class="rrr-note">
-        <span class="l-en">This one is not at the shop. Venue: Samyan Mitrtown Hall, 5th floor (MRT Sam Yan). Times may shift on the day.</span>
-        <span class="l-th" lang="th">งานนี้ไม่ได้จัดที่ร้านนะครับ สถานที่คือสามย่านมิตรทาวน์ฮอลล์ ชั้น 5 (MRT สามย่าน) เวลาอาจปรับเปลี่ยนตามความเหมาะสมหน้างาน</span>
-        <span class="l-ja" lang="ja">会場は店舗ではなく、サムヤーン・ミットタウン・ホール5階(MRTサムヤーン駅)です。当日の進行により時間が変わる場合があります。</span>
+        <span class="l-en">This one is not at the shop. Venue: The Mitr Ting Room, 5th floor, Samyan Mitrtown Hall (MRT Sam Yan). Gift of the Rift is claimed at Anubis after December 4. Times may shift on the day.</span>
+        <span class="l-th" lang="th">งานนี้ไม่ได้จัดที่ร้านนะครับ สถานที่คือ The Mitr Ting Room ชั้น 5 สามย่านมิตรทาวน์ฮอลล์ (MRT สามย่าน) Gift of the Rift รับที่ร้าน Anubis หลัง 4 ธ.ค. เวลาอาจปรับเปลี่ยนตามความเหมาะสมหน้างาน</span>
+        <span class="l-ja" lang="ja">会場は店舗ではなく、サムヤーン・ミットタウン・ホール5階「The Mitr Ting Room」(MRTサムヤーン駅)です。Gift of the Riftは12月4日以降にAnubis店舗でお渡しします。当日の進行により時間が変わる場合があります。</span>
       </p>
     </div>
     <div class="rrr-gal reveal">
@@ -822,6 +839,46 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-02.jpg" aria-label="Graphic 2"><img src="img/rrr/rrr-02.jpg" alt="" loading="lazy" width="300" height="300"></button>
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-03.jpg" aria-label="Graphic 3"><img src="img/rrr/rrr-03.jpg" alt="" loading="lazy" width="300" height="300"></button>
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-04.jpg" aria-label="Graphic 4"><img src="img/rrr/rrr-04.jpg" alt="" loading="lazy" width="300" height="300"></button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ccc" id="ccc">
+      <div class="reveal">
+        <p class="rrr-kicker">✦ <span class="l-en">Same weekend, same hall</span><span class="l-th" lang="th">สุดสัปดาห์เดียวกัน ฮอลล์เดียวกัน</span><span class="l-ja" lang="ja">同じ週末、同じ会場</span></p>
+        <img class="ccc-logo" src="img/ccc/ccc-logo.svg" alt="Card &amp; Collectibles Carnival" width="1407" height="440">
+        <h3>
+          <span class="l-en">The Rift is one day. <em>The Carnival is two.</em></span>
+          <span class="l-th" lang="th">ทัวร์นาเมนต์แข่งวันเดียว <em>แต่ Carnival เปิดสองวัน</em></span>
+          <span class="l-ja" lang="ja">大会は1日。<em>カーニバルは2日間。</em></span>
+        </h3>
+        <p class="rrr-lede">
+          <span class="l-en">Card &amp; Collectibles Carnival (CCC) is our cards and collectibles market for every game, inside BetterTrade 2026 by efin. Card shops, collectible stores, grading services and artists, all in the DRESSROSA zone right by the escalators.</span>
+          <span class="l-th" lang="th">Card &amp; Collectibles Carnival (CCC) คือตลาดการ์ดและของสะสมทุกเกม ภายในงาน BetterTrade 2026 โดย efin มีทั้งร้านการ์ด ร้านของสะสม บริการเกรดการ์ด และศิลปิน อยู่ในโซน DRESSROSA ติดบันไดเลื่อนครับ</span>
+          <span class="l-ja" lang="ja">Card &amp; Collectibles Carnival(CCC)は、efin主催「BetterTrade 2026」内で開催する、全ゲーム対象のカードとコレクティブルのマーケットです。カードショップ、コレクティブル店、グレーディングサービス、アーティストが、エスカレーター横のDRESSROSAゾーンに集まります。</span>
+        </p>
+        <dl class="rrr-facts">
+          <div><dt><span class="l-en">Dates</span><span class="l-th" lang="th">วันที่</span><span class="l-ja" lang="ja">日程</span></dt><dd><span class="l-en">31 Oct, 1 Nov</span><span class="l-th" lang="th">31 ต.ค. และ 1 พ.ย.</span><span class="l-ja" lang="ja">10/31・11/1</span><small><span class="l-en">Sat and Sun</span><span class="l-th" lang="th">เสาร์และอาทิตย์</span><span class="l-ja" lang="ja">土・日</span></small></dd></div>
+          <div><dt><span class="l-en">Opens</span><span class="l-th" lang="th">เปิด</span><span class="l-ja" lang="ja">開場</span></dt><dd>10:00<small><span class="l-en">Sat to 18:30, Sun to 17:30</span><span class="l-th" lang="th">เสาร์ถึง 18:30 น. อาทิตย์ถึง 17:30 น.</span><span class="l-ja" lang="ja">土 18:30まで、日 17:30まで</span></small></dd></div>
+          <div><dt><span class="l-en">Booths</span><span class="l-th" lang="th">บูธ</span><span class="l-ja" lang="ja">ブース</span></dt><dd>50<small><span class="l-en">every card game</span><span class="l-th" lang="th">ทุกเกมการ์ด</span><span class="l-ja" lang="ja">全カードゲーム</span></small></dd></div>
+          <div><dt><span class="l-en">Venue</span><span class="l-th" lang="th">สถานที่</span><span class="l-ja" lang="ja">会場</span></dt><dd><span class="l-en">Samyan Mitrtown</span><span class="l-th" lang="th">สามย่านมิตรทาวน์</span><span class="l-ja" lang="ja">サムヤーン</span><small><span class="l-en">Hall, 5th floor</span><span class="l-th" lang="th">ฮอลล์ ชั้น 5</span><span class="l-ja" lang="ja">ミットタウン・ホール5階</span></small></dd></div>
+        </dl>
+        <div class="ccc-vendor" id="ccc-vendor">
+          <h4><span class="l-en">Calling all shops: book a booth</span><span class="l-th" lang="th">เปิดรับร้านค้าออกบูธ</span><span class="l-ja" lang="ja">出店者募集中</span></h4>
+          <p class="big">5,000 THB<small><span class="l-en">for both days. Payment closes Thu 15 Oct.</span><span class="l-th" lang="th">สำหรับ 2 วัน ปิดรับชำระวันพฤหัสบดีที่ 15 ต.ค.</span><span class="l-ja" lang="ja">2日間の料金。お支払い締切は10月15日(木)。</span></small></p>
+          <ul class="rrr-get">
+            <li><span class="l-en">Table 1.20 x 0.60 m with cloth, 1 chair (up to 2 seats), shared power strip</span><span class="l-th" lang="th">โต๊ะ 1.20 x 0.60 ม. พร้อมผ้าคลุม เก้าอี้ 1 ตัว (นั่งประจำบูธได้สูงสุด 2 ที่) ปลั๊กไฟแบบรางใช้ร่วมกัน</span><span class="l-ja" lang="ja">テーブル(1.20 x 0.60 m、クロス付き)、椅子1脚(最大2席)、共用電源タップ</span></li>
+            <li><span class="l-en">1 Exhibitor badge and 10 two-day Explorer passes for your regulars</span><span class="l-th" lang="th">บัตรผู้ออกบูธ 1 ใบ และบัตร Explorer เข้างานได้ 2 วัน 10 ใบ ไว้ชวนลูกค้าประจำ</span><span class="l-ja" lang="ja">出店者バッジ1枚と、常連のお客様用の2日間Explorerパス10枚</span></li>
+            <li><span class="l-en">Pay in full upfront, first paid picks first. Open both days. No random sales (Oripa, gacha, mystery boxes). Factory sealed product is fine</span><span class="l-th" lang="th">ชำระเต็มจำนวนล่วงหน้า ร้านที่ชำระก่อนได้เลือกตำแหน่งก่อน เปิดบูธครบทั้งสองวัน งดการขายแบบสุ่มทุกรูปแบบ เช่น Oripa กาชา กล่องสุ่ม (ซองและกล่องซีลจากผู้ผลิตขายได้ตามปกติ)</span><span class="l-ja" lang="ja">全額前払い、支払い順にブース位置を選択。2日間とも出店必須。オリパ・ガチャ・福袋などのランダム販売は不可(メーカー未開封品は可)</span></li>
+          </ul>
+          <div class="btns">
+            <a class="btn btn-holo" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Book on Facebook chat</span><span class="l-th" lang="th">ทักแชทจองบูธ</span><span class="l-ja" lang="ja">Facebookチャットで申し込む</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="ccc-pics reveal">
+        <a href="img/ccc/ccc-vendors.jpg" target="_blank" rel="noopener"><img src="img/ccc/ccc-vendors.jpg" alt="Card and Collectibles Carnival: calling all shops, 50 booths" loading="lazy" width="1200" height="1200"></a>
+        <a href="img/ccc/ccc-booth.jpg" target="_blank" rel="noopener"><img src="img/ccc/ccc-booth.jpg" alt="Card and Collectibles Carnival booth package" loading="lazy" width="1200" height="1200"></a>
       </div>
     </div>
   </div>
@@ -1400,7 +1457,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   /* ---------- RRR spotlight ---------- */
   (() => {
     const sec = $('#rrr'); if (!sec) return;
-    if (todayYMD > '2026-10-31') { sec.hidden = true; return; }
+    if (todayYMD > '2026-11-01') { sec.hidden = true; return; }
+    if (todayYMD > '2026-10-15') { const v = $('#ccc-vendor'); if (v) v.hidden = true; }
     $$('#rrr-thumbs button').forEach(b => b.addEventListener('click', () => {
       $('#rrr-main').src = b.dataset.src;
       $$('#rrr-thumbs button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
