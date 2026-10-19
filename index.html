@@ -215,6 +215,15 @@
   @media (max-width: 960px) { .ccc { grid-template-columns: 1fr; } .ccc-pics { max-width: 560px; } }
   @media (max-width: 560px) { .ccc .btns .btn { width: 100%; justify-content: center; } }
 
+  /* ---------- shop closures ---------- */
+  .notice { background: var(--charcoal); color: var(--cream); border-bottom: 1px solid var(--n700); padding: 10px var(--gutter); font: 400 14px/1.45 var(--body); text-align: center; }
+  .notice b { color: var(--gold); margin-right: 6px; }
+  .notice a { color: var(--gold); white-space: nowrap; }
+  .day.closed .day-h { background: repeating-linear-gradient(-45deg, #2A2A2A 0 8px, #222 8px 16px); }
+  .shut { font: 400 12px/1.4 var(--body); color: var(--n400); padding: 8px 4px; }
+  .shut b { display: block; color: var(--gold); font: 700 12px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  .bar-ev.shut-bar { --c: #787878; color: var(--gold); }
+
   /* ---------- hero ---------- */
   .hero { position: relative; overflow: hidden; overflow: clip; contain: paint; }
   .hero::before {
@@ -684,6 +693,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <span class="l-th" lang="th">สั่งของ สอบถาม หรือลงทะเบียนอีเวนต์ <b>ทักแชท Facebook ได้เลยครับ</b></span>
   <span class="l-ja" lang="ja">ご注文・ご質問・イベント登録は <b>Facebookチャットへ</b></span>
 </a>
+
+<div class="notice" id="notice" hidden></div>
 
 <header class="bar">
   <div class="progress" aria-hidden="true"><i></i></div>
@@ -1341,8 +1352,10 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   const mondayOf = (ymd) => addDays(ymd, -((dow(ymd) + 6) % 7));
   const fmt = (ymd, opts) => new Intl.DateTimeFormat(T('en-GB', 'th-TH', 'ja-JP'), { timeZone: 'UTC', ...opts }).format(toUTC(ymd));
 
+  const closedOn = (ymd) => (D.closed || []).find(c => c.date === ymd);
   const status = () => {
-    const { h, m } = bkkParts(); const mins = h * 60 + m; const open = mins >= 840 && mins < 1320;
+    const { h, m } = bkkParts(); const mins = h * 60 + m; const shut = closedOn(todayYMD); const open = !shut && mins >= 840 && mins < 1320;
+    if (shut) { $('#status').classList.remove('open'); $('#status-text').innerHTML = T('Closed today', 'วันนี้ร้านปิด', '本日休業'); return; }
     $('#status').classList.toggle('open', open);
     $('#status-text').innerHTML = open
       ? `${T('Open now', 'เปิดอยู่', '営業中')}<span class="s-long"> ✦ ${T('until 22:00', 'ถึง 22:00 น.', '22:00まで')}</span>`
@@ -1355,7 +1368,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   const eventsOn = (ymd) => {
     const dated = D.dated.filter(e => e.date === ymd);
     const covered = new Set(dated.map(e => e.game));
-    const rec = D.recurring.filter(r => r.dow === dow(ymd) && !covered.has(r.game) && ymd > D.updated.slice(0, 10) && ymd > lastDated)
+    const rec = D.recurring.filter(r => r.dow === dow(ymd) && !covered.has(r.game) && ymd > D.updated.slice(0, 10) && ymd > lastDated && !closedOn(ymd))
       .map(r => ({ ...r, date: ymd, weekly: true }));
     return [...dated, ...rec].filter(e => active.has(e.game)).sort((a, b) => (a.time || '99').localeCompare(b.time || '99'));
   };
@@ -1381,9 +1394,10 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     let html = '<div class="week">';
     for (let i = 0; i < 7; i++) {
       const d = addDays(mon, i); const evs = eventsOn(d);
-      const cls = d === todayYMD ? ' today' : d < todayYMD ? ' past' : '';
+      const shut = closedOn(d);
+      const cls = (d === todayYMD ? ' today' : d < todayYMD ? ' past' : '') + (shut ? ' closed' : '');
       html += `<div class="day${cls}"><div class="day-h"><b>${fmt(d, { weekday: 'short' })}</b><span>${fmt(d, { day: 'numeric', month: 'short' })}${d === todayYMD ? ' ✦ ' + T('today', 'วันนี้', '今日') : ''}</span></div>
-        <div class="day-ev">${evs.length ? evs.map(evBtn).join('') : `<div class="empty">${T('Open play, tables free', 'โต๊ะว่าง มาเล่นได้เลย', 'フリー対戦OK')}</div>`}</div></div>`;
+        <div class="day-ev">${shut ? `<div class="shut"><b>${T('Shop closed', 'ร้านปิด', '店舗休業')}</b>${esc(T(shut.en, shut.th, shut.ja))}</div>` : ''}${evs.length ? evs.map(evBtn).join('') : shut ? '' : `<div class="empty">${T('Open play, tables free', 'โต๊ะว่าง มาเล่นได้เลย', 'フリー対戦OK')}</div>`}</div></div>`;
     }
     $('#cal').innerHTML = html + '</div>';
   };
@@ -1403,7 +1417,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       const evs = eventsOn(d);
       const cls = (d === todayYMD ? ' today' : d < todayYMD ? ' past' : '') + (d === selDay ? ' sel' : '');
       html += `<button class="cell${cls}" data-day="${d}" aria-label="${fmt(d, { day: 'numeric', month: 'long' })}, ${evs.length} events">
-        <span class="n">${+d.slice(8)}</span>
+        <span class="n">${+d.slice(8)}</span>${closedOn(d) ? `<span class="bar-ev shut-bar">${T('Shop closed', 'ร้านปิด', '休業')}</span>` : ''}
         ${evs.slice(0, 4).map(e => `<span class="bar-ev${e.weekly ? ' weekly' : ''}" style="--c:${games[e.game].color}">${e.major ? '★ ' : ''}${esc(e.title)}</span>`).join('')}
         <span class="dots">${evs.map(e => `<i style="--c:${games[e.game].color}"></i>`).join('')}</span>
       </button>`;
@@ -1535,8 +1549,16 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     $('#dlg').showModal();
   };
 
+  const renderNotice = () => {
+    const soon = (D.closed || []).filter(c => c.date >= todayYMD && c.date <= addDays(todayYMD, 14)).map(c => c.date).sort();
+    const el = $('#notice'); if (!el) return;
+    if (!soon.length) { el.hidden = true; return; }
+    const days = soon.map(d => fmt(d, { weekday: 'short', day: 'numeric', month: 'short' })).join(', ');
+    el.hidden = false;
+    el.innerHTML = `<b>${T('Heads up', 'แจ้งปิดร้าน', 'お知らせ')}</b> ${T('The shop is closed on', 'ร้านปิดวัน', '店舗休業日:')} ${days}. ${T("We're out at off-site events, come find us there.", 'ทีมไปจัดงานนอกสถานที่ แวะมาเจอกันที่งานได้เลยครับ', '外部イベントに出展中です。ぜひ会場へ。')} <a href="#calendar">${T('See the calendar', 'ดูปฏิทิน', 'カレンダーを見る')}</a>`;
+  };
   const render = () => {
-    status(); renderFilters(); renderMajors();
+    renderNotice(); status(); renderFilters(); renderMajors();
     view === 'week' ? renderWeek() : renderMonth();
     $('#cal-updated').textContent = fmt(D.updated, { day: 'numeric', month: 'short', year: 'numeric' });
   };

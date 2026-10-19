@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-10-12",
+  updated: "2026-10-19",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -30,35 +30,34 @@ window.ANUBIS = {
     { dow: 0, game: "riftbound", title: "Nexus Night 1v1 (Bo3)",    time: "14:00", note: "Register ahead on Playriftbound with your Riot ID" }
   ],
 
+  // closed: days the shop itself is shut (off-site events). Shown in the calendar, the status pill and a notice bar.
+  closed: [
+    { date: "2026-10-25", en: "Hyperia City Prerelease Party at Siam@Siam Design Hotel", th: "ไปจัด Hyperia City Prerelease Party ที่ Siam@Siam Design Hotel", ja: "Siam@Siam Design HotelでHyperia City Prerelease Partyを開催" },
+    { date: "2026-10-31", en: "Radiance Rift Rumble at Samyan Mitrtown, Lorcana Challenge Bangkok at The Mall Bangkae", th: "ไปงาน Radiance Rift Rumble ที่สามย่านมิตรทาวน์ และ Lorcana Challenge Bangkok ที่เดอะมอลล์บางแค", ja: "サムヤーン・ミットタウンのRadiance Rift Rumbleと、ザ・モール・バンケーのLorcana Challenge Bangkokに出展" },
+    { date: "2026-11-01", en: "Card and Collectibles Carnival at Samyan Mitrtown, Lorcana Challenge Bangkok at The Mall Bangkae", th: "ไปงาน Card and Collectibles Carnival ที่สามย่านมิตรทาวน์ และ Lorcana Challenge Bangkok ที่เดอะมอลล์บางแค", ja: "サムヤーン・ミットタウンのCard and Collectibles Carnivalと、ザ・モール・バンケーのLorcana Challenge Bangkokに出展" }
+  ],
+
   // link: optional sign-up URL (https only). LINE links get a "Sign up in the LINE group" button, others "Sign up".
   dated: [
-    // Week of Oct 12 to 18 (FB weekly post "NEW SET. NEW CARDS. NEW CHALLENGES!", 2026-10-12; Wed Riftbound link from Philly)
-    { date: "2026-10-12", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
-      detail: "Standard Regulation, 60-card deck. Swiss 3 rounds, Best of 1, 25 minutes per round. 32 players. Door gift: 1 pack of 30th Celebration (TH) and a Pikachu GAME ON card. Prizes: 1 to 3 promo packs by match wins, plus extra 30th Celebration packs. Walk in." },
-    { date: "2026-10-13", game: "lorcana", title: "Casual On-Demand", time: "19:30", fee: "250 THB",
+    // Week of Oct 19 to 25 (FB weekly post "THIS WEEK'S LINEUP IS STACKED!", 2026-10-19; Oct 2026 calendar post for closures)
+    { date: "2026-10-19", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
+      detail: "Standard, Swiss 3 rounds, 32 players. Entry includes 1 pack of 30th Celebration (TH). Free promo cards for everyone who shows up. Walk in." },
+    { date: "2026-10-20", game: "lorcana", title: "Casual On-Demand", time: "19:30", fee: "250 THB",
       detail: "Core Constructed (Set 9 to 13), Coconut, or Pack Rush (450 THB). New players at 19:00 for Learn to Play. No sign-up needed." },
-    { date: "2026-10-14", game: "mtg", title: "Reality Fractured Commander Party", time: "19:00", fee: "Open 1 pack",
-      detail: "Commander night with the new Reality Fractured set. Walk in." },
-    { date: "2026-10-14", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
-      detail: "Standard Constructed. Max 5 rounds. 32 players. Sign up on Playriftbound with your Riot ID.",
-      link: "https://playriftbound.com/en-US/events/117416907515358603" },
-    { date: "2026-10-15", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
-      detail: "Core Constructed (Set 9 to 13) or Coconut. Learn to Play at 19:00. Walk-ins welcome." },
-    { date: "2026-10-16", game: "riftbound", title: "Radiance Pre-Rift POD 1", time: "19:00", fee: "1,200 THB", major: true,
-      detail: "First games with the new Radiance set. Four pods this week (Fri 19:00, Sat 19:00, Sun 14:00, Sun 19:00), pick the one that suits you. Play from the Radiance Pre-Rift Kit, 3 rounds per pod. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
-      link: "https://line.me/ti/g/m5Phn384nH", img: "img/events/radiance-pre-rift.jpg" },
-    { date: "2026-10-17", game: "lorcana", title: "Hyperia City Prerelease Pack Rush", time: "14:00", fee: "450 THB", major: true,
-      detail: "First look at Set 14, Hyperia City. Sealed Pack Rush, 2 packs per player: open, build on the spot and play. Door gift: 1 Set 14 booster pack. Top 8 each win 1 Set 14 booster pack. 32 players. Registration opens Wed Oct 14, 12:00 in the Lorcana OpenChat note.",
-      link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g", img: "img/events/hyperia-city-prerelease.jpg" },
-    { date: "2026-10-17", game: "riftbound", title: "Radiance Pre-Rift POD 2", time: "19:00", fee: "1,200 THB",
-      detail: "Play from the Radiance Pre-Rift Kit, 3 rounds per pod. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
-      link: "https://line.me/ti/g/m5Phn384nH" },
-    { date: "2026-10-18", game: "riftbound", title: "Radiance Pre-Rift POD 3", time: "14:00", fee: "1,200 THB",
-      detail: "Play from the Radiance Pre-Rift Kit, 3 rounds per pod. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
-      link: "https://line.me/ti/g/m5Phn384nH" },
-    { date: "2026-10-18", game: "riftbound", title: "Radiance Pre-Rift POD 4", time: "19:00", fee: "1,200 THB",
-      detail: "Play from the Radiance Pre-Rift Kit, 3 rounds per pod. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
-      link: "https://line.me/ti/g/m5Phn384nH" },
+    { date: "2026-10-21", game: "mtg", title: "Commander Night", time: "19:00", fee: "Open 1 pack",
+      detail: "Bring your commander. Walk in." },
+    { date: "2026-10-21", game: "riftbound", title: "Radiance Pre-Rift POD 5", time: "19:00", fee: "1,200 THB", major: true,
+      detail: "The final Pre-Rift pod, last chance before Radiance launches. Open your Pre-Rift Kit and build on site, 3 rounds. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
+      link: "https://line.me/ti/g/m5Phn384nH", img: "img/events/radiance-pre-rift-pod5.jpg" },
+    { date: "2026-10-22", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 13) or Coconut. New players at 19:00. No sign-up needed." },
+    { date: "2026-10-23", game: "mtg", title: "Reality Fractured Draft", time: "19:00", fee: "650 THB",
+      detail: "Booster draft with Reality Fractured." },
+    { date: "2026-10-23", game: "riftbound", title: "Casual Best-of-1", time: "20:00", fee: "250 THB",
+      detail: "Practice night, 4 rounds, 24 players. No Nexus Night promos. Sign up on Playriftbound with your Riot ID (opens Mon Oct 19, 12:00)." },
+    { date: "2026-10-25", game: "lorcana", title: "Hyperia City Prerelease Party", time: "10:00", fee: "1,600 THB", major: true,
+      detail: "Not at the shop: Siam@Siam Design Hotel Bangkok (the shop is closed that day). Two slots, 10:00 and 14:30. Open your Prerelease Kit and build on site, Best of 1, Swiss 3 rounds of 30 minutes. Prizes: 2 booster packs for 3 wins, 1 pack for 2 wins, a random promo card for 0 to 1 wins. A few spots left, sign up with the form.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdinYY7wejSBFd0KqGRtEbH9HsWoo8wtqTzOyzNzyFJvKLtYw/viewform", img: "img/events/hyperia-city-prerelease-party.jpg" },
 
     // Radiance Rift Rumble at BetterTrade 2026 (FB posts 2026-10-02 and "TOP 8 PRIZE PICK POOL", 2026-10-10). Also has its own spotlight section in index.html.
     { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "10:00", fee: "490 THB", major: true,
