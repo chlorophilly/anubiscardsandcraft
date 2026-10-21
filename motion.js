@@ -495,7 +495,7 @@
         const off = strips.map((el, i) => el.animate(
           [{ transform: 'none' }, { transform: 'translateY(-108%) rotate(' + (2 - i) * 4 + 'deg)' }],
           { duration: 360, delay: 110 + order.indexOf(i) * 38, easing: 'cubic-bezier(.6, 0, .8, .4)', fill: 'both' }));
-        const head = $('.sec-head, .rrr-copy, .wrap', target);
+        const head = $('.sec-head, .wrap', target);
         if (head) head.animate([{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }],
           { duration: 620, delay: 260, easing: EASE, fill: 'backwards' });
         return Promise.all(off.map(x => x.finished));

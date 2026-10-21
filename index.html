@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="motion.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Otomanopee+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800;900&family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Otomanopee+One&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Store","name":"Anubis Cards and Craft","url":"https://anubiscardsandcraft.com","image":"https://anubiscardsandcraft.com/img/og.jpg","email":"contact@anubiscardsandcraft.com","address":{"@type":"PostalAddress","streetAddress":"27 Metha Wattana Building, 2nd Floor Room 5, Soi Sukhumvit 19","addressLocality":"Khlong Toei Nuea, Watthana, Bangkok","postalCode":"10110","addressCountry":"TH"},"geo":{"@type":"GeoCoordinates","latitude":13.7394812,"longitude":100.5599004},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"14:00","closes":"22:00"}],"sameAs":["https://www.facebook.com/AnubisCardsandCraft","https://instagram.com/anubiscardsandcraft","https://tiktok.com/@anubiscardsandcraft","https://youtube.com/anubiscardsandcraft"]}
 </script>
@@ -223,6 +223,71 @@
   .shut { font: 400 12px/1.4 var(--body); color: var(--n400); padding: 8px 4px; }
   .shut b { display: block; color: var(--gold); font: 700 12px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
   .bar-ev.shut-bar { --c: #787878; color: var(--gold); }
+
+  /* ---------- big events: compact cards that open to full details ---------- */
+  .big { padding-block: clamp(48px, 7vw, 96px) clamp(16px, 3vw, 32px); }
+  .big .sec-head { margin-bottom: 28px; }
+  .bx { position: relative; border-radius: 22px; overflow: hidden; overflow: clip; margin: 0 0 16px; padding: 0; }
+  .bx.rrr { padding-block: 0; }
+  .bx-sum { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) auto; gap: 16px 28px; align-items: center; padding: 22px clamp(16px, 3vw, 32px); }
+  .bx-brand { display: flex; align-items: center; gap: 10px; }
+  .bx-brand img { display: block; width: auto; max-width: 100%; height: auto; max-height: 64px; }
+  .hyp .bx-brand img { max-height: 58px; max-width: 48%; filter: drop-shadow(0 3px 4px rgb(20 22 51 / .2)); }
+  .bx-kick { margin: 0 0 6px; font: 700 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+  html[data-lang="th"] .bx-kick { letter-spacing: 0; }
+  .bx h3 { margin: 0 0 6px; font: 800 clamp(22px, 2.6vw, 32px)/1.05 var(--display); }
+  .bx-meta { margin: 0; font-size: 15px; opacity: .9; }
+  .bx-when { display: inline-block; margin-left: 6px; font: 700 12px/1 var(--mono); padding: 5px 9px; border-radius: 999px; background: rgb(255 255 255 / .16); vertical-align: 1px; white-space: nowrap; }
+  .bx-when:empty { display: none; }
+  .bx-act { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+  .bx-act .btn { padding: 13px 18px; font-size: 14px; }
+  .bx-tog { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border-radius: 999px; padding: 12px 16px; font: 700 14px/1 var(--body); background: none; border: 1px solid rgb(255 255 255 / .45); color: #fff; }
+  .bx-tog i { font: 700 18px/1 var(--mono); font-style: normal; transition: transform .3s; }
+  .bx-tog .t-close { display: none; }
+  .bx.open .bx-tog .t-open { display: none; } .bx.open .bx-tog .t-close { display: inline; }
+  .bx.open .bx-tog i { transform: rotate(45deg); }
+  .bx-full { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s cubic-bezier(.2, .8, .2, 1); }
+  .bx.open .bx-full { grid-template-rows: 1fr; }
+  .bx-in { min-height: 0; overflow: hidden; }
+  .bx-in > * { padding: 4px clamp(16px, 3vw, 32px) clamp(24px, 4vw, 40px); }
+  .bx .ccc { margin-top: 0; padding-top: 4px; border-top: 0; }
+  .bx .rrr-logo, .bx .ccc-logo { display: none; }
+  .ccc-bx { background: radial-gradient(60% 80% at 90% 0%, rgb(31 181 174 / .22), transparent 70%), radial-gradient(55% 80% at 0% 100%, rgb(127 216 255 / .18), transparent 70%), #10183A; }
+  /* Hyperia City look (event CI: sky, sun rays, cream, navy) */
+  .hyp { --hy-navy: #141633; --hy-cream: #FFF6DE; --hy-gold: #F2B23E; --rrr-holo: linear-gradient(120deg, #F2B23E, #FAD77E 50%, #F07A1E); color: var(--hy-navy); background: linear-gradient(180deg, #3E9BE0 0%, #8CCBF2 55%, #FFE9B8 100%); }
+  .hyp::before { content: ""; position: absolute; left: 50%; top: 115%; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / .16) 0deg 4deg, transparent 4deg 12deg); -webkit-mask: radial-gradient(circle, #000 0, #000 20%, transparent 50%); mask: radial-gradient(circle, #000 0, #000 20%, transparent 50%); pointer-events: none; }
+  .hyp > * { position: relative; }
+  .hyp h3 { font: 900 clamp(28px, 3.4vw, 42px)/.92 "Big Shoulders Display", var(--display); text-transform: uppercase; color: var(--hy-cream); text-shadow: 1px 1px 0 #5E3511, 2px 2px 0 #5E3511, 3px 3px 0 #5E3511, 4px 4px 0 rgb(20 22 51 / .25); }
+  .hyp .bx-when { background: var(--hy-navy); color: var(--hy-cream); }
+  .hyp .bx-tog { border-color: var(--hy-navy); color: var(--hy-navy); background: rgb(255 246 222 / .7); }
+  .btn-hyp { background: var(--hy-navy); color: var(--hy-cream); }
+  .btn-hyp:hover { background: #26295A; }
+  .btn-hyp-ghost { background: var(--hy-cream); color: var(--hy-navy); border: 2px solid var(--hy-navy); }
+  .hyp-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(20px, 3vw, 48px); align-items: start; }
+  .hyp-lede { font-size: clamp(16px, 1.3vw, 18px); font-weight: 500; margin: 0 0 18px; }
+  .hyp-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }
+  .hyp-facts div { background: var(--hy-cream); border: 3px solid var(--hy-navy); border-radius: 14px; padding: 12px 14px; box-shadow: 0 4px 0 var(--hy-navy); }
+  .hyp-facts dt { font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #A5622A; margin: 0 0 6px; }
+  html[data-lang="th"] .hyp-facts dt { letter-spacing: 0; }
+  .hyp-facts dd { margin: 0; font: 700 16px/1.25 var(--body); }
+  .hyp-facts dd small { display: block; font: 400 13px/1.35 var(--body); color: #4A3A26; margin-top: 4px; }
+  .hyp-list { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 8px; font-size: 15px; }
+  .hyp-list li { display: flex; gap: 10px; }
+  .hyp-list li::before { content: "✦"; color: #F07A1E; flex: none; }
+  .hyp .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hyp-note { font-size: 13px; margin: 16px 0 0; color: #3A3324; }
+  .hyp .rrr-main { box-shadow: 0 16px 40px rgb(20 22 51 / .3); }
+  .hyp .rrr-thumbs button[aria-pressed="true"] { border-color: var(--hy-navy); }
+  @media (max-width: 960px) { .hyp-grid { grid-template-columns: 1fr; } .hyp .rrr-gal { max-width: 560px; } }
+  @media (max-width: 760px) {
+    .bx-sum { grid-template-columns: 1fr; gap: 12px; padding: 18px 16px; }
+    .bx-brand img { max-height: 48px; }
+    .hyp .bx-brand img { max-height: 46px; }
+    .bx-act { justify-content: stretch; }
+    .bx-act > * { flex: 1 1 auto; justify-content: center; }
+  }
+  @media (max-width: 420px) { .hyp-facts { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .bx-full { transition: none; } }
 
   /* ---------- hero ---------- */
   .hero { position: relative; overflow: hidden; overflow: clip; contain: paint; }
@@ -756,7 +821,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </header>
 
 <nav class="mnav" id="mnav" aria-label="Quick jump">
-  <a href="#rrr" data-nav="rrr"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.4 9.3l6-.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>RRR</span></a>
+  <a href="#big" data-nav="big"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.4 9.3l6-.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="l-en">Big events</span><span class="l-th" lang="th">งานใหญ่</span><span class="l-ja" lang="ja">大型</span></a>
   <a href="#calendar" data-nav="calendar"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M9 3v4M15 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="l-en">Calendar</span><span class="l-th" lang="th">ปฏิทิน</span><span class="l-ja" lang="ja">カレンダー</span></a>
   <a href="#games" data-nav="games"><svg aria-hidden="true"><use href="#i-pack"/></svg><span class="l-en">Games</span><span class="l-th" lang="th">เกม</span><span class="l-ja" lang="ja">ゲーム</span></a>
   <a href="#visit" data-nav="visit"><svg aria-hidden="true"><use href="#i-pin"/></svg><span class="l-en">Visit</span><span class="l-th" lang="th">เดินทาง</span><span class="l-ja" lang="ja">アクセス</span></a>
@@ -819,13 +884,84 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   </div>
 </div>
 
-<!-- RRR SPOTLIGHT -->
-<section id="rrr" class="rrr" aria-labelledby="rrr-h">
-  <div class="wrap rrr-grid">
-    <div class="rrr-copy reveal">
+<!-- BIG EVENTS: one compact card per event, "Full details" opens the rest -->
+<section id="big" class="big" aria-labelledby="big-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="sec-num">★ / <span class="l-en">Big events</span><span class="l-th" lang="th">อีเวนต์ใหญ่</span><span class="l-ja" lang="ja">ビッグイベント</span></span>
+        <h2 id="big-h"><span class="l-en">Out of the shop, into the arena</span><span class="l-th" lang="th">ออกจากร้าน ไปลุยกันที่งานใหญ่</span><span class="l-ja" lang="ja">店を飛び出して、大舞台へ</span></h2>
+      </div>
+      <p><span class="l-en">Three big days away from Sukhumvit 19. Tap Full details for times, prizes and how to join.</span><span class="l-th" lang="th">เดือนนี้มี 3 งานใหญ่นอกร้าน กด “ดูรายละเอียดทั้งหมด” เพื่อเช็กเวลา ของรางวัล และวิธีสมัครได้เลยครับ</span><span class="l-ja" lang="ja">今月はスクンビット19を飛び出す大型イベントが3つ。「詳細を見る」で時間、賞品、参加方法をチェック。</span></p>
+    </div>
+
+    <article class="bx hyp" id="hyperia" data-until="2026-10-25">
+      <div class="bx-sum">
+        <div class="bx-brand"><img src="hyperiacity-prerelease-party/img/lorcana.webp" alt="Disney Lorcana" width="200" height="110"><img src="hyperiacity-prerelease-party/img/hyperia.webp" alt="Hyperia City" width="200" height="110"></div>
+        <div class="bx-main">
+          <p class="bx-kick"><span class="l-en">Lorcana Set 14 ✦ Prerelease</span><span class="l-th" lang="th">Lorcana ชุด 14 ✦ Prerelease</span><span class="l-ja" lang="ja">ロルカナ第14弾 ✦ プレリリース</span></p>
+          <h3>Hyperia City Prerelease Party</h3>
+          <p class="bx-meta"><span class="l-en">Sun 25 Oct ✦ Siam@Siam Design Hotel ✦ 1,600 THB</span><span class="l-th" lang="th">อา. 25 ต.ค. ✦ Siam@Siam Design Hotel ✦ 1,600 บาท</span><span class="l-ja" lang="ja">10月25日(日) ✦ Siam@Siam Design Hotel ✦ 1,600バーツ</span> <span class="bx-when" data-at="2026-10-25"></span></p>
+        </div>
+        <div class="bx-act">
+          <a class="btn btn-hyp" href="hyperiacity-prerelease-party/"><svg><use href="#i-arrow"/></svg><span class="l-en">Find your pod</span><span class="l-th" lang="th">เช็กรอบของคุณ</span><span class="l-ja" lang="ja">自分の部を確認</span></a>
+          <button class="bx-tog" type="button" aria-expanded="false" aria-controls="hyperia-full"><span class="t-open"><span class="l-en">Full details</span><span class="l-th" lang="th">ดูรายละเอียดทั้งหมด</span><span class="l-ja" lang="ja">詳細を見る</span></span><span class="t-close"><span class="l-en">Hide details</span><span class="l-th" lang="th">ซ่อนรายละเอียด</span><span class="l-ja" lang="ja">詳細を閉じる</span></span><i aria-hidden="true">+</i></button>
+        </div>
+      </div>
+      <div class="bx-full" id="hyperia-full" inert><div class="bx-in">
+      <div class="hyp-grid">
+        <div class="hyp-copy">
+          <p class="hyp-lede"><span class="l-en">Nobody goes home empty handed. Every player gets a Hyperia City Prerelease box, plus a prize based on your wins. Presented by 4 stores: Anubis Cards and Craft, Magic Dojo, Quest Boardgame Cafe and Glorytale Guild Boardgame.</span><span class="l-th" lang="th">งานนี้ไม่มีใครกลับบ้านมือเปล่าครับ ทุกคนได้กล่อง Hyperia City Prerelease 1 กล่อง แถมยังได้รางวัลตามจำนวนรอบที่ชนะ จัดเต็มจาก 4 ร้าน Anubis Cards and Craft, Magic Dojo, Quest Boardgame Cafe และ Glorytale Guild Boardgame</span><span class="l-ja" lang="ja">手ぶらで帰る人はいません。参加者全員にHyperia City Prereleaseボックスを1つ、さらに勝利数に応じた賞品も。Anubis Cards and Craft、Magic Dojo、Quest Boardgame Cafe、Glorytale Guild Boardgameの4店舗による共同開催です。</span></p>
+          <dl class="hyp-facts">
+            <div><dt><span class="l-en">Morning pod</span><span class="l-th" lang="th">รอบเช้า</span><span class="l-ja" lang="ja">午前の部</span></dt><dd><span class="l-en">Check in 10:00 to 10:45</span><span class="l-th" lang="th">รายงานตัว 10:00 ถึง 10:45 น.</span><span class="l-ja" lang="ja">受付 10:00〜10:45</span><small><span class="l-en">Deck build 11:00, rounds 12:00 to 14:00</span><span class="l-th" lang="th">จัดเด็ค 11:00 น. แข่ง 12:00 ถึง 14:00 น.</span><span class="l-ja" lang="ja">デッキ構築 11:00、対戦 12:00〜14:00</span></small></dd></div>
+            <div><dt><span class="l-en">Afternoon pod</span><span class="l-th" lang="th">รอบบ่าย</span><span class="l-ja" lang="ja">午後の部</span></dt><dd><span class="l-en">Check in 14:30 to 15:00</span><span class="l-th" lang="th">รายงานตัว 14:30 ถึง 15:00 น.</span><span class="l-ja" lang="ja">受付 14:30〜15:00</span><small><span class="l-en">Deck build 15:00, rounds 16:00 to 18:00</span><span class="l-th" lang="th">จัดเด็ค 15:00 น. แข่ง 16:00 ถึง 18:00 น.</span><span class="l-ja" lang="ja">デッキ構築 15:00、対戦 16:00〜18:00</span></small></dd></div>
+            <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>1,600 THB<small><span class="l-en">Sign up by Fri 23 Oct, 23:59</span><span class="l-th" lang="th">ลงทะเบียนได้ถึงศุกร์ 23 ต.ค. 23:59 น.</span><span class="l-ja" lang="ja">10月23日(金)23:59まで受付</span></small></dd></div>
+            <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Sealed<small><span class="l-en">Best of 1, Swiss, 3 rounds of 30 minutes</span><span class="l-th" lang="th">Best of 1 แบบ Swiss 3 รอบ รอบละ 30 นาที</span><span class="l-ja" lang="ja">Bo1、スイス式3回戦、各30分</span></small></dd></div>
+          </dl>
+          <ul class="hyp-list">
+            <li><span class="l-en">Every player gets 1 Prerelease box: 6 boosters, 1 random promo, 4 dice and a Hyperia City poster</span><span class="l-th" lang="th">ทุกคนได้กล่อง Prerelease 1 กล่อง: Booster 6 ซอง การ์ด Promo สุ่ม 1 ใบ ลูกเต๋า 4 ลูก และโปสเตอร์ Hyperia City</span><span class="l-ja" lang="ja">参加者全員にPrereleaseボックス1つ(ブースター6パック、ランダムプロモ1枚、ダイス4個、Hyperia Cityポスター)</span></li>
+            <li><span class="l-en">Prizes by wins: 3 wins, 2 boosters. 2 wins, 1 booster. 0 to 1 win, a random promo card</span><span class="l-th" lang="th">รางวัลตามจำนวนรอบที่ชนะ: ชนะ 3 รอบ รับ Booster 2 ซอง ชนะ 2 รอบ รับ 1 ซอง ชนะ 0 ถึง 1 รอบ รับการ์ด Promo สุ่ม 1 ใบ</span><span class="l-ja" lang="ja">勝利数に応じた賞品: 3勝でブースター2パック、2勝で1パック、0〜1勝でランダムプロモ1枚</span></li>
+            <li><span class="l-en">Free Kardiko sleeves for everyone at check in</span><span class="l-th" lang="th">ทุกคนรับ Sleeves ฟรีจาก Kardiko ตอนรายงานตัว</span><span class="l-ja" lang="ja">受付で全員にKardikoのスリーブをプレゼント</span></li>
+            <li><span class="l-en">Also on the day: Pack Rush (open 2 packs per round, 3 rounds, separate sign up) and a Core Constructed side event (walk in)</span><span class="l-th" lang="th">ในงานยังมี Pack Rush (แกะ 2 ซองต่อรอบ 3 รอบ ลงทะเบียนแยก) และ Core Constructed Side Event (Walk in ไม่ต้องลงทะเบียน)</span><span class="l-ja" lang="ja">当日はPack Rush(1ラウンド2パック開封、3回戦、別途登録)とCore Constructedのサイドイベント(当日参加OK)も開催</span></li>
+          </ul>
+          <div class="btns">
+            <a class="btn btn-hyp" href="hyperiacity-prerelease-party/"><svg><use href="#i-arrow"/></svg><span class="l-en">Find your pod</span><span class="l-th" lang="th">เช็กรอบและหมายเลขผู้เล่น</span><span class="l-ja" lang="ja">自分の部を確認</span></a>
+            <a class="btn btn-hyp-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSdinYY7wejSBFd0KqGRtEbH9HsWoo8wtqTzOyzNzyFJvKLtYw/viewform" target="_blank" rel="noopener"><span class="l-en">Sign up</span><span class="l-th" lang="th">ลงทะเบียน</span><span class="l-ja" lang="ja">参加登録</span></a>
+            <a class="btn btn-hyp-ghost" href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><svg><use href="#i-msg"/></svg><span class="l-en">Ask us</span><span class="l-th" lang="th">ทักแชทถาม</span><span class="l-ja" lang="ja">質問する</span></a>
+          </div>
+          <p class="hyp-note"><span class="l-en">Not at the shop: Siam@Siam Design Hotel Bangkok, 6th floor, Function Six (BTS National Stadium). The shop is closed that day. Missed check in means your seat is given up. Overseas players, message our page before signing up.</span><span class="l-th" lang="th">งานนี้ไม่ได้จัดที่ร้านนะครับ สถานที่คือ Siam@Siam Design Hotel Bangkok ชั้น 6 ห้อง Function Six (BTS สนามกีฬาแห่งชาติ) วันนั้นร้านปิดครับ มารายงานตัวไม่ทันถือว่าสละสิทธิ์ ผู้เล่นจากต่างประเทศทักแชทเพจก่อนลงทะเบียนนะครับ</span><span class="l-ja" lang="ja">会場は店舗ではなく、Siam@Siam Design Hotel Bangkok 6階 Function Six(BTSナショナルスタジアム駅)です。当日、店舗は休業します。受付時間に間に合わない場合は参加権を失います。海外からの参加者は登録前にFacebookページへメッセージをお願いします。</span></p>
+        </div>
+        <div class="rrr-gal">
+          <div class="rrr-main"><img class="gal-main" src="img/hyperia/hyp-01.jpg" alt="Hyperia City Prerelease Party graphic" width="1200" height="1200" loading="lazy"></div>
+          <div class="rrr-thumbs gal-thumbs">
+            <button type="button" aria-pressed="true" data-src="img/hyperia/hyp-01.jpg" aria-label="Graphic 1"><img src="img/hyperia/hyp-01.jpg" alt="" loading="lazy" width="300" height="300"></button>
+            <button type="button" aria-pressed="false" data-src="img/hyperia/hyp-02.jpg" aria-label="Graphic 2"><img src="img/hyperia/hyp-02.jpg" alt="" loading="lazy" width="300" height="300"></button>
+            <button type="button" aria-pressed="false" data-src="img/hyperia/hyp-03.jpg" aria-label="Graphic 3"><img src="img/hyperia/hyp-03.jpg" alt="" loading="lazy" width="300" height="300"></button>
+          </div>
+        </div>
+      </div>
+      </div></div>
+    </article>
+
+    <article class="bx rrr" id="rrr" data-until="2026-10-31">
+      <div class="bx-sum">
+        <div class="bx-brand"><img src="img/rrr/rrr-logo.svg" alt="Radiance Rift Rumble" width="1173" height="368"></div>
+        <div class="bx-main">
+          <p class="bx-kick"><span class="l-en">Riftbound ✦ Our biggest event yet</span><span class="l-th" lang="th">Riftbound ✦ งานใหญ่ที่สุดของเรา</span><span class="l-ja" lang="ja">Riftbound ✦ 過去最大のイベント</span></p>
+          <h3>Radiance Rift Rumble</h3>
+          <p class="bx-meta"><span class="l-en">Sat 31 Oct ✦ Samyan Mitrtown Hall ✦ 490 THB</span><span class="l-th" lang="th">ส. 31 ต.ค. ✦ สามย่านมิตรทาวน์ฮอลล์ ✦ 490 บาท</span><span class="l-ja" lang="ja">10月31日(土) ✦ サムヤーン・ミットタウン・ホール ✦ 490バーツ</span> <span class="bx-when" data-at="2026-10-31"></span></p>
+        </div>
+        <div class="bx-act">
+          <a class="btn btn-holo" href="https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day" target="_blank" rel="noopener"><span class="l-en">Sign up at efin</span><span class="l-th" lang="th">สมัครที่ efin</span><span class="l-ja" lang="ja">efinで参加登録</span><svg><use href="#i-arrow"/></svg></a>
+          <button class="bx-tog" type="button" aria-expanded="false" aria-controls="rrr-full"><span class="t-open"><span class="l-en">Full details</span><span class="l-th" lang="th">ดูรายละเอียดทั้งหมด</span><span class="l-ja" lang="ja">詳細を見る</span></span><span class="t-close"><span class="l-en">Hide details</span><span class="l-th" lang="th">ซ่อนรายละเอียด</span><span class="l-ja" lang="ja">詳細を閉じる</span></span><i aria-hidden="true">+</i></button>
+        </div>
+      </div>
+      <div class="bx-full" id="rrr-full" inert><div class="bx-in">
+      <div class="rrr-grid">
+    <div class="rrr-copy">
       <p class="rrr-kicker">★ <span class="l-en">Our biggest event yet</span><span class="l-th" lang="th">งานใหญ่ที่สุดของเรา</span><span class="l-ja" lang="ja">過去最大のイベント</span></p>
       <img class="rrr-logo" src="img/rrr/rrr-logo.svg" alt="Radiance Rift Rumble" width="1173" height="368">
-      <h2 id="rrr-h">
+      <h2>
         <span class="l-en">100 seats. One stage. <em>One champion.</em></span>
         <span class="l-th" lang="th">100 ที่นั่ง เวทีเดียว <em>แชมป์มีได้แค่คนเดียว</em></span>
         <span class="l-ja" lang="ja">100席。ひとつの舞台。<em>王者はひとり。</em></span>
@@ -841,7 +977,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>490 THB<small><span class="l-en">100 seats only</span><span class="l-th" lang="th">จำกัด 100 ที่นั่ง</span><span class="l-ja" lang="ja">100席限定</span></small></dd></div>
         <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Standard<small><span class="l-en">7 rounds Bo1, Top 8 Bo3</span><span class="l-th" lang="th">Bo1 7 รอบ ตัด Top 8 แบบ Bo3</span><span class="l-ja" lang="ja">Bo1を7回戦、Top 8はBo3</span></small></dd></div>
       </dl>
-      <ul class="rrr-get fold" data-fold="prizes">
+      <ul class="rrr-get">
         <li><span class="l-en">Every player gets 1 Radiance pack, 1 random pack and 1 Radiance Nexus Night Promo Pack</span><span class="l-th" lang="th">ทุกคนได้รับซอง Radiance 1 ซอง ซองสุ่มอีก 1 ซอง และ Radiance Nexus Night Promo Pack 1 ซอง</span><span class="l-ja" lang="ja">参加者全員にRadianceパック1つ、ランダムパック1つ、Radiance Nexus Nightプロモパック1つ</span></li>
         <li><span class="l-en">Plus 2 free Explorer Tickets from efin, worth 200 THB each</span><span class="l-th" lang="th">พร้อมบัตร Explorer Ticket จาก efin ฟรี 2 ใบ มูลค่าใบละ 200 บาท</span><span class="l-ja" lang="ja">さらにefinのExplorerチケット2枚(各200バーツ相当)を無料進呈</span></li>
         <li><span class="l-en">Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift, Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also takes a Radiance Vault, playmat and sleeves</span><span class="l-th" lang="th">Top 8 เลือกรางวัลใหญ่คนละ 1 ชิ้น อันดับ 1 เลือกก่อน มีทั้ง Origins Booster Box, Gift of the Rift, Radiance Vault, Unleashed Vault 2 ชุด และ Vendetta Vault 3 ชุด อันดับ 1 รับ Radiance Vault, Playmat และ Sleeves เพิ่มด้วย</span><span class="l-ja" lang="ja">Top 8は1位から順に賞品をドラフト。Origins Booster Box、Gift of the Rift、Radiance Vault、Unleashed Vault×2、Vendetta Vault×3。1位にはさらにRadiance Vault、プレイマット、スリーブ</span></li>
@@ -858,19 +994,34 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <span class="l-ja" lang="ja">会場は店舗ではなく、サムヤーン・ミットタウン・ホール5階「The Mitr Ting Room」(MRTサムヤーン駅)です。Gift of the Riftは12月4日以降にAnubis店舗でお渡しします。当日の進行により時間が変わる場合があります。</span>
       </p>
     </div>
-    <div class="rrr-gal reveal">
-      <div class="rrr-main"><img id="rrr-main" src="img/rrr/rrr-01.jpg" alt="Radiance Rift Rumble event graphic" width="1200" height="1200"></div>
-      <div class="rrr-thumbs" id="rrr-thumbs">
+    <div class="rrr-gal">
+      <div class="rrr-main"><img class="gal-main" src="img/rrr/rrr-01.jpg" alt="Radiance Rift Rumble event graphic" width="1200" height="1200"></div>
+      <div class="rrr-thumbs gal-thumbs">
         <button type="button" aria-pressed="true" data-src="img/rrr/rrr-01.jpg" aria-label="Graphic 1"><img src="img/rrr/rrr-01.jpg" alt="" loading="lazy" width="300" height="300"></button>
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-02.jpg" aria-label="Graphic 2"><img src="img/rrr/rrr-02.jpg" alt="" loading="lazy" width="300" height="300"></button>
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-03.jpg" aria-label="Graphic 3"><img src="img/rrr/rrr-03.jpg" alt="" loading="lazy" width="300" height="300"></button>
         <button type="button" aria-pressed="false" data-src="img/rrr/rrr-04.jpg" aria-label="Graphic 4"><img src="img/rrr/rrr-04.jpg" alt="" loading="lazy" width="300" height="300"></button>
       </div>
     </div>
-  </div>
-  <div class="wrap">
-    <div class="ccc" id="ccc">
-      <div class="reveal">
+      </div>
+      </div></div>
+    </article>
+
+    <article class="bx rrr ccc-bx" id="ccc" data-until="2026-11-01">
+      <div class="bx-sum">
+        <div class="bx-brand"><img src="img/ccc/ccc-logo.svg" alt="Card &amp; Collectibles Carnival" width="1407" height="440"></div>
+        <div class="bx-main">
+          <p class="bx-kick"><span class="l-en">Cards and collectibles market</span><span class="l-th" lang="th">ตลาดการ์ดและของสะสม</span><span class="l-ja" lang="ja">カード&コレクティブル・マーケット</span></p>
+          <h3>Card &amp; Collectibles Carnival</h3>
+          <p class="bx-meta"><span class="l-en">Sat 31 Oct and Sun 1 Nov ✦ Samyan Mitrtown Hall, 5F</span><span class="l-th" lang="th">ส. 31 ต.ค. และ อา. 1 พ.ย. ✦ สามย่านมิตรทาวน์ฮอลล์ ชั้น 5</span><span class="l-ja" lang="ja">10月31日(土)・11月1日(日) ✦ サムヤーン・ミットタウン・ホール5階</span> <span class="bx-when" data-at="2026-10-31"></span></p>
+        </div>
+        <div class="bx-act">
+          <button class="bx-tog" type="button" aria-expanded="false" aria-controls="ccc-full"><span class="t-open"><span class="l-en">Full details</span><span class="l-th" lang="th">ดูรายละเอียดทั้งหมด</span><span class="l-ja" lang="ja">詳細を見る</span></span><span class="t-close"><span class="l-en">Hide details</span><span class="l-th" lang="th">ซ่อนรายละเอียด</span><span class="l-ja" lang="ja">詳細を閉じる</span></span><i aria-hidden="true">+</i></button>
+        </div>
+      </div>
+      <div class="bx-full" id="ccc-full" inert><div class="bx-in">
+      <div class="ccc">
+      <div>
         <p class="rrr-kicker">✦ <span class="l-en">Same weekend, same hall</span><span class="l-th" lang="th">สุดสัปดาห์เดียวกัน ฮอลล์เดียวกัน</span><span class="l-ja" lang="ja">同じ週末、同じ会場</span></p>
         <img class="ccc-logo" src="img/ccc/ccc-logo.svg" alt="Card &amp; Collectibles Carnival" width="1407" height="440">
         <h3>
@@ -892,7 +1043,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div class="ccc-vendor" id="ccc-vendor">
           <h4><span class="l-en">Calling all shops: book a booth</span><span class="l-th" lang="th">เปิดรับร้านค้าออกบูธ</span><span class="l-ja" lang="ja">出店者募集中</span></h4>
           <p class="big">5,000 THB<small><span class="l-en">for both days. Payment closes Thu 15 Oct.</span><span class="l-th" lang="th">สำหรับ 2 วัน ปิดรับชำระวันพฤหัสบดีที่ 15 ต.ค.</span><span class="l-ja" lang="ja">2日間の料金。お支払い締切は10月15日(木)。</span></small></p>
-          <ul class="rrr-get fold" data-fold="booth">
+          <ul class="rrr-get">
             <li><span class="l-en">Table 1.20 x 0.60 m with cloth, 1 chair (up to 2 seats), shared power strip</span><span class="l-th" lang="th">โต๊ะ 1.20 x 0.60 ม. พร้อมผ้าคลุม เก้าอี้ 1 ตัว (นั่งประจำบูธได้สูงสุด 2 ที่) ปลั๊กไฟแบบรางใช้ร่วมกัน</span><span class="l-ja" lang="ja">テーブル(1.20 x 0.60 m、クロス付き)、椅子1脚(最大2席)、共用電源タップ</span></li>
             <li><span class="l-en">1 Exhibitor badge and 10 two-day Explorer passes for your regulars</span><span class="l-th" lang="th">บัตรผู้ออกบูธ 1 ใบ และบัตร Explorer เข้างานได้ 2 วัน 10 ใบ ไว้ชวนลูกค้าประจำ</span><span class="l-ja" lang="ja">出店者バッジ1枚と、常連のお客様用の2日間Explorerパス10枚</span></li>
             <li><span class="l-en">Pay in full upfront, first paid picks first. Open both days. No random sales (Oripa, gacha, mystery boxes). Factory sealed product is fine</span><span class="l-th" lang="th">ชำระเต็มจำนวนล่วงหน้า ร้านที่ชำระก่อนได้เลือกตำแหน่งก่อน เปิดบูธครบทั้งสองวัน งดการขายแบบสุ่มทุกรูปแบบ เช่น Oripa กาชา กล่องสุ่ม (ซองและกล่องซีลจากผู้ผลิตขายได้ตามปกติ)</span><span class="l-ja" lang="ja">全額前払い、支払い順にブース位置を選択。2日間とも出店必須。オリパ・ガチャ・福袋などのランダム販売は不可(メーカー未開封品は可)</span></li>
@@ -902,11 +1053,13 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
           </div>
         </div>
       </div>
-      <div class="ccc-pics reveal">
+      <div class="ccc-pics">
         <a href="img/ccc/ccc-vendors.jpg" target="_blank" rel="noopener"><img src="img/ccc/ccc-vendors.jpg" alt="Card and Collectibles Carnival: calling all shops, 50 booths" loading="lazy" width="1200" height="1200"></a>
         <a href="img/ccc/ccc-booth.jpg" target="_blank" rel="noopener"><img src="img/ccc/ccc-booth.jpg" alt="Card and Collectibles Carnival booth package" loading="lazy" width="1200" height="1200"></a>
       </div>
-    </div>
+      </div>
+      </div></div>
+    </article>
   </div>
 </section>
 
@@ -1483,15 +1636,32 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     });
   };
 
-  /* ---------- RRR spotlight ---------- */
+  /* ---------- big events: expiry, open/close, galleries, "in N days" ---------- */
   (() => {
-    const sec = $('#rrr'); if (!sec) return;
-    if (todayYMD > '2026-11-01') { sec.hidden = true; const n = $('[data-nav="rrr"]'); if (n) n.remove(); return; }
-    if (todayYMD > '2026-10-15') { const v = $('#ccc-vendor'); if (v) v.hidden = true; }
-    $$('#rrr-thumbs button').forEach(b => b.addEventListener('click', () => {
-      $('#rrr-main').src = b.dataset.src;
-      $$('#rrr-thumbs button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    const sec = $('#big'); if (!sec) return;
+    $$('.bx', sec).forEach(bx => { if (bx.dataset.until && todayYMD > bx.dataset.until) bx.remove(); });
+    if (todayYMD > '2026-10-15') { const v = $('#ccc-vendor'); if (v) v.remove(); }
+    if (!$('.bx', sec)) { sec.hidden = true; const n = $('[data-nav="big"]'); if (n) n.remove(); return; }
+    $$('.bx-tog', sec).forEach(b => b.addEventListener('click', () => {
+      const bx = b.closest('.bx'), full = $('.bx-full', bx), open = !bx.classList.contains('open');
+      bx.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open));
+      if (open) full.removeAttribute('inert'); else full.setAttribute('inert', '');
+      if (!open && bx.getBoundingClientRect().top < 0) bx.scrollIntoView({ block: 'start' });
     }));
+    $$('.gal-thumbs', sec).forEach(g => {
+      const main = $('.gal-main', g.parentElement);
+      $$('button', g).forEach(b => b.addEventListener('click', () => {
+        main.src = b.dataset.src; $$('button', g).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      }));
+    });
+    const when = () => $$('.bx-when', sec).forEach(w => {
+      const n = Math.round((toUTC(w.dataset.at) - toUTC(todayYMD)) / 864e5);
+      w.textContent = n < 0 ? '' : n === 0 ? T('Today', 'วันนี้', '本日') : n === 1 ? T('Tomorrow', 'พรุ่งนี้', '明日') : T(`In ${n} days`, `อีก ${n} วัน`, `あと${n}日`);
+    });
+    setTimeout(when, 0); $$('[data-set-lang]').forEach(x => x.addEventListener('click', when));
+    const go = () => { const id = location.hash.slice(1); const bx = id && document.getElementById(id); if (bx && bx.classList.contains('bx') && !bx.classList.contains('open')) $('.bx-tog', bx).click(); };
+    go(); addEventListener('hashchange', go);
+    if (!$('#rrr-cd')) return;
     const el = $('#rrr-cd');
     const cd = () => {
       let s = Math.max(0, Math.floor((new Date(el.dataset.at) - new Date()) / 1000));
@@ -1524,7 +1694,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     const spy = new IntersectionObserver((es) => es.forEach(e => {
       if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.nav === e.target.dataset.spy));
     }), { rootMargin: '-45% 0px -50% 0px' });
-    [['rrr', 'rrr'], ['events', 'calendar'], ['calendar', 'calendar'], ['games', 'games'], ['new', 'games'], ['life', ''], ['visit', 'visit'], ['community', ''], ['contact', '']].forEach(([id, nav]) => {
+    [['big', 'big'], ['events', 'calendar'], ['calendar', 'calendar'], ['games', 'games'], ['new', 'games'], ['life', ''], ['visit', 'visit'], ['community', ''], ['contact', '']].forEach(([id, nav]) => {
       const el = document.getElementById(id); if (el) { el.dataset.spy = nav; spy.observe(el); }
     });
   }
