@@ -421,7 +421,10 @@
   .tag { display: inline-flex; align-items: center; gap: 6px; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; padding: 6px 10px; border-radius: 999px; background: color-mix(in oklab, var(--c, var(--gold)) 22%, transparent); color: color-mix(in oklab, var(--c, var(--gold)) 50%, var(--cream)); border: 1px solid color-mix(in oklab, var(--c, var(--gold)) 50%, transparent); }
   .m-date { font: 700 13px/1 var(--mono); color: var(--cream); }
   .major h3 { font: 800 clamp(24px, 2.6vw, 34px)/1.05 var(--display); margin: 0; }
-  .major p { margin: 0; color: var(--n400); font-size: 15px; }
+  .major p { margin: 0; color: var(--n400); font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+  .major-side p { -webkit-line-clamp: 2; line-clamp: 2; }
+  .m-more { font: 700 13px/1 var(--mono); color: var(--gold); letter-spacing: .04em; }
+  .major:hover .m-more { text-decoration: underline; text-underline-offset: 4px; }
   .countdown { display: flex; gap: 8px; margin-top: 8px; }
   .countdown div { background: var(--black); border: 1px solid var(--n700); border-radius: var(--r-m); padding: 12px 8px; min-width: 60px; text-align: center; }
   .countdown b { display: block; font: 700 28px/1 var(--mono); color: var(--gold); }
@@ -429,13 +432,15 @@
   .live-pill i { width: 10px; height: 10px; border-radius: 50%; background: #FF4D4D; box-shadow: 0 0 0 0 rgb(255 77 77 / .6); animation: livePulse 1.6s infinite; }
   @keyframes livePulse { 70% { box-shadow: 0 0 0 10px rgb(255 77 77 / 0); } 100% { box-shadow: 0 0 0 0 rgb(255 77 77 / 0); } }
   .countdown small { font: 400 11px/1 var(--mono); color: var(--n400); text-transform: uppercase; letter-spacing: .1em; }
-  .major-side { grid-template-columns: 140px 1fr; }
-  .major-side .m-img { background: var(--black) center / cover no-repeat; }
+  .major-side { grid-template-columns: 140px 1fr; align-items: start; }
+  .major-side .m-img { background: var(--black) center / cover no-repeat; aspect-ratio: 1 / 1; margin: 20px 0 20px 20px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgb(245 239 224 / .08); }
   .major-side .m-body { border-top: 0; border-left: 3px solid var(--c); }
   @media (max-width: 860px) {
     .majors { grid-template-columns: 1fr; }
     .major-feature { grid-row: auto; }
-    .major-side { grid-template-columns: 96px 1fr; }
+    .major-side { grid-template-columns: 124px 1fr; }
+    .major-side .m-img { margin: 16px 0 16px 16px; }
+    .major-side .m-body { padding: 16px; gap: 8px; }
   }
 
   /* ---------- calendar ---------- */
@@ -1596,7 +1601,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <div class="m-body">
         <div class="m-top"><span class="tag" style="--c:${gf.color}">${esc(gf.label)}</span><span class="m-date">${fmt(f.date, { weekday: 'short', day: 'numeric', month: 'short' })}${f.time ? ' ✦ ' + esc(f.time) : ''}${f.fee ? ' ✦ ' + esc(f.fee) : ''}</span></div>
         <h3>${esc(f.title)}</h3>
-        <p>${esc(f.detail || '')}</p>
+        <p>${esc(f.short || f.detail || '')}</p>
+        <span class="m-more">${T('Full details', 'ดูรายละเอียด', '詳細を見る')} →</span>
         <div class="countdown" id="countdown" data-at="${f.date}T${f.time || '10:00'}:00+07:00"></div>
       </div></button>`;
     rest.forEach(e => {
@@ -1605,7 +1611,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div class="m-img" style="background-image:url('${esc(e.img || '')}')"></div>
         <div class="m-body"><div class="m-top"><span class="tag" style="--c:${g.color}">${esc(g.label)}</span></div>
         <span class="m-date">${fmt(e.date, { weekday: 'short', day: 'numeric', month: 'short' })}</span>
-        <h3 style="font-size:24px">${esc(e.title)}</h3><p>${esc(e.detail || '')}</p></div></button>`;
+        <h3 style="font-size:24px">${esc(e.title)}</h3><p>${esc(e.short || e.detail || '')}</p><span class="m-more">${T('Full details', 'ดูรายละเอียด', '詳細を見る')} →</span></div></button>`;
     });
     $('#majors').innerHTML = html;
     tick();

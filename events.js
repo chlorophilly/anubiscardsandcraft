@@ -37,6 +37,7 @@ window.ANUBIS = {
     { date: "2026-11-01", en: "Card and Collectibles Carnival at Samyan Mitrtown, Lorcana Challenge Bangkok at The Mall Bangkae", th: "ไปงาน Card and Collectibles Carnival ที่สามย่านมิตรทาวน์ และ Lorcana Challenge Bangkok ที่เดอะมอลล์บางแค", ja: "サムヤーン・ミットタウンのCard and Collectibles Carnivalと、ザ・モール・バンケーのLorcana Challenge Bangkokに出展" }
   ],
 
+  // short: optional one-line summary for the Big nights cards (the full detail shows in the pop-up).
   // link: optional sign-up URL (https only). LINE links get a "Sign up in the LINE group" button, others "Sign up".
   dated: [
     // Week of Oct 19 to 25 (FB weekly post "THIS WEEK'S LINEUP IS STACKED!", 2026-10-19; Oct 2026 calendar post for closures)
@@ -47,6 +48,7 @@ window.ANUBIS = {
     { date: "2026-10-21", game: "mtg", title: "Commander Night", time: "19:00", fee: "Open 1 pack",
       detail: "Bring your commander. Walk in." },
     { date: "2026-10-21", game: "riftbound", title: "Radiance Pre-Rift POD 5", time: "19:00", fee: "1,200 THB", major: true,
+      short: "The last Pre-Rift pod. Open your kit, build and play 3 rounds.",
       detail: "The final Pre-Rift pod, last chance before Radiance launches. Open your Pre-Rift Kit and build on site, 3 rounds. Prizes: 1 Radiance booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. 32 players. Register in the Riftbound LINE group note.",
       link: "https://line.me/ti/g/m5Phn384nH", img: "img/events/radiance-pre-rift-pod5.jpg" },
     { date: "2026-10-22", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
@@ -56,11 +58,13 @@ window.ANUBIS = {
     { date: "2026-10-23", game: "riftbound", title: "Casual Best-of-1", time: "20:00", fee: "250 THB",
       detail: "Practice night, 4 rounds, 24 players. No Nexus Night promos. Sign up on Playriftbound with your Riot ID (opens Mon Oct 19, 12:00)." },
     { date: "2026-10-25", game: "lorcana", title: "Hyperia City Prerelease Party", time: "10:00", fee: "1,600 THB", major: true,
+      short: "Lorcana Set 14 Prerelease at Siam@Siam Design Hotel. Morning and afternoon pods.",
       detail: "Not at the shop: Siam@Siam Design Hotel Bangkok (the shop is closed that day). Two slots, 10:00 and 14:30. Open your Prerelease Kit and build on site, Best of 1, Swiss 3 rounds of 30 minutes. Prizes: 2 booster packs for 3 wins, 1 pack for 2 wins, a random promo card for 0 to 1 wins. Registered? Find your pod and player number at anubiscardsandcraft.com/hyperiacity-prerelease-party. Afternoon sign ups close Fri 23 Oct, 23:59.",
       link: "https://docs.google.com/forms/d/e/1FAIpQLSdinYY7wejSBFd0KqGRtEbH9HsWoo8wtqTzOyzNzyFJvKLtYw/viewform", img: "img/events/hyperia-city-prerelease-party.jpg" },
 
     // Radiance Rift Rumble at BetterTrade 2026 (FB posts 2026-10-02 and "TOP 8 PRIZE PICK POOL", 2026-10-10). Also has its own spotlight section in index.html.
     { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "10:00", fee: "490 THB", major: true,
+      short: "Our biggest Riftbound tournament, at BetterTrade 2026, Samyan Mitrtown Hall.",
       detail: "Our biggest Riftbound tournament, at BetterTrade 2026 by efin. Not at the shop: The Mitr Ting Room, 5th floor, Samyan Mitrtown Hall. Check in 10:00 to 10:30. Standard Constructed, 7 rounds of Best of 1 (10:30 to 16:40), then Top 8 Best of 3 single elimination (16:40 to 19:40). 100 seats. Every player gets 1 Radiance pack, 1 random pack (Origins, Spiritforged or Unleashed), 1 Radiance Nexus Night Promo Pack and 2 free Explorer Tickets from efin. Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift (claimed at Anubis after December 4), Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also gets a Radiance Vault, playmat and sleeves. 2nd: playmat and sleeves. 3rd to 4th: playmat. 9th to 16th: 2 Radiance packs. 17th to 32nd: 1 Spiritforged pack (9th to 32nd may be adjusted by player count). Lucky Draws all day. Sign up at efin.finance.",
       link: "https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day", img: "img/events/radiance-rift-rumble.jpg" }
   ]
