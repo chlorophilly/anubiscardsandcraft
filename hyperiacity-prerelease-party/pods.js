@@ -512,6 +512,14 @@ window.HYPERIA_PODS = {
   [
    "A062",
    "JBW"
+  ],
+  [
+   "A063",
+   "Joemama"
+  ],
+  [
+   "A064",
+   "Chongz"
   ]
  ]
 };
