@@ -32,7 +32,7 @@ window.ANUBIS = {
 
   // closed: days the shop itself is shut (off-site events). Shown in the calendar, the status pill and a notice bar.
   closed: [
-    { date: "2026-10-25", en: "Hyperia City Prerelease Party at Siam@Siam Design Hotel", th: "ไปจัด Hyperia City Prerelease Party ที่ Siam@Siam Design Hotel", ja: "Siam@Siam Design HotelでHyperia City Prerelease Partyを開催" },
+    { date: "2026-10-25", en: "Siam@Siam Design Hotel for the Lorcana Prerelease", th: "งาน Lorcana Prerelease ที่ Siam@Siam Design Hotel", ja: "Siam@Siam Design Hotel(ロルカナのプレリリース)" },
     { date: "2026-10-31", en: "Radiance Rift Rumble at Samyan Mitrtown, Lorcana Challenge Bangkok at The Mall Bangkae", th: "ไปงาน Radiance Rift Rumble ที่สามย่านมิตรทาวน์ และ Lorcana Challenge Bangkok ที่เดอะมอลล์บางแค", ja: "サムヤーン・ミットタウンのRadiance Rift Rumbleと、ザ・モール・バンケーのLorcana Challenge Bangkokに出展" },
     { date: "2026-11-01", en: "Card and Collectibles Carnival at Samyan Mitrtown, Lorcana Challenge Bangkok at The Mall Bangkae", th: "ไปงาน Card and Collectibles Carnival ที่สามย่านมิตรทาวน์ และ Lorcana Challenge Bangkok ที่เดอะมอลล์บางแค", ja: "サムヤーン・ミットタウンのCard and Collectibles Carnivalと、ザ・モール・バンケーのLorcana Challenge Bangkokに出展" }
   ],
