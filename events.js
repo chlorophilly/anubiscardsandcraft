@@ -38,6 +38,7 @@ window.ANUBIS = {
   ],
 
   // short: optional one-line summary for the Big nights cards (the full detail shows in the pop-up).
+  // linkLabel: optional { en, th, ja } text for the link button (defaults to Sign up).
   // link: optional sign-up URL (https only). LINE links get a "Sign up in the LINE group" button, others "Sign up".
   dated: [
     // Week of Oct 19 to 25 (FB weekly post "THIS WEEK'S LINEUP IS STACKED!", 2026-10-19; Oct 2026 calendar post for closures)
@@ -59,8 +60,8 @@ window.ANUBIS = {
       detail: "Practice night, 4 rounds, 24 players. No Nexus Night promos. Sign up on Playriftbound with your Riot ID (opens Mon Oct 19, 12:00)." },
     { date: "2026-10-25", game: "lorcana", title: "Hyperia City Prerelease Party", time: "10:00", fee: "1,600 THB", major: true,
       short: "Lorcana Set 14 Prerelease at Siam@Siam Design Hotel. Morning and afternoon pods.",
-      detail: "Not at the shop: Siam@Siam Design Hotel Bangkok (the shop is closed that day). Two slots, 10:00 and 14:30. Open your Prerelease Kit and build on site, Best of 1, Swiss 3 rounds of 30 minutes. Prizes: 2 booster packs for 3 wins, 1 pack for 2 wins, a random promo card for 0 to 1 wins. Registered? Find your pod and player number at anubiscardsandcraft.com/hyperiacity-prerelease-party. Afternoon sign ups close Fri 23 Oct, 23:59.",
-      link: "https://docs.google.com/forms/d/e/1FAIpQLSdinYY7wejSBFd0KqGRtEbH9HsWoo8wtqTzOyzNzyFJvKLtYw/viewform", img: "img/events/hyperia-city-prerelease-party.jpg" },
+      detail: "Not at the shop: Siam@Siam Design Hotel Bangkok (the shop is closed that day). Two slots, 10:00 and 14:30. Open your Prerelease Kit and build on site, Best of 1, Swiss 3 rounds of 30 minutes. Prizes: 2 booster packs for 3 wins, 1 pack for 2 wins, a random promo card for 0 to 1 wins. Registration is closed. Find your pod, player number and check in time on the pod finder page.",
+      link: "https://anubiscardsandcraft.com/hyperiacity-prerelease-party/", linkLabel: { en: "Find your pod", th: "เช็กรอบของคุณ", ja: "自分の部を確認" }, img: "img/events/hyperia-city-prerelease-party.jpg" },
 
     // Radiance Rift Rumble at BetterTrade 2026 (FB posts 2026-10-02 and "TOP 8 PRIZE PICK POOL", 2026-10-10). Also has its own spotlight section in index.html.
     { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "10:00", fee: "490 THB", major: true,
