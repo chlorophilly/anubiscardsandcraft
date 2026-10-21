@@ -1,6 +1,6 @@
 /*
   Hyperia City Prerelease Party: Main Sealed pod list (public display names only).
-  Update this file when the pod list changes (new afternoon registrations, moves).
+  Final list (21 Oct 2026, registration closed). Only change on Philly's say.
   Numbers: M001.. morning, A001.. afternoon, in order of registration time. Never renumber existing players.
   Never add real names, emails or phone numbers here: this repo is public.
 */
