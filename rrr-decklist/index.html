@@ -297,10 +297,10 @@ function renderEditor() {
       ${sub ? `<p class="hint" style="margin:8px 0 0">${sub}</p>` : ""}
     </details>`;
   e.innerHTML = `
-    <details class="sec" open><summary><span>Legend · Chosen Champion</span><span class="n" id="n_lc"></span></summary>
+    <details class="sec" open><summary><span>Legend · Chosen Champion (Game 1)</span><span class="n" id="n_lc"></span></summary>
       <div class="fields" style="margin-top:10px">
         <div><label for="legend">Legend</label><input id="legend" value="${esc(deck.legend)}"></div>
-        <div><label for="champion">Chosen Champion</label><input id="champion" list="mainNames" value="${esc(deck.champion)}"></div>
+        <div><label for="champion">Chosen Champion (เกมแรก · Game 1)</label><input id="champion" list="mainNames" value="${esc(deck.champion)}"></div>
       </div>
       <datalist id="mainNames">${deck.main.map(r => `<option value="${esc(r.n)}">`).join("")}</datalist>
     </details>
@@ -414,7 +414,7 @@ function draw() {
   const lx = L, lw = 350, rx = 404, rw = R - 404; let y = 246;
   const rowH = 21;
   y = section(lx, y, lw, "LEGEND", "1 ใบ", null, [{ q: 1, n: deck.legend }], 1, rowH, 1);
-  y = section(lx, y, lw, "CHOSEN CHAMPION", "1 ใบ", "นับรวมใน Main Deck 40 ใบด้วย / Also counts toward the 40 card Main Deck", [{ q: 1, n: deck.champion }], 1, rowH, 1);
+  y = section(lx, y, lw, "CHOSEN CHAMPION (GAME 1)", "1 ใบ", "ใบที่ใช้เริ่มเกมแรก นับรวมใน Main Deck 40 ใบด้วย / Your Game 1 champion, counts toward the 40", [{ q: 1, n: deck.champion }], 1, rowH, 1);
   y = section(lx, y, lw, "BATTLEFIELDS", "3 ใบ ชื่อไม่ซ้ำกัน", null, deck.battlefields.map(n => ({ q: 1, n })), 3, rowH, 1);
   const rl = deck.runes.filter(r => r.n);
   y = section(lx, y, lw, "RUNES", "12 ใบ", null, rl, Math.max(4, rl.length), rl.length > 4 ? rowH * 4 / rl.length : rowH, 0, ["Runes total", sum(rl), 12]);
