@@ -138,6 +138,7 @@ Sideboard:
           <button class="ghost" id="clear" type="button">ล้างทั้งหมด · Clear</button>
         </div>
         <p class="msg" id="msg" role="status"></p>
+        <p class="hint" id="autosave" style="margin:6px 0 0">บันทึกอัตโนมัติในเครื่องนี้ รีเฟรชหรือปิดหน้าไปแล้วกลับมา ลิสต์ก็ยังอยู่ · Saved automatically on this device, so a refresh won't lose your list.</p>
       </section>
 
       <section class="card" aria-labelledby="s2">
@@ -481,7 +482,7 @@ function doRefresh() {
 
 /* ---------- storage (per device convenience only) ---------- */
 const PF = ["first", "last", "nick", "pid", "dname"];
-function save() { try { localStorage.setItem(KEY, JSON.stringify({ deck, paste: $("paste").value, p: Object.fromEntries(PF.map(k => [k, $(k).value])) })); } catch (e) {} }
+function save() { try { localStorage.setItem(KEY, JSON.stringify({ deck, paste: $("paste").value, p: Object.fromEntries(PF.map(k => [k, $(k).value])) })); } catch (e) { const a = $("autosave"); if (a) a.textContent = "เครื่องนี้บันทึกอัตโนมัติไม่ได้ (เช่น โหมดไม่ระบุตัวตน) กด Keep your list as text เก็บไว้ก่อนนะครับ · This browser can't autosave (private mode?). Copy your list as text to keep it."; } }
 function load() { try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (!s) return; if (s.deck) deck = Object.assign(empty(), s.deck); if (s.paste) $("paste").value = s.paste; PF.forEach(k => { if (s.p && s.p[k]) $(k).value = s.p[k]; }); } catch (e) {} }
 
 /* ---------- actions ---------- */
@@ -497,6 +498,8 @@ $("clear").addEventListener("click", () => {
   deck = empty(); $("paste").value = ""; PF.forEach(k => $(k).value = ""); $("msg").textContent = "ล้างแล้ว · Cleared."; renderEditor(); refresh();
 });
 PF.forEach(k => $(k).addEventListener("input", refresh));
+$("paste").addEventListener("input", () => save());
+window.addEventListener("pagehide", save);
 $("copyTxt").addEventListener("click", async () => {
   const t = $("exportTxt");
   try { await navigator.clipboard.writeText(t.value); $("msg3").textContent = "คัดลอกแล้ว · Copied."; }
