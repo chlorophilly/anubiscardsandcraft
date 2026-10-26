@@ -75,6 +75,7 @@ details.sec summary .n{font-weight:700;font-size:13px;color:var(--muted);font-va
 .save b{font-weight:800}
 .how{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px}
 .how li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
+.how a{color:var(--violet);font-weight:800}
 .how li::before{content:"✓";color:var(--ok);font-weight:900}
 .warnbox{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--badbg);color:var(--bad);font-weight:700;font-size:14px}
 footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
@@ -89,7 +90,6 @@ footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
   #printImg{display:block!important;width:210mm;height:297mm}
 }
 </style>
-
 
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
@@ -109,7 +109,7 @@ footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
     <div class="stack">
       <section class="card" aria-labelledby="s1">
         <div class="step"><i>1</i><h2 id="s1">วาง Deck list · Paste your list</h2></div>
-        <p class="hint">จัดเด็คใน Piltover Archive แล้วกด Export Deck ตามด้วย Copy decklist มาวางที่นี่ได้เลย ใช้เว็บจัดเด็คอื่นก็ได้ หรือพิมพ์เองบรรทัดละ 1 การ์ด จำนวนนำหน้าชื่อ · In Piltover Archive tap Export Deck, then Copy decklist, and paste it here. Other deck builders work too, or type one card per line, count first.</p>
+        <p class="hint">จัดเด็คใน Piltover Archive แล้วกด Export Deck ตามด้วย Copy decklist มาวางที่นี่ได้เลย ใช้เว็บจัดเด็คอื่นก็ได้ หรือพิมพ์เองบรรทัดละ 1 การ์ด จำนวนนำหน้าชื่อ <b>ชื่อการ์ดต้องเต็ม รวมชื่อเวอร์ชัน เช่น Mel, Defiant Soul ไม่ใช่แค่ Mel</b> · In Piltover Archive tap Export Deck, then Copy decklist, and paste it here. Other deck builders work too, or type one card per line, count first. <b>Use full card names with the version: Mel, Defiant Soul, not just Mel.</b></p>
         <textarea id="paste" spellcheck="false" placeholder="ตัวอย่าง · Example (Piltover Archive: Export Deck, Copy decklist)
 
 Legend:
@@ -152,7 +152,7 @@ Sideboard:
 
       <section class="card" aria-labelledby="s3">
         <div class="step"><i>3</i><h2 id="s3">เช็กและแก้ · Check and fix</h2></div>
-        <p class="hint">แก้จำนวนหรือชื่อได้ทุกช่อง ใบส่งด้านข้างจะอัปเดตทันที · Edit anything here, the sheet updates as you type.</p>
+        <p class="hint">แก้จำนวนหรือชื่อได้ทุกช่อง ใบส่งจะอัปเดตทันที เช็กว่าชื่อการ์ดเต็มทุกใบ รวมชื่อเวอร์ชัน (Mel, Defiant Soul ไม่ใช่แค่ Mel) · Edit anything, the sheet updates as you type. Check every name is complete, version included.</p>
         <div class="chips" id="chips"></div>
         <div class="issues" id="issues" hidden></div>
         <div id="editor"></div>
@@ -171,7 +171,7 @@ Sideboard:
       <ul class="how">
         <li><span><b>ปริ้นท์ใส่กระดาษ A4</b> แล้วนำมาส่งตอนเช็กอิน 9:45 ถึง 10:30 น. · Print on A4 and hand it in at check in, 9:45 to 10:30.</span></li>
         <li><span><b>หรือส่งรูปใบส่งทาง Inbox เพจ Anubis Cards and Craft</b> ก่อนวันแข่ง · Or send the image to the Anubis Cards and Craft Page inbox before event day.</span></li>
-        <li><span>ไม่มีปริ้นเตอร์? มีใบเปล่าให้เขียนที่โต๊ะเช็กอิน · No printer? Blank sheets are at the check in desk.</span></li>
+        <li><span>อยากเขียนมือ? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">โหลดใบเปล่า (PDF)</a> ไม่มีปริ้นเตอร์ก็มีใบเปล่าให้เขียนที่โต๊ะเช็กอิน · Prefer handwriting? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">Blank sheet PDF</a>. No printer? Blank sheets are at the check in desk.</span></li>
       </ul>
       <div class="warnbox">ส่งไม่ทันก่อนเริ่มรอบแรก อาจโดนบทลงโทษ สูงสุดถึง Game Loss ในรอบแรก<br><span style="font-weight:600">No list before Round 1 may mean a penalty, up to a Round 1 game loss.</span></div>
     </aside>
@@ -270,6 +270,7 @@ function checks() {
   if (!deck.legend) issues.push("ยังไม่มี Legend · Add your Legend.");
   if (!deck.champion) issues.push("ยังไม่ได้ระบุ Chosen Champion · Name your Chosen Champion.");
   if (deck.champion && !deck.main.some(r => same(r.n, deck.champion) && r.q > 0)) issues.push("Chosen Champion ต้องอยู่ใน Main Deck ด้วย · Your Chosen Champion must also be in the Main Deck.");
+  for (const [lab, v] of [["Legend", deck.legend], ["Chosen Champion", deck.champion]]) if (v && !/[,\-–]/.test(v)) issues.push(`${lab} "${v}" ชื่อยังไม่เต็ม ใส่ชื่อเวอร์ชันด้วย เช่น Mel, Defiant Soul · "${v}" looks incomplete, add the version (e.g. Mel, Defiant Soul).`);
   if (main !== 40) issues.push(`Main Deck มี ${main} ใบ ต้องพอดี 40 ใบ · Main Deck has ${main}, it must be exactly 40.`);
   if (bfs.length !== 3) issues.push(`Battlefield มี ${bfs.length} ใบ ต้องมี 3 ใบ · You need 3 battlefields.`);
   else if (uniq !== 3) issues.push("Battlefield ทั้ง 3 ใบต้องชื่อไม่ซ้ำกัน · The 3 battlefields need different names.");
@@ -406,8 +407,11 @@ function draw() {
   field("ชื่อ / First name", P.first, fx(0), 136, colW); field("นามสกุล / Last name", P.last, fx(1), 136, colW); field("ชื่อเล่น / Nickname", P.nick, fx(2), 136, colW);
   field("Player ID (ถ้ามี / if any)", P.pid, fx(0), 174, colW); field("ชื่อเด็ค (ไม่บังคับ) / Deck name (optional)", P.dname, fx(1), 174, colW * 2);
 
+  // full name callout
+  ctx.fillStyle = "#fde8f1"; rr(L, 212, R - L, 24, 7); ctx.fill();
+  text("เขียนชื่อการ์ดให้เต็ม รวมชื่อเวอร์ชัน เช่น Mel, Defiant Soul ไม่ใช่แค่ Mel · Full card names with the version: Mel, Defiant Soul, not just Mel", L + 10, 228.5, F(800, 10.5), C.warn, "left", R - L - 20, 8);
   // left column
-  const lx = L, lw = 350, rx = 404, rw = R - 404; let y = 218;
+  const lx = L, lw = 350, rx = 404, rw = R - 404; let y = 246;
   const rowH = 21;
   y = section(lx, y, lw, "LEGEND", "1 ใบ", null, [{ q: 1, n: deck.legend }], 1, rowH, 1);
   y = section(lx, y, lw, "CHOSEN CHAMPION", "1 ใบ", "นับรวมใน Main Deck 40 ใบด้วย / Also counts toward the 40 card Main Deck", [{ q: 1, n: deck.champion }], 1, rowH, 1);
@@ -421,7 +425,7 @@ function draw() {
   // right column
   const ml = deck.main.filter(r => r.n);
   const nMain = Math.max(24, ml.length), mh = Math.min(rowH, rowH * 24 / nMain);
-  let ry = section(rx, 218, rw, "MAIN DECK", "40 ใบพอดี", "เขียนให้ครบ 40 ใบ รวม Chosen Champion ด้วย · List all 40, Chosen Champion included", ml, nMain, mh, 0, ["Main Deck total", sum(ml), 40]);
+  let ry = section(rx, 246, rw, "MAIN DECK", "40 ใบพอดี", "เขียนให้ครบ 40 ใบ รวม Chosen Champion ด้วย · List all 40, Chosen Champion included", ml, nMain, mh, 0, ["Main Deck total", sum(ml), 40]);
   // judge box
   ry += 2; const jh = Math.max(84, leftEnd - 10 - ry);
   ctx.setLineDash([5, 4]); ctx.strokeStyle = "#a57fc0"; ctx.lineWidth = 1.6; rr(rx, ry, rw, jh, 10); ctx.stroke(); ctx.setLineDash([]);
