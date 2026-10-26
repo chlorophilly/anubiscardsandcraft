@@ -164,13 +164,12 @@ Sideboard:
       <img id="sheetImg" class="sheet" alt="Your filled RRR deck registration sheet (A4)">
       <div class="row" id="actions">
         <button class="primary" id="printBtn" type="button" hidden>ปริ้นท์ · Print</button>
-        <button class="ghost" id="copyBtn" type="button">คัดลอกรูป · Copy image</button>
       </div>
       <p class="msg" id="msg2" role="status"></p>
-      <div class="save" id="saveHint"><b>บันทึกรูปใบส่ง:</b> มือถือกดค้างที่รูป คอมคลิกขวา แล้วเลือกบันทึกรูป · <b>Save the sheet:</b> long press the image on a phone, or right click it on a computer.</div>
+      <div class="save" id="saveHint"><b>จะไปปริ้นท์ที่อื่น?</b> บันทึกรูปใบส่งไว้ก่อน มือถือกดค้างที่รูป คอมคลิกขวาแล้วเลือกบันทึกรูป · <b>Printing somewhere else?</b> Save the image first: long press it on a phone, or right click it on a computer.</div>
       <ul class="how">
-        <li><span><b>ปริ้นท์ใส่กระดาษ A4</b> แล้วนำมาส่งตอนเช็กอิน 9:45 ถึง 10:30 น. · Print on A4 and hand it in at check in, 9:45 to 10:30.</span></li>
-        <li><span><b>หรือส่งรูปใบส่งทาง Inbox เพจ Anubis Cards and Craft</b> ก่อนวันแข่ง · Or send the image to the Anubis Cards and Craft Page inbox before event day.</span></li>
+        <li><span><b>ปริ้นท์ใส่กระดาษ A4 แล้วนำมาส่งตอนเช็กอิน 9:45 ถึง 10:30 น.</b> รับ Deck list ที่จุดลงทะเบียนเท่านั้น · <b>Print on A4 and hand it in at check in, 9:45 to 10:30.</b> Deck lists are accepted at registration only.</span></li>
+        
         <li><span>อยากเขียนมือ? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">โหลดใบเปล่า (PDF)</a> ไม่มีปริ้นเตอร์ก็มีใบเปล่าให้เขียนที่โต๊ะเช็กอิน · Prefer handwriting? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">Blank sheet PDF</a>. No printer? Blank sheets are at the check in desk.</span></li>
       </ul>
       <div class="warnbox">ส่งไม่ทันก่อนเริ่มรอบแรก อาจโดนบทลงโทษ สูงสุดถึง Game Loss ในรอบแรก<br><span style="font-weight:600">No list before Round 1 may mean a penalty, up to a Round 1 game loss.</span></div>
@@ -476,13 +475,6 @@ $("clear").addEventListener("click", () => {
   deck = empty(); $("paste").value = ""; PF.forEach(k => $(k).value = ""); $("msg").textContent = "ล้างแล้ว · Cleared."; renderEditor(); refresh();
 });
 PF.forEach(k => $(k).addEventListener("input", refresh));
-$("copyBtn").addEventListener("click", async () => {
-  try {
-    if (!lastBlob || !window.ClipboardItem) throw 0;
-    await navigator.clipboard.write([new ClipboardItem({ "image/png": lastBlob })]);
-    $("msg2").textContent = "คัดลอกรูปแล้ว วางในแชทได้เลย · Image copied, paste it into a chat.";
-  } catch (e) { $("msg2").textContent = "เครื่องนี้คัดลอกรูปไม่ได้ กดค้างหรือคลิกขวาที่รูปแล้วบันทึกแทนนะครับ · Copy isn't available here, long press or right click the image to save it."; }
-});
 const hosted = location.protocol === "file:" || /anubiscardsandcraft\.com$/i.test(location.hostname);
 if (hosted) { $("printBtn").hidden = false; $("printBtn").addEventListener("click", () => window.print()); }
 
