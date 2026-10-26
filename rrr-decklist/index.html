@@ -77,6 +77,8 @@ details.sec summary .n{font-weight:700;font-size:13px;color:var(--muted);font-va
 .how li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
 .how a{color:var(--violet);font-weight:800}
 .how li::before{content:"✓";color:var(--ok);font-weight:900}
+.exp{margin-top:14px;padding:12px 14px;border-radius:14px;border:2px solid var(--line)}
+.exp summary{cursor:pointer;font-weight:800;color:var(--navy)}
 .warnbox{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--badbg);color:var(--bad);font-weight:700;font-size:14px}
 footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
 #printImg{display:none}
@@ -172,6 +174,13 @@ Sideboard:
         
         <li><span>อยากเขียนมือ? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">โหลดใบเปล่า (PDF)</a> ไม่มีปริ้นเตอร์ก็มีใบเปล่าให้เขียนที่โต๊ะเช็กอิน · Prefer handwriting? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">Blank sheet PDF</a>. No printer? Blank sheets are at the check in desk.</span></li>
       </ul>
+      <details class="exp" id="expBox">
+        <summary>เก็บลิสต์ไว้แก้ทีหลัง · Keep your list as text</summary>
+        <p class="hint" style="margin:8px 0">คัดลอกเก็บไว้ในโน้ตหรือแชทตัวเอง อยากแก้เมื่อไหร่ก็วางกลับในข้อ 1 ได้เลย · Copy it to your notes. To change your list later, paste it back into step 1.</p>
+        <textarea id="exportTxt" readonly spellcheck="false" style="min-height:180px" aria-label="Your deck list as text"></textarea>
+        <div class="row"><button class="primary small" id="copyTxt" type="button">คัดลอกลิสต์ · Copy list</button></div>
+        <p class="msg" id="msg3" role="status"></p>
+      </details>
       <div class="warnbox">ส่งไม่ทันก่อนเริ่มรอบแรก อาจโดนบทลงโทษ สูงสุดถึง Game Loss ในรอบแรก<br><span style="font-weight:600">No list before Round 1 may mean a penalty, up to a Round 1 game loss.</span></div>
     </aside>
   </div>
@@ -244,9 +253,8 @@ function parse(text) {
   if (bf.length > 3) msgs.push("Battlefield เกิน 3 ใบ เก็บไว้แค่ 3 ใบแรก · More than 3 battlefields, kept the first 3.");
   if (!sawHeader) msgs.push("ไม่เจอหัวข้อ (Legend, MainDeck, Runes...) ใส่ทุกใบไว้ใน Main Deck ก่อน แก้ในข้อ 3 ได้ · No section headers found, so cards went to the Main Deck. Fix them in step 3.");
   if (d.champion) {
-    const inMain = d.main.some(r => same(r.n, d.champion));
     const tot = sum(d.main);
-    if (!inMain && tot === 39) { d.main.unshift({ q: 1, n: d.champion }); msgs.push("เพิ่ม Chosen Champion เข้า Main Deck ให้แล้ว (ครบ 40) · Added your Chosen Champion to the Main Deck (now 40)."); }
+    if (tot === 39) { const f = d.main.find(r => same(r.n, d.champion)); if (f) f.q += 1; else d.main.unshift({ q: 1, n: d.champion }); msgs.push("เพิ่ม Chosen Champion เข้า Main Deck ให้แล้ว (ครบ 40) · Added your Chosen Champion to the Main Deck (now 40)."); }
   }
   return { d, msgs };
 }
@@ -442,6 +450,19 @@ function draw() {
   text("Deck list เห็นเฉพาะ Judge · Deck lists are seen by judges only · Radiance Rift Rumble · BetterTrade 2026 New World New Playbook", L, ty + 51, F(500, 9), C.mute, "left", R - L, 7);
 }
 
+function exportText() {
+  const L = [];
+  const lines = list => list.filter(r => r.n && r.q > 0).map(r => `${r.q} ${r.n.trim()}`);
+  const main = deck.main.map(r => ({ q: +r.q || 0, n: r.n }));
+  if (deck.champion) { const f = main.find(r => same(r.n, deck.champion)); if (f) f.q -= 1; }
+  L.push("Legend:", deck.legend ? `1 ${deck.legend.trim()}` : "", "");
+  L.push("Champion:", deck.champion ? `1 ${deck.champion.trim()}` : "", "");
+  L.push("MainDeck:", ...lines(main), "");
+  L.push("Battlefields:", ...deck.battlefields.filter(Boolean).map(b => `1 ${b.trim()}`), "");
+  L.push("Runes:", ...lines(deck.runes), "");
+  L.push("Sideboard:", ...lines(deck.side));
+  return L.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+}
 let url = null, lastBlob = null, timer = null;
 function refresh() { clearTimeout(timer); timer = setTimeout(doRefresh, 120); }
 function doRefresh() {
@@ -454,6 +475,7 @@ function doRefresh() {
     if (!b) return; lastBlob = b;
     const u = URL.createObjectURL(b); $("sheetImg").src = u; $("printImg").src = u; if (url) setTimeout(() => URL.revokeObjectURL(url), 2000); url = u;
   }, "image/png");
+  $("exportTxt").value = exportText();
   save();
 }
 
@@ -475,6 +497,11 @@ $("clear").addEventListener("click", () => {
   deck = empty(); $("paste").value = ""; PF.forEach(k => $(k).value = ""); $("msg").textContent = "ล้างแล้ว · Cleared."; renderEditor(); refresh();
 });
 PF.forEach(k => $(k).addEventListener("input", refresh));
+$("copyTxt").addEventListener("click", async () => {
+  const t = $("exportTxt");
+  try { await navigator.clipboard.writeText(t.value); $("msg3").textContent = "คัดลอกแล้ว · Copied."; }
+  catch (e) { t.focus(); t.select(); $("msg3").textContent = "เลือกข้อความไว้ให้แล้ว กดคัดลอกเองได้เลย · Text selected, copy it with your device."; }
+});
 const hosted = location.protocol === "file:" || /anubiscardsandcraft\.com$/i.test(location.hostname);
 if (hosted) { $("printBtn").hidden = false; $("printBtn").addEventListener("click", () => window.print()); }
 
