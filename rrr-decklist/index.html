@@ -79,6 +79,11 @@ details.sec summary .n{font-weight:700;font-size:13px;color:var(--muted);font-va
 .how li::before{content:"✓";color:var(--ok);font-weight:900}
 .exp{margin-top:14px;padding:12px 14px;border-radius:14px;border:2px solid var(--line)}
 .exp summary{cursor:pointer;font-weight:800;color:var(--navy)}
+.blank{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin:0 0 20px;padding:14px 18px;border-radius:18px;background:var(--paper);border:2px dashed #a57fc0;color:var(--navy);font-size:14.5px}
+.blank > div{min-width:0;flex:1 1 320px}
+.btn{display:inline-flex;align-items:center;border-radius:999px;padding:10px 20px;font-weight:700;background:var(--panel);color:var(--navy);text-decoration:none;border:2px solid #a57fc0;white-space:nowrap}
+.btn:hover{background:#ecebf6}
+.btn:focus-visible{outline:3px solid #f8ad2a;outline-offset:2px}
 .warnbox{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--badbg);color:var(--bad);font-weight:700;font-size:14px}
 footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
 #printImg{display:none}
@@ -107,6 +112,10 @@ footer{margin-top:28px;font-size:12.5px;color:var(--muted);text-align:center}
     <div class="meta"><b>Radiance Rift Rumble</b><br>เสาร์ 31 ต.ค. 2569 · Sat 31 Oct 2026<br>The Mitr Ting Room, Samyan Mitrtown Hall ชั้น 5</div>
   </header>
 
+  <div class="blank">
+    <div><b>อยากเขียนมือ?</b> โหลดใบเปล่า A4 ไปปริ้นท์แล้วเขียนเองได้เลย · <b>Prefer handwriting?</b> Print a blank A4 sheet and fill it in by hand.</div>
+    <a class="btn" href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">ปริ้นท์ใบเปล่า · Blank sheet (PDF)</a>
+  </div>
   <div class="grid">
     <div class="stack">
       <section class="card" aria-labelledby="s1">
@@ -167,13 +176,14 @@ Sideboard:
       <img id="sheetImg" class="sheet" alt="Your filled RRR deck registration sheet (A4)">
       <div class="row" id="actions">
         <button class="primary" id="printBtn" type="button" hidden>ปริ้นท์ · Print</button>
+        <a class="btn" href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">ใบเปล่าเขียนมือ · Blank sheet</a>
       </div>
       <p class="msg" id="msg2" role="status"></p>
       <div class="save" id="saveHint"><b>จะไปปริ้นท์ที่อื่น?</b> บันทึกรูปใบส่งไว้ก่อน มือถือกดค้างที่รูป คอมคลิกขวาแล้วเลือกบันทึกรูป · <b>Printing somewhere else?</b> Save the image first: long press it on a phone, or right click it on a computer.</div>
       <ul class="how">
         <li><span><b>ปริ้นท์ใส่กระดาษ A4 แล้วนำมาส่งตอนเช็กอิน 9:45 ถึง 10:30 น.</b> รับ Deck list ที่จุดลงทะเบียนเท่านั้น · <b>Print on A4 and hand it in at check in, 9:45 to 10:30.</b> Deck lists are accepted at registration only.</span></li>
         
-        <li><span>อยากเขียนมือ? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">โหลดใบเปล่า (PDF)</a> ไม่มีปริ้นเตอร์ก็มีใบเปล่าให้เขียนที่โต๊ะเช็กอิน · Prefer handwriting? <a href="https://anubiscardsandcraft.com/rrr-decklist/RRR-Deck-List-Blank.pdf" target="_blank" rel="noopener">Blank sheet PDF</a>. No printer? Blank sheets are at the check in desk.</span></li>
+        <li><span>ไม่มีปริ้นเตอร์? มีใบเปล่าให้เขียนที่จุดลงทะเบียน · No printer? Blank sheets are at registration.</span></li>
       </ul>
       <details class="exp" id="expBox">
         <summary>เก็บลิสต์ไว้แก้ทีหลัง · Keep your list as text</summary>
