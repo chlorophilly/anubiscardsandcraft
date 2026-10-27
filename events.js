@@ -79,11 +79,13 @@ window.ANUBIS = {
       detail: "Chaos Draft: open 3 packs and build at the table. Everyone gets a Leyline of Anticipation promo. Prizes: foil promo packs for the top 2, non-foil promo packs further down the Top 8. Minimum 8 players. Registration opens Mon 26 Oct, 18:00 in the MTG LINE group.",
       link: "https://line.me/ti/g/tN7vFE79g3", img: "img/events/mtg-halloween-draft.jpg" },
     { date: "2026-10-28", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
-      detail: "Standard Constructed, 4 rounds. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for the top half. Sign up on Playriftbound with your Riot ID." },
+      detail: "Standard Constructed, 4 rounds. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for the top half. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117506500060999829" },
     { date: "2026-10-29", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
       detail: "Core Constructed (Set 9 to 13) or Coconut. Every player takes home a pack. Learn to Play at 19:00. Walk in." },
-    { date: "2026-10-30", game: "riftbound", title: "Casual Best-of-1", time: "20:00", fee: "250 THB",
-      detail: "Casual practice night: Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 1 booster for 1st to 3rd. No Nexus Night promo this round. Sign up on Playriftbound with your Riot ID." },
+    { date: "2026-10-30", game: "riftbound", title: "Casual Night 1v1 (Bo1)", time: "20:00", fee: "250 THB",
+      detail: "Casual night for newer players and for testing new decks: Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 1 booster for 1st to 3rd. No Nexus Night promo pack. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117506507442342618" },
 
     // Radiance Rift Rumble at BetterTrade 2026 (FB posts 2026-10-02 and "TOP 8 PRIZE PICK POOL", 2026-10-10). Also has its own spotlight section in index.html.
     { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "09:45", fee: "490 THB", major: true,
