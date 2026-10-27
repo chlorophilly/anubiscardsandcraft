@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-10-23",
+  updated: "2026-10-27",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -67,10 +67,28 @@ window.ANUBIS = {
       detail: "Not at the shop: Siam@Siam Design Hotel Bangkok (the shop is closed that day). Two slots, 10:00 and 14:30. Open your Prerelease Kit and build on site, Best of 1, Swiss 3 rounds of 30 minutes. Prizes: 2 booster packs for 3 wins, 1 pack for 2 wins, a random promo card for 0 to 1 wins. Registration is closed. Find your pod, player number and check in time on the pod finder page.",
       link: "https://anubiscardsandcraft.com/hyperiacity-prerelease-party/", linkLabel: { en: "Find your pod", th: "เช็กรอบของคุณ", ja: "自分の部を確認" }, img: "img/events/hyperia-city-prerelease-party.jpg" },
 
+    // Week of Oct 26 to 30 (FB weekly post "THIS WEEK'S LINEUP IS STACKED!", 2026-10-26, plus the event graphics). Sat 31 and Sun 1 the shop is closed (see closed).
+    { date: "2026-10-26", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
+      detail: "Standard, 60-card deck, Swiss 3 rounds. Entry includes 1 pack of 30th Celebration (TH). Promo: 1 to 3 packs by wins plus a Pikachu GAME ON card. Walk in." },
+    { date: "2026-10-27", game: "lorcana", title: "Casual On-Demand", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 14) or Coconut, or Pack Rush for 450 THB. New players at 19:00 for Learn to Play. No sign-up needed." },
+    { date: "2026-10-28", game: "mtg", title: "Reality Fractured Commander Party", time: "19:00", fee: "Open 1 pack",
+      detail: "Commander Bracket 3. Everyone gets a Crystal Ball promo and takes home a pack. Walk in." },
+    { date: "2026-10-28", game: "mtg", title: "All Leylines' Eve Halloween Draft", time: "19:00", fee: "660 THB", major: true,
+      short: "Halloween Chaos Draft: open 3 packs, build at the table.",
+      detail: "Chaos Draft: open 3 packs and build at the table. Everyone gets a Leyline of Anticipation promo. Prizes: foil promo packs for the top 2, non-foil promo packs further down the Top 8. Minimum 8 players. Registration opens Mon 26 Oct, 18:00 in the MTG LINE group.",
+      link: "https://line.me/ti/g/tN7vFE79g3", img: "img/events/mtg-halloween-draft.jpg" },
+    { date: "2026-10-28", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for the top half. Sign up on Playriftbound with your Riot ID." },
+    { date: "2026-10-29", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 13) or Coconut. Every player takes home a pack. Learn to Play at 19:00. Walk in." },
+    { date: "2026-10-30", game: "riftbound", title: "Casual Best-of-1", time: "20:00", fee: "250 THB",
+      detail: "Casual practice night: Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 1 booster for 1st to 3rd. No Nexus Night promo this round. Sign up on Playriftbound with your Riot ID." },
+
     // Radiance Rift Rumble at BetterTrade 2026 (FB posts 2026-10-02 and "TOP 8 PRIZE PICK POOL", 2026-10-10). Also has its own spotlight section in index.html.
-    { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "10:00", fee: "490 THB", major: true,
+    { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "09:45", fee: "490 THB", major: true,
       short: "Our biggest Riftbound tournament, at BetterTrade 2026, Samyan Mitrtown Hall.",
-      detail: "Our biggest Riftbound tournament, at BetterTrade 2026 by efin. Not at the shop: The Mitr Ting Room, 5th floor, Samyan Mitrtown Hall. Check in 10:00 to 10:30. Standard Constructed, 7 rounds of Best of 1 (10:30 to 16:40), then Top 8 Best of 3 single elimination (16:40 to 19:40). 100 seats. Every player gets 1 Radiance pack, 1 random pack (Origins, Spiritforged or Unleashed), 1 Radiance Nexus Night Promo Pack and 2 free Explorer Tickets from efin. Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift (claimed at Anubis after December 4), Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also gets a Radiance Vault, playmat and sleeves. 2nd: playmat and sleeves. 3rd to 4th: playmat. 9th to 16th: 2 Radiance packs. 17th to 32nd: 1 Spiritforged pack (9th to 32nd may be adjusted by player count). Lucky Draws all day. Sign up at efin.finance.",
+      detail: "Our biggest Riftbound tournament, at BetterTrade 2026 by efin. Not at the shop: The Mitr Ting Room, 5th floor, Samyan Mitrtown Hall. Check in 9:45 to 10:30, bring a printed or handwritten deck list (make one at anubiscardsandcraft.com/rrr-decklist). Standard Constructed, 7 rounds of Best of 1 from 10:40, then Top 8 Best of 3 single elimination (16:40 to 19:40). 100 seats. Every player gets 1 Radiance pack, 1 random pack (Origins, Spiritforged or Unleashed), 1 Radiance Nexus Night Promo Pack and 2 free Explorer Tickets from efin. Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift (claimed at Anubis after December 4), Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also gets a Radiance Vault, playmat and sleeves. 2nd: playmat and sleeves. 3rd to 4th: playmat. 9th to 16th: 2 Radiance packs. 17th to 32nd: 1 Spiritforged pack (9th to 32nd may be adjusted by player count). Lucky Draws all day. RRR players can also buy 1 Riftbound booster box at MSRP (4,100 THB) from Sabai Cards in the Carnival zone. Sign up at efin.finance.",
       link: "https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day", img: "img/events/radiance-rift-rumble.jpg" }
   ]
 };
