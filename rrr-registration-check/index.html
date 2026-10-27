@@ -89,12 +89,13 @@
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   function normRiot(v) {
-    var s = String(v || '').replace(/\s+/g, ' ').trim().replace(/\s*#\s*/, '#');
+    var s = String(v || '').normalize('NFC').replace(/\s+/g, ' ').trim().replace(/\s*#\s*/, '#');
     var p = s.split('#');
     if (p.length !== 2) return '';
     var n = Array.from(p[0]).length;
-    if (n < 3 || n > 16) return '';
-    if (!/^[A-Za-z0-9฀-๿]{3,5}$/.test(p[1])) return '';
+    if (n < 1 || n > 16) return '';
+    var tl = Array.from(p[1]).length;
+    if (!/^[\p{L}\p{M}\p{N}]+$/u.test(p[1]) || tl < 3 || tl > 5) return '';
     if (/[<>"`\\]/.test(p[0])) return '';
     return p[0] + '#' + p[1];
   }
@@ -113,7 +114,9 @@
 
   function call(payload) {
     if (!API) return Promise.resolve({ ok: false, error: 'not_ready' });
-    return fetch(API, { method: 'POST', body: JSON.stringify(payload) })
+    // Send non ASCII characters (Korean, accents, Thai, emoji) as \\u escapes so Apps Script always decodes them correctly
+    var body = JSON.stringify(payload).replace(/[\u007f-\uffff]/g, function (ch) { return '\\u' + ('0000' + ch.charCodeAt(0).toString(16)).slice(-4); });
+    return fetch(API, { method: 'POST', body: body })
       .then(function (r) { return r.json(); })
       .catch(function () { return { ok: false, error: 'network' }; });
   }
@@ -124,7 +127,7 @@
     busy: ['ระบบยุ่งอยู่ · Busy right now', 'ลองใหม่อีกครั้งในอีกสักครู่นะครับ · Please try again in a minute.'],
     server: ['เกิดข้อผิดพลาด · Something went wrong', 'ลองใหม่อีกครั้ง ถ้ายังไม่ได้ ทักเพจ Anubis Cards and Craft มาได้เลยครับ · Try again. If it keeps happening, message the Anubis Cards and Craft Page.'],
     bad_email: ['อีเมลยังไม่ครบ · Incomplete email', 'พิมพ์อีเมลแบบเต็ม เช่น name@gmail.com · Type your full email, like name@gmail.com.'],
-    bad_riot_id: ['รูปแบบ Riot ID ไม่ถูก · Riot ID format', 'ชื่อ 3 ถึง 16 ตัวอักษร ตามด้วย # และแท็ก 3 ถึง 5 ตัว เช่น Teemo#1234 · Name (3 to 16 characters), then # and a tag of 3 to 5 letters or numbers, like Teemo#1234.'],
+    bad_riot_id: ['รูปแบบ Riot ID ไม่ถูก · Riot ID format', 'พิมพ์ชื่อในเกม ตามด้วย # และแท็ก 3 ถึง 5 ตัว ให้ตรงกับในหน้า Riot ID ของคุณ เช่น Teemo#1234 (ชื่อไม่เกิน 16 ตัว ภาษาไหนก็ได้) · Type your game name, then # and your 3 to 5 character tag, exactly as on your Riot ID page, like Teemo#1234 (name up to 16 characters, any language).'],
     riot_id_taken: ['Riot ID นี้มีคนส่งมาแล้ว · Already on the list', 'ถ้าเป็นของคุณ ทักเพจ Anubis Cards and Craft มาได้เลยครับ · If it is yours, message the Anubis Cards and Craft Page.'],
     not_registered: ['ไม่พบการสมัคร · Registration not found', 'ลองเช็กอีเมลอีกครั้งนะครับ · Please check your email again.']
   };
