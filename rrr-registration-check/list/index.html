@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="รายชื่อ Riot ID ของผู้เล่น Radiance Rift Rumble · Riot IDs sent in by RRR players.">
+<meta property="og:title" content="RRR Riot ID List">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<title>RRR Riot ID List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="rain"></div>
+<div class="wrap">
+  <header class="top">
+    <img src="../rrr-logo.png" alt="Radiance Rift Rumble" width="184" height="46">
+    <h1><span>Riot ID</span> List</h1>
+    <p>รายชื่อ Riot ID ที่ผู้เล่นส่งมาแล้ว · Riot IDs our players have sent in</p>
+    <div class="meta"><b>Radiance Rift Rumble</b> · เสาร์ 31 ต.ค. 2569 · Sat 31 Oct 2026<br>The Mitr Ting Room, Samyan Mitrtown Hall ชั้น 5</div>
+  </header>
+
+  <div class="stack">
+    <section class="card" aria-labelledby="find">
+      <div class="step"><i>🔍</i><h2 id="find">หา Riot ID ของคุณ · Find your Riot ID</h2></div>
+      <p class="hint">ยังไม่เห็นชื่อตัวเอง? <a href="../">ส่ง Riot ID ที่นี่</a> · Not on the list yet? <a href="../">Send your Riot ID here</a>. รายชื่ออัปเดตทุก 1 นาที · The list updates every minute.</p>
+      <label for="q">ค้นหา · Search</label>
+      <input id="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Teemo#1234">
+      <ul class="ids" id="ids" aria-live="polite"></ul>
+      <p class="empty hide" id="empty"></p>
+    </section>
+  </div>
+
+  <footer>หน้านี้แสดงแค่ Riot ID ไม่มีอีเมลหรือชื่อจริง · This page shows Riot IDs only, never emails or real names.<br>Radiance Rift Rumble · BetterTrade 2026 New World New Playbook · Presented by Anubis Cards and Craft</footer>
+</div>
+
+<script src="../config.js"></script>
+<script>
+(function () {
+  var API = window.RRR_API || '';
+  var list = [], q = document.getElementById('q'), ul = document.getElementById('ids'), empty = document.getElementById('empty');
+
+  function render() {
+    var term = q.value.trim().toLowerCase();
+    var shown = term ? list.filter(function (x) { return x.toLowerCase().indexOf(term) >= 0; }) : list;
+    ul.textContent = '';
+    shown.forEach(function (id) {
+      var li = document.createElement('li');
+      if (term) {
+        var i = id.toLowerCase().indexOf(term);
+        li.appendChild(document.createTextNode(id.slice(0, i)));
+        var m = document.createElement('mark'); m.textContent = id.slice(i, i + term.length); li.appendChild(m);
+        li.appendChild(document.createTextNode(id.slice(i + term.length)));
+        if (id.toLowerCase() === term) li.className = 'me';
+      } else { li.textContent = id; }
+      ul.appendChild(li);
+    });
+    if (!shown.length) {
+      empty.textContent = term
+        ? 'ไม่พบ Riot ID นี้ ส่งได้ที่หน้าเช็กการสมัคร · Not found. Send it on the registration check page.'
+        : 'รายชื่อจะขึ้นที่นี่เมื่อผู้เล่นส่ง Riot ID มา · Riot IDs show up here once players send them.';
+      empty.classList.remove('hide');
+    } else empty.classList.add('hide');
+  }
+
+  function load() {
+    if (!API) { list = []; render(); return; }
+    fetch(API + (API.indexOf('?') >= 0 ? '&' : '?') + 'action=list')
+      .then(function (r) { return r.json(); })
+      .then(function (r) { if (r && r.ok) { list = r.riotIds || []; render(); } })
+      .catch(function () { empty.textContent = 'โหลดรายชื่อไม่ได้ ลองรีเฟรชอีกครั้งนะครับ · Could not load the list. Please refresh.'; empty.classList.remove('hide'); });
+  }
+  q.addEventListener('input', render);
+  load();
+  setInterval(load, 60000);
+})();
+</script>
+</body>
+</html>

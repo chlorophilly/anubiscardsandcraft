@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="เช็กว่าสมัคร Radiance Rift Rumble เรียบร้อยแล้ว แล้วส่ง Riot ID ให้เรา · Check your RRR registration and send us your Riot ID.">
+<meta property="og:title" content="RRR Registration Check">
+<meta property="og:description" content="Check your Radiance Rift Rumble registration and send us your Riot ID.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<title>RRR Registration Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="rain"></div>
+<div class="wrap">
+  <header class="top">
+    <img src="rrr-logo.png" alt="Radiance Rift Rumble" width="184" height="46">
+    <h1><span>Registration</span> Check</h1>
+    <p>เช็กว่าสมัครแข่งเรียบร้อยไหม แล้วส่ง Riot ID มาให้เรา · Check your registration, then send us your Riot ID</p>
+    <div class="meta"><b>Radiance Rift Rumble</b> · เสาร์ 31 ต.ค. 2569 · Sat 31 Oct 2026<br>The Mitr Ting Room, Samyan Mitrtown Hall ชั้น 5</div>
+  </header>
+
+  <div class="stack">
+    <section class="card why" aria-labelledby="why">
+      <h2 id="why">ทำไมต้องส่ง Riot ID · Why we need your Riot ID</h2>
+      <p>ระบบจัดแข่งทางการของ Riftbound ตอนนี้ต้องใช้ Riot ID ลงชื่อผู้เล่นเข้าทัวร์ แต่ตอนสมัครเราขอไว้แค่อีเมล เลยขอรบกวนทุกคนส่ง Riot ID มาให้ก่อนวันแข่งหน่อยนะครับ ใช้เวลาไม่ถึงนาที</p>
+      <p>The official Riftbound tournament system now adds players by Riot ID. We only asked for your email at sign up, so please send us your Riot ID before the event. It takes less than a minute.</p>
+      <span class="due">ส่งภายในศุกร์ 30 ต.ค. 20:00 น. · By Fri 30 Oct, 8 PM</span>
+    </section>
+
+    <section class="card" aria-labelledby="s1">
+      <div class="step"><i>1</i><h2 id="s1">เช็กการสมัคร · Check your registration</h2></div>
+      <p class="hint">พิมพ์อีเมลที่ใช้สมัคร<b>แบบเต็ม</b> ใช้ได้ทั้งอีเมลที่ได้รับ QR Code บัตรเข้างาน หรืออีเมลที่ใช้ในระบบ Riftbound Gaming Network · Type your <b>full email</b>: the one your QR ticket was sent to, or your Riftbound Gaming Network email.</p>
+      <form id="checkForm" novalidate>
+        <label for="email">อีเมล · Email</label>
+        <div class="inrow">
+          <input id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="you@example.com" required>
+          <button class="primary" id="checkBtn" type="submit">เช็ก · Check</button>
+        </div>
+      </form>
+      <div id="checkResult" class="result hide" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card hide" id="riotCard" aria-labelledby="s2">
+      <div class="step"><i>2</i><h2 id="s2">ส่ง Riot ID · Send your Riot ID</h2></div>
+      <div id="savedBox" class="saved hide">
+        <div><span class="lbl">Riot ID ที่ส่งไว้ · Your Riot ID</span><span class="rid" id="savedId"></span></div>
+        <button class="ghost small" id="editBtn" type="button">แก้ไข · Edit</button>
+      </div>
+      <form id="riotForm" novalidate>
+        <p class="hint">Riot ID คือชื่อในเกม ตามด้วย # และแท็ก เช่น <b>Teemo#1234</b> ดูของตัวเองได้ที่ <a href="https://account.riotgames.com/" target="_blank" rel="noopener">account.riotgames.com</a> ใช้บัญชี Riot เดียวกับที่ใช้ลงแข่ง Riftbound · Your Riot ID is your name, then # and your tag, like <b>Teemo#1234</b>. Find it at <a href="https://account.riotgames.com/" target="_blank" rel="noopener">account.riotgames.com</a>. Use the Riot account you play Riftbound events with.</p>
+        <label for="riot">Riot ID</label>
+        <div class="inrow">
+          <input id="riot" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Teemo#1234" maxlength="24" required>
+          <button class="primary" id="saveBtn" type="submit">ส่ง Riot ID · Send</button>
+          <button class="ghost hide" id="cancelBtn" type="button">ยกเลิก · Cancel</button>
+        </div>
+      </form>
+      <div id="saveResult" class="result hide" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card" aria-labelledby="s3">
+      <div class="step"><i>✓</i><h2 id="s3">วันแข่ง · On the day</h2></div>
+      <ul class="info">
+        <li><span>เช็กอิน 9:45 ถึง 10:30 ปิดตรงเวลา · Check in 9:45 to 10:30, closes on time</span></li>
+        <li><span>เตรียม QR Code บัตรเข้างานจากอีเมลไว้ให้พร้อม · Have your QR ticket from the email ready</span></li>
+        <li><span>นำ Deck list มาส่งตอนเช็กอิน ทำใบส่งได้ที่ <a href="/rrr-decklist/">RRR Deck List Maker</a> · Hand in your deck list at check in. Make it with the <a href="/rrr-decklist/">RRR Deck List Maker</a></span></li>
+      </ul>
+      <a class="cta-link" href="list/">ดูรายชื่อ Riot ID ที่ส่งแล้ว · See the Riot ID list →</a>
+    </section>
+  </div>
+
+  <footer>เราใช้อีเมลแค่เช็กการสมัคร ไม่แสดงอีเมลหรือชื่อเต็มของใครบนเว็บนี้ · We only use your email to check your registration. No emails or full names are shown on this site.<br>Radiance Rift Rumble · BetterTrade 2026 New World New Playbook · Presented by Anubis Cards and Craft</footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  var API = window.RRR_API || '';
+  var $ = function (id) { return document.getElementById(id); };
+  var emailIn = $('email'), checkBtn = $('checkBtn'), checkRes = $('checkResult');
+  var riotCard = $('riotCard'), riotForm = $('riotForm'), riotIn = $('riot'), saveBtn = $('saveBtn'), cancelBtn = $('cancelBtn');
+  var savedBox = $('savedBox'), savedId = $('savedId'), saveRes = $('saveResult');
+  var current = { email: '', riotId: '' };
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function normRiot(v) {
+    var s = String(v || '').replace(/\s+/g, ' ').trim().replace(/\s*#\s*/, '#');
+    var p = s.split('#');
+    if (p.length !== 2) return '';
+    var n = Array.from(p[0]).length;
+    if (n < 3 || n > 16) return '';
+    if (!/^[A-Za-z0-9฀-๿]{3,5}$/.test(p[1])) return '';
+    if (/[<>"`\\]/.test(p[0])) return '';
+    return p[0] + '#' + p[1];
+  }
+
+  function show(el, kind, big, text, linkHref, linkText) {
+    el.className = 'result ' + kind;
+    el.textContent = '';
+    var b = document.createElement('span'); b.className = 'big'; b.textContent = big; el.appendChild(b);
+    if (text) el.appendChild(document.createTextNode(text));
+    if (linkHref) {
+      el.appendChild(document.createTextNode(' '));
+      var a = document.createElement('a'); a.href = linkHref; a.textContent = linkText; el.appendChild(a);
+    }
+  }
+  function hide(el) { el.className = 'result hide'; el.textContent = ''; }
+
+  function call(payload) {
+    if (!API) return Promise.resolve({ ok: false, error: 'not_ready' });
+    return fetch(API, { method: 'POST', body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return { ok: false, error: 'network' }; });
+  }
+
+  var ERR = {
+    not_ready: ['ระบบยังไม่เปิด · Not open yet', 'อีกสักครู่กลับมาใหม่นะครับ · Please come back a little later.'],
+    network: ['เชื่อมต่อไม่ได้ · Connection problem', 'เช็กอินเทอร์เน็ตแล้วลองใหม่อีกครั้งนะครับ · Check your internet and try again.'],
+    busy: ['ระบบยุ่งอยู่ · Busy right now', 'ลองใหม่อีกครั้งในอีกสักครู่นะครับ · Please try again in a minute.'],
+    server: ['เกิดข้อผิดพลาด · Something went wrong', 'ลองใหม่อีกครั้ง ถ้ายังไม่ได้ ทักเพจ Anubis Cards and Craft มาได้เลยครับ · Try again. If it keeps happening, message the Anubis Cards and Craft Page.'],
+    bad_email: ['อีเมลยังไม่ครบ · Incomplete email', 'พิมพ์อีเมลแบบเต็ม เช่น name@gmail.com · Type your full email, like name@gmail.com.'],
+    bad_riot_id: ['รูปแบบ Riot ID ไม่ถูก · Riot ID format', 'ชื่อ 3 ถึง 16 ตัวอักษร ตามด้วย # และแท็ก 3 ถึง 5 ตัว เช่น Teemo#1234 · Name (3 to 16 characters), then # and a tag of 3 to 5 letters or numbers, like Teemo#1234.'],
+    riot_id_taken: ['Riot ID นี้มีคนส่งมาแล้ว · Already on the list', 'ถ้าเป็นของคุณ ทักเพจ Anubis Cards and Craft มาได้เลยครับ · If it is yours, message the Anubis Cards and Craft Page.'],
+    not_registered: ['ไม่พบการสมัคร · Registration not found', 'ลองเช็กอีเมลอีกครั้งนะครับ · Please check your email again.']
+  };
+  function showErr(el, code) { var e = ERR[code] || ERR.server; show(el, code === 'bad_email' || code === 'bad_riot_id' ? 'warn' : 'bad', e[0], e[1]); }
+
+  function setEditing(on) {
+    riotForm.classList.toggle('hide', !on);
+    savedBox.classList.toggle('hide', on || !current.riotId);
+    cancelBtn.classList.toggle('hide', !(on && current.riotId));
+    saveBtn.textContent = current.riotId ? 'บันทึก · Save' : 'ส่ง Riot ID · Send';
+    if (on) { riotIn.value = current.riotId; setTimeout(function () { riotIn.focus(); }, 0); }
+  }
+
+  $('checkForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var em = emailIn.value.trim().toLowerCase();
+    riotCard.classList.add('hide'); hide(saveRes);
+    if (!EMAIL_RE.test(em)) { showErr(checkRes, 'bad_email'); return; }
+    checkBtn.disabled = true; checkBtn.textContent = 'กำลังเช็ก · Checking';
+    call({ action: 'check', email: em }).then(function (r) {
+      checkBtn.disabled = false; checkBtn.textContent = 'เช็ก · Check';
+      if (!r.ok) { showErr(checkRes, r.error); return; }
+      if (!r.found) {
+        show(checkRes, 'bad', 'ไม่พบอีเมลนี้ · We could not find this email',
+          'ลองเช็กตัวสะกด หรือลองอีกอีเมลที่ใช้สมัคร ถ้ายังไม่เจอ ทักเพจ Anubis Cards and Craft มาได้เลยครับ · Check the spelling or try your other email. Still nothing? Message the Anubis Cards and Craft Page.');
+        return;
+      }
+      current = { email: em, riotId: r.riotId || '' };
+      show(checkRes, 'ok', 'สมัครเรียบร้อยแล้ว · You are registered', (r.name ? 'ชื่อในระบบ · Name on file: ' + r.name : ''));
+      riotCard.classList.remove('hide');
+      savedId.textContent = current.riotId;
+      setEditing(!current.riotId);
+      riotCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+
+  $('editBtn').addEventListener('click', function () { hide(saveRes); setEditing(true); });
+  cancelBtn.addEventListener('click', function () { hide(saveRes); setEditing(false); });
+
+  riotForm.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var rid = normRiot(riotIn.value);
+    if (!rid) { showErr(saveRes, 'bad_riot_id'); return; }
+    if (rid === current.riotId) { setEditing(false); return; }
+    saveBtn.disabled = true;
+    call({ action: 'save', email: current.email, riotId: rid }).then(function (r) {
+      saveBtn.disabled = false;
+      if (!r.ok) { showErr(saveRes, r.error); return; }
+      current.riotId = r.riotId;
+      savedId.textContent = r.riotId;
+      setEditing(false);
+      show(saveRes, 'ok', 'บันทึก Riot ID แล้ว เจอกันวันเสาร์ครับ · Saved. See you Saturday!', '', 'list/', 'ดูรายชื่อ · See the list →');
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
