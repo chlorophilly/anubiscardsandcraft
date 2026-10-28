@@ -66,6 +66,7 @@ html[data-lang="th"] .en, html[data-lang="en"] .th{display:none!important}
 .cd div{min-width:60px;background:var(--navy);color:#fff;border-radius:12px;padding:7px 6px 5px;line-height:1}
 .cd b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
 .cd small{font-size:11px;font-weight:600;opacity:.8}
+.full{display:inline-block;margin:10px 0 0;background:#fff;border:2px solid #ffd0a8;color:#c2410c;border-radius:999px;padding:4px 14px;font-weight:800;font-size:14px;box-shadow:0 6px 16px rgba(239,80,64,.15)}
 .livenow{display:inline-flex;align-items:center;gap:10px;margin:14px 0 0;background:#fff;border-radius:999px;padding:8px 8px 8px 16px;font-weight:800;color:var(--navy);box-shadow:0 8px 24px rgba(34,32,95,.15)}
 .livenow i{width:10px;height:10px;border-radius:50%;background:#e5243b;animation:pulse 1.6s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(229,36,59,.6)}70%{box-shadow:0 0 0 10px rgba(229,36,59,0)}100%{box-shadow:0 0 0 0 rgba(229,36,59,0)}}
@@ -192,6 +193,55 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 .bar.show{transform:none}
 .bar a{flex:1}
 
+
+/* interactive bits */
+.tl li{cursor:pointer;border-radius:14px;transition:background .2s}
+.tl li:hover{background:rgba(84,57,188,.06)}
+.tl li.sel{background:rgba(84,57,188,.10)}
+.tl li.sel .dot{transform:scale(1.25);border-color:var(--violet)}
+.tl .dot{transition:transform .2s}
+.tdet{margin-top:10px;border-radius:16px;padding:12px 14px;background:linear-gradient(135deg,#f6f1ff,#fff);border:2px solid #e4dcff;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;animation:pop .3s ease}
+.tdet .tt{background:var(--cta);color:#fff;border-radius:12px;padding:6px 10px;font-weight:900;font-size:17px;line-height:1.1;text-align:center;min-width:66px}
+.tdet b{display:block;color:var(--navy);font-size:16px;line-height:1.3}
+.tdet p{margin:2px 0 0;font-size:14px;line-height:1.5}
+@keyframes pop{from{transform:translateY(4px);opacity:.3}to{transform:none;opacity:1}}
+.pih{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tick{border:2px solid #cfc6f2;background:#fff;color:var(--violet);border-radius:999px;padding:4px 12px;font:700 13px var(--f);cursor:pointer;min-height:34px;transition:all .2s}
+.tick[aria-pressed="true"]{background:var(--cta);border-color:transparent;color:#fff}
+.tick[aria-pressed="true"]::before{content:"✓ "}
+.pi{transition:background .25s,box-shadow .25s}
+.pi.done{background:#f3efff;box-shadow:inset 0 0 0 2px #d9ccff}
+.pi.done .n{background:#1a9a63}
+.pbar{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.pbar .track{flex:1;height:12px;border-radius:999px;background:#fff;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+.pbar i{display:block;height:100%;width:0;background:var(--head);border-radius:999px;transition:width .5s ease}
+.pbar span{font-weight:800;color:var(--navy);font-size:14px;white-space:nowrap}
+.ladder li{cursor:pointer;border-radius:14px;padding:3px;transition:background .2s,opacity .2s,transform .2s}
+.ladder li:hover{background:rgba(84,57,188,.06)}
+.ladder.picking li{opacity:.55}
+.ladder.picking li.sel{opacity:1;background:rgba(84,57,188,.10);transform:translateX(4px)}
+.pz{margin-top:12px;border-radius:18px;padding:14px;background:linear-gradient(135deg,#f6f1ff,#fff);border:2px solid #e4dcff;animation:pop .3s ease}
+.pz h4{margin:0 0 10px;font-size:16px;color:var(--navy);font-weight:900}
+.pz .row{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.pz figure{margin:0;text-align:center;min-width:64px}
+.pz figure img{height:72px;width:auto;margin:0 auto;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(34,32,95,.25));animation:rise .4s ease both}
+.pz figure figcaption{font-size:11.5px;font-weight:700;color:var(--navy);margin-top:4px;line-height:1.2}
+.pz .chip{align-self:center;background:#fff;border:2px solid #e4dcff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px;color:var(--navy)}
+.pz .order{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin-top:12px}
+.pz .order span{height:28px;border-radius:8px;background:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.pz .order span.me{background:var(--cta);color:#fff;box-shadow:0 6px 12px rgba(84,57,188,.3)}
+.pz .oc{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+@keyframes rise{from{transform:translateY(12px) scale(.9);opacity:0}to{transform:none;opacity:1}}
+.logos button{border:0;padding:0;background:none;cursor:pointer;border-radius:12px;transition:transform .2s,box-shadow .2s,opacity .2s}
+.logos button:hover{transform:translateY(-3px)}
+.logos.picking button{opacity:.45}
+.logos.picking button[aria-pressed="true"]{opacity:1;box-shadow:0 0 0 3px var(--violet);transform:translateY(-3px)}
+.vcap{margin:8px 0 0;font-size:14px;min-height:42px;background:#fff;border-radius:14px;padding:10px 14px;color:var(--ink)}
+.vcap b{color:var(--navy)}
+.vcap.hint{background:transparent;padding:4px 0;color:var(--muted);font-size:13px;min-height:0}
+html.anim .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+html.anim .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ html.anim .rv{opacity:1;transform:none} }
 @media (min-width:760px){
   /* desktop: timeline runs across */
   .tl{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
@@ -201,6 +251,7 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
   .tl .dot{margin:0}
   .tl li.key .dot{margin:0}
   .tl .what{padding:4px 0 0;font-size:14.5px}
+  .tl .what small{display:none}
   .tl .luck{display:block;margin:4px auto 0;width:max-content}
 }
 @media (max-width:759px){
@@ -234,10 +285,11 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
     <img class="rrrlogo" src="img/rrr-logo.svg" alt="Radiance Rift Rumble" width="1173" height="368">
     <div class="x"><img src="img/ccc-logo.svg" alt="Cards &amp; Collectibles Carnival" width="1407" height="440"></div>
     <p class="when"><span class="th">เสาร์ 31 ต.ค. 2569</span><span class="en">Saturday 31 October 2026</span><small><span class="th">The Mitr Ting Room ✦ สามย่านมิตรทาวน์ฮอลล์ ชั้น 5</span><span class="en">The Mitr Ting Room ✦ Samyan Mitrtown Hall, 5th floor</span></small></p>
+    <p class="full"><span class="th">🔥 ที่นั่งเต็มแล้ว ครบ 100 คน</span><span class="en">🔥 Full house: all 100 seats taken</span></p>
     <div id="status"></div>
     <a class="alert" id="alert" href="../rrr-registration-check/"><span><span class="th">ผู้เล่น RRR: ส่ง <b>Riot ID</b> ภายในศุกร์ 30 ต.ค. 20:00 น.</span><span class="en">RRR players: send your <b>Riot ID</b> by Fri 30 Oct, 8 PM</span></span><span class="gobtn"><span class="th">ส่งเลย</span><span class="en">Send it</span> ›</span></a>
     <nav class="qs" aria-label="Questions">
-      <a href="#when"><em>⏰</em><span class="th">เกิดอะไร ตอนไหน?</span><span class="en">What happens when?</span></a>
+      <a href="#when"><em>⏰</em><span class="th">แข่งกี่โมง <span style="white-space:nowrap">มีอะไรบ้าง?</span></span><span class="en">What happens when?</span></a>
       <a href="#prepare"><em>🎒</em><span class="th">ต้องเตรียมอะไร?</span><span class="en">What do I prepare?</span></a>
       <a href="#prizes"><em>🏆</em><span class="th">ได้รางวัลอะไร?</span><span class="en">What can I win?</span></a>
     </nav>
@@ -249,9 +301,10 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 <!-- 1. WHEN -->
 <section class="q" id="when">
   <div class="wrap">
-    <div class="qh"><em>⏰</em><h2><span class="th">เกิดอะไร <span class="g">ตอนไหน?</span></span><span class="en">What happens <span class="g">when?</span></span><small><span class="th">เสาร์ 31 ต.ค. ✦ วันงานเปิดหน้านี้ไว้ ช่วงที่กำลังเกิดขึ้นจะขึ้นไฮไลต์ให้</span><span class="en">Sat 31 Oct ✦ on the day, what's happening now lights up</span></small></h2></div>
+    <div class="qh"><em>⏰</em><h2><span class="th">แข่งกี่โมง <span class="g">มีอะไรบ้าง?</span></span><span class="en">What happens <span class="g">when?</span></span><small><span class="th">เสาร์ 31 ต.ค. ✦ แตะแต่ละช่วงดูรายละเอียด วันงานช่วงที่กำลังแข่งจะขึ้นไฮไลต์ให้</span><span class="en">Sat 31 Oct ✦ tap a moment for details. On the day, what's on now lights up</span></small></h2></div>
     <div class="panel">
       <ol class="tl" id="tl"></ol>
+      <div class="tdet" id="tdet" aria-live="polite"></div>
       <div class="side">
         <div><b>🔴 <span class="th">ไลฟ์ตั้งแต่รอบแรก</span><span class="en">Live from Round 1</span></b><span class="th">บนเพจ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> พากย์โดย Philly และ Jade</span><span class="en">On the <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> Page, cast by Philly and Jade</span></div>
         <div><b>📅 <span class="th">อาทิตย์ 1 พ.ย.</span><span class="en">Sunday 1 Nov</span></b><span class="th">ไม่มีทัวร์ แต่ CCC เปิดต่อ 10:00 ถึง 17:30&nbsp;น.</span><span class="en">No tournament, CCC open 10:00 to 17:30</span></div>
@@ -265,23 +318,24 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 <section class="q" id="prepare">
   <div class="wrap">
     <div class="qh"><em>🎒</em><h2><span class="th">ต้อง<span class="g">เตรียมอะไร?</span></span><span class="en">What do I <span class="g">prepare?</span></span><small><span class="th">แค่ 3 อย่าง แล้วมาให้ทันเช็กอิน 9:45 ถึง 10:30&nbsp;น.</span><span class="en">Just 3 things, then make check in, 9:45 to 10:30</span></small></h2></div>
+    <div class="pbar" aria-live="polite"><div class="track"><i id="pfill"></i></div><span id="ptext"></span></div>
     <div class="prep">
-      <div class="pi">
-        <span class="n">1</span>
+      <div class="pi" data-k="riot">
+        <div class="pih"><span class="n">1</span><button type="button" class="tick" aria-pressed="false"><span class="th">พร้อมแล้ว</span><span class="en">Done</span></button></div>
         <h3>Riot ID</h3>
         <p><span class="th">ระบบทัวร์ใหม่ของ Riftbound ใช้ Riot ID เช็กชื่อด้วยอีเมลที่สมัคร แล้วกรอกต่อได้เลย</span><span class="en">Riftbound's new tournament system needs it. Check your name with your sign up email, then add it.</span></p>
         <span class="due"><span class="th">ภายในศุกร์ 30 ต.ค. 20:00 น.</span><span class="en">By Fri 30 Oct, 8 PM</span></span>
         <a class="btn" href="../rrr-registration-check/"><span class="th">ส่ง Riot ID</span><span class="en">Send Riot ID</span> ›</a>
       </div>
-      <div class="pi">
-        <span class="n">2</span>
+      <div class="pi" data-k="list">
+        <div class="pih"><span class="n">2</span><button type="button" class="tick" aria-pressed="false"><span class="th">พร้อมแล้ว</span><span class="en">Done</span></button></div>
         <h3>Deck list</h3>
         <p><span class="th">ปริ้นท์หรือเขียนมือ ส่งตอนเช็กอินเท่านั้น ชื่อการ์ดเต็มพร้อมเวอร์ชัน เช่น Mel, Defiant Soul</span><span class="en">Printed or handwritten, handed in at check in only. Full card names with version, like Mel, Defiant Soul.</span></p>
         <span class="due"><span class="th">ไม่มี Deck list อาจโดนถึงแพ้เกมรอบแรก</span><span class="en">No list may cost a Round 1 game</span></span>
         <a class="btn" href="../rrr-decklist/"><span class="th">ทำ Deck list</span><span class="en">Make deck list</span> ›</a>
       </div>
-      <div class="pi">
-        <span class="n">3</span>
+      <div class="pi" data-k="deck">
+        <div class="pih"><span class="n">3</span><button type="button" class="tick" aria-pressed="false"><span class="th">พร้อมแล้ว</span><span class="en">Done</span></button></div>
         <h3><span class="th">เด็คครบ ใส่สลีฟ</span><span class="en">A legal, sleeved deck</span></h3>
         <div class="deck"><div><b>1</b><span>Legend</span></div><div><b>40</b><span>Main</span></div><div><b>12</b><span>Rune</span></div><div><b>3</b><span>Battlefield</span></div></div>
         <p><span class="th">Main Deck 40 ใบพอดี นับรวม Chosen Champion แล้ว</span><span class="en">Exactly 40 main deck cards, Chosen Champion included.</span></p>
@@ -293,17 +347,18 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 <!-- 3. PRIZES -->
 <section class="q" id="prizes">
   <div class="wrap">
-    <div class="qh"><em>🏆</em><h2><span class="th">ได้<span class="g">รางวัลอะไร?</span></span><span class="en">What can <span class="g">I win?</span></span><small><span class="th">ทุกคนได้ของกลับบ้าน รางวัลไล่ถึงอันดับ 32</span><span class="en">Nobody leaves empty handed, prizes down to 32nd</span></small></h2></div>
+    <div class="qh"><em>🏆</em><h2><span class="th">ได้<span class="g">รางวัลอะไร?</span></span><span class="en">What can <span class="g">I win?</span></span><small><span class="th">ทุกคนได้ของกลับบ้าน แตะอันดับเพื่อดูว่าได้อะไร</span><span class="en">Nobody leaves empty handed. Tap a placement to see what you get</span></small></h2></div>
     <div class="panel">
       <ol class="ladder">
-        <li class="l1"><span class="pl">🥇 <span class="th">อันดับ 1</span><span class="en">1st</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ก่อนใคร + Radiance Vault + Playmat + Sleeves</span><span class="en">First pick of the big prizes + Radiance Vault + playmat + sleeves</span></span></li>
-        <li class="l2"><span class="pl">🥈 <span class="th">อันดับ 2</span><span class="en">2nd</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ + Playmat + Sleeves</span><span class="en">Pick a big prize + playmat + sleeves</span></span></li>
-        <li class="l3"><span class="pl"><span class="th">อันดับ 3 และ 4</span><span class="en">3rd and 4th</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ + Playmat</span><span class="en">Pick a big prize + playmat</span></span></li>
-        <li class="l4"><span class="pl"><span class="th">อันดับ 5 ถึง 8</span><span class="en">5th to 8th</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ตามลำดับ</span><span class="en">Pick a big prize, in order</span></span></li>
-        <li class="l5"><span class="pl"><span class="th">อันดับ 9 ถึง 16</span><span class="en">9th to 16th</span></span><span class="rw"><span class="th">Radiance 2 ซอง</span><span class="en">2 Radiance packs</span></span></li>
-        <li class="l6"><span class="pl"><span class="th">อันดับ 17 ถึง 32</span><span class="en">17th to 32nd</span></span><span class="rw"><span class="th">Spiritforged 1 ซอง</span><span class="en">1 Spiritforged pack</span></span></li>
-        <li class="l7"><span class="pl"><span class="th">ทุกคน</span><span class="en">Everyone</span></span><span class="rw"><span class="th">DOORGIFT 3 ซองตอนเช็กอิน</span><span class="en">3 pack DOORGIFT at check in</span><small><span class="th">Radiance 1 + ซองสุ่ม (Origins, Spiritforged หรือ Unleashed) 1 + Nexus Night Promo Pack 1 และบัตร Explorer 2 ใบ</span><span class="en">1 Radiance + 1 random (Origins, Spiritforged or Unleashed) + 1 Nexus Night Promo Pack, plus 2 Explorer tickets</span></small></span></li>
+        <li class="l1" data-t="1" tabindex="0" role="button"><span class="pl">🥇 <span class="th">อันดับ 1</span><span class="en">1st</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ก่อนใคร + Radiance Vault + Playmat + Sleeves</span><span class="en">First pick of the big prizes + Radiance Vault + playmat + sleeves</span></span></li>
+        <li class="l2" data-t="2" tabindex="0" role="button"><span class="pl">🥈 <span class="th">อันดับ 2</span><span class="en">2nd</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ + Playmat + Sleeves</span><span class="en">Pick a big prize + playmat + sleeves</span></span></li>
+        <li class="l3" data-t="3" tabindex="0" role="button"><span class="pl"><span class="th">อันดับ 3 และ 4</span><span class="en">3rd and 4th</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ + Playmat</span><span class="en">Pick a big prize + playmat</span></span></li>
+        <li class="l4" data-t="4" tabindex="0" role="button"><span class="pl"><span class="th">อันดับ 5 ถึง 8</span><span class="en">5th to 8th</span></span><span class="rw"><span class="th">เลือกรางวัลใหญ่ตามลำดับ</span><span class="en">Pick a big prize, in order</span></span></li>
+        <li class="l5" data-t="5" tabindex="0" role="button"><span class="pl"><span class="th">อันดับ 9 ถึง 16</span><span class="en">9th to 16th</span></span><span class="rw"><span class="th">Radiance 2 ซอง</span><span class="en">2 Radiance packs</span></span></li>
+        <li class="l6" data-t="6" tabindex="0" role="button"><span class="pl"><span class="th">อันดับ 17 ถึง 32</span><span class="en">17th to 32nd</span></span><span class="rw"><span class="th">Spiritforged 1 ซอง</span><span class="en">1 Spiritforged pack</span></span></li>
+        <li class="l7" data-t="7" tabindex="0" role="button"><span class="pl"><span class="th">ทุกคน</span><span class="en">Everyone</span></span><span class="rw"><span class="th">DOORGIFT 3 ซองตอนเช็กอิน</span><span class="en">3 pack DOORGIFT at check in</span><small><span class="th">Radiance 1 + ซองสุ่ม (Origins, Spiritforged หรือ Unleashed) 1 + Nexus Night Promo Pack 1 และบัตร Explorer 2 ใบ</span><span class="en">1 Radiance + 1 random (Origins, Spiritforged or Unleashed) + 1 Nexus Night Promo Pack, plus 2 Explorer tickets</span></small></span></li>
       </ol>
+      <div class="pz" id="pz" aria-live="polite"></div>
       <div class="pool">
         <p><span class="th">รางวัลใหญ่ให้ Top 8 เลือก</span><span class="en">The big prizes the Top 8 pick from</span> <small><span class="th">(อันดับ 1 เลือกก่อน อันดับ 8 เลือกคนสุดท้าย)</span><span class="en">(1st picks first, 8th picks last)</span></small></p>
         <div class="items">
@@ -335,10 +390,8 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
       <img class="stamp" src="img/x/stamp.webp" alt="No Gacha, ไม่มีจุ่ม" width="360" height="360" loading="lazy">
     </div>
     <div class="hours"><span><span class="th">ส. 31 ต.ค. 10:00 ถึง 18:30</span><span class="en">Sat 31 Oct 10:00 to 18:30</span></span><span><span class="th">อา. 1 พ.ย. 10:00 ถึง 17:30</span><span class="en">Sun 1 Nov 10:00 to 17:30</span></span></div>
-    <div class="logos">
-      <img src="img/x/v-sabai.webp" alt="Sabai Cards" loading="lazy"><img src="img/x/v-highscore.webp" alt="High Score TCG" loading="lazy"><img src="img/x/v-616.webp" alt="616 Comics" loading="lazy"><img src="img/x/v-smash.webp" alt="Smashhh Studio" loading="lazy"><img src="img/x/v-ms.webp" alt="Monsnatch" loading="lazy"><img src="img/x/v-qa.webp" alt="The Quest Atelier" loading="lazy"><img src="img/x/v-lw.webp" alt="Legendary Wargame" loading="lazy"><img src="img/anubis.png" alt="Anubis Cards and Craft" loading="lazy">
-    </div>
-    <p style="font-size:13px;color:var(--muted)"><span class="th">Singles กล่องซีล คอมมิค งานอาร์ต Warhammer และอีกหลายบูธ</span><span class="en">Singles, sealed, comics, art, Warhammer and more booths.</span></p>
+    <div class="logos" id="logos"><button type="button" data-v="0" aria-pressed="false"><img src="img/x/v-sabai.webp" alt="Sabai Cards" loading="lazy"></button><button type="button" data-v="1" aria-pressed="false"><img src="img/x/v-highscore.webp" alt="High Score TCG" loading="lazy"></button><button type="button" data-v="2" aria-pressed="false"><img src="img/x/v-616.webp" alt="616 Comics" loading="lazy"></button><button type="button" data-v="3" aria-pressed="false"><img src="img/x/v-smash.webp" alt="Smashhh Studio" loading="lazy"></button><button type="button" data-v="4" aria-pressed="false"><img src="img/x/v-ms.webp" alt="Monsnatch" loading="lazy"></button><button type="button" data-v="5" aria-pressed="false"><img src="img/x/v-qa.webp" alt="The Quest Atelier" loading="lazy"></button><button type="button" data-v="6" aria-pressed="false"><img src="img/x/v-lw.webp" alt="Legendary Wargame" loading="lazy"></button><button type="button" data-v="7" aria-pressed="false"><img src="img/anubis.png" alt="Anubis Cards and Craft" loading="lazy"></button></div>
+    <p class="vcap" id="vcap" aria-live="polite"></p>
     <div class="free">
       <div><b>🃏 <span class="th">สอนเล่นฟรี</span><span class="en">Free Learn to Play</span></b><span class="th">Riftbound, MTG, Lorcana มีเด็คให้ มาตัวเปล่าได้ ร่วมสนับสนุนโดย OGT</span><span class="en">Riftbound, MTG, Lorcana, decks provided. Supported by OGT</span></div>
       <div><b>🔁 Free Trade &amp; Play Zone</b><span class="th">พกแฟ้มมาแลกการ์ด หาคนเล่นด้วยได้ฟรี</span><span class="en">Bring a binder, trade or find a game, free</span></div>
@@ -371,6 +424,7 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
       <details><summary><span class="th">ลงทัวร์ครั้งแรก มาได้ไหม</span><span class="en">First tournament ever. OK?</span></summary><p><span class="th">ได้เลยครับ แข่งแบบ Swiss ทุกคนได้เล่นครบ 7 รอบ แพ้รอบแรกก็ยังลุยต่อได้ทั้งวัน</span><span class="en">Absolutely. It's Swiss, so everyone plays all 7 rounds, even after a loss.</span></p></details>
       <details><summary><span class="th">มาไม่ทันเช็กอิน 10:30 น.</span><span class="en">Late for check in?</span></summary><p><span class="th">เช็กอินปิด 10:30 น. ตรง เพื่อให้รอบแรกเริ่ม 10:40 น. ได้ ถ้ามีเหตุสุดวิสัย ทักแชทเพจก่อนได้เลย</span><span class="en">Check in closes at 10:30 sharp so Round 1 can start at 10:40. If something comes up, message the Page first.</span></p></details>
       <details><summary><span class="th">ลืม Deck list มา</span><span class="en">Forgot my deck list?</span></summary><p><span class="th">ขอใบเปล่าที่จุดลงทะเบียนแล้วเขียนมือได้ แต่ต้องเสร็จก่อนรอบแรก ทำมาจากบ้านสบายกว่าครับ</span><span class="en">Ask for a blank sheet at registration and write it by hand before Round 1. Easier to make it at home.</span></p></details>
+      <details><summary><span class="th">ที่นั่งเต็มแล้ว ยังมาได้ไหม</span><span class="en">Seats are full. Can I still come?</span></summary><p><span class="th">มาเชียร์ได้เลยครับ ใช้บัตร Explorer เข้างาน เดินตลาดการ์ด CCC ลองเล่นฟรี หรือดูไลฟ์บนเพจ Anubis Cards and Craft</span><span class="en">Come and cheer. Get an Explorer ticket to walk the CCC market, try Learn to Play, or watch the stream on our Page.</span></p></details>
       <details><summary><span class="th">เพื่อนไม่ได้แข่ง เข้ามาดูได้ไหม</span><span class="en">Can friends come to watch?</span></summary><p><span class="th">ได้ครับ ใช้บัตร Explorer เข้างาน ผู้เล่น RRR ได้บัตร 2 ใบอยู่แล้ว หรือดูไลฟ์บนเพจก็ได้</span><span class="en">Yes, with an Explorer ticket. RRR players already get 2, or watch the stream on our Page.</span></p></details>
       <details><summary><span class="th">มีคำถามอื่น</span><span class="en">Other questions?</span></summary><p><span class="th">ทักแชทเพจ Anubis Cards and Craft ได้เลยครับ</span><span class="en">Message the Anubis Cards and Craft Page.</span> <a href="https://m.me/AnubisCardsandCraft" target="_blank" rel="noopener"><span class="th">เปิดแชท</span><span class="en">Open chat</span></a></p></details>
     </div>
@@ -388,7 +442,6 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
     <div class="links">
       <a href="../rrr-registration-check/"><span class="th">เช็กชื่อ + Riot ID</span><span class="en">Registration + Riot ID</span></a>
       <a href="../rrr-decklist/">Deck list</a>
-      <a href="https://url.in.th/RRR-BetterTrade2026" target="_blank" rel="noopener"><span class="th">สมัคร RRR</span><span class="en">RRR sign up</span></a>
       <a href="/"><span class="th">หน้าแรก Anubis</span><span class="en">Anubis home</span></a>
     </div>
     <p><span class="th">ข้อมูลอัปเดต 28 ต.ค. 2569 ✦ เวลาและรางวัลบางส่วนอาจปรับตามหน้างาน</span><span class="en">Updated 28 Oct 2026 ✦ Some times and prizes may change on the day.</span></p>
@@ -407,23 +460,36 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 
   /* 7 moments that matter. key = big moments */
   var TL=[
-    {t:'09:45',show:'9:45',key:1,th:['เช็กอิน + รับ 3 ซอง','ส่ง Deck list ปิด 10:30 น. ตรง'],en:['Check in + 3 packs','Hand in deck list, closes 10:30']},
-    {t:'10:40',show:'10:40',th:['รอบแรกเริ่ม','Swiss 7 รอบ'],en:['Round 1','7 Swiss rounds']},
-    {t:'12:55',show:'12:55',luck:1,th:['พักกลางวัน',''],en:['Lunch break','']},
-    {t:'13:25',show:'13:25',luck:1,th:['รอบ 4 ถึง 7','Lucky Draw ระหว่างรอบ 5'],en:['Rounds 4 to 7','Lucky Draw in Round 5']},
-    {t:'16:25',show:'16:25',key:1,luck:1,th:['ประกาศ Top 8','แล้วแข่งแบบ Best of 3'],en:['Top 8 revealed','then Best of 3']},
-    {t:'18:30',show:'18:30',key:1,th:['Grand Final','บนเวทีพร้อมผู้พากย์'],en:['Grand Final','on stage, with casters']},
-    {t:'19:25',show:'19:25',luck:1,th:['มอบรางวัล','ถ่ายรูปแชมป์'],en:['Awards','champion photo']}
+    {t:'09:45',show:'9:45',key:1,th:['เช็กอิน + รับ 3 ซอง','ส่ง Deck list ปิด 10:30 น. ตรง','เปิดประตู 9:00 น. เช็กอินที่หน้าห้อง The Mitr Ting Room ส่ง Deck list รับ DOORGIFT 3 ซองกับบัตร Explorer 2 ใบ ปิดรับ 10:30 น. ตรง แล้วประชุมผู้เล่นต่อเลย'],en:['Check in + 3 packs','Hand in deck list, closes 10:30','Doors open at 9:00. Check in at The Mitr Ting Room, hand in your deck list, grab your 3 pack DOORGIFT and 2 Explorer tickets. Closes 10:30 sharp, then the player meeting.']},
+    {t:'10:40',show:'10:40',th:['รอบแรกเริ่ม','Swiss 7 รอบ','Swiss Best of 1 รอบละ 30 นาที แพ้ก็ได้เล่นต่อทุกรอบ รอบ 2 ราว 11:25 น. รอบ 3 ราว 12:10 น. ไลฟ์บนเพจเริ่มตั้งแต่รอบนี้'],en:['Round 1','7 Swiss rounds','Swiss, Best of 1, 30 minutes a round, and you play every round even after a loss. Round 2 about 11:25, Round 3 about 12:10. The stream starts here.']},
+    {t:'12:55',show:'12:55',luck:1,th:['พักกลางวัน','','พัก 30 นาที หาอะไรกิน แวะเดิน CCC ได้ และจับ Lucky Draw รอบที่ 1'],en:['Lunch break','','30 minutes to eat or walk the CCC market, plus Lucky Draw 1.']},
+    {t:'13:25',show:'13:25',luck:1,th:['รอบ 4 ถึง 7','Lucky Draw ระหว่างรอบ 5','รอบ 4 เริ่ม 13:25 น. รอบ 5 ราว 14:10 น. (จับ Lucky Draw รอบที่ 2) รอบ 6 ราว 14:55 น. รอบ 7 ราว 15:40 น.'],en:['Rounds 4 to 7','Lucky Draw in Round 5','Round 4 at 13:25, Round 5 about 14:10 (Lucky Draw 2), Round 6 about 14:55, Round 7 about 15:40.']},
+    {t:'16:25',show:'16:25',key:1,luck:1,th:['ประกาศ Top 8','แล้วแข่งแบบ Best of 3','ประกาศ 8 คนสุดท้ายพร้อมจับ Lucky Draw รอบที่ 3 แล้วแพ้คัดออก Best of 3 Quarterfinals 16:40 น. Semifinals 17:35 น.'],en:['Top 8 revealed','then Best of 3','The final 8 are announced with Lucky Draw 3, then single elimination, Best of 3. Quarterfinals 16:40, Semifinals 17:35.']},
+    {t:'18:30',show:'18:30',key:1,th:['Grand Final','บนเวทีพร้อมผู้พากย์','นัดชิง Best of 3 บนเวที พากย์สดโดย Philly และ Jade ดูบนจอในงานหรือไลฟ์บนเพจ'],en:['Grand Final','on stage, with casters','Best of 3 on stage, cast live by Philly and Jade. Watch at the venue or on our Page.']},
+    {t:'19:25',show:'19:25',luck:1,th:['มอบรางวัล','ถ่ายรูปแชมป์','Top 8 เลือกรางวัลตามอันดับ จับ Lucky Draw รางวัลสุดท้าย ถ่ายรูปแชมป์ จบงานราว 19:40 น.'],en:['Awards','champion photo','The Top 8 pick prizes in order, the final Lucky Draw, the champion photo. Done around 19:40.']}
   ];
+  var tsel=null;
+  function curIdx(){var now=Date.now(); for(var i=TL.length-1;i>=0;i--){ if(now>=at('10-31',TL[i].t)&&now<END) return i; } return -1;}
+  function renderDet(){
+    var i=tsel; if(i===null){i=curIdx(); if(i<0)i=0;} var r=TL[i], L=r[lang];
+    document.querySelectorAll('#tl li').forEach(function(li,k){li.classList.toggle('sel',k===i);li.setAttribute('aria-pressed',String(k===i));});
+    var d=document.getElementById('tdet'); d.style.animation='none'; void d.offsetWidth; d.style.animation='';
+    d.innerHTML='<span class="tt">'+r.show+'</span><span><b>'+L[0]+'</b><p>'+L[2]+'</p></span>';
+  }
   function renderTL(){
     var now=Date.now(), h='';
     TL.forEach(function(r,i){
       var s=at('10-31',r.t), e=i<TL.length-1?at('10-31',TL[i+1].t):END;
       var cls=(r.key?'key ':'')+(now>=s&&now<e?'now':(now>=e&&now<END+6*3600e3?'past':''));
       var L=r[lang];
-      h+='<li class="'+cls+'"><time>'+r.show+'</time><span class="dot"></span><span class="what" data-now="'+(lang==='th'?'ตอนนี้':'NOW')+'">'+L[0]+(r.luck?'<span class="luck">🍀 Lucky Draw</span>':'')+(L[1]?'<small>'+L[1]+'</small>':'')+'</span></li>';
+      h+='<li class="'+cls+'" tabindex="0" role="button" data-i="'+i+'"><time>'+r.show+'</time><span class="dot"></span><span class="what" data-now="'+(lang==='th'?'ตอนนี้':'NOW')+'">'+L[0]+(r.luck?'<span class="luck">🍀 Lucky Draw</span>':'')+(L[1]?'<small>'+L[1]+'</small>':'')+'</span></li>';
     });
-    document.getElementById('tl').innerHTML=h;
+    var tl=document.getElementById('tl'); tl.innerHTML=h;
+    tl.querySelectorAll('li').forEach(function(li){
+      var go=function(){tsel=+li.dataset.i;renderDet();};
+      li.addEventListener('click',go); li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+    });
+    renderDet();
   }
   function pad(n){return String(n).padStart(2,'0');}
   function renderStatus(){
@@ -450,10 +516,74 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
   var hero=document.querySelector('.hero');
   window.addEventListener('scroll',function(){document.getElementById('bar').classList.toggle('show',hero.getBoundingClientRect().bottom<0);},{passive:true});
 
+
+  /* prepare ticks */
+  var PK='rrrPrep', ps={}; try{ps=JSON.parse(localStorage.getItem(PK)||'{}')||{};}catch(e){ps={};}
+  function renderPrep(){
+    var n=0, cards=document.querySelectorAll('.pi[data-k]');
+    cards.forEach(function(c){var on=!!ps[c.dataset.k]; if(on)n++; c.classList.toggle('done',on); c.querySelector('.tick').setAttribute('aria-pressed',String(on));});
+    document.getElementById('pfill').style.width=(n/cards.length*100)+'%';
+    var th=lang==='th';
+    document.getElementById('ptext').textContent=n===cards.length?(th?'พร้อมลุยแล้ว! 🎉':'Ready to rumble! 🎉'):(th?'พร้อมแล้ว '+n+'/'+cards.length:n+'/'+cards.length+' ready');
+  }
+  document.querySelectorAll('.pi[data-k] .tick').forEach(function(b){b.addEventListener('click',function(){var k=b.closest('.pi').dataset.k; ps[k]=!ps[k]; try{localStorage.setItem(PK,JSON.stringify(ps));}catch(e){} renderPrep();});});
+
+  /* prize tiers */
+  var I={ob:['originsbox','Origins Box'],rv:['radvault','Radiance Vault'],rad:['pk-rad','Radiance'],sf:['pk-spirit','Spiritforged'],my:['pk-mystery',''],nx:['pk-nexus','Nexus Night'],tk:['ticket','Explorer x2'],tr:['trophy','']};
+  var TIERS={
+    1:{th:'จบอันดับ 1 ได้',en:'Finish 1st and you get',im:[['tr','เลือกก่อนใคร','First pick'],['rv','+ Radiance Vault','+ Radiance Vault']],ch:['Playmat','Sleeves'],pick:[1]},
+    2:{th:'จบอันดับ 2 ได้',en:'Finish 2nd and you get',im:[['tr','เลือกคนที่ 2','Pick #2']],ch:['Playmat','Sleeves'],pick:[2]},
+    3:{th:'จบอันดับ 3 หรือ 4 ได้',en:'Finish 3rd or 4th and you get',im:[['tr','เลือกคนที่ 3 หรือ 4','Pick #3 or #4']],ch:['Playmat'],pick:[3,4]},
+    4:{th:'จบอันดับ 5 ถึง 8 ได้',en:'Finish 5th to 8th and you get',im:[['tr','เลือกตามลำดับ','Pick in order']],ch:[],pick:[5,6,7,8]},
+    5:{th:'จบอันดับ 9 ถึง 16 ได้',en:'Finish 9th to 16th and you get',im:[['rad','Radiance','Radiance'],['rad','Radiance','Radiance']],ch:[],pick:[]},
+    6:{th:'จบอันดับ 17 ถึง 32 ได้',en:'Finish 17th to 32nd and you get',im:[['sf','Spiritforged','Spiritforged']],ch:[],pick:[]},
+    7:{th:'ทุกคนได้ตอนเช็กอิน',en:'Everyone gets at check in',im:[['rad','Radiance','Radiance'],['my','ซองสุ่ม','Random pack'],['nx','Nexus Night','Nexus Night'],['tk','บัตร Explorer 2 ใบ','2 Explorer tickets']],ch:[],pick:[]}
+  };
+  var tier=1;
+  function renderTier(){
+    var t=TIERS[tier], th=lang==='th', h='<h4>'+(th?t.th:t.en)+'</h4><div class="row">';
+    t.im.forEach(function(x,i){h+='<figure><img src="img/x/'+I[x[0]][0]+'.webp" alt="" style="animation-delay:'+(i*80)+'ms"><figcaption>'+(th?x[1]:x[2])+'</figcaption></figure>';});
+    t.ch.forEach(function(c){h+='<span class="chip">+ '+c+'</span>';});
+    h+='</div>';
+    if(t.pick.length){h+='<div class="order">'; for(var i=1;i<=8;i++){h+='<span class="'+(t.pick.indexOf(i)>=0?'me':'')+'">'+i+'</span>';} h+='</div><p class="oc">'+(th?'ลำดับเลือกรางวัลใหญ่จากกองด้านล่าง อันดับ 1 เลือกก่อน':'Pick order for the big prizes below, 1st picks first')+'</p>';}
+    if(tier>=5&&tier<=6) h+='<p class="oc">'+(th?'+ DOORGIFT 3 ซองที่ได้ตั้งแต่เช็กอิน อาจปรับตามจำนวนผู้เล่น':'+ the 3 pack DOORGIFT from check in. May be adjusted by player count')+'</p>';
+    if(tier===7) h+='<p class="oc">'+(th?'+ สิทธิ์ลุ้น Lucky Draw และซื้อกล่องราคา MSRP ที่ Sabai Cards':'+ a Lucky Draw chance and the Sabai Cards MSRP box perk')+'</p>';
+    var pz=document.getElementById('pz'); pz.innerHTML=h; pz.style.animation='none'; void pz.offsetWidth; pz.style.animation='';
+    var lad=document.querySelector('.ladder'); lad.classList.add('picking');
+    lad.querySelectorAll('li').forEach(function(li){var on=+li.dataset.t===tier; li.classList.toggle('sel',on); li.setAttribute('aria-pressed',String(on));});
+  }
+  document.querySelectorAll('.ladder li').forEach(function(li){var go=function(){tier=+li.dataset.t;renderTier();}; li.addEventListener('click',go); li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+
+  /* vendor logos */
+  var V=[['Sabai Cards','ร้าน MTG กล่องซีลและ Singles และกล่อง Riftbound ราคา MSRP สำหรับผู้เล่น RRR','MTG sealed and Singles, plus MSRP Riftbound boxes for RRR players'],
+    ['High Score TCG','ซื้อ ขาย แลก Pokémon, One Piece, MTG และเกมอื่นๆ','Buy, sell and trade Pokémon, One Piece, MTG and more'],
+    ['616 Comics','คอมมิคสายสะสม ตั้งแต่เล่มคลาสสิกถึง Key Issue','Collectible comics, classics to key issues'],
+    ['Smashhh Studio','สตูดิโอวาดคอมมิค มาเจอ Formalynn และ Maiimou ที่บูธ','Comic art studio, meet Formalynn and Maiimou'],
+    ['Monsnatch','การ์ดเกมสติ๊กเกอร์ของคนไทย เล่นเป็นใน 1 นาที','A Thai sticker card game you learn in a minute'],
+    ['The Quest Atelier','Disney Lorcana สายพรีเมียม ทั้ง Singles และ Slabs','Premium Disney Lorcana Singles and slabs'],
+    ['Legendary Wargame','Warhammer และสี Citadel มีโต๊ะให้ลองระบายสีโมเดล','Warhammer and Citadel paints, with a painting table to try'],
+    ['Anubis Cards and Craft','แฟ้มใส่การ์ดและ Sleeves','Card binders and sleeves']];
+  var vsel=-1;
+  function renderV(){
+    var c=document.getElementById('vcap'), th=lang==='th', box=document.getElementById('logos');
+    box.classList.toggle('picking',vsel>=0);
+    box.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.v===vsel));});
+    if(vsel<0){c.className='vcap hint'; c.textContent=th?'👆 แตะโลโก้ ดูว่าแต่ละร้านมีอะไร ✦ และยังมีบูธอื่นอีกที่หน้างาน':'👆 Tap a logo to see what each booth brings ✦ and more booths at the venue';}
+    else {c.className='vcap'; c.innerHTML='<b>'+V[vsel][0]+'</b> ✦ '+(th?V[vsel][1]:V[vsel][2]);}
+  }
+  document.querySelectorAll('#logos button').forEach(function(b){b.addEventListener('click',function(){var v=+b.dataset.v; vsel=vsel===v?-1:v; renderV();});});
+
+  /* reveal on scroll */
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('anim');
+    var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.qh,.panel,.pi,.cccrow,.logos,.free > div,.faq details').forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(el.matches('.pi,.free > div')?(i%3)*90:0)+'ms';rio.observe(el);});
+    setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},50);
+  }
   function setLang(l){lang=l;root.setAttribute('data-lang',l);root.lang=l;
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l));});
     try{localStorage.setItem('rrrLang',l);}catch(e){}
-    renderTL();renderStatus();renderBar();}
+    renderTL();renderStatus();renderBar();renderPrep();renderTier();renderV();}
   document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
   setLang(lang);
   setInterval(renderStatus,1000);
