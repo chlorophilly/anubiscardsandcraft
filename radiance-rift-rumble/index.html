@@ -276,6 +276,48 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 html.anim .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 html.anim .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){ html.anim .rv{opacity:1;transform:none} }
+/* Bo1 sideboard setup (28 Oct): 8 tappable steps from the head judge */
+.sbg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.sbg button{display:flex;align-items:center;gap:8px;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 10px;font:800 14.5px var(--f);color:var(--navy);cursor:pointer;text-align:left;line-height:1.2;min-height:52px;transition:transform .15s,box-shadow .2s,border-color .2s}
+.sbg button:hover{transform:translateY(-2px)}
+.sbg .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cta);color:#fff;display:grid;place-items:center;font-weight:900;font-size:15px}
+.sbg button.key{background:linear-gradient(135deg,#29277d,#4b36a8 55%,#a8389e);border-color:transparent;color:#fff}
+.sbg button.key .n{background:#fff;color:var(--violet)}
+.sbg button[aria-pressed="true"]{border-color:var(--pink);box-shadow:0 8px 18px rgba(229,64,154,.22)}
+.sbg button.key[aria-pressed="true"]{box-shadow:0 0 0 3px var(--amber),0 8px 18px rgba(84,57,188,.35)}
+.sbd{margin-top:10px;border-radius:16px;padding:14px;background:linear-gradient(135deg,#f6f1ff,#fff);border:2px solid #e4dcff;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;animation:pop .3s ease}
+.sbd[hidden]{display:none}
+.sbd.key{background:linear-gradient(135deg,#f3eeff,#fff3fa);border-color:#d9ccff}
+.sbd .im{display:flex;align-items:center;gap:6px}
+.sbd .im img{height:120px;width:auto;border-radius:7px;box-shadow:0 8px 14px rgba(34,32,95,.22);animation:rise .4s ease both}
+.sbd .im img.bf{height:auto;width:118px;border-radius:6px}
+.sbd .im img.dim{opacity:.45}
+.sbd .im .big{font-weight:900;font-size:42px;line-height:1;padding:0 6px}
+.sbd .im .tok{display:flex;flex-direction:column;gap:6px}
+.sbd .im .tok span{border-radius:999px;padding:4px 14px;font-weight:800;font-size:14px;text-align:center;white-space:nowrap}
+.sbd .st{font-size:12px;font-weight:800;color:var(--violet);letter-spacing:.04em}
+.sbd b{display:block;color:var(--navy);font-size:18px;line-height:1.3}
+.sbd p{margin:4px 0 0;font-size:14.5px;line-height:1.55}
+.sbd .rule{display:inline-block;margin-top:8px;background:#fff1e0;color:#b4560b;border-radius:10px;padding:4px 10px;font-size:13px;font-weight:800;line-height:1.4}
+.sbnav{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
+.sbnav button{border:2px solid var(--line);background:#fff;border-radius:999px;font:700 13.5px var(--f);color:var(--navy);padding:6px 14px;cursor:pointer;min-height:38px}
+.sbnav button:disabled{opacity:.35;cursor:default}
+.sbf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.sbf div{display:flex;gap:12px;align-items:center;background:var(--panel);border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.4}
+.sbf i{flex:none;font-style:normal;color:#fff;border-radius:12px;padding:6px 10px;font-weight:900;font-size:14px;line-height:1.15;text-align:center;min-width:92px}
+.sbf b{display:block;color:var(--navy);font-size:15px}
+.sbimg{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.sbimg img{width:84px;height:84px;border-radius:12px;box-shadow:0 6px 14px rgba(34,32,95,.18)}
+@media (max-width:660px){
+  .sbg{gap:6px}
+  .sbg button{flex-direction:column;align-items:center;text-align:center;padding:8px 4px;font-size:12px;gap:4px;min-height:74px}
+  .sbg .n{width:26px;height:26px;font-size:13.5px}
+  .sbd{grid-template-columns:1fr;gap:10px;padding:12px}
+  .sbd .im{justify-content:center}
+  .sbd .im img{height:104px}
+  .sbd .im img.bf{width:92px}
+  .sbf{grid-template-columns:1fr}
+}
 @media (min-width:760px){
   /* desktop: timeline runs across */
   .tl{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
@@ -327,7 +369,7 @@ html.anim .rv.in{opacity:1;transform:none}
       <a href="#prepare"><em>🎒</em><span class="th">ต้องเตรียมอะไร?</span><span class="en">What do I prepare?</span></a>
       <a href="#prizes"><em>🏆</em><span class="th">ได้รางวัลอะไร?</span><span class="en">What can I win?</span></a>
     </nav>
-    <p class="more"><a href="#ccc"><span class="th">ตลาดการ์ด CCC</span><span class="en">The CCC market</span></a> ✦ <a href="#go"><span class="th">ไปยังไง</span><span class="en">Getting there</span></a> ✦ <a href="#faq">FAQ</a></p>
+    <p class="more"><a href="#setup"><span class="th">Bo1 Sideboard ได้</span><span class="en">Bo1 sideboarding</span></a> ✦ <a href="#ccc"><span class="th">ตลาดการ์ด CCC</span><span class="en">The CCC market</span></a> ✦ <a href="#go"><span class="th">ไปยังไง</span><span class="en">Getting there</span></a> ✦ <a href="#faq">FAQ</a></p>
   </div>
 </header>
 
@@ -343,7 +385,66 @@ html.anim .rv.in{opacity:1;transform:none}
         <div><b>🔴 <span class="th">ไลฟ์ตั้งแต่รอบแรก</span><span class="en">Live from Round 1</span></b><span class="th">บนเพจ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> พากย์โดย Philly และ Jade</span><span class="en">On the <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> Page, cast by Philly and Jade</span></div>
         <div><b>📅 <span class="th">อาทิตย์ 1 พ.ย.</span><span class="en">Sunday 1 Nov</span></b><span class="th">ไม่มีทัวร์ แต่ CCC เปิดต่อ 10:00 ถึง 17:30&nbsp;น.</span><span class="en">No tournament, CCC open 10:00 to 17:30</span></div>
       </div>
-      <p class="foot"><span class="th">Swiss 7 รอบ Best of 1 รอบละ 30 นาที แล้ว Top 8 แพ้คัดออก Best of 3 ✦ จำนวนรอบและเวลาอาจปรับตามจำนวนผู้เล่น</span><span class="en">7 Swiss rounds, Best of 1, 30 minutes each, then Top 8 single elimination, Best of 3 ✦ Rounds and times may be adjusted based on the number of players.</span></p>
+      <p class="foot"><span class="th">Swiss 7 รอบ Best of 1 รอบละ 30 นาที แล้ว Top 8 แพ้คัดออก Best of 3 ✦ จำนวนรอบและเวลาอาจปรับตามจำนวนผู้เล่น ✦ <a href="#setup">Bo1 ก็ Sideboard ได้ ดูขั้นตอน</a></span><span class="en">7 Swiss rounds, Best of 1, 30 minutes each, then Top 8 single elimination, Best of 3 ✦ Rounds and times may be adjusted based on the number of players. ✦ <a href="#setup">You can sideboard in Bo1: see the steps</a></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 1b. BO1 SIDEBOARD SETUP (head judge, 28 Oct) -->
+<section class="q" id="setup">
+  <div class="wrap">
+    <div class="qh"><em>🃏</em><h2><span class="th">Bo1 ก็ <span class="g">Sideboard ได้</span></span><span class="en">Sideboard <span class="g">in Bo1</span></span><small><span class="th">เห็น Legend กับ Battlefield ของคู่แข่งก่อน แล้วค่อยปรับเด็ค ✦ แตะแต่ละขั้นดูรายละเอียด</span><span class="en">See their Legend and Battlefield first, then sideboard ✦ tap a step for details</span></small></h2></div>
+    <div class="panel">
+      <div class="sbg" id="sbg" role="group" aria-label="Bo1 setup steps">
+        <button type="button" data-s="0" aria-pressed="true"><span class="n">1</span><span>Legend</span></button>
+        <button type="button" data-s="1" aria-pressed="false"><span class="n">2</span><span>Battlefield</span></button>
+        <button type="button" data-s="2" aria-pressed="false"><span class="n">3</span><span><span class="th">ใครเล่นก่อน</span><span class="en">Turn order</span></span></button>
+        <button type="button" data-s="3" aria-pressed="false" class="key"><span class="n">4</span><span>Sideboard</span></button>
+        <button type="button" data-s="4" aria-pressed="false"><span class="n">5</span><span>Champion</span></button>
+        <button type="button" data-s="5" aria-pressed="false"><span class="n">6</span><span><span class="th">สับเด็ค</span><span class="en">Shuffle</span></span></button>
+        <button type="button" data-s="6" aria-pressed="false"><span class="n">7</span><span>Mulligan</span></button>
+        <button type="button" data-s="7" aria-pressed="false"><span class="n">8</span><span><span class="th">เริ่มเล่น</span><span class="en">Play</span></span></button>
+      </div>
+      <div aria-live="polite">
+        <div class="sbd" data-s="0">
+          <div class="im"><img src="img/x/sb-sera-legend.webp" alt="Starry-Eyed Songstress" width="300" height="419" loading="lazy"><span class="big g">VS</span><img src="img/x/sb-jarvan-legend.webp" alt="Exemplar of Demacia" width="300" height="419" loading="lazy"></div>
+          <div><span class="st"><span class="th">ขั้นที่ 1 จาก 8</span><span class="en">STEP 1 OF 8</span></span><b><span class="th">ทั้งคู่เปิด Champion Legend</span><span class="en">Both reveal Champion Legends</span></b><p><span class="th">ทั้งสองฝ่ายโชว์ Champion Legend ให้อีกฝ่ายเห็น</span><span class="en">Both players show their Champion Legend to each other.</span></p></div>
+        </div>
+        <div class="sbd" data-s="1" hidden>
+          <div class="im"><img class="bf dim" src="img/x/sb-bf-vista.webp" alt="Cosmic Vista" width="360" height="258" loading="lazy"><img class="bf" src="img/x/sb-bf-amphi.webp" alt="Packed Amphitheater" width="360" height="258" loading="lazy" style="box-shadow:0 0 0 3px #fff,0 0 0 6px #c23fb0"><img class="bf dim" src="img/x/sb-bf-durand.webp" alt="Durand Memorial" width="360" height="258" loading="lazy"></div>
+          <div><span class="st"><span class="th">ขั้นที่ 2 จาก 8</span><span class="en">STEP 2 OF 8</span></span><b><span class="th">สุ่ม Battlefield 1 ใน 3</span><span class="en">Random 1 of 3 Battlefields</span></b><p><span class="th">แต่ละคนสุ่ม Battlefield 1 ใน 3 ใบของตัวเอง เพื่อใช้เล่นเกมนี้</span><span class="en">Each player randomly picks 1 of their own 3 Battlefields for this game.</span></p></div>
+        </div>
+        <div class="sbd" data-s="2" hidden>
+          <div class="im"><div class="tok"><span style="background:var(--cta);color:#fff"><span class="th">เล่นก่อน</span><span class="en">Go first</span></span><span style="background:#fff;color:var(--violet);box-shadow:inset 0 0 0 2px #a57fc0"><span class="th">เล่นหลัง</span><span class="en">Go second</span></span></div></div>
+          <div><span class="st"><span class="th">ขั้นที่ 3 จาก 8</span><span class="en">STEP 3 OF 8</span></span><b><span class="th">ใครเล่นก่อน?</span><span class="en">Who goes first?</span></b><p><span class="th">ตกลงลำดับการเล่นกันเองทั้งสองฝ่าย</span><span class="en">The two players agree on turn order.</span></p></div>
+        </div>
+        <div class="sbd key" data-s="3" hidden>
+          <div class="im"><img src="img/x/sb-encore.webp" alt="Encore" width="300" height="419" loading="lazy"></div>
+          <div><span class="st"><span class="th">ขั้นที่ 4 จาก 8 ✦ จุดสำคัญ</span><span class="en">STEP 4 OF 8 ✦ THE KEY STEP</span></span><b><span class="th">ทั้งคู่ Sideboard</span><span class="en">Both players sideboard</span></b><p><span class="th">ตอนนี้เห็น Legend กับ Battlefield ของคู่แข่งแล้ว ปรับเด็ครับมือได้เลย เปลี่ยนการ์ดระหว่าง Sideboard กับ Main Deck 1 ต่อ 1 ใบ</span><span class="en">You've seen their Legend and Battlefield, so tune your deck for it. Swap Sideboard and Main Deck cards 1 for 1.</span></p><span class="rule"><span class="th">ห้ามเปลี่ยน Legend, Battlefield, Rune</span><span class="en">Legend, Battlefields and Runes can't change</span></span></div>
+        </div>
+        <div class="sbd" data-s="4" hidden>
+          <div class="im"><img src="img/x/sb-sera-champ.webp" alt="Seraphine, Inspiring" width="300" height="419" loading="lazy" style="box-shadow:0 0 0 4px #fff,0 0 0 7px #a57fc0"></div>
+          <div><span class="st"><span class="th">ขั้นที่ 5 จาก 8</span><span class="en">STEP 5 OF 8</span></span><b>Chosen Champion</b><p><span class="th">แยกออกมาวางไว้ใน Chosen Champion Zone</span><span class="en">Set your Chosen Champion aside in the Chosen Champion Zone.</span></p></div>
+        </div>
+        <div class="sbd" data-s="5" hidden>
+          <div class="im"><span class="big">🔀</span></div>
+          <div><span class="st"><span class="th">ขั้นที่ 6 จาก 8</span><span class="en">STEP 6 OF 8</span></span><b><span class="th">สับเด็ค</span><span class="en">Shuffle</span></b><p><span class="th">สับเด็คให้เรียบร้อย</span><span class="en">Shuffle your deck.</span></p></div>
+        </div>
+        <div class="sbd" data-s="6" hidden>
+          <div class="im"><span class="big">🖐️</span></div>
+          <div><span class="st"><span class="th">ขั้นที่ 7 จาก 8</span><span class="en">STEP 7 OF 8</span></span><b><span class="th">จั่ว แล้ว Mulligan</span><span class="en">Draw, then mulligan</span></b><p><span class="th">Mulligan ได้ไม่เกิน 2 ใบ ใบที่เปลี่ยนให้ Recycle ไว้ใต้เด็ค</span><span class="en">Mulligan up to 2 cards. Recycle them to the bottom of your deck.</span></p></div>
+        </div>
+        <div class="sbd" data-s="7" hidden>
+          <div class="im"><span class="big g">GL HF</span></div>
+          <div><span class="st"><span class="th">ขั้นที่ 8 จาก 8</span><span class="en">STEP 8 OF 8</span></span><b><span class="th">เริ่มเล่นได้เลย!</span><span class="en">Play!</span></b><p><span class="th">ขอให้สนุกนะครับ</span><span class="en">Good luck, have fun.</span></p></div>
+        </div>
+      </div>
+      <div class="sbnav"><button type="button" id="sbprev">‹ <span class="th">ก่อนหน้า</span><span class="en">Back</span></button><button type="button" id="sbnext"><span class="th">ขั้นถัดไป</span><span class="en">Next step</span> ›</button></div>
+      <div class="sbf">
+        <div><i style="background:var(--cta)">Swiss<br>Best of 1</i><span><b><span class="th">Sideboard ก่อนเริ่มเกม</span><span class="en">Sideboard before the game</span></b><span class="th">ทำตาม 8 ขั้นด้านบน</span><span class="en">Follow the 8 steps above</span></span></div>
+        <div><i style="background:linear-gradient(135deg,#f26b3a,#ef4d7d 60%,#c23fb0)">Top 8<br>Best of 3</i><span><b><span class="th">Sideboard ตั้งแต่เกม 2</span><span class="en">Sideboard from Game 2</span></b><span class="th">ตามปกติ</span><span class="en">As usual</span></span></div>
+      </div>
+      <div class="sbimg"><a href="img/g/bo1-sideboard.jpg" target="_blank" rel="noopener"><img src="img/g/bo1-sideboard.jpg" alt="" width="84" height="84" loading="lazy"></a><a class="btn ghost" href="img/g/bo1-sideboard.jpg" target="_blank" rel="noopener"><span class="th">ดูภาพสรุป 8 ขั้น เซฟเก็บไว้ได้</span><span class="en">See the 8 step graphic (save it)</span></a></div>
     </div>
   </div>
 </section>
@@ -467,6 +568,7 @@ html.anim .rv.in{opacity:1;transform:none}
     <div class="qh"><em>💬</em><h2>FAQ</h2></div>
     <div class="faq">
       <details><summary><span class="th">ลงทัวร์ครั้งแรก มาได้ไหม</span><span class="en">First tournament ever. OK?</span></summary><p><span class="th">ได้เลยครับ แข่งแบบ Swiss ทุกคนได้เล่นครบ 7 รอบ แพ้รอบแรกก็ยังลุยต่อได้ทั้งวัน</span><span class="en">Absolutely. It's Swiss, so everyone plays all 7 rounds, even after a loss.</span></p></details>
+      <details><summary><span class="th">รอบ Bo1 Sideboard ได้ไหม</span><span class="en">Can I sideboard in Bo1?</span></summary><p><span class="th">ได้ครับ หลังเปิด Legend และสุ่ม Battlefield แล้ว ทั้งคู่ Sideboard ได้ เปลี่ยน 1 ต่อ 1 ใบ ส่วน Top 8 Best of 3 Sideboard ตั้งแต่เกม 2 ตามปกติ</span><span class="en">Yes. After Legends are revealed and Battlefields are picked, both players may sideboard, 1 for 1. Top 8 (Best of 3) sideboards from Game 2 as usual.</span> <a href="#setup"><span class="th">ดู 8 ขั้น</span><span class="en">See the 8 steps</span></a></p></details>
       <details><summary><span class="th">มาไม่ทันเช็กอิน 10:30 น.</span><span class="en">Late for check in?</span></summary><p><span class="th">เช็กอินปิด 10:30 น. ตรง เพื่อให้รอบแรกเริ่ม 10:40 น. ได้ ถ้ามีเหตุสุดวิสัย ทักแชทเพจก่อนได้เลย</span><span class="en">Check in closes at 10:30 sharp so Round 1 can start at 10:40. If something comes up, message the Page first.</span></p></details>
       <details><summary><span class="th">ลืม Deck list มา</span><span class="en">Forgot my deck list?</span></summary><p><span class="th">ขอใบเปล่าที่จุดลงทะเบียนแล้วเขียนมือได้ แต่ต้องเสร็จก่อนรอบแรก ทำมาจากบ้านสบายกว่าครับ</span><span class="en">Ask for a blank sheet at registration and write it by hand before Round 1. Easier to make it at home.</span></p></details>
       <details><summary><span class="th">ที่นั่งเต็มแล้ว ยังมาได้ไหม</span><span class="en">Seats are full. Can I still come?</span></summary><p><span class="th">มาเชียร์ได้เลยครับ ใช้บัตร Explorer เข้างาน เดินตลาดการ์ด CCC ลองเล่นฟรี หรือดูไลฟ์บนเพจ Anubis Cards and Craft</span><span class="en">Come and cheer. Get an Explorer ticket to walk the CCC market, try Learn to Play, or watch the stream on our Page.</span></p></details>
@@ -632,6 +734,13 @@ html.anim .rv.in{opacity:1;transform:none}
     document.querySelectorAll('.qh,.panel,.pi,.cccrow,.mapbox,.free > div,.faq details').forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(el.matches('.pi,.free > div')?(i%3)*90:0)+'ms';rio.observe(el);});
     setTimeout(function(){document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},50);
   }
+  /* Bo1 sideboard steps */
+  (function(){var bs=document.querySelectorAll('#sbg button'), ds=document.querySelectorAll('.sbd'), pv=document.getElementById('sbprev'), nx=document.getElementById('sbnext'), cur=0;
+    function show(i){cur=i; bs.forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));}); ds.forEach(function(d,k){d.hidden=k!==i;}); pv.disabled=i===0; nx.disabled=i===bs.length-1;}
+    bs.forEach(function(b,k){b.addEventListener('click',function(){show(k);});});
+    pv.addEventListener('click',function(){if(cur>0)show(cur-1);}); nx.addEventListener('click',function(){if(cur<bs.length-1)show(cur+1);});
+    show(0);})();
+
   function setLang(l){lang=l;root.setAttribute('data-lang',l);root.lang=l;
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l));});
     try{localStorage.setItem('rrrLang',l);}catch(e){}
