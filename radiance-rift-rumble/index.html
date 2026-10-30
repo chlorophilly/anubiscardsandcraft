@@ -94,9 +94,12 @@ html[data-lang="th"] .en, html[data-lang="en"] .th{display:none!important}
 
 /* 1. WHEN: one clean timeline */
 .tl{list-style:none;margin:0;padding:0;position:relative}
-.tl::before{content:"";position:absolute;left:69px;top:14px;bottom:14px;width:4px;border-radius:4px;background:var(--grad)}
-.tl li{display:grid;grid-template-columns:56px 28px minmax(0,1fr);align-items:center;padding:8px 0;position:relative}
-.tl time{font-weight:900;font-size:18px;color:var(--navy);text-align:right;font-variant-numeric:tabular-nums}
+.tl::before{content:"";position:absolute;left:139px;top:14px;bottom:14px;width:4px;border-radius:4px;background:var(--grad)}
+.tl li{display:grid;grid-template-columns:126px 28px minmax(0,1fr);align-items:center;padding:6px 0;position:relative}
+.tl time{font-weight:900;font-size:16px;color:var(--navy);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tl time i{font-style:normal;font-weight:600;font-size:12.5px;color:var(--muted);-webkit-text-fill-color:var(--muted);margin:0 3px}
+.tl li.sec{display:block;cursor:default;padding:12px 0 2px 158px;font-weight:800;font-size:12.5px;color:var(--violet);letter-spacing:.02em}
+.tl li.sec:hover{background:none}
 .tl .dot{width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--violet);margin-left:7px;position:relative;z-index:1}
 .tl .what{font-weight:700;font-size:16px;color:var(--navy);line-height:1.3;padding-left:8px}
 .tl .what small{display:block;font-weight:500;font-size:13px;color:var(--muted)}
@@ -107,6 +110,43 @@ html[data-lang="th"] .en, html[data-lang="en"] .th{display:none!important}
 .tl li.now .dot{border-color:#e5243b;box-shadow:0 0 0 6px rgba(229,36,59,.18)}
 .tl li.now .what::after{content:attr(data-now);margin-left:8px;font-size:11px;font-weight:800;color:#fff;background:#e5243b;border-radius:999px;padding:1px 8px;vertical-align:2px;white-space:nowrap}
 .tl li.past{opacity:.45}
+/* day chart: bars sized by time */
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:0 0 12px;font-size:12.5px;font-weight:700;color:var(--navy)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:10px;border-radius:4px;display:inline-block}
+.day{position:relative;margin-left:2px}
+.day .hr{position:absolute;left:0;right:0;height:0;border-top:1px dashed #d9def0}
+.day .hr span{position:absolute;left:0;top:-8px;width:40px;font-size:11.5px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.day .gap{position:absolute;left:52px;right:0;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#9aa0bf;pointer-events:none}
+.blk{position:absolute;left:52px;right:0;border:0;border-radius:10px;padding:0 10px;display:flex;flex-direction:column;justify-content:center;gap:1px;text-align:left;font:inherit;color:#fff;cursor:pointer;overflow:hidden;box-shadow:0 4px 10px rgba(34,32,95,.12);transition:transform .15s,box-shadow .2s,opacity .2s}
+.blk:hover{transform:translateX(3px)}
+.blk .r1{display:flex;align-items:center;gap:8px;min-width:0}
+.blk b{font-weight:800;font-size:14.5px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk .tm{margin-left:auto;font-weight:700;font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums;opacity:.95}
+.blk small{font-size:12px;font-weight:600;opacity:.88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}
+.blk.thin b{font-size:13px}.blk.thin .tm{font-size:12px}
+.ph-in{background:linear-gradient(135deg,#29277d,#3b3a9a)}
+.ph-sw{background:linear-gradient(135deg,#5439bc,#7a52c9)}
+.ph-lu{background:#fde58a;color:#6b4200!important}
+.ph-t8{background:linear-gradient(135deg,#e5409a,#c23fb0)}
+.ph-bo{background:linear-gradient(135deg,#2e64c0,#41b0e3)}
+.ph-gf{background:linear-gradient(135deg,#f26b3a,#ef4d7d 60%,#c23fb0)}
+.ph-aw{background:linear-gradient(135deg,#f8ad2a,#ef5040)}
+.blk.sel{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--violet),0 8px 18px rgba(34,32,95,.25);z-index:2}
+.blk.past{opacity:.4}
+.blk.now{box-shadow:0 0 0 3px #fff,0 0 0 5px #e5243b;z-index:2}
+.nowl{position:absolute;left:44px;right:0;height:0;border-top:2px solid #e5243b;z-index:3;pointer-events:none}
+.nowl::before{content:"";position:absolute;left:-4px;top:-6px;width:10px;height:10px;border-radius:50%;background:#e5243b}
+.nowl span{position:absolute;right:0;top:-20px;background:#e5243b;color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px}
+.tpop{position:absolute;left:52px;right:0;z-index:6;display:none;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start;background:#fff;border:2px solid #e4dcff;border-radius:14px;padding:10px 12px;box-shadow:0 14px 30px rgba(34,32,95,.22);animation:pop .25s ease}
+.tpop.on{display:grid}
+.tpop .tt{background:var(--cta);color:#fff;border-radius:10px;padding:5px 8px;font-weight:900;font-size:15px;line-height:1.1;text-align:center;font-variant-numeric:tabular-nums}
+.tpop .tt small{display:block;font-weight:600;font-size:11.5px;margin-top:2px}
+.tpop b{display:block;color:var(--navy);font-size:15px;line-height:1.3}
+.tpop p{margin:2px 0 0;font-size:13.5px;line-height:1.5}
+.tpop .x{border:0;background:var(--panel);border-radius:999px;width:30px;height:30px;font:800 15px var(--f);color:var(--navy);cursor:pointer}
+@media (min-width:760px){.tpop{display:none!important}}
+@media (max-width:759px){.tlbox .tdet{display:none}}
 .side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
 .side div{background:var(--panel);border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.4}
 .side b{display:block;color:var(--navy);font-size:15px}
@@ -235,7 +275,8 @@ footer p{font-size:12px;color:#9e9ad8;margin:0}
 .tl li.sel .dot{transform:scale(1.25);border-color:var(--violet)}
 .tl .dot{transition:transform .2s}
 .tdet{margin-top:10px;border-radius:16px;padding:12px 14px;background:linear-gradient(135deg,#f6f1ff,#fff);border:2px solid #e4dcff;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;animation:pop .3s ease}
-.tdet .tt{background:var(--cta);color:#fff;border-radius:12px;padding:6px 10px;font-weight:900;font-size:17px;line-height:1.1;text-align:center;min-width:66px}
+.tdet .tt{background:var(--cta);color:#fff;border-radius:12px;padding:6px 10px;font-weight:900;font-size:17px;line-height:1.1;text-align:center;min-width:66px;font-variant-numeric:tabular-nums}
+.tdet .tt small{display:block;font-weight:600;font-size:12.5px;opacity:.9;margin-top:2px}
 .tdet b{display:block;color:var(--navy);font-size:16px;line-height:1.3}
 .tdet p{margin:2px 0 0;font-size:14px;line-height:1.5}
 @keyframes pop{from{transform:translateY(4px);opacity:.3}to{transform:none;opacity:1}}
@@ -319,16 +360,16 @@ html.anim .rv.in{opacity:1;transform:none}
   .sbf{grid-template-columns:1fr}
 }
 @media (min-width:760px){
-  /* desktop: timeline runs across */
-  .tl{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
-  .tl::before{left:4%;right:4%;top:46px;bottom:auto;height:4px;width:auto}
-  .tl li{grid-template-columns:1fr;grid-template-rows:auto 28px auto;justify-items:center;text-align:center;padding:6px 4px}
-  .tl time{text-align:center}
-  .tl .dot{margin:0}
-  .tl li.key .dot{margin:0}
-  .tl .what{padding:4px 0 0;font-size:14.5px}
-  .tl .what small{display:none}
-  .tl .luck{display:block;margin:4px auto 0;width:max-content}
+  /* desktop: full schedule left, detail box sticks on the right */
+  .tlbox{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
+  .tlbox .tdet{position:sticky;top:16px;margin-top:6px}
+}
+@media (max-width:380px){
+  .tl li{grid-template-columns:112px 28px minmax(0,1fr)}
+  .tl::before{left:125px}
+  .tl li.sec{padding-left:144px}
+  .tl time{font-size:14.5px}
+  .tl .what{font-size:15px}
 }
 @media (max-width:759px){
   .prep{grid-template-columns:1fr}
@@ -379,13 +420,18 @@ html.anim .rv.in{opacity:1;transform:none}
   <div class="wrap">
     <div class="qh"><em>⏰</em><h2><span class="th">แข่งกี่โมง <span class="g">มีอะไรบ้าง?</span></span><span class="en">What happens <span class="g">when?</span></span><small><span class="th">เสาร์ 31 ต.ค. ✦ แตะแต่ละช่วงดูรายละเอียด วันงานช่วงที่กำลังแข่งจะขึ้นไฮไลต์ให้</span><span class="en">Sat 31 Oct ✦ tap a moment for details. On the day, what's on now lights up</span></small></h2></div>
     <div class="panel">
-      <ol class="tl" id="tl"></ol>
-      <div class="tdet" id="tdet" aria-live="polite"></div>
+      <div class="tlbox">
+        <div>
+          <div class="legend" id="legend"></div>
+          <div class="day" id="day"></div>
+        </div>
+        <div class="tdet" id="tdet" aria-live="polite"></div>
+      </div>
       <div class="side">
-        <div><b>🔴 <span class="th">ไลฟ์ตั้งแต่รอบแรก</span><span class="en">Live from Round 1</span></b><span class="th">บนเพจ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> พากย์โดย Philly และ Jade</span><span class="en">On the <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> Page, cast by Philly and Jade</span></div>
+        <div><b>🔴 <span class="th">ไลฟ์ตั้งแต่รอบแรก</span><span class="en">Live from Round 1</span></b><span class="th">บนเพจ <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> Philly และ Jade พากย์สดตั้งแต่ Top 8</span><span class="en">On the <a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener">Anubis Cards and Craft</a> Page. Philly and Jade cast live from the Top 8</span></div>
         <div><b>📅 <span class="th">อาทิตย์ 1 พ.ย.</span><span class="en">Sunday 1 Nov</span></b><span class="th">ไม่มีทัวร์ แต่ CCC เปิดต่อ 10:00 ถึง 17:30&nbsp;น.</span><span class="en">No tournament, CCC open 10:00 to 17:30</span></div>
       </div>
-      <p class="foot"><span class="th">Swiss 7 รอบ Best of 1 รอบละ 30 นาที แล้ว Top 8 แพ้คัดออก Best of 3 ✦ จำนวนรอบและเวลาอาจปรับตามจำนวนผู้เล่น ✦ <a href="#setup">Bo1 ก็ Sideboard ได้ ดูขั้นตอน</a></span><span class="en">7 Swiss rounds, Best of 1, 30 minutes each, then Top 8 single elimination, Best of 3 ✦ Rounds and times may be adjusted based on the number of players. ✦ <a href="#setup">You can sideboard in Bo1: see the steps</a></span></p>
+      <p class="foot"><span class="th">Swiss 7 รอบ Best of 1 รอบละ 30 นาที แต่ละรอบมีเวลาเผื่อ 15 นาทีให้เกมที่ยังไม่จบ ไม่ใช่เวลาพัก แล้ว Top 8 แพ้คัดออก Best of 3 ✦ จำนวนรอบและเวลาอาจปรับตามจำนวนผู้เล่น ✦ <a href="#setup">Bo1 ก็ Sideboard ได้ ดูขั้นตอน</a></span><span class="en">7 Swiss rounds, Best of 1, 30 minutes each, each followed by a 15 minute buffer for games still finishing (not a break), then Top 8 single elimination, Best of 3 ✦ Rounds and times may be adjusted based on the number of players. ✦ <a href="#setup">You can sideboard in Bo1: see the steps</a></span></p>
     </div>
   </div>
 </section>
@@ -605,37 +651,58 @@ html.anim .rv.in{opacity:1;transform:none}
   var CHECKIN=at('10-31','09:45'), RIOT=at('10-30','20:00'), END=at('10-31','20:00'), D2C=at('11-01','17:30');
   var FB='https://www.facebook.com/AnubisCardsandCraft';
 
-  /* 7 moments that matter. key = big moments */
+  /* full Saturday schedule as a day chart: each bar sized by its real start and end. d = end time shown when it differs from the bar end */
   var TL=[
-    {t:'09:45',show:'9:45',key:1,th:['เช็กอิน + รับ 3 ซอง','ส่ง Deck list ปิด 10:30 น. ตรง','เปิดประตู 9:00 น. เช็กอินที่หน้าห้อง The Mitr Ting Room ส่ง Deck list รับ DOORGIFT 3 ซองกับบัตร Explorer 2 ใบ ปิดรับ 10:30 น. ตรง แล้วประชุมผู้เล่นต่อเลย'],en:['Check in + 3 packs','Hand in deck list, closes 10:30','Doors open at 9:00. Check in at The Mitr Ting Room, hand in your deck list, grab your 3 pack DOORGIFT and 2 Explorer tickets. Closes 10:30 sharp, then the player meeting.']},
-    {t:'10:40',show:'10:40',th:['รอบแรกเริ่ม','Swiss 7 รอบ','Swiss Best of 1 รอบละ 30 นาที แพ้ก็ได้เล่นต่อทุกรอบ รอบ 2 ราว 11:25 น. รอบ 3 ราว 12:10 น. ไลฟ์บนเพจเริ่มตั้งแต่รอบนี้'],en:['Round 1','7 Swiss rounds','Swiss, Best of 1, 30 minutes a round, and you play every round even after a loss. Round 2 about 11:25, Round 3 about 12:10. The stream starts here.']},
-    {t:'12:55',show:'12:55',luck:1,th:['พักกลางวัน','','พัก 30 นาที หาอะไรกิน แวะเดิน CCC ได้ และจับ Lucky Draw รอบที่ 1'],en:['Lunch break','','30 minutes to eat or walk the CCC market, plus Lucky Draw 1.']},
-    {t:'13:25',show:'13:25',luck:1,th:['รอบ 4 ถึง 7','Lucky Draw ระหว่างรอบ 5','รอบ 4 เริ่ม 13:25 น. รอบ 5 ราว 14:10 น. (จับ Lucky Draw รอบที่ 2) รอบ 6 ราว 14:55 น. รอบ 7 ราว 15:40 น.'],en:['Rounds 4 to 7','Lucky Draw in Round 5','Round 4 at 13:25, Round 5 about 14:10 (Lucky Draw 2), Round 6 about 14:55, Round 7 about 15:40.']},
-    {t:'16:25',show:'16:25',key:1,luck:1,th:['ประกาศ Top 8','แล้วแข่งแบบ Best of 3','ประกาศ 8 คนสุดท้ายพร้อมจับ Lucky Draw รอบที่ 3 แล้วแพ้คัดออก Best of 3 Quarterfinals 16:40 น. Semifinals 17:35 น.'],en:['Top 8 revealed','then Best of 3','The final 8 are announced with Lucky Draw 3, then single elimination, Best of 3. Quarterfinals 16:40, Semifinals 17:35.']},
-    {t:'18:30',show:'18:30',key:1,th:['Grand Final','บนเวทีพร้อมผู้พากย์','นัดชิง Best of 3 บนเวที พากย์สดโดย Philly และ Jade ดูบนจอในงานหรือไลฟ์บนเพจ'],en:['Grand Final','on stage, with casters','Best of 3 on stage, cast live by Philly and Jade. Watch at the venue or on our Page.']},
-    {t:'19:25',show:'19:25',luck:1,th:['มอบรางวัล','ถ่ายรูปแชมป์','Top 8 เลือกรางวัลตามอันดับ จับ Lucky Draw รางวัลสุดท้าย ถ่ายรูปแชมป์ จบงานราว 19:40 น.'],en:['Awards','champion photo','The Top 8 pick prizes in order, the final Lucky Draw, the champion photo. Done around 19:40.']}
+    {t:'09:45',e:'10:40',d:'10:30',ph:'in',th:['เช็กอิน','รับ 3 ซอง ✦ ประชุมผู้เล่น 10:30 น.','เปิดประตู 9:00 น. เช็กอินที่หน้าห้อง The Mitr Ting Room ส่ง Deck list รับ DOORGIFT 3 ซองกับบัตร Explorer 2 ใบ ปิดรับ 10:30 น. ตรง แล้วประชุมผู้เล่น 10:30 ถึง 10:40 น.'],en:['Check in','Get 3 packs ✦ meeting at 10:30','Doors open at 9:00. Check in at The Mitr Ting Room, hand in your deck list, grab your 3 pack DOORGIFT and 2 Explorer tickets. Closes 10:30 sharp, then the player meeting from 10:30 to 10:40.']},
+    {t:'10:40',e:'11:10',ph:'sw',th:['รอบ 1','ไลฟ์บนเพจเริ่มรอบนี้','Swiss Best of 1 เวลา 30 นาที แพ้ก็ได้เล่นต่อครบทุกรอบ ไลฟ์บนเพจเริ่มตั้งแต่รอบนี้ หมดเวลาแล้วมีเวลาเผื่ออีก 15 นาทีให้เกมที่ยังไม่จบ ก่อนเริ่มรอบถัดไป'],en:['Round 1','The stream starts','Swiss, Best of 1, 30 minutes. You play every round even after a loss. The stream on our Page starts here. After time is called there is a 15 minute buffer for games still finishing, then the next round starts.']},
+    {t:'11:25',e:'11:55',ph:'sw',th:['รอบ 2','','Swiss Best of 1 เวลา 30 นาที'],en:['Round 2','','Swiss, Best of 1, 30 minutes.']},
+    {t:'12:10',e:'12:40',ph:'sw',th:['รอบ 3','','Swiss Best of 1 เวลา 30 นาที จบรอบนี้แล้วพักกลางวัน'],en:['Round 3','','Swiss, Best of 1, 30 minutes. Lunch comes next.']},
+    {t:'12:55',e:'13:25',ph:'lu',luck:1,th:['พักกลางวัน','จับ Lucky Draw ครั้งที่ 1','พัก 30 นาที หาอะไรกิน แวะเดิน CCC ได้ และจับ Lucky Draw ครั้งที่ 1'],en:['Lunch break','Lucky Draw 1','30 minutes to eat or walk the CCC market, plus Lucky Draw 1.']},
+    {t:'13:25',e:'13:55',ph:'sw',th:['รอบ 4','','Swiss Best of 1 เวลา 30 นาที'],en:['Round 4','','Swiss, Best of 1, 30 minutes.']},
+    {t:'14:10',e:'14:40',ph:'sw',luck:1,th:['รอบ 5','จับ Lucky Draw ครั้งที่ 2 ระหว่างรอบ','Swiss Best of 1 เวลา 30 นาที และจับ Lucky Draw ครั้งที่ 2 ระหว่างรอบนี้'],en:['Round 5','Lucky Draw 2 during the round','Swiss, Best of 1, 30 minutes. Lucky Draw 2 happens during this round.']},
+    {t:'14:55',e:'15:25',ph:'sw',th:['รอบ 6','','Swiss Best of 1 เวลา 30 นาที'],en:['Round 6','','Swiss, Best of 1, 30 minutes.']},
+    {t:'15:40',e:'16:10',ph:'sw',th:['รอบ 7','Swiss รอบสุดท้าย','Swiss รอบสุดท้าย Best of 1 เวลา 30 นาที จบแล้วรอสรุปคะแนนเพื่อประกาศ Top 8'],en:['Round 7','Last Swiss round','The last Swiss round, Best of 1, 30 minutes. Then the final standings decide the Top 8.']},
+    {t:'16:25',e:'16:40',ph:'t8',luck:1,th:['ประกาศ Top 8','','ประกาศ 8 คนสุดท้ายพร้อมจับ Lucky Draw ครั้งที่ 3 จากนี้แพ้คัดออก Best of 3 และ Philly กับ Jade เริ่มพากย์สด'],en:['Top 8 revealed','','The final 8 are announced with Lucky Draw 3. From here it is single elimination, Best of 3, and Philly and Jade start casting live.']},
+    {t:'16:40',e:'17:35',ph:'bo',th:['Quarterfinals','Best of 3 ✦ 8 คน เหลือ 4','Best of 3 แพ้คัดออก ผู้ชนะ 4 คนเข้ารอบ Semifinals'],en:['Quarterfinals','Best of 3 ✦ 8 players to 4','Best of 3, single elimination. The 4 winners move on to the Semifinals.']},
+    {t:'17:35',e:'18:30',ph:'bo',th:['Semifinals','Best of 3 ✦ 4 คน เหลือ 2','Best of 3 แพ้คัดออก ผู้ชนะ 2 คนเข้าชิงแชมป์'],en:['Semifinals','Best of 3 ✦ 4 players to 2','Best of 3, single elimination. The 2 winners play the Grand Final.']},
+    {t:'18:30',e:'19:25',ph:'gf',th:['Grand Final','Best of 3 ✦ ชิงแชมป์บนเวที','นัดชิง Best of 3 บนเวที พากย์สดโดย Philly และ Jade ดูบนจอในงานหรือไลฟ์บนเพจ'],en:['Grand Final','Best of 3 ✦ for the title, on stage','Best of 3 on stage, cast live by Philly and Jade. Watch at the venue or on our Page.']},
+    {t:'19:25',e:'19:40',ph:'aw',luck:1,th:['มอบรางวัล','','Top 8 เลือกรางวัลตามอันดับ จับ Lucky Draw ครั้งสุดท้าย ถ่ายรูปแชมป์ จบงาน 19:40 น.'],en:['Awards + photo','','The Top 8 pick prizes in order, the final Lucky Draw, the champion photo. Done at 19:40.']}
   ];
-  var tsel=null;
+  var LEG={th:[['in','เช็กอิน'],['sw','Swiss Bo1'],['lu','พักกลางวัน'],['bo','Top 8 Bo3']],en:[['in','Check in'],['sw','Swiss Bo1'],['lu','Lunch'],['bo','Top 8 Bo3']]};
+  var D0=9*60+30, D1=19*60+50, K=1.4; /* minutes per pixel scale */
+  function mins(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
+  function y(t){return Math.round((mins(t)-D0)*K);}
+  function hm(t){return t.charAt(0)==='0'?t.slice(1):t;}
+  function rng(r){return hm(r.t)+' '+(lang==='th'?'ถึง':'to')+' '+(r.d||r.e);}
+  var tsel=null, mob=window.matchMedia('(max-width:759px)');
   function curIdx(){var now=Date.now(); for(var i=TL.length-1;i>=0;i--){ if(now>=at('10-31',TL[i].t)&&now<END) return i; } return -1;}
+  function detHTML(r){var L=r[lang];return '<span class="tt">'+hm(r.t)+'<small>'+(lang==='th'?'ถึง ':'to ')+(r.d||r.e)+'</small></span><span><b>'+L[0]+(r.luck?' 🍀':'')+'</b><p>'+L[2]+'</p></span>';}
   function renderDet(){
-    var i=tsel; if(i===null){i=curIdx(); if(i<0)i=0;} var r=TL[i], L=r[lang];
-    document.querySelectorAll('#tl li').forEach(function(li,k){li.classList.toggle('sel',k===i);li.setAttribute('aria-pressed',String(k===i));});
+    var i=tsel; if(i===null){i=curIdx(); if(i<0)i=0;}
+    document.querySelectorAll('#day .blk').forEach(function(b){var k=+b.dataset.i;b.classList.toggle('sel',tsel!==null&&k===tsel);b.setAttribute('aria-pressed',String(k===i));});
     var d=document.getElementById('tdet'); d.style.animation='none'; void d.offsetWidth; d.style.animation='';
-    d.innerHTML='<span class="tt">'+r.show+'</span><span><b>'+L[0]+'</b><p>'+L[2]+'</p></span>';
+    d.innerHTML=detHTML(TL[i]);
+    var pp=document.getElementById('tpop');
+    if(tsel!==null){var r=TL[tsel]; pp.innerHTML=detHTML(r)+'<button class="x" type="button" aria-label="'+(lang==='th'?'ปิด':'Close')+'">✕</button>'; pp.style.top=(y(r.e)+6)+'px'; pp.classList.add('on');
+      pp.querySelector('.x').addEventListener('click',function(e){e.stopPropagation();tsel=null;renderDet();});}
+    else pp.classList.remove('on');
   }
   function renderTL(){
-    var now=Date.now(), h='';
+    var now=Date.now(), h='', day=document.getElementById('day');
+    day.style.height=y('19:50')+'px';
+    for(var hh=10;hh<=19;hh++){h+='<div class="hr" style="top:'+y(hh+':00')+'px"><span>'+hh+':00</span></div>';}
     TL.forEach(function(r,i){
-      var s=at('10-31',r.t), e=i<TL.length-1?at('10-31',TL[i+1].t):END;
-      var cls=(r.key?'key ':'')+(now>=s&&now<e?'now':(now>=e&&now<END+6*3600e3?'past':''));
-      var L=r[lang];
-      h+='<li class="'+cls+'" tabindex="0" role="button" data-i="'+i+'"><time>'+r.show+'</time><span class="dot"></span><span class="what" data-now="'+(lang==='th'?'ตอนนี้':'NOW')+'">'+L[0]+(r.luck?'<span class="luck">🍀 Lucky Draw</span>':'')+(L[1]?'<small>'+L[1]+'</small>':'')+'</span></li>';
+      var s=at('10-31',r.t), e=TL[i+1]?at('10-31',TL[i+1].t):at('10-31',r.e), top=y(r.t), ht=y(r.e)-top-2, L=r[lang];
+      var cls='blk ph-'+r.ph+(ht<26?' thin':'')+(now>=s&&now<e?' now':(now>=e&&now<END+6*3600e3?' past':''));
+      h+='<button type="button" class="'+cls+'" data-i="'+i+'" style="top:'+top+'px;height:'+ht+'px"><span class="r1"><b>'+L[0]+(r.luck?' 🍀':'')+'</b><span class="tm">'+rng(r)+'</span></span>'+(L[1]&&ht>=38?'<small>'+L[1]+'</small>':'')+'</button>';
+      var n=TL[i+1]; if(n&&mins(n.t)-mins(r.e)>=15){h+='<div class="gap" style="top:'+y(r.e)+'px;height:'+(y(n.t)-y(r.e))+'px">'+(lang==='th'?'เผื่อเวลา ':'')+(mins(n.t)-mins(r.e))+(lang==='th'?' นาที':' min buffer')+'</div>';}
     });
-    var tl=document.getElementById('tl'); tl.innerHTML=h;
-    tl.querySelectorAll('li').forEach(function(li){
-      var go=function(){tsel=+li.dataset.i;renderDet();};
-      li.addEventListener('click',go); li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
-    });
+    var nm=new Date(now+7*3600e3); var sat=now>=at('10-31','09:30')&&now<at('10-31','19:50');
+    if(sat){var t=pad(nm.getUTCHours())+':'+pad(nm.getUTCMinutes()); h+='<div class="nowl" style="top:'+y(t)+'px"><span>'+(lang==='th'?'ตอนนี้ ':'NOW ')+t+'</span></div>';}
+    h+='<div class="tpop" id="tpop" aria-live="polite"></div>';
+    day.innerHTML=h;
+    day.querySelectorAll('.blk').forEach(function(b){b.addEventListener('click',function(){var k=+b.dataset.i; tsel=(mob.matches&&tsel===k)?null:k; renderDet();});});
+    document.getElementById('legend').innerHTML=LEG[lang].map(function(l){return '<span><i class="ph-'+l[0]+'"></i>'+l[1]+'</span>';}).join('')+'<span>🍀 Lucky Draw</span>';
     renderDet();
   }
   function pad(n){return String(n).padStart(2,'0');}
