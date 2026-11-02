@@ -537,6 +537,27 @@
   .dlg-body dd { margin: 0; }
   .dlg-close { position: absolute; top: 12px; right: 12px; background: rgb(15 15 15 / .8); }
 
+  /* ---------- past events ---------- */
+  .past-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .pv {
+    display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); border-radius: var(--r-l); overflow: hidden; text-decoration: none; color: var(--cream);
+    background: linear-gradient(160deg, color-mix(in oklab, var(--c) 22%, var(--n900)), var(--n900) 65%);
+    border: 1px solid color-mix(in oklab, var(--c) 45%, var(--n700)); transition: transform .3s, border-color .3s;
+  }
+  .pv:hover { transform: translateY(-4px); border-color: var(--c); }
+  .pv-img { display: block; min-height: 100%; background: var(--n900); }
+  .pv-img img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; }
+  .pv-body { display: flex; flex-direction: column; gap: 10px; padding: 22px 20px; }
+  .pv-kick { font: 400 12px/1.4 var(--mono); color: var(--c); filter: brightness(1.3); }
+  .pv-logo { height: 46px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; }
+  .pv-txt { font-size: 14px; color: var(--n200); }
+  .pv-res { font-size: 14px; color: var(--cream); border-top: 1px solid color-mix(in oklab, var(--c) 40%, transparent); padding-top: 10px; }
+  .pv-res b { font: 400 12px/1 var(--mono); color: var(--n400); margin-right: 6px; }
+  .pv-go { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--gold); }
+  .pv-go svg { width: 16px; height: 16px; }
+  @media (max-width: 1040px) { .past-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .pv { grid-template-columns: 1fr; } .pv-img img { min-height: 0; aspect-ratio: 16 / 10; } }
+
   /* ---------- games ---------- */
   .games { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
   .game {
@@ -1075,7 +1096,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
             <div><dt><span class="l-en">Morning pod</span><span class="l-th" lang="th">รอบเช้า</span><span class="l-ja" lang="ja">午前の部</span></dt><dd><span class="l-en">Check in 10:00 to 10:45</span><span class="l-th" lang="th">รายงานตัว 10:00 ถึง 10:45 น.</span><span class="l-ja" lang="ja">受付 10:00〜10:45</span><small><span class="l-en">Deck build 11:00, rounds 12:00 to 14:00</span><span class="l-th" lang="th">จัดเด็ค 11:00 น. แข่ง 12:00 ถึง 14:00 น.</span><span class="l-ja" lang="ja">デッキ構築 11:00、対戦 12:00〜14:00</span></small></dd></div>
             <div><dt><span class="l-en">Afternoon pod</span><span class="l-th" lang="th">รอบบ่าย</span><span class="l-ja" lang="ja">午後の部</span></dt><dd><span class="l-en">Check in 14:30 to 15:00</span><span class="l-th" lang="th">รายงานตัว 14:30 ถึง 15:00 น.</span><span class="l-ja" lang="ja">受付 14:30〜15:00</span><small><span class="l-en">Deck build 15:00, rounds 16:00 to 18:00</span><span class="l-th" lang="th">จัดเด็ค 15:00 น. แข่ง 16:00 ถึง 18:00 น.</span><span class="l-ja" lang="ja">デッキ構築 15:00、対戦 16:00〜18:00</span></small></dd></div>
             <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>1,600 THB<small><span class="l-en">Registration closed</span><span class="l-th" lang="th">ปิดรับสมัครแล้ว</span><span class="l-ja" lang="ja">受付終了</span></small></dd></div>
-            <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Sealed<small><span class="l-en">Best of 1, Swiss, 3 rounds of 30 minutes</span><span class="l-th" lang="th">Best of 1 แบบ Swiss 3 รอบ รอบละ 30 นาที</span><span class="l-ja" lang="ja">Bo1、スイス式3回戦、各30分</span></small></dd></div>
+            <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">フォーマット</span></dt><dd>Sealed<small><span class="l-en">Best of 1, Swiss, 3 rounds of 30 minutes</span><span class="l-th" lang="th">Best of 1 แบบ Swiss 3 รอบ รอบละ 30 นาที</span><span class="l-ja" lang="ja">Bo1、スイス式3回戦、各30分</span></small></dd></div>
           </dl>
           <ul class="hyp-list">
             <li><span class="l-en">Every player gets 1 Prerelease box: 6 boosters, 1 random promo, 4 dice and a Hyperia City poster</span><span class="l-th" lang="th">ทุกคนได้กล่อง Prerelease 1 กล่อง: Booster 6 ซอง การ์ด Promo สุ่ม 1 ใบ ลูกเต๋า 4 ลูก และโปสเตอร์ Hyperia City</span><span class="l-ja" lang="ja">参加者全員にPrereleaseボックス1つ(ブースター6パック、ランダムプロモ1枚、ダイス4個、Hyperia Cityポスター)</span></li>
@@ -1134,7 +1155,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
         <div><dt><span class="l-en">Date</span><span class="l-th" lang="th">วันที่</span><span class="l-ja" lang="ja">日程</span></dt><dd><span class="l-en">Sat 31 Oct</span><span class="l-th" lang="th">เสาร์ 31 ต.ค.</span><span class="l-ja" lang="ja">10月31日(土)</span><small>2026</small></dd></div>
         <div><dt><span class="l-en">Check in</span><span class="l-th" lang="th">ลงทะเบียนหน้างาน</span><span class="l-ja" lang="ja">受付</span></dt><dd>9:45<small><span class="l-en">Closes 10:30, Round 1 at 10:40</span><span class="l-th" lang="th">ปิดเช็กอิน 10:30 น. เริ่มรอบแรก 10:40 น.</span><span class="l-ja" lang="ja">10:30締切、10:40 第1ラウンド</span></small></dd></div>
         <div><dt><span class="l-en">Entry</span><span class="l-th" lang="th">ค่าสมัคร</span><span class="l-ja" lang="ja">参加費</span></dt><dd>490 THB<small><span class="l-en">Full house, all 100 seats taken</span><span class="l-th" lang="th">เต็มแล้ว ครบ 100 ที่นั่ง</span><span class="l-ja" lang="ja">満席(100席)</span></small></dd></div>
-        <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">形式</span></dt><dd>Standard<small><span class="l-en">7 rounds Bo1, Top 8 Bo3</span><span class="l-th" lang="th">Bo1 7 รอบ ตัด Top 8 แบบ Bo3</span><span class="l-ja" lang="ja">Bo1を7回戦、Top 8はBo3</span></small></dd></div>
+        <div><dt><span class="l-en">Format</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">フォーマット</span></dt><dd>Standard<small><span class="l-en">7 rounds Bo1, Top 8 Bo3</span><span class="l-th" lang="th">Bo1 7 รอบ ตัด Top 8 แบบ Bo3</span><span class="l-ja" lang="ja">Bo1を7回戦、Top 8はBo3</span></small></dd></div>
       </dl>
       <ul class="rrr-get">
         <li><span class="l-en"><a class="inline-link" href="radiance-rift-rumble/">Everything for RRR and CCC in one page</a>: schedule, prizes, deck list, Riot ID and every graphic</span><span class="l-th" lang="th"><a class="inline-link" href="radiance-rift-rumble/">รวมทุกอย่างของ RRR และ CCC ไว้ในหน้าเดียว</a> ตารางวันแข่ง รางวัล Deck list ส่ง Riot ID และภาพทั้งหมด</span><span class="l-ja" lang="ja"><a class="inline-link" href="radiance-rift-rumble/">RRRとCCCの情報をまとめたページ</a>: スケジュール、賞品、デッキリスト、Riot ID、全告知画像</span></li>
@@ -1229,6 +1250,41 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   <div class="dlg-img" id="dlg-img"></div>
   <div class="dlg-body" id="dlg-body"></div>
 </dialog>
+
+<!-- PAST EVENTS: the record of big events we ran. One card per event, each links to its own page. -->
+<section id="past" aria-labelledby="past-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="sec-num">★ / <span class="l-en">Past events</span><span class="l-th" lang="th">งานที่ผ่านมา</span><span class="l-ja" lang="ja">過去のイベント</span></span>
+        <h2 id="past-h"><span class="l-en">Events we've run</span><span class="l-th" lang="th">งานที่เราจัดมาแล้ว</span><span class="l-ja" lang="ja">これまでに開催したイベント</span></h2>
+      </div>
+      <p><span class="l-en">Results, decklists, photos and replays from our big events outside the shop.</span><span class="l-th" lang="th">ผลการแข่งขัน Deck list รูปบรรยากาศ และไลฟ์ย้อนหลังจากงานใหญ่นอกร้านของเรา</span><span class="l-ja" lang="ja">店外で開催した大型イベントの結果、デッキリスト、写真、アーカイブ配信。</span></p>
+    </div>
+    <div class="past-grid reveal">
+      <a class="pv" href="radiance-rift-rumble/" style="--c:var(--riftbound)">
+        <span class="pv-img"><img src="radiance-rift-rumble/img/p/room.webp" alt="" loading="lazy" width="1400" height="1867"></span>
+        <span class="pv-body">
+          <span class="pv-kick">Riftbound ✦ <span class="l-en">Sat 31 Oct 2026</span><span class="l-th" lang="th">ส. 31 ต.ค. 2569</span><span class="l-ja" lang="ja">2026年10月31日（土）</span></span>
+          <img class="pv-logo" src="img/rrr/rrr-logo.svg" alt="Radiance Rift Rumble" width="1173" height="368">
+          <span class="pv-txt"><span class="l-en">Our biggest Riftbound tournament yet, at BetterTrade 2026 by efin, Samyan Mitrtown Hall, with the CCC card market beside it.</span><span class="l-th" lang="th">ทัวร์นาเมนต์ Riftbound ที่ใหญ่ที่สุดของเรา ในงาน BetterTrade 2026 โดย efin ที่สามย่านมิตรทาวน์ฮอลล์ คู่กับตลาดการ์ด CCC</span><span class="l-ja" lang="ja">これまでで最大のRiftbound大会。efin主催BetterTrade 2026(サムヤーン・ミットタウン・ホール)にて、CCCカードマーケットと同時開催。</span></span>
+          <span class="pv-res"><b><span class="l-en">Champion</span><span class="l-th" lang="th">แชมป์</span><span class="l-ja" lang="ja">優勝</span></b> SATANANTANA ✦ Jayce</span>
+          <span class="pv-go"><span class="l-en">Results, decklists and replays</span><span class="l-th" lang="th">ดูผลการแข่งขันและ Deck list</span><span class="l-ja" lang="ja">結果とデッキリスト</span><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a class="pv" href="hyperia-city-prerelease-party/" style="--c:var(--lorcana)">
+        <span class="pv-img"><img src="hyperia-city-prerelease-party/img/p/hall.webp" alt="" loading="lazy" width="1400" height="1400"></span>
+        <span class="pv-body">
+          <span class="pv-kick">Disney Lorcana ✦ <span class="l-en">Sun 25 Oct 2026</span><span class="l-th" lang="th">อา. 25 ต.ค. 2569</span><span class="l-ja" lang="ja">2026年10月25日（日）</span></span>
+          <img class="pv-logo" src="hyperiacity-prerelease-party/img/hyperia.webp" alt="Hyperia City" width="200" height="110">
+          <span class="pv-txt"><span class="l-en">The Hyperia City Prerelease Party: four Bangkok stores, one day of Sealed, Pack Rush and Core Constructed at Siam@Siam Design Hotel.</span><span class="l-th" lang="th">Hyperia City Prerelease Party งาน Prerelease ที่ 4 ร้านในกรุงเทพฯ จัดร่วมกัน มีทั้ง Sealed Pack Rush และ Core Constructed ที่ Siam@Siam Design Hotel</span><span class="l-ja" lang="ja">Hyperia Cityプレリリースパーティー。バンコクの4店舗が合同で開催し、シールド、パックラッシュ、コア構築をSiam@Siam Design Hotelで実施。</span></span>
+          <span class="pv-res"><b><span class="l-en">Formats</span><span class="l-th" lang="th">รูปแบบ</span><span class="l-ja" lang="ja">フォーマット</span></b> Sealed ✦ Pack Rush ✦ Core Constructed</span>
+          <span class="pv-go"><span class="l-en">See the recap</span><span class="l-th" lang="th">ดูสรุปงาน</span><span class="l-ja" lang="ja">レポートを見る</span><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- NEW PLAYERS -->
 <section id="new" class="light">
