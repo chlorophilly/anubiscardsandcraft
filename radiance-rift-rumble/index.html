@@ -93,6 +93,15 @@ section.s{padding-block:clamp(38px,6vw,64px) 0}
 .seg button{border:0;background:transparent;border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer;min-height:36px}
 .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 
+/* context */
+.about{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start}
+.about h2{margin:0 0 8px;font-size:clamp(22px,3vw,28px);line-height:1.2;font-weight:900;color:var(--navy)}
+.about p{margin:0;color:#34326e;font-size:15.5px}
+.ab-r{display:grid;gap:8px}
+.ab-r a{display:block;text-decoration:none;color:var(--ink);background:var(--panel);border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.45;border:2px solid transparent}
+.ab-r a:hover{border-color:#cfcbef}
+.ab-r b{display:block;color:var(--navy);font-size:15.5px;margin-bottom:2px}
+#about{padding-top:clamp(24px,4vw,40px)}
 /* results record */
 .rec dl{margin:0;display:grid;grid-template-columns:.8fr 1.4fr 1.2fr 1fr;gap:12px 18px}
 .rec dt{font-size:13px;font-weight:700;color:var(--muted)}
@@ -375,7 +384,7 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
   .wall{grid-template-columns:repeat(6,1fr);grid-auto-rows:62px}
   .lt.s3{grid-column:span 3;grid-row:span 3}.lt.s2{grid-column:span 2;grid-row:span 2}.lt.s1{grid-column:span 2;grid-row:span 1}
   .br{grid-template-columns:1fr}
-  .find,.two,.tv{grid-template-columns:1fr}
+  .find,.two,.tv,.about{grid-template-columns:1fr}
   .rec dl{grid-template-columns:1fr 1fr}
   .swipe{display:block}
   .std{display:grid}
@@ -431,6 +440,7 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
 </header>
 
 <nav class="jump" aria-label="Sections"><div class="wrap">
+  <a href="#about"><span class="th">เกี่ยวกับงาน</span><span class="en">About</span></a>
   <a href="#record"><span class="th">ผลการแข่งขัน</span><span class="en">Results</span></a>
   <a href="#meta">Legend meta</a>
   <a href="#hype"><span class="th">อัตราเข้า Top 8</span><span class="en">Top 8 conversion</span></a>
@@ -443,6 +453,20 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
 </div></nav>
 
 <main>
+<section class="s" id="about"><div class="wrap">
+  <div class="about card">
+    <div class="ab-l">
+      <h2><span class="th">RRR และ CCC ในงาน BetterTrade 2026</span><span class="en">RRR and CCC at BetterTrade 2026</span></h2>
+      <p><span class="th">BetterTrade 2026 คืองานสัมมนาการเงินและการลงทุนของ efin ภายใต้ธีม New World New Playbook จัดที่<span class="nw">สามย่านมิตรทาวน์ฮอลล์</span> ชั้น 5 วันที่ 31 ต.ค. ถึง 1 พ.ย. 2569 ปีนี้ efin ชวน Anubis Cards and Craft มาดูแลโซนการ์ดเกมของงาน เราจึงจัดกิจกรรมเหล่านี้ขึ้นครับ</span><span class="en">BetterTrade 2026 is efin's finance and investing event, themed New World New Playbook, held at Samyan Mitrtown Hall, 5th floor, on 31 Oct and 1 Nov 2026. efin invited Anubis Cards and Craft to run the trading card game side of the event, so we put together the following.</span></p>
+    </div>
+    <div class="ab-r">
+      <a href="#record"><b>Radiance Rift Rumble <span class="nw">(RRR)</span></b><span class="th">ทัวร์นาเมนต์ Riftbound Constructed วันเสาร์ 31 ต.ค. ที่ The Mitr Ting Room ไลฟ์บนเพจตั้งแต่รอบแรก พากย์สดโดย Philly และ Jade ตั้งแต่ Top 8</span><span class="en">A Riftbound Constructed tournament on Sat 31 Oct in The Mitr Ting Room, streamed from Round 1 with a live cast by Philly and Jade from the Top 8.</span></a>
+      <a href="#ccc"><b>Cards &amp; Collectibles Carnival <span class="nw">(CCC)</span></b><span class="th">ตลาดการ์ดและของสะสมไม่มีจุ่ม ในโซน DRESSROSA ทั้ง 2 วัน มีร้านการ์ด คอมมิค และ Warhammer</span><span class="en">A no gacha card and collectibles market in the DRESSROSA zone on both days, with card shops, comics and Warhammer.</span></a>
+      <a href="#ccc"><b>Learn to Play <span class="th">และโซนแลกการ์ด</span><span class="en">and the trade zone</span></b><span class="th">สอนเล่น Riftbound, MTG และ Lorcana ฟรี ร่วมกับ OGT พร้อม Free Trade &amp; Play Zone ให้แลกการ์ดและหาคนเล่นด้วย</span><span class="en">Free lessons in Riftbound, MTG and Lorcana with OGT, plus a Free Trade &amp; Play Zone to swap cards and find a game.</span></a>
+    </div>
+  </div>
+</div></section>
+
 <section class="s" id="record"><div class="wrap">
   <div class="sh"><div><h2><span class="th">ผลการแข่งขัน</span><span class="en">Results</span></h2></div></div>
   <div class="rec">
