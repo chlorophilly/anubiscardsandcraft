@@ -75,11 +75,12 @@ html[data-lang="th"] .en, html[data-lang="en"] .th{display:none!important}
 .facts button b{display:grid;place-items:center;min-width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;font-size:18px;font-weight:900;padding:0 6px}
 .facts button:hover{transform:translateY(-1px)}
 .champ{position:relative;justify-self:center;width:min(100%,380px)}
-.champ .ph{border-radius:22px;overflow:hidden;box-shadow:0 22px 50px rgba(34,32,95,.35);transform:rotate(2deg);border:6px solid #fff;aspect-ratio:900/1050;background:#ccd}
+.champ .ph{border-radius:22px 22px 0 0;overflow:hidden;box-shadow:0 22px 50px rgba(34,32,95,.25);border:6px solid #fff;border-bottom:0;aspect-ratio:900/1000;background:#ccd}
 .champ .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.champ .lg{position:absolute;left:-26px;bottom:-18px;width:38%;transform:rotate(-8deg);border-radius:10px;box-shadow:0 14px 30px rgba(34,32,95,.45);cursor:zoom-in;border:0;padding:0;background:none}
-.champ .lg img{border-radius:10px}
-.champ .tag{position:absolute;right:-6px;top:16px;background:var(--navy);color:#fff;border-radius:14px;padding:8px 14px;font-weight:800;line-height:1.2;transform:rotate(3deg);box-shadow:0 10px 24px rgba(34,32,95,.35)}
+.champ .cbar{border:6px solid #fff;border-top:0;display:flex;align-items:center;gap:12px;background:var(--navy);color:#fff;border-radius:0 0 22px 22px;padding:10px 14px 10px 10px;box-shadow:0 22px 50px rgba(34,32,95,.25)}
+.champ .lg{flex:none;width:58px;border:0;padding:0;background:none;cursor:zoom-in}
+.champ .lg img{width:100%;height:auto;border-radius:6px}
+.champ .tag{line-height:1.2;font-weight:800}
 .champ .tag small{display:block;font-weight:600;font-size:12px;color:#c9c5ff}
 .champ .tag span.n{font-size:20px}
 
@@ -380,7 +381,7 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
 
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr;gap:34px}
-  .champ{width:min(82%,330px);margin-right:10px}
+  .champ{width:min(100%,360px)}
   .wall{grid-template-columns:repeat(6,1fr);grid-auto-rows:62px}
   .lt.s3{grid-column:span 3;grid-row:span 3}.lt.s2{grid-column:span 2;grid-row:span 2}.lt.s1{grid-column:span 2;grid-row:span 1}
   .br{grid-template-columns:1fr}
@@ -392,8 +393,6 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
   .ph-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
   .ph-grid button{grid-column:span 1!important;grid-row:span 2!important}
   .ph-grid button.mw{grid-column:span 2!important}
-  .champ .lg{left:auto;right:-10px;bottom:-22px;width:30%;transform:rotate(7deg)}
-  .champ .tag{right:auto;left:-8px;transform:rotate(-3deg)}
   .toplist{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 }
 @media (max-width:520px){
@@ -433,8 +432,7 @@ footer p{font-size:13px;color:#a9a5dd;margin:8px 0 0;max-width:46em}
     </div>
     <div class="champ">
       <div class="ph"><img src="img/p/champ.webp" alt="Champion SATANANTANA holding the WINNER board" width="900" height="1158"></div>
-      <div class="tag"><small><span class="th">แชมป์ RRR 2026</span><span class="en">RRR 2026 champion</span></small><span class="n">SATANANTANA</span><small><span class="th">Jayce ✦ ไม่แพ้ใครทั้งวัน</span><span class="en">Jayce ✦ unbeaten all day</span></small></div>
-      <button class="lg" type="button" data-card="Jayce, Defender of Tomorrow" aria-label="Jayce, Defender of Tomorrow"><img id="heroLeg" alt="" width="300" height="419"></button>
+      <div class="cbar"><button class="lg" type="button" data-card="Jayce, Defender of Tomorrow" aria-label="Jayce, Defender of Tomorrow"><img id="heroLeg" alt="" width="300" height="419"></button><div class="tag"><small><span class="th">แชมป์ RRR 2026</span><span class="en">RRR 2026 champion</span></small><span class="n">SATANANTANA</span><small><span class="th">Jayce ✦ ไม่แพ้ใครทั้งวัน</span><span class="en">Jayce ✦ unbeaten all day</span></small></div></div>
     </div>
   </div>
 </header>
