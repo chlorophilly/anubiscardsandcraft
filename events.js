@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-10-27",
+  updated: "2026-11-04",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -87,6 +87,11 @@ window.ANUBIS = {
     { date: "2026-10-31", game: "riftbound", title: "Radiance Rift Rumble", time: "09:45", fee: "490 THB", major: true,
       short: "Our biggest Riftbound tournament, at BetterTrade 2026, Samyan Mitrtown Hall.",
       detail: "Our biggest Riftbound tournament, at BetterTrade 2026 by efin. Not at the shop: The Mitr Ting Room, 5th floor, Samyan Mitrtown Hall. Check in 9:45 to 10:30, bring a printed or handwritten deck list (make one at anubiscardsandcraft.com/rrr-decklist). Standard Constructed, 7 rounds of Best of 1 from 10:40, then Top 8 Best of 3 single elimination (16:40 to 19:40). 100 seats. Every player gets 1 Radiance pack, 1 random pack (Origins, Spiritforged or Unleashed), 1 Radiance Nexus Night Promo Pack and 2 free Explorer Tickets from efin. Top 8 draft the prize pool, 1st picks first: Origins Booster Box, Gift of the Rift (claimed at Anubis after December 4), Radiance Vault, 2 Unleashed Vaults, 3 Vendetta Vaults. 1st also gets a Radiance Vault, playmat and sleeves. 2nd: playmat and sleeves. 3rd to 4th: playmat. 9th to 16th: 2 Radiance packs. 17th to 32nd: 1 Spiritforged pack (9th to 32nd may be adjusted by player count). Lucky Draws all day. RRR players can also buy 1 Riftbound booster box at MSRP (4,100 THB) from Sabai Cards in the Carnival zone. Sign up at efin.finance.",
-      link: "https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day", img: "img/events/radiance-rift-rumble.jpg" }
+      link: "https://www.efin.finance/events/better-trade/better-trade2026/buy-ticket/master-class/1-day", img: "img/events/radiance-rift-rumble.jpg" },
+
+    // Week of Nov 2 to 8 (Nexus Night graphic + FB post, sent by Philly 2026-11-04)
+    { date: "2026-11-04", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th, based on 24 or more players. Radiance Nexus Night promo pack for the top half. Everyone is welcome. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117551286590231924" }
   ]
 };
