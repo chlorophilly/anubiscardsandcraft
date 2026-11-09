@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-11-04",
+  updated: "2026-11-09",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -26,7 +26,7 @@ window.ANUBIS = {
     { dow: 3, game: "riftbound", title: "Nexus Night 1v1 (Bo1)",    time: "20:00", note: "Register ahead on Playriftbound with your Riot ID" },
     { dow: 4, game: "lorcana",   title: "Casual Core Constructed",  time: "19:30", note: "Learn to Play at 19:00" },
     { dow: 5, game: "mtg",       title: "Friday Night Modern",      time: "19:00" },
-    { dow: 5, game: "riftbound", title: "Casual Best-of-1",         time: "20:00", note: "Register ahead on Playriftbound with your Riot ID" },
+    { dow: 5, game: "riftbound", title: "Nexus Night 1v1 (Bo1)",    time: "20:00", note: "Register ahead on Playriftbound with your Riot ID" },
     { dow: 0, game: "riftbound", title: "Nexus Night 1v1 (Bo3)",    time: "14:00", note: "Register ahead on Playriftbound with your Riot ID" }
   ],
 
@@ -92,6 +92,32 @@ window.ANUBIS = {
     // Week of Nov 2 to 8 (Nexus Night graphic + FB post, sent by Philly 2026-11-04)
     { date: "2026-11-04", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
       detail: "Standard Constructed, 4 rounds. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th, based on 24 or more players. Radiance Nexus Night promo pack for the top half. Everyone is welcome. Sign up on Playriftbound with your Riot ID.",
-      link: "https://playriftbound.com/events/117551286590231924" }
+      link: "https://playriftbound.com/events/117551286590231924" },
+
+    // Week of Nov 9 to 15 (FB weekly post "READY FOR ANOTHER AWESOME WEEK AT ANUBIS?", 2026-11-09, plus the event graphics). Nexus Night now runs Wed and Fri (Bo1) and Sun (Bo3), promo pack for everyone.
+    { date: "2026-11-09", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
+      detail: "Standard, 60-card deck, Swiss 3 rounds of 25 minutes, 32 players. Entry includes 1 pack of 30th Celebration (TH). Promo: 1 to 3 packs by wins plus a Pikachu GAME ON card. Walk in." },
+    { date: "2026-11-10", game: "lorcana", title: "Casual On-Demand", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 14) or Coconut, or Pack Rush for 450 THB. New players at 19:00 for Learn to Play. No sign-up needed." },
+    { date: "2026-11-11", game: "mtg", title: "Star Trek Prerelease", time: "18:30", fee: "1,500 THB", major: true,
+      short: "Open a Star Trek Prerelease kit and build a sealed deck. 8 seats.",
+      detail: "Prerelease: open your Star Trek Prerelease kit and build a sealed deck at the table. Prizes: 1 Star Trek Play Booster at 0 to 1 wins, 2 at 2 wins, 3 at 3 wins. Maximum 8 players. Sign up in the Anubis MTG LINE group from Mon 9 Nov, 13:00, or walk in at the store if seats are left.",
+      link: "https://line.me/ti/g/tN7vFE79g3", img: "img/events/mtg-star-trek-prerelease.jpg" },
+    { date: "2026-11-11", game: "mtg", title: "Commander Night", time: "19:00", fee: "Open 1 pack",
+      detail: "Reality Fractured Commander, Bracket 3. The winner of each pod of 4 gets a foil promo pack, everyone else a non-foil promo pack. Walk in." },
+    { date: "2026-11-11", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack. Sign up on Playriftbound with your Riot ID (opens Mon 9 Nov, 12:00)." },
+    { date: "2026-11-12", game: "lorcana", title: "Casual Core Constructed", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 14) or Coconut. Every player takes home a pack. Learn to Play at 19:00. Walk in." },
+    { date: "2026-11-13", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack. Sign up on Playriftbound with your Riot ID (opens Mon 9 Nov, 12:00)." },
+    { date: "2026-11-14", game: "lorcana", title: "Themed Play Day", time: "14:00", fee: "450 THB", major: true,
+      short: "Infinity Constructed with 30+ Winnie the Pooh or Coco cards. Pooh pins for the Top 4.",
+      detail: "Infinity Constructed. Your deck needs at least 30 Winnie the Pooh or Coco themed cards, from any set. Door gift: 1 booster pack and a deck box. Prizes: a Winnie the Pooh pin for the Top 4, 1 booster pack for the Top 8, plus a lucky draw of 4 more pins for everyone else. 32 seats, minimum 8 players. Sign up in the Lorcana OpenChat from Wed 11 Nov.",
+      link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g", img: "img/events/lorcana-themed-play-day-pooh.jpg" },
+    { date: "2026-11-15", game: "riftbound", title: "Radiance Summoner Skirmish #1", time: "14:00", fee: "350 THB", major: true,
+      short: "Standard, Bo1 Swiss 5 rounds, cut to Top 8 Bo3. Graves promo for everyone, Akali promo for the Top 8.",
+      detail: "Standard Constructed: Best-of-1 Swiss, 5 rounds, then a Top 8 cut played Best-of-3. Door gift: 1 Radiance booster and a Graves promo. Top 8: Akali promos (3 for 1st and 2nd, 2 for 3rd and 4th, 1 for 5th to 8th) and Radiance boosters (6 for 1st, 4 for 2nd, 2 for 3rd and 4th, 1 for 5th to 8th). Champion also gets the Akali champion playmat, the Akali champion promo and a Round 1 bye at a future Regional Qualifier. Lucky draw for everyone. 32 seats. Sign up on Playriftbound with your Riot ID from Tue 10 Nov, 13:00.",
+      img: "img/events/riftbound-summoner-skirmish-1.jpg" }
   ]
 };
