@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-11-09",
+  updated: "2026-11-18",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -118,6 +118,32 @@ window.ANUBIS = {
     { date: "2026-11-15", game: "riftbound", title: "Radiance Summoner Skirmish #1", time: "14:00", fee: "350 THB", major: true,
       short: "Standard, Bo1 Swiss 5 rounds, cut to Top 8 Bo3. Graves promo for everyone, Akali promo for the Top 8.",
       detail: "Standard Constructed: Best-of-1 Swiss, 5 rounds, then a Top 8 cut played Best-of-3. Door gift: 1 Radiance booster and a Graves promo. Top 8: Akali promos (3 for 1st and 2nd, 2 for 3rd and 4th, 1 for 5th to 8th) and Radiance boosters (6 for 1st, 4 for 2nd, 2 for 3rd and 4th, 1 for 5th to 8th). Champion also gets the Akali champion playmat, the Akali champion promo and a Round 1 bye at a future Regional Qualifier. Lucky draw for everyone. 32 seats. Sign up on Playriftbound with your Riot ID from Tue 10 Nov, 13:00.",
-      img: "img/events/riftbound-summoner-skirmish-1.jpg" }
+      img: "img/events/riftbound-summoner-skirmish-1.jpg" },
+
+    // Week of Nov 16 to 22 (FB weekly post "READY FOR ANOTHER AWESOME WEEK AT ANUBIS?", 2026-11-16, plus the event graphics)
+    { date: "2026-11-16", game: "pokemon", title: "Gym Battle", time: "19:00", fee: "150 THB",
+      detail: "Standard, 60-card deck, Swiss 3 rounds of 25 minutes, 32 players. Entry includes 1 pack of 30th Celebration (TH). Promo: 1 to 3 packs by wins plus a Pikachu GAME ON card. Walk in." },
+    { date: "2026-11-17", game: "lorcana", title: "Casual Lorcana Night", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 14) or Coconut, or Pack Rush with packs from Set 2 to 8 for 450 THB. New players at 19:00 for Learn to Play. No sign-up needed." },
+    { date: "2026-11-18", game: "mtg", title: "Star Trek Draft", time: "19:00", fee: "840 THB", major: true,
+      short: "Open 3 Star Trek Play Boosters and build at the table.",
+      detail: "Draft: open 3 Star Trek Play Boosters and build at the table. Prizes: 1st 3 Play Boosters and a foil promo pack, 2nd 2 Play Boosters and a promo pack, 3rd 1 Play Booster and a promo pack, 4th a promo pack. Minimum 8 players. Sign up in the Anubis MTG LINE group (opened Mon 16 Nov, 13:00).",
+      link: "https://line.me/ti/g/tN7vFE79g3", img: "img/events/mtg-star-trek-draft.jpg" },
+    { date: "2026-11-18", game: "mtg", title: "Commander Night", time: "19:00", fee: "Open 1 pack",
+      detail: "Commander Bracket 3. Every player gets a participation promo card and takes home a pack. Walk in." },
+    { date: "2026-11-18", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for everyone. Sign up on Playriftbound with your Riot ID." },
+    { date: "2026-11-19", game: "lorcana", title: "Casual Lorcana Night", time: "19:30", fee: "250 THB",
+      detail: "Core Constructed (Set 9 to 14) or Coconut, or Pack Rush with packs from Set 2 to 8 for 450 THB. New players at 19:00 for Learn to Play. No sign-up needed." },
+    { date: "2026-11-20", game: "mtg", title: "Casual Commander", time: "19:00", fee: "Open 1 pack",
+      detail: "Commander Bracket 3. Every player gets a participation promo card and takes home a pack. Walk in." },
+    { date: "2026-11-20", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, 4 rounds, 24 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for everyone. Sign up on Playriftbound with your Riot ID." },
+    { date: "2026-11-21", game: "lorcana", title: "Hyperia City Draft", time: "14:00", fee: "850 THB", major: true,
+      short: "Lorcana Draft is back. Open 4 Hyperia City packs and build, no deck needed.",
+      detail: "Draft: open 4 Hyperia City booster packs and build your deck on the spot, so you need no deck to play. Prize: 1 booster pack for the Top 6. 24 seats, first come, first served. Sign up in the Lorcana OpenChat from Wed 18 Nov, 13:00.",
+      link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g", img: "img/events/lorcana-hyperia-city-draft.jpg" },
+    { date: "2026-11-22", game: "riftbound", title: "Nexus Night 1v1 (Bo3)", time: "14:00", fee: "300 THB",
+      detail: "Standard Constructed, Best-of-3, 4 rounds, 32 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for everyone. Sign up on Playriftbound with your Riot ID." }
   ]
 };
