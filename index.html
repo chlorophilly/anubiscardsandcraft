@@ -1997,5 +1997,44 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 })();
 </script>
 <script src="motion.js"></script>
+<script>
+/* One continuous left rail: shows the word of the section in view (M2 look, 23 Nov 2026) */
+(() => {
+  const secs = [...document.querySelectorAll('.m2sec')];
+  if (!secs.length) return;
+  const rail = document.createElement('div');
+  rail.className = 'vrail'; rail.setAttribute('aria-hidden', 'true');
+  const words = secs.map(sec => {
+    const w = document.createElement('span');
+    const src = sec.querySelector('.vband span');
+    w.textContent = src ? src.textContent : '';
+    rail.appendChild(w);
+    return w;
+  });
+  document.body.appendChild(rail);
+  let cur = -1;
+  const show = (i) => { if (i === cur) return; cur = i; words.forEach((w, j) => w.classList.toggle('on', j === i)); };
+  // long words shrink so the whole word fits between the header and the bottom bar
+  const fit = () => {
+    const avail = innerHeight - (innerWidth <= 980 ? 170 : 100);
+    words.forEach(w => {
+      w.style.fontSize = '';
+      const len = w.offsetHeight;
+      if (len > avail) w.style.fontSize = (parseFloat(getComputedStyle(w).fontSize) * avail / len).toFixed(1) + 'px';
+    });
+  };
+  const pick = () => {
+    const line = innerHeight * .45;
+    let best = 0;
+    secs.forEach((sec, i) => { if (sec.offsetParent !== null && sec.getBoundingClientRect().top <= line) best = i; });
+    show(best);
+  };
+  let raf = 0;
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; pick(); }); }, { passive: true });
+  addEventListener('resize', () => { fit(); pick(); }, { passive: true });
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fit(); pick(); });
+  fit(); pick();
+})();
+</script>
 </body>
 </html>
