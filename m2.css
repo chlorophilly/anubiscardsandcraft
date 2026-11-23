@@ -216,3 +216,20 @@ html.motion .stage:hover { --spread: 1; }
 @media (prefers-reduced-motion: reduce) { .vrail span, .vrail span.on { transition: none; translate: none; } }
 .notice { padding-left: calc(var(--bw) + var(--gutter)); }
 footer > .wrap, .lockfoot { margin-left: var(--bw); }
+
+/* ---------- games swipe row (phones): smooth, edge to edge, no jumping cards ---------- */
+html.motion .games > .game, .game, .game:hover { transform: none !important; }
+html.motion .games > .game:hover { --gy: 0px; }
+@media (max-width: 760px) {
+  .games {
+    margin-right: -16px; padding-right: 16px; gap: 12px;
+    scroll-snap-type: x mandatory; scroll-padding-left: 0; overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch; align-items: stretch;
+  }
+  .games::after { content: ""; flex: 0 0 4px; }
+  .game, .game:last-child { flex: 0 0 72%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .game { grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: 132px auto; }
+  .game .gv span { font-size: 50px; bottom: 8px; }
+  .game .gb { border-bottom: 0; }
+  .swipe-hint { display: block; margin-top: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+}
