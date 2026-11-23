@@ -838,6 +838,7 @@
 
   .inline-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #E27BD9; }
 </style>
+<link rel="stylesheet" href="m2.css">
 </head>
 <body>
 
@@ -976,7 +977,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 <main id="top">
 
 <!-- HERO -->
-<section class="hero" style="padding-block:0">
+<section class="hero m2sec">
+  <div class="vband" aria-hidden="true"><span>ANUBIS</span></div>
   <canvas class="dust" id="dust" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
@@ -1025,7 +1027,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </div>
 
 <!-- CALENDAR -->
-<section id="calendar">
+<section id="calendar" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>THIS WEEK</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1064,7 +1067,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- BIG EVENTS: one compact card per event, "Full details" opens the rest -->
-<section id="big" class="big" aria-labelledby="big-h" style="padding-top:0">
+<section id="big" class="big m2sec" aria-labelledby="big-h">
+  <div class="vband" aria-hidden="true"><span>BIG EVENTS</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1252,7 +1256,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </dialog>
 
 <!-- PAST EVENTS: the record of big events we ran. One card per event, each links to its own page. -->
-<section id="past" aria-labelledby="past-h">
+<section id="past" class="m2sec" aria-labelledby="past-h">
+  <div class="vband" aria-hidden="true"><span>RECAP</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1287,7 +1292,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- NEW PLAYERS -->
-<section id="new" class="light">
+<section id="new" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>NEW HERE</span></div>
   <div class="wrap newbie">
     <div class="newbie-art reveal">
       <div class="disc"></div>
@@ -1314,7 +1320,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- GAMES -->
-<section id="games" style="padding-top:0">
+<section id="games" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>GAMES</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1327,36 +1334,36 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       </p>
     </div>
     <div class="games reveal">
-      <article class="game" style="--c:var(--lorcana)">
+      <article class="game" style="--c:var(--lorcana);--cl:var(--lorcana-l)"><div class="gv" aria-hidden="true"><span>LORCANA</span></div><div class="ga" style="background-image:url('m2/st_lor.jpg')"><img class="logo" src="m2/lorcana-white-crop.png" alt=""></div><div class="gb">
         <div class="gi"><svg><use href="#i-casual"/></svg></div>
         <h3>Disney Lorcana</h3>
         <p><span class="l-en">Our home game. Casual nights twice a week, Set Championships, Pack Rush and Drafts.</span><span class="l-th" lang="th">เกมหลักของร้านเรา มี Casual สัปดาห์ละ 2 วัน พร้อม Set Championship, Pack Rush และ Draft</span><span class="l-ja" lang="ja">当店のメインゲーム。週2回のカジュアル会に加え、セットチャンピオンシップ、パックラッシュ、ドラフトも。</span></p>
         <div class="when">Tue + Thu ✦ 19:30<br><a class="line" href="https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" target="_blank" rel="noopener"><span class="l-en">Join LINE OpenChat</span><span class="l-th" lang="th">เข้ากลุ่ม LINE OpenChat</span><span class="l-ja" lang="ja">LINE OpenChatに参加</span> →</a></div>
-      </article>
-      <article class="game" style="--c:var(--mtg)">
+      </div></article>
+      <article class="game" style="--c:var(--mtg);--cl:var(--mtg-l)"><div class="gv" aria-hidden="true"><span>MAGIC</span></div><div class="ga" style="background-image:url('m2/st_mtg.jpg')"><img class="logo" src="m2/mtg.png" alt=""></div><div class="gb">
         <div class="gi"><svg><use href="#i-draft"/></svg></div>
         <h3>Magic: The Gathering</h3>
         <p><span class="l-en">Commander Wednesdays, Friday Night Modern, drafts and every pre-release.</span><span class="l-th" lang="th">Commander ทุกวันพุธ Friday Night Modern รวมถึง Draft และ Pre-Release ทุกเซตใหม่</span><span class="l-ja" lang="ja">水曜は統率者戦、金曜はモダン。ドラフトや新セットのプレリリースも毎回開催。</span></p>
         <div class="when">Wed + Fri ✦ 19:00<br><a class="line" href="https://line.me/ti/g/tN7vFE79g3" target="_blank" rel="noopener"><span class="l-en">Join LINE group</span><span class="l-th" lang="th">เข้ากลุ่มไลน์</span><span class="l-ja" lang="ja">LINEグループに参加</span> →</a></div>
-      </article>
-      <article class="game" style="--c:var(--riftbound)">
+      </div></article>
+      <article class="game" style="--c:var(--riftbound);--cl:var(--riftbound-l)"><div class="gv" aria-hidden="true"><span>RIFTBOUND</span></div><div class="ga" style="background-image:url('m2/st_rb.jpg')"><img class="logo" src="m2/riftbound_logo.png" alt=""></div><div class="gb">
         <div class="gi"><svg><use href="#i-tournament"/></svg></div>
         <h3>Riftbound</h3>
         <p><span class="l-en">League of Legends TCG. Nexus Nights with promos, plus casual practice rounds.</span><span class="l-th" lang="th">การ์ดเกมจากจักรวาล League of Legends มี Nexus Night แจกการ์ดโปรโม และรอบ Casual ไว้ซ้อมมือ</span><span class="l-ja" lang="ja">League of LegendsのTCG。プロモ配布のNexus Nightと、練習向けのカジュアル戦。</span></p>
         <div class="when">Wed + Fri 20:00 ✦ Sun 14:00<br><a class="line" href="https://line.me/ti/g/m5Phn384nH" target="_blank" rel="noopener"><span class="l-en">Join LINE group</span><span class="l-th" lang="th">เข้ากลุ่มไลน์</span><span class="l-ja" lang="ja">LINEグループに参加</span> →</a></div>
-      </article>
-      <article class="game" style="--c:var(--pokemon)">
+      </div></article>
+      <article class="game" style="--c:var(--pokemon);--cl:var(--pokemon-l)"><div class="gv" aria-hidden="true"><span>POKÉMON</span></div><div class="ga" style="background-image:url('m2/st_pkm.jpg')"><img class="logo" src="m2/pokemon.png" alt=""></div><div class="gb">
         <div class="gi"><svg><use href="#i-pack"/></svg></div>
         <h3>Pokémon TCG</h3>
         <p><span class="l-en">Monday Gym Battles with packs and promos for everyone who shows up.</span><span class="l-th" lang="th">Gym Battle ทุกวันจันทร์ ได้ทั้งซองและการ์ดโปรโมกลับบ้านทุกคนครับ</span><span class="l-ja" lang="ja">毎週月曜はジムバトル。参加者全員にパックとプロモカード。</span></p>
         <div class="when">Mon ✦ 19:00<br><a class="line" href="https://line.me/ti/g/gRN8d6R8q8" target="_blank" rel="noopener"><span class="l-en">Join LINE group</span><span class="l-th" lang="th">เข้ากลุ่มไลน์</span><span class="l-ja" lang="ja">LINEグループに参加</span> →</a></div>
-      </article>
-      <article class="game" style="--c:var(--onepiece)">
+      </div></article>
+      <article class="game" style="--c:var(--onepiece);--cl:var(--onepiece-l)"><div class="gv" aria-hidden="true"><span>ONE PIECE</span></div><div class="ga" style="background-image:url('')"></div><div class="gb">
         <div class="gi"><svg><use href="#i-players"/></svg></div>
         <h3>One Piece</h3>
         <p><span class="l-en">Product on the shelf and tables open daily. Ask us about play nights.</span><span class="l-th" lang="th">มีสินค้าวางขาย และมีโต๊ะว่างให้เล่นทุกวัน อยากนัดเล่นทักมาถามได้เลยครับ</span><span class="l-ja" lang="ja">商品を取り揃え、テーブルは毎日開放中。対戦会はお気軽にお問い合わせください。</span></p>
         <div class="when"><span class="l-en">Open play ✦ daily</span><span class="l-th" lang="th">เปิดโต๊ะให้เล่นทุกวัน</span><span class="l-ja" lang="ja">毎日フリー対戦OK</span></div>
-      </article>
+      </div></article>
     </div>
     <p class="swipe-hint"><span class="l-en">Swipe for all five games →</span><span class="l-th" lang="th">ปัดเพื่อดูทั้ง 5 เกม →</span><span class="l-ja" lang="ja">スワイプで5ゲームすべて →</span></p>
   
@@ -1364,7 +1371,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- VISIT -->
-<section id="visit" style="padding-top:0">
+<section id="visit" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>VISIT</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1465,7 +1473,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- SHOP LIFE -->
-<section id="life">
+<section id="life" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>SHOP LIFE</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1526,7 +1535,8 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
 </section>
 
 <!-- COMMUNITY + CONTACT -->
-<section id="community" class="light">
+<section id="community" class="m2sec">
+  <div class="vband" aria-hidden="true"><span>JOIN US</span></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -1630,6 +1640,10 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <p style="margin-top:16px">MTG ✦ LORCANA ✦ POKÉMON ✦ ONE PIECE ✦ RIFTBOUND<br>© <span id="yr">2026</span> Draw a Card Co., Ltd. ✦ Bangkok</p>
     </div>
   </div>
+  <div class="lockfoot">
+    <span class="who"><span class="icons"><a href="https://www.facebook.com/AnubisCardsandCraft" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a><a href="https://instagram.com/anubiscardsandcraft" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="https://tiktok.com/@anubiscardsandcraft" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tt"/></svg></a></span>Anubis Cards and Craft</span>
+    <span>5 min from BTS Asok · <span class="gold">Opens Everyday 2-10 PM</span></span>
+  </div>
 </footer>
 
 <script src="events.js"></script>
@@ -1698,13 +1712,19 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
   };
   const lastDated = D.dated.filter(e => !e.major).map(e => e.date).sort().pop() || D.updated;
 
+  const t12 = (t) => { if (!t || !/^\d\d:\d\d$/.test(t)) return t || ''; let h = +t.slice(0, 2); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return `${h}:${t.slice(3)} ${ap}`; };
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const evBtn = (e) => {
     const g = games[e.game];
-    return `<button class="ev${e.weekly ? ' weekly' : ''}${e.major ? ' major' : ''}" style="--c:${g.color}" data-ev='${esc(JSON.stringify(e))}'>
-      <span class="g">${esc(g.label)}${e.major ? ' <span class="star-badge">★</span>' : ''}</span>
+    const fee = e.fee ? (/^[\d,]+ THB$/.test(e.fee) ? `${esc(e.fee.replace(' THB', ''))}<small>THB</small>` : esc(e.fee)) : '';
+    const pill = e.tag ? `<span class="pill ${e.tag}">${e.tag === 'competitive' ? 'Competitive' : 'Casual'}</span>` : '';
+    const sub = e.weekly ? `<span>${T('weekly', 'ประจำสัปดาห์', '毎週')}</span>` : '';
+    return `<button class="ev${e.weekly ? ' weekly' : ''}${e.major ? ' major' : ''}" style="--c:${g.color};--cl:var(--${e.game}-l);--cf:var(--${e.game}-f)" data-ev='${esc(JSON.stringify(e))}'>
+      <span class="g">${esc(g.label)}</span>
       <span class="t">${esc(e.title)}</span>
-      <span class="m">${e.time ? esc(e.time) : T('Time TBA', 'รอประกาศเวลา', '時間未定')}${e.fee ? ' ✦ ' + esc(e.fee) : ''}${e.weekly ? ' ✦ ' + T('weekly', 'ประจำสัปดาห์', '毎週') : ''}</span>
+      <span class="tm">${e.time ? esc(t12(e.time)) : T('Time TBA', 'รอประกาศเวลา', '時間未定')}</span>
+      ${sub || pill ? `<span class="sub">${pill}${sub}</span>` : ''}
+      ${fee ? `<span class="fee">${fee}</span>` : ''}
     </button>`;
   };
 
@@ -1720,7 +1740,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       const d = addDays(mon, i); const evs = eventsOn(d);
       const shut = closedOn(d);
       const cls = (d === todayYMD ? ' today' : d < todayYMD ? ' past' : '') + (shut ? ' closed' : '');
-      html += `<div class="day${cls}"><div class="day-h"><b>${fmt(d, { weekday: 'short' })}</b><span>${fmt(d, { day: 'numeric', month: 'short' })}${d === todayYMD ? ' ✦ ' + T('today', 'วันนี้', '今日') : ''}</span></div>
+      html += `<div class="day${cls}"><div class="day-h"><span class="dw">${fmt(d, { weekday: 'short' })}</span><b class="dn">${+d.slice(8)}</b>${d === todayYMD ? `<span class="td">${T('TODAY', 'วันนี้', '今日')}</span>` : ''}</div>
         <div class="day-ev">${shut ? `<div class="shut"><b>${T('Shop closed', 'ร้านปิด', '店舗休業')}</b>${esc(T(shut.en, shut.th, shut.ja))}</div>` : ''}${evs.length ? evs.map(evBtn).join('') : shut ? '' : `<div class="empty">${T('Open play, tables free', 'โต๊ะว่าง มาเล่นได้เลย', 'フリー対戦OK')}</div>`}</div></div>`;
     }
     $('#cal').innerHTML = html + '</div>';
@@ -1880,7 +1900,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
       <h3 id="dlg-title">${esc(e.title)}</h3>
       <dl>
         <dt>${T('Date', 'วันที่', '日付')}</dt><dd class="mono">${fmt(e.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</dd>
-        <dt>${T('Time', 'เวลา', '時間')}</dt><dd class="mono">${e.time ? esc(e.time) : T('To be announced', 'รอประกาศ', '未定')}</dd>
+        <dt>${T('Time', 'เวลา', '時間')}</dt><dd class="mono">${e.time ? esc(t12(e.time)) : T('To be announced', 'รอประกาศ', '未定')}</dd>
         ${e.fee ? `<dt>${T('Entry', 'ค่าสมัคร', '参加費')}</dt><dd class="mono">${esc(e.fee)}</dd>` : ''}
         ${e.detail ? `<dt>${T('Details', 'รายละเอียด', '詳細')}</dt><dd>${esc(e.detail)}</dd>` : ''}
         ${e.note ? `<dt>${T('Note', 'หมายเหตุ', 'メモ')}</dt><dd>${esc(e.note)}</dd>` : ''}
@@ -1912,7 +1932,7 @@ c-21 -9 -479 -194 -1017 -413 l-979 -397 -337 -1570 c-185 -863 -335 -1574
     let tail = '';
     if (left.length) {
       const e = left[0], more = left.length - 1, night = +e.time.slice(0, 2) >= 17;
-      tail = ` ✦ ${night ? T('Tonight', 'คืนนี้', '今夜') : T('Today', 'วันนี้', '本日')}: <b>${esc(e.title)}</b> ${esc(e.time)}${more ? ` <em>${T(`+${more} more`, `และอีก ${more} อีเวนต์`, `ほか${more}件`)}</em>` : ''}`;
+      tail = ` ✦ ${night ? T('Tonight', 'คืนนี้', '今夜') : T('Today', 'วันนี้', '本日')}: <b>${esc(e.title)}</b> ${esc(t12(e.time))}${more ? ` <em>${T(`+${more} more`, `และอีก ${more} อีเวนต์`, `ほか${more}件`)}</em>` : ''}`;
     }
     el.innerHTML = `${dot}<span>${head}${tail}</span>`;
   };
