@@ -8,7 +8,7 @@
   games:     label + accent color (CI v3.0 game accents).
 */
 window.ANUBIS = {
-  updated: "2026-11-18",
+  updated: "2026-11-23",
   source: "https://www.facebook.com/AnubisCardsandCraft",
 
   games: {
@@ -144,6 +144,26 @@ window.ANUBIS = {
       detail: "Draft: open 4 Hyperia City booster packs and build your deck on the spot, so you need no deck to play. Prize: 1 booster pack for the Top 6. 24 seats, first come, first served. Sign up in the Lorcana OpenChat from Wed 18 Nov, 13:00.",
       link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g", img: "img/events/lorcana-hyperia-city-draft.jpg" },
     { date: "2026-11-22", game: "riftbound", title: "Nexus Night 1v1 (Bo3)", time: "14:00", fee: "300 THB",
-      detail: "Standard Constructed, Best-of-3, 4 rounds, 32 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for everyone. Sign up on Playriftbound with your Riot ID." }
+      detail: "Standard Constructed, Best-of-3, 4 rounds, 32 players. Door gift: 1 booster pack. Prizes: 2 boosters for 1st and 2nd, 1 booster for 3rd and 4th. Radiance Nexus Night promo pack for everyone. Sign up on Playriftbound with your Riot ID." },
+
+    // Week of Nov 23 to 29. No FB weekly post yet (checked 2026-11-23): Riftbound from Philly's Playriftbound links + playriftbound.com event pages,
+    // Sat 28 from the FB post "Disney Lorcana: INFINITY CONSTRUCTED". Other days are the usual weekly slots, kept as weekly: true until the weekly post is out.
+    { date: "2026-11-23", game: "pokemon", title: "Gym Battle", time: "19:00", weekly: true },
+    { date: "2026-11-24", game: "lorcana", title: "Casual On-Demand", time: "19:30", weekly: true, note: "Learn to Play at 19:00" },
+    { date: "2026-11-25", game: "mtg", title: "Casual Commander", time: "19:00", weekly: true },
+    { date: "2026-11-25", game: "riftbound", title: "Nexus Night 1v1 (Bo1)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, Best-of-1 Swiss, 4 rounds, 32 players. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117556841462022672" },
+    { date: "2026-11-26", game: "lorcana", title: "Casual Core Constructed", time: "19:30", weekly: true, note: "Learn to Play at 19:00" },
+    { date: "2026-11-27", game: "mtg", title: "Friday Night Modern", time: "19:00", weekly: true },
+    { date: "2026-11-27", game: "riftbound", title: "Nexus Night 1v1 (Bo3)", time: "20:00", fee: "300 THB",
+      detail: "Standard Constructed, Best-of-3 Swiss, 4 rounds, 32 players. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117556861492380177" },
+    { date: "2026-11-28", game: "lorcana", title: "Infinity Constructed", time: "14:00", fee: "250 THB",
+      detail: "Infinity Constructed, where every ink collides. Door gift: 1 booster pack. Prize: 1 more booster pack for the Top 8. 32 seats, first come, first served. Sign up in the Lorcana OpenChat from Wed 25 Nov, 13:00.",
+      link: "https://line.me/ti/g2/0ZzAtnVpBzwzbNoA7lRW3YPKL8xV7fzdire42g" },
+    { date: "2026-11-29", game: "riftbound", title: "Nexus Night 1v1 (Bo3)", time: "14:00", fee: "300 THB",
+      detail: "Standard Constructed, Best-of-3 Swiss, 4 rounds, 32 players. Sign up on Playriftbound with your Riot ID.",
+      link: "https://playriftbound.com/events/117556870249380428" }
   ]
 };
