@@ -79,69 +79,20 @@
       next.animate([{ opacity: 0, transform: 'translateY(55%) rotateX(-60deg)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
         { duration: 650, delay: 180, easing: 'cubic-bezier(.2, .9, .3, 1.2)', fill: 'backwards' });
     };
-    fontsReady.then(() => { fit(); setTimeout(() => { timer = setInterval(swap, 2400); }, 2600); });
+    fontsReady.then(fit); // rotation switched off (calmer page, Philly 23 Nov 2026)
     addEventListener('resize', fit, { passive: true });
   }
 
   /* ======================================================================
-     3. Pointer: stage tilt, holo light on the hero cards, game-card tilt, magnetic buttons
+     3. Pointer effects (stage tilt, holo foil, game-card tilt, magnetic buttons) removed 23 Nov 2026:
+        Philly asked for about half the animation.
      ====================================================================== */
-  if (fine) {
-    let tx = 0, ty = 0, cx = 0, cy = 0, tiltRaf = 0;
-    const tiltLoop = () => {
-      cx = lerp(cx, tx, .12); cy = lerp(cy, ty, .12);
-      inner.style.transform = `rotateY(${cx * 16}deg) rotateX(${-cy * 12}deg)`;
-      tiltRaf = (Math.abs(cx - tx) > .001 || Math.abs(cy - ty) > .001) ? requestAnimationFrame(tiltLoop) : 0;
-    };
-    addEventListener('pointermove', (e) => {
-      if (heroOff) return;
-      const r = stage.getBoundingClientRect();
-      tx = clamp((e.clientX - (r.left + r.width / 2)) / innerWidth, -.5, .5);
-      ty = clamp((e.clientY - (r.top + r.height / 2)) / innerHeight, -.5, .5);
-      if (!tiltRaf) tiltRaf = requestAnimationFrame(tiltLoop);
-      // light source for the foil: brighter the closer the pointer is to the fan
-      const near = 1 - clamp(Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) / (r.width * .9), 0, 1);
-      stage.style.setProperty('--holo', (.15 + near * .85).toFixed(2));
-      for (const c of cards) {
-        const cr = c.getBoundingClientRect();
-        c.style.setProperty('--hx', ((e.clientX - cr.left) / cr.width * 100).toFixed(1) + '%');
-        c.style.setProperty('--hy', ((e.clientY - cr.top) / cr.height * 100).toFixed(1) + '%');
-      }
-    }, { passive: true });
-
-    $$('.games > .game').forEach(g => {
-      g.addEventListener('pointermove', (e) => {
-        const r = g.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        g.classList.add('tilting');
-        g.style.setProperty('--rx', ((px - .5) * 12).toFixed(2) + 'deg');
-        g.style.setProperty('--ry', ((.5 - py) * 10).toFixed(2) + 'deg');
-        g.style.setProperty('--hx', (px * 100).toFixed(1) + '%');
-        g.style.setProperty('--hy', (py * 100).toFixed(1) + '%');
-      });
-      g.addEventListener('pointerleave', () => {
-        g.classList.remove('tilting');
-        ['--rx', '--ry'].forEach(p => g.style.removeProperty(p));
-      });
-    });
-
-    $$('.btn').forEach(b => {
-      b.addEventListener('pointermove', (e) => {
-        const r = b.getBoundingClientRect();
-        b.style.translate = `${((e.clientX - r.left) / r.width - .5) * 12}px ${((e.clientY - r.top) / r.height - .5) * 10}px`;
-      });
-      b.addEventListener('pointerleave', () => { b.style.translate = ''; });
-    });
-  }
 
   /* ======================================================================
-     4. Scroll engine: progress bar, header tuck, hero parallax, ticker speed, gallery drift
+     4. Scroll engine: progress bar and header tuck (parallax, ticker speed and gallery drift removed 23 Nov 2026)
      ====================================================================== */
   const bar = $('.bar'), prog = $('.progress'), nav = $('#nav');
-  const tickerEl = $('.ticker'), track = $('#ticker');
-  const tickerAnim = () => track && track.getAnimations ? track.getAnimations()[0] : null;
-  const gallery = $$('.gallery > figure:not(.g-nubi)');
-  let lastY = scrollY, vel = 0, rate = 1, skew = 0, scrollRaf = 0, heroOff = false;
+  let lastY = scrollY, vel = 0, scrollRaf = 0, heroOff = false;
 
   const frame = () => {
     const y = scrollY, vh = innerHeight;
@@ -156,25 +107,7 @@
       else if (dy < -4 || y < 120) bar.classList.remove('tuck');
     }
 
-    const hh = hero.offsetHeight || 1;
-    hero.style.setProperty('--hp', clamp(y / hh, 0, 1).toFixed(3));
-
-    // ticker: speeds up with scroll, runs backwards when scrolling up, leans into the motion
-    const a = tickerAnim();
-    const targetRate = 1 + clamp(Math.abs(vel) / 6, 0, 6) * Math.sign(vel || 1);
-    rate = lerp(rate, Math.abs(vel) < .3 ? 1 : targetRate, .12);
-    if (a) a.playbackRate = rate;
-    skew = lerp(skew, clamp(-vel * .5, -14, 14), .15);
-    tickerEl.style.setProperty('--skew', skew.toFixed(2) + 'deg');
-
-    for (const f of gallery) {
-      const r = f.getBoundingClientRect();
-      if (r.bottom < -50 || r.top > vh + 50) continue;
-      const pp = clamp((r.top + r.height / 2) / vh, 0, 1); // 1 entering at the bottom, 0 leaving at the top
-      f.querySelector('img').style.setProperty('--py', (-14 * (1 - pp)).toFixed(2) + '%');
-    }
-
-    const settling = Math.abs(vel) > .05 || Math.abs(rate - 1) > .01 || Math.abs(skew) > .05;
+    const settling = Math.abs(vel) > .05;
     scrollRaf = settling ? requestAnimationFrame(frame) : 0;
   };
   const kick = () => { if (!scrollRaf) scrollRaf = requestAnimationFrame(frame); };
@@ -183,50 +116,14 @@
   kick();
 
   /* ======================================================================
-     5. Hero gold dust (canvas, paused off-screen and in background tabs)
+     5. Hero gold dust removed 23 Nov 2026 (calmer page).
      ====================================================================== */
-  const cvs = $('#dust');
-  if (cvs && cvs.getContext) {
-    const ctx = cvs.getContext('2d');
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    let W = 0, H = 0, motes = [], px = .5, py = .5, raf = 0;
-    const size = () => {
-      const r = hero.getBoundingClientRect();
-      W = r.width; H = r.height;
-      cvs.width = W * dpr; cvs.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.round(clamp(W * H / (small ? 16000 : 11000), 24, 90));
-      motes = Array.from({ length: n }, () => ({
-        x: Math.random() * W, y: Math.random() * H, z: .3 + Math.random() * .7,
-        r: .6 + Math.random() * 1.8, s: .12 + Math.random() * .35, p: Math.random() * 6.28, hue: Math.random()
-      }));
-    };
-    const draw = (t) => {
-      ctx.clearRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'lighter';
-      for (const m of motes) {
-        m.y -= m.s * m.z; m.x += Math.sin(t / 1800 + m.p) * .15 * m.z;
-        if (m.y < -10) { m.y = H + 10; m.x = Math.random() * W; }
-        const ox = (px - .5) * 30 * m.z, oy = (py - .5) * 20 * m.z;
-        const a = (.25 + .55 * (.5 + .5 * Math.sin(t / 700 + m.p * 3))) * m.z;
-        ctx.fillStyle = m.hue > .7 ? `rgba(253, 224, 174, ${a})` : `rgba(245, 166, 35, ${a})`;
-        ctx.beginPath(); ctx.arc(m.x + ox, m.y + oy, m.r * m.z, 0, 6.283); ctx.fill();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    const run = () => { if (!raf && !heroOff && !document.hidden) raf = requestAnimationFrame(draw); };
-    const stop = () => { cancelAnimationFrame(raf); raf = 0; };
-    size(); run();
-    addEventListener('resize', () => { size(); }, { passive: true });
-    if (fine) addEventListener('pointermove', (e) => { px = e.clientX / innerWidth; py = e.clientY / innerHeight; }, { passive: true });
-    new IntersectionObserver(([e]) => { heroOff = !e.isIntersecting; heroOff ? stop() : run(); }).observe(hero);
-    document.addEventListener('visibilitychange', () => document.hidden ? stop() : run());
-  }
 
   /* ======================================================================
      6. Staggered groups: give each child its index (and a dealt-card tilt for games)
      ====================================================================== */
   const deal = [-7, 5, -4, 6, -5];
-  [['.games', true], ['.gallery', false], ['.comm', false]].forEach(([sel, tilt]) => {
+  [['.games', false], ['.gallery', false], ['.comm', false]].forEach(([sel, tilt]) => {
     const g = $(sel); if (!g) return;
     g.classList.add('stagger');
     [...g.children].forEach((c, i) => {

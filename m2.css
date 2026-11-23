@@ -183,3 +183,18 @@ footer { border-top: 0; }
 .collab { background: var(--n900); border: 1px solid var(--n700); border-radius: 0; color: var(--cream); }
 .collab .k { color: var(--gold); letter-spacing: .2em; }
 .collab p { color: var(--n200); }
+
+/* ---------- calmer motion (Philly 23 Nov 2026: about half the animation) ----------
+   Off: rotating headline word, hero dust, card foil sweep, sparkle twinkle, Nubi bob, button shine loop,
+   scroll parallax, ticker skew. Slower: the gold ticker. Kept: reveals, calendar slide, pop-ups,
+   bottom bar card deal, map route, footer sting, countdown. */
+.dust { display: none; }
+html.motion .card::after { animation: none !important; opacity: 0 !important; }
+.sparkle { animation: none !important; opacity: .55; }
+.nubi-hero { animation: none !important; }
+html.motion .hero .cta .btn-gold::after { animation: none !important; }
+html.motion .stage:hover { --spread: 1; }
+.ticker-track { animation-duration: 90s !important; }
+.ticker-track span { transform: none !important; }
+.halo, .halo::after { animation: none !important; }
+.day.today { animation: none !important; }
