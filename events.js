@@ -16,7 +16,8 @@ window.ANUBIS = {
     mtg:       { label: "MTG",       color: "#C8102E" },
     pokemon:   { label: "Pokémon",   color: "#3D7DCA" },
     riftbound: { label: "Riftbound", color: "#08B4B5" },
-    onepiece:  { label: "One Piece", color: "#F47C20" }
+    onepiece:  { label: "One Piece", color: "#F47C20" },
+    summoner:  { label: "Summoner Master", color: "#2FBF71" }
   },
 
   recurring: [

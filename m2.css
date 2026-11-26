@@ -16,8 +16,8 @@
   --gold-hi: #FFE08A;
   --gold-band: linear-gradient(90deg, #C98A2B, #F5C454 45%, #FFF1C2);
   --bw: clamp(40px, 7.6vw, 112px);
-  --lorcana-l: #F27BB9; --riftbound-l: #6FE3E0; --mtg-l: #F2737F; --pokemon-l: #8DB8EC; --onepiece-l: #FFB37A;
-  --lorcana-f: #2F1426; --riftbound-f: #0A2729; --mtg-f: #2C0B12; --pokemon-f: #141E2D; --onepiece-f: #2E1B0C;
+  --lorcana-l: #F27BB9; --riftbound-l: #6FE3E0; --mtg-l: #F2737F; --pokemon-l: #8DB8EC; --onepiece-l: #FFB37A; --summoner-l: #9FE8C0;
+  --lorcana-f: #2F1426; --riftbound-f: #0A2729; --mtg-f: #2C0B12; --pokemon-f: #141E2D; --onepiece-f: #2E1B0C; --summoner-f: #0A2617;
 }
 body { background: var(--black); }
 
@@ -124,6 +124,8 @@ html.motion .sec-head h2::after { background: var(--cream); }
 
 /* ---------- games: one mini poster per game ---------- */
 .games { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+@media (min-width: 761px) { .games { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .games { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .game {
   display: grid !important; grid-template-columns: 46px minmax(0, 1fr); grid-template-rows: 150px auto; padding: 0 !important; gap: 0;
   border: 0 !important; border-radius: 0 !important; background: var(--black) !important; overflow: hidden; min-height: 0;
@@ -136,6 +138,7 @@ html.motion .sec-head h2::after { background: var(--cream); }
 .game .ga img.logo { position: absolute; right: 10px; top: 10px; max-width: 46%; max-height: 40px; z-index: 1; filter: drop-shadow(0 2px 6px rgb(0 0 0 / .6)); }
 .game .gb { grid-column: 2; grid-row: 2; padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--n700); }
 .game .gi { display: none; }
+.game .gv span.long { font-size: 50px; }
 .game h3 { font: 900 22px/1.02 var(--display) !important; text-transform: uppercase; color: var(--cream); margin: 0; }
 .game p { color: var(--n400); font-size: 14px; margin: 0; }
 .game .when { font: 800 15px/1.5 var(--display); color: var(--gold); margin-top: auto; }
@@ -230,6 +233,7 @@ html.motion .games > .game:hover { --gy: 0px; }
   .game, .game:last-child { flex: 0 0 72%; scroll-snap-align: start; scroll-snap-stop: always; }
   .game { grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: 132px auto; }
   .game .gv span { font-size: 50px; bottom: 8px; }
+  .game .gv span.long { font-size: 42px; }
   .game .gb { border-bottom: 0; }
   .swipe-hint { display: block; margin-top: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
 }
